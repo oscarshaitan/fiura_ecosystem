@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'judge_entity.dart';
+part of 'artist_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,36 +14,37 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-JudgeEntity _$JudgeEntityFromJson(Map<String, dynamic> json) {
-  return _JudgeEntity.fromJson(json);
-}
-
 /// @nodoc
-mixin _$JudgeEntity {
+mixin _$Artist {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
   String? get socialNetwork => throw _privateConstructorUsedError;
+  List<String> get photos => throw _privateConstructorUsedError;
+  List<Music> get music => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $JudgeEntityCopyWith<JudgeEntity> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ArtistCopyWith<Artist> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $JudgeEntityCopyWith<$Res> {
-  factory $JudgeEntityCopyWith(
-          JudgeEntity value, $Res Function(JudgeEntity) then) =
-      _$JudgeEntityCopyWithImpl<$Res, JudgeEntity>;
+abstract class $ArtistCopyWith<$Res> {
+  factory $ArtistCopyWith(Artist value, $Res Function(Artist) then) =
+      _$ArtistCopyWithImpl<$Res, Artist>;
   @useResult
-  $Res call({String id, String name, String about, String? socialNetwork});
+  $Res call(
+      {String id,
+      String name,
+      String about,
+      String? socialNetwork,
+      List<String> photos,
+      List<Music> music});
 }
 
 /// @nodoc
-class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
-    implements $JudgeEntityCopyWith<$Res> {
-  _$JudgeEntityCopyWithImpl(this._value, this._then);
+class _$ArtistCopyWithImpl<$Res, $Val extends Artist>
+    implements $ArtistCopyWith<$Res> {
+  _$ArtistCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -57,6 +58,8 @@ class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
     Object? name = null,
     Object? about = null,
     Object? socialNetwork = freezed,
+    Object? photos = null,
+    Object? music = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -75,27 +78,38 @@ class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
           ? _value.socialNetwork
           : socialNetwork // ignore: cast_nullable_to_non_nullable
               as String?,
+      photos: null == photos
+          ? _value.photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      music: null == music
+          ? _value.music
+          : music // ignore: cast_nullable_to_non_nullable
+              as List<Music>,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_JudgeEntityCopyWith<$Res>
-    implements $JudgeEntityCopyWith<$Res> {
-  factory _$$_JudgeEntityCopyWith(
-          _$_JudgeEntity value, $Res Function(_$_JudgeEntity) then) =
-      __$$_JudgeEntityCopyWithImpl<$Res>;
+abstract class _$$_ArtistCopyWith<$Res> implements $ArtistCopyWith<$Res> {
+  factory _$$_ArtistCopyWith(_$_Artist value, $Res Function(_$_Artist) then) =
+      __$$_ArtistCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String about, String? socialNetwork});
+  $Res call(
+      {String id,
+      String name,
+      String about,
+      String? socialNetwork,
+      List<String> photos,
+      List<Music> music});
 }
 
 /// @nodoc
-class __$$_JudgeEntityCopyWithImpl<$Res>
-    extends _$JudgeEntityCopyWithImpl<$Res, _$_JudgeEntity>
-    implements _$$_JudgeEntityCopyWith<$Res> {
-  __$$_JudgeEntityCopyWithImpl(
-      _$_JudgeEntity _value, $Res Function(_$_JudgeEntity) _then)
+class __$$_ArtistCopyWithImpl<$Res>
+    extends _$ArtistCopyWithImpl<$Res, _$_Artist>
+    implements _$$_ArtistCopyWith<$Res> {
+  __$$_ArtistCopyWithImpl(_$_Artist _value, $Res Function(_$_Artist) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -105,8 +119,10 @@ class __$$_JudgeEntityCopyWithImpl<$Res>
     Object? name = null,
     Object? about = null,
     Object? socialNetwork = freezed,
+    Object? photos = null,
+    Object? music = null,
   }) {
-    return _then(_$_JudgeEntity(
+    return _then(_$_Artist(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -123,21 +139,30 @@ class __$$_JudgeEntityCopyWithImpl<$Res>
           ? _value.socialNetwork
           : socialNetwork // ignore: cast_nullable_to_non_nullable
               as String?,
+      photos: null == photos
+          ? _value._photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      music: null == music
+          ? _value._music
+          : music // ignore: cast_nullable_to_non_nullable
+              as List<Music>,
     ));
   }
 }
 
 /// @nodoc
-@JsonSerializable()
-class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
-  _$_JudgeEntity(
+
+class _$_Artist with DiagnosticableTreeMixin implements _Artist {
+  _$_Artist(
       {required this.id,
       required this.name,
       required this.about,
-      required this.socialNetwork});
-
-  factory _$_JudgeEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_JudgeEntityFromJson(json);
+      required this.socialNetwork,
+      required final List<String> photos,
+      required final List<Music> music})
+      : _photos = photos,
+        _music = music;
 
   @override
   final String id;
@@ -147,62 +172,77 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
   final String about;
   @override
   final String? socialNetwork;
+  final List<String> _photos;
+  @override
+  List<String> get photos {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_photos);
+  }
+
+  final List<Music> _music;
+  @override
+  List<Music> get music {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_music);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'JudgeEntity(id: $id, name: $name, about: $about, socialNetwork: $socialNetwork)';
+    return 'Artist(id: $id, name: $name, about: $about, socialNetwork: $socialNetwork, photos: $photos, music: $music)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'JudgeEntity'))
+      ..add(DiagnosticsProperty('type', 'Artist'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('about', about))
-      ..add(DiagnosticsProperty('socialNetwork', socialNetwork));
+      ..add(DiagnosticsProperty('socialNetwork', socialNetwork))
+      ..add(DiagnosticsProperty('photos', photos))
+      ..add(DiagnosticsProperty('music', music));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_JudgeEntity &&
+            other is _$_Artist &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
             (identical(other.socialNetwork, socialNetwork) ||
-                other.socialNetwork == socialNetwork));
+                other.socialNetwork == socialNetwork) &&
+            const DeepCollectionEquality().equals(other._photos, _photos) &&
+            const DeepCollectionEquality().equals(other._music, _music));
   }
 
-  @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, about, socialNetwork);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      about,
+      socialNetwork,
+      const DeepCollectionEquality().hash(_photos),
+      const DeepCollectionEquality().hash(_music));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_JudgeEntityCopyWith<_$_JudgeEntity> get copyWith =>
-      __$$_JudgeEntityCopyWithImpl<_$_JudgeEntity>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_JudgeEntityToJson(
-      this,
-    );
-  }
+  _$$_ArtistCopyWith<_$_Artist> get copyWith =>
+      __$$_ArtistCopyWithImpl<_$_Artist>(this, _$identity);
 }
 
-abstract class _JudgeEntity implements JudgeEntity {
-  factory _JudgeEntity(
+abstract class _Artist implements Artist {
+  factory _Artist(
       {required final String id,
       required final String name,
       required final String about,
-      required final String? socialNetwork}) = _$_JudgeEntity;
-
-  factory _JudgeEntity.fromJson(Map<String, dynamic> json) =
-      _$_JudgeEntity.fromJson;
+      required final String? socialNetwork,
+      required final List<String> photos,
+      required final List<Music> music}) = _$_Artist;
 
   @override
   String get id;
@@ -213,7 +253,11 @@ abstract class _JudgeEntity implements JudgeEntity {
   @override
   String? get socialNetwork;
   @override
+  List<String> get photos;
+  @override
+  List<Music> get music;
+  @override
   @JsonKey(ignore: true)
-  _$$_JudgeEntityCopyWith<_$_JudgeEntity> get copyWith =>
+  _$$_ArtistCopyWith<_$_Artist> get copyWith =>
       throw _privateConstructorUsedError;
 }

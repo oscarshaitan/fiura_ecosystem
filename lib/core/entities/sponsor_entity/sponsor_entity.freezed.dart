@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'judge_entity.dart';
+part of 'sponsor_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-JudgeEntity _$JudgeEntityFromJson(Map<String, dynamic> json) {
-  return _JudgeEntity.fromJson(json);
+SponsorEntity _$SponsorEntityFromJson(Map<String, dynamic> json) {
+  return _SponsorEntity.fromJson(json);
 }
 
 /// @nodoc
-mixin _$JudgeEntity {
+mixin _$SponsorEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
@@ -27,23 +27,23 @@ mixin _$JudgeEntity {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $JudgeEntityCopyWith<JudgeEntity> get copyWith =>
+  $SponsorEntityCopyWith<SponsorEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $JudgeEntityCopyWith<$Res> {
-  factory $JudgeEntityCopyWith(
-          JudgeEntity value, $Res Function(JudgeEntity) then) =
-      _$JudgeEntityCopyWithImpl<$Res, JudgeEntity>;
+abstract class $SponsorEntityCopyWith<$Res> {
+  factory $SponsorEntityCopyWith(
+          SponsorEntity value, $Res Function(SponsorEntity) then) =
+      _$SponsorEntityCopyWithImpl<$Res, SponsorEntity>;
   @useResult
   $Res call({String id, String name, String about, String? socialNetwork});
 }
 
 /// @nodoc
-class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
-    implements $JudgeEntityCopyWith<$Res> {
-  _$JudgeEntityCopyWithImpl(this._value, this._then);
+class _$SponsorEntityCopyWithImpl<$Res, $Val extends SponsorEntity>
+    implements $SponsorEntityCopyWith<$Res> {
+  _$SponsorEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -80,22 +80,22 @@ class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
 }
 
 /// @nodoc
-abstract class _$$_JudgeEntityCopyWith<$Res>
-    implements $JudgeEntityCopyWith<$Res> {
-  factory _$$_JudgeEntityCopyWith(
-          _$_JudgeEntity value, $Res Function(_$_JudgeEntity) then) =
-      __$$_JudgeEntityCopyWithImpl<$Res>;
+abstract class _$$_SponsorEntityCopyWith<$Res>
+    implements $SponsorEntityCopyWith<$Res> {
+  factory _$$_SponsorEntityCopyWith(
+          _$_SponsorEntity value, $Res Function(_$_SponsorEntity) then) =
+      __$$_SponsorEntityCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name, String about, String? socialNetwork});
 }
 
 /// @nodoc
-class __$$_JudgeEntityCopyWithImpl<$Res>
-    extends _$JudgeEntityCopyWithImpl<$Res, _$_JudgeEntity>
-    implements _$$_JudgeEntityCopyWith<$Res> {
-  __$$_JudgeEntityCopyWithImpl(
-      _$_JudgeEntity _value, $Res Function(_$_JudgeEntity) _then)
+class __$$_SponsorEntityCopyWithImpl<$Res>
+    extends _$SponsorEntityCopyWithImpl<$Res, _$_SponsorEntity>
+    implements _$$_SponsorEntityCopyWith<$Res> {
+  __$$_SponsorEntityCopyWithImpl(
+      _$_SponsorEntity _value, $Res Function(_$_SponsorEntity) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_JudgeEntityCopyWithImpl<$Res>
     Object? about = null,
     Object? socialNetwork = freezed,
   }) {
-    return _then(_$_JudgeEntity(
+    return _then(_$_SponsorEntity(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -129,15 +129,15 @@ class __$$_JudgeEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
-  _$_JudgeEntity(
+class _$_SponsorEntity with DiagnosticableTreeMixin implements _SponsorEntity {
+  _$_SponsorEntity(
       {required this.id,
       required this.name,
       required this.about,
       required this.socialNetwork});
 
-  factory _$_JudgeEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_JudgeEntityFromJson(json);
+  factory _$_SponsorEntity.fromJson(Map<String, dynamic> json) =>
+      _$$_SponsorEntityFromJson(json);
 
   @override
   final String id;
@@ -150,14 +150,14 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'JudgeEntity(id: $id, name: $name, about: $about, socialNetwork: $socialNetwork)';
+    return 'SponsorEntity(id: $id, name: $name, about: $about, socialNetwork: $socialNetwork)';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
     properties
-      ..add(DiagnosticsProperty('type', 'JudgeEntity'))
+      ..add(DiagnosticsProperty('type', 'SponsorEntity'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('about', about))
@@ -168,7 +168,7 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_JudgeEntity &&
+            other is _$_SponsorEntity &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
@@ -183,26 +183,26 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_JudgeEntityCopyWith<_$_JudgeEntity> get copyWith =>
-      __$$_JudgeEntityCopyWithImpl<_$_JudgeEntity>(this, _$identity);
+  _$$_SponsorEntityCopyWith<_$_SponsorEntity> get copyWith =>
+      __$$_SponsorEntityCopyWithImpl<_$_SponsorEntity>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_JudgeEntityToJson(
+    return _$$_SponsorEntityToJson(
       this,
     );
   }
 }
 
-abstract class _JudgeEntity implements JudgeEntity {
-  factory _JudgeEntity(
+abstract class _SponsorEntity implements SponsorEntity {
+  factory _SponsorEntity(
       {required final String id,
       required final String name,
       required final String about,
-      required final String? socialNetwork}) = _$_JudgeEntity;
+      required final String? socialNetwork}) = _$_SponsorEntity;
 
-  factory _JudgeEntity.fromJson(Map<String, dynamic> json) =
-      _$_JudgeEntity.fromJson;
+  factory _SponsorEntity.fromJson(Map<String, dynamic> json) =
+      _$_SponsorEntity.fromJson;
 
   @override
   String get id;
@@ -214,6 +214,6 @@ abstract class _JudgeEntity implements JudgeEntity {
   String? get socialNetwork;
   @override
   @JsonKey(ignore: true)
-  _$$_JudgeEntityCopyWith<_$_JudgeEntity> get copyWith =>
+  _$$_SponsorEntityCopyWith<_$_SponsorEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }

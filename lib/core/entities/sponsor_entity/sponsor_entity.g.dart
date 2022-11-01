@@ -1,20 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'judge_entity.dart';
+part of 'sponsor_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_JudgeEntity _$$_JudgeEntityFromJson(Map<String, dynamic> json) =>
-    _$_JudgeEntity(
+_$_SponsorEntity _$$_SponsorEntityFromJson(Map<String, dynamic> json) =>
+    _$_SponsorEntity(
       id: json['id'] as String,
       name: json['name'] as String,
       about: json['about'] as String,
       socialNetwork: json['socialNetwork'] as String?,
     );
 
-Map<String, dynamic> _$$_JudgeEntityToJson(_$_JudgeEntity instance) =>
+Map<String, dynamic> _$$_SponsorEntityToJson(_$_SponsorEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

@@ -6,10 +6,10 @@ part 'judge_entity.g.dart';
 @freezed
 class JudgeEntity with _$JudgeEntity {
   factory JudgeEntity({
-    @Default('')String id,
-    @Default('')String name,
-    @Default('')String about,
-    @Default('')String? socialNetwork,
+    required String id,
+    required String name,
+    required String about,
+    required String? socialNetwork,
 }) = _JudgeEntity;
 
   factory JudgeEntity.fromJson(Map<String, dynamic> json) =>
