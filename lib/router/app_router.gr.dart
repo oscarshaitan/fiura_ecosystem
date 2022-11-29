@@ -19,6 +19,7 @@ import 'package:fiura_ecosystem/features/home/home_screen.dart' as _i2;
 import 'package:fiura_ecosystem/features/posts/posts_screen.dart' as _i4;
 import 'package:fiura_ecosystem/features/splash/splash_screen.dart' as _i1;
 import 'package:flutter/material.dart' as _i7;
+import 'package:fiura_ecosystem/features/login/login_screen.dart' as _i8;
 
 class AppRouter extends _i6.RootStackRouter {
   AppRouter([_i7.GlobalKey<_i7.NavigatorState>? navigatorKey])
@@ -30,6 +31,12 @@ class AppRouter extends _i6.RootStackRouter {
       return _i6.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i1.SplashScreen(),
+      );
+    },
+    LoginScreenRoute.name: (routeData) {
+      return _i6.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: const _i8.LoginScreen(),
       );
     },
     HomeScreenRoute.name: (routeData) {
@@ -71,6 +78,7 @@ class AppRouter extends _i6.RootStackRouter {
           SplashScreenRoute.name,
           path: '/',
         ),
+        _i6.RouteConfig(LoginScreenRoute.name, path: 'login'),
         _i6.RouteConfig(
           HomeScreenRoute.name,
           path: 'home',
@@ -184,4 +192,16 @@ class ArtistsScreenRoute extends _i6.PageRouteInfo<void> {
         );
 
   static const String name = 'ArtistsScreenRoute';
+}
+
+/// generated route for
+/// [_i8.LoginScreen]
+class LoginScreenRoute extends _i6.PageRouteInfo<void> {
+  const LoginScreenRoute()
+      : super(
+          LoginScreenRoute.name,
+          path: 'login',
+        );
+
+  static const String name = 'LoginScreenRoute';
 }
