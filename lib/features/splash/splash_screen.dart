@@ -19,9 +19,9 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 2000));
-    opacity = Tween(begin: 0.0, end: 1.0).animate(controller);
-    controller.forward();
+        vsync: this, duration: const Duration(milliseconds: 500))
+      ..repeat(reverse: true);
+    opacity = Tween(begin: 0.7, end: 1.0).animate(controller);
     super.initState();
   }
 
@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 2)).then((value) => {
+    Future.delayed(const Duration(seconds: 3)).then((value) => {
           if (isLoged == true)
             {context.router.popAndPush(const HomeScreenRoute())}
           else
