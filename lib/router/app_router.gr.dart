@@ -17,7 +17,8 @@ import 'package:fiura_ecosystem/features/artits_detail_screen/artist_detail.dart
     as _i3;
 import 'package:fiura_ecosystem/features/home/home_screen.dart' as _i2;
 import 'package:fiura_ecosystem/features/posts/posts_screen.dart' as _i4;
-import 'package:fiura_ecosystem/features/splash/splash_screen.dart' as _i1;
+import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart'
+    as _i1;
 import 'package:flutter/material.dart' as _i7;
 import 'package:fiura_ecosystem/features/login/login_screen.dart' as _i8;
 
@@ -110,7 +111,7 @@ class AppRouter extends _i6.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.SplashScreen]
+/// [_i1.SplashScreenController]
 class SplashScreenRoute extends _i6.PageRouteInfo<void> {
   const SplashScreenRoute()
       : super(

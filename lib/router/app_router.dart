@@ -3,7 +3,7 @@ import 'package:fiura_ecosystem/features/artists/artitis_screen.dart';
 import 'package:fiura_ecosystem/features/artits_detail_screen/artist_detail.dart';
 import 'package:fiura_ecosystem/features/home/home_screen.dart';
 import 'package:fiura_ecosystem/features/posts/posts_screen.dart';
-import 'package:fiura_ecosystem/features/splash/splash_screen.dart';
+import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart';
 import 'package:fiura_ecosystem/router/router_paths.dart';
 
 import '../features/login/login_screen.dart';

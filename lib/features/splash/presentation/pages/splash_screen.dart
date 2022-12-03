@@ -1,6 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fiura_ecosystem/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../cubit/splash_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -13,8 +16,6 @@ class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> opacity;
-
-  final bool isLoged = false;
 
   @override
   void initState() {
@@ -33,22 +34,28 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 3)).then((value) => {
-          if (isLoged == true)
-            {context.router.popAndPush(const HomeScreenRoute())}
-          else
-            {context.router.popAndPush(const LoginScreenRoute())}
-        });
-    return Scaffold(
-        body: Center(
-      child: FadeTransition(
-        opacity: opacity,
-        child: Image.asset(
-          'assets/logo.png',
-          width: 300,
-          height: 300,
-        ),
+    return BlocProvider(
+      create: (context) => Splashcubit(context.read())..init(),
+      child: BlocListener<Splashcubit, SplashState>(
+        listener: (context, snapshot) {
+          if (snapshot == SplashState.none) {
+            context.router.popAndPush(const LoginScreenRoute());
+          } else {
+            context.router.popAndPush(const HomeScreenRoute());
+          }
+        },
+        child: Scaffold(
+            body: Center(
+          child: FadeTransition(
+            opacity: opacity,
+            child: Image.asset(
+              'assets/logo.png',
+              width: 300,
+              height: 300,
+            ),
+          ),
+        )),
       ),
-    ));
+    );
   }
 }
