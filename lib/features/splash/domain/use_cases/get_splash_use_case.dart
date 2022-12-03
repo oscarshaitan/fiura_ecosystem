@@ -4,11 +4,6 @@ class GetSplashUseCase {
   final SplashRepository repository;
   GetSplashUseCase({required this.repository});
 
-  // Future<bool> call() async {
-  //   await Future.delayed(const Duration(seconds: 3));
-  //   return repository.getSplash();
-  // }
-
   Future<bool> getUser() async {
     final result = await repository.getSplash();
 
