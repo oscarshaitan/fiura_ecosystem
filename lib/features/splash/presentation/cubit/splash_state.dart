@@ -1,14 +1,10 @@
-part of 'splash_cubit.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-abstract class UserState {
-  const UserState();
-}
+// part 'splash_cubit.dart';
+part 'splash_state.freezed.dart';
 
-class Loading extends UserState {
-  const Loading();
-}
-
-class Loaded extends UserState {
-  const Loaded(this.user);
-  final bool user;
+@freezed
+abstract class SplashState with _$SplashState {
+  const factory SplashState.logedUser() = LogedUser;
+  const factory SplashState.none() = None;
 }

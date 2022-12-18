@@ -3,7 +3,9 @@ import 'package:fiura_ecosystem/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../dependencies.dart';
 import '../cubit/splash_cubit.dart';
+import '../cubit/splash_state.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -35,10 +37,10 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => Splashcubit(context.read())..init(),
+      create: (context) => getIt<Splashcubit>()..init(),
       child: BlocListener<Splashcubit, SplashState>(
         listener: (context, snapshot) {
-          if (snapshot == SplashState.none) {
+          if (snapshot == const SplashState.none()) {
             context.router.popAndPush(const LoginScreenRoute());
           } else {
             context.router.popAndPush(const HomeScreenRoute());

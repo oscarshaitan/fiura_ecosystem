@@ -1,15 +1,11 @@
-import 'package:fiura_ecosystem/features/splash/data/local/splash_repository_imp.dart';
 import 'package:fiura_ecosystem/features/splash/domain/repositories/splash_repository.dart';
-import 'package:fiura_ecosystem/features/splash/domain/use_cases/get_splash_use_case.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'features/splash/data/local/splash_repository_imp.dart';
+import 'features/splash/presentation/cubit/splash_cubit.dart';
 
-List<RepositoryProvider> buildRepositories() {
-  return [
-    RepositoryProvider<SplashRepository>(create: (_) => SplashRepositoryImp()),
-    RepositoryProvider<GetSplashUseCase>(
-      create: (context) => GetSplashUseCase(
-        repository: context.read<SplashRepository>(),
-      ),
-    ),
-  ];
+final getIt = GetIt.instance;
+
+void setup() {
+  getIt.registerFactory<SplashRepository>(() => SplashRepositoryImp());
+  getIt.registerFactory<Splashcubit>(() => Splashcubit(getIt()));
 }

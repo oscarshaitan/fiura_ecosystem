@@ -19,6 +19,10 @@ dependencies:
 
   #LOGIC
   flutter_bloc: ^8.1.1
+  freezed: ^2.3.2
+  get_it: ^7.2.0
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.7.0
 
 dev_dependencies:
   flutter_test:
@@ -27,9 +31,14 @@ dev_dependencies:
   very_good_analysis: ^3.1.0
   auto_route_generator: ^5.0.3
   build_runner: ^2.3.2
+  json_serializable: ^6.5.4
 
 flutter:
   uses-material-design: true
 
   assets:
     - assets/
+
+analyzer:
+  errors:
+    invalid_annotation_target: ignore

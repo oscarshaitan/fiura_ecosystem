@@ -1,22 +1,20 @@
-import 'package:fiura_ecosystem/features/splash/domain/use_cases/get_splash_use_case.dart';
+// import 'package:fiura_ecosystem/features/splash/domain/use_cases/get_splash_use_case.dart';
+import 'package:fiura_ecosystem/features/splash/presentation/cubit/splash_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-part 'splash_state.dart';
-
-enum SplashState { none, logedUser }
+import 'package:fiura_ecosystem/features/splash/domain/repositories/splash_repository.dart';
 
 class Splashcubit extends Cubit<SplashState> {
-  Splashcubit(this._getSplashUseCase) : super(SplashState.none);
+  Splashcubit(this._splashRepository) : super(const None());
 
-  final GetSplashUseCase _getSplashUseCase;
+  final SplashRepository _splashRepository;
 
   void init() async {
-    final result = await _getSplashUseCase.getUser();
+    final result = await _splashRepository.getSplash();
 
     if (result) {
-      emit(SplashState.logedUser);
+      emit(const SplashState.logedUser());
     } else {
-      emit(SplashState.none);
+      emit(const SplashState.none());
     }
   }
 }
