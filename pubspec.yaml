@@ -1,8 +1,14 @@
 name: fiura_ecosystem
 description: A new Flutter project.
+<<<<<<< HEAD
 
 publish_to:
 
+=======
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+>>>>>>> master
 version: 1.0.0+1
 
 environment:
@@ -11,17 +17,32 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.2
 
+<<<<<<< HEAD
   cupertino_icons: ^1.0.2
   freezed_annotation: ^2.2.0
   json_annotation: ^4.7.0
 
 
+=======
+  #NAVIGATION
+  auto_route: ^5.0.2
+  url_strategy: ^0.2.0
+
+  #LOGIC
+  flutter_bloc: ^8.1.1
+  freezed: ^2.3.2
+  get_it: ^7.2.0
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.7.0
+>>>>>>> master
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+<<<<<<< HEAD
   build_runner: ^2.3.2
   json_serializable: ^6.5.4
   freezed: ^2.2.1
@@ -47,3 +68,19 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
 
+=======
+  very_good_analysis: ^3.1.0
+  auto_route_generator: ^5.0.3
+  build_runner: ^2.3.2
+  json_serializable: ^6.5.4
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+
+analyzer:
+  errors:
+    invalid_annotation_target: ignore
+>>>>>>> master
