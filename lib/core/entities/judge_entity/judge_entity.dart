@@ -9,7 +9,7 @@ class JudgeEntity with _$JudgeEntity {
     required String id,
     required String name,
     required String about,
-    required String? socialNetwork,
+    required List<String?> socialNetwork,
 }) = _JudgeEntity;
 
   factory JudgeEntity.fromJson(Map<String, dynamic> json) =>

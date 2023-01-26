@@ -11,7 +11,9 @@ _$_SponsorEntity _$$_SponsorEntityFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       about: json['about'] as String,
-      socialNetwork: json['socialNetwork'] as String?,
+      socialNetwork: (json['socialNetwork'] as List<dynamic>)
+          .map((e) => e as String?)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_SponsorEntityToJson(_$_SponsorEntity instance) =>

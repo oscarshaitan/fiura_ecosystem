@@ -9,7 +9,7 @@ class TeamMemberEntity with _$TeamMemberEntity {
     required String id,
     required String name,
     required String about,
-    required String? socialNetwork,
+    required List<String?> socialNetwork,
   }) = _TeamMemberEntity;
 
   factory TeamMemberEntity.fromJson(Map<String, dynamic> json) =>

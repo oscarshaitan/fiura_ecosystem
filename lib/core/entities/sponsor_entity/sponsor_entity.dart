@@ -9,7 +9,7 @@ class SponsorEntity with _$SponsorEntity {
     required String id,
     required String name,
     required String about,
-    required String? socialNetwork,
+    required List<String?> socialNetwork,
   }) = _SponsorEntity;
 
   factory SponsorEntity.fromJson(Map<String, dynamic> json) =>

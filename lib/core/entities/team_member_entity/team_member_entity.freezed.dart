@@ -23,7 +23,7 @@ mixin _$TeamMemberEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
-  String? get socialNetwork => throw _privateConstructorUsedError;
+  List<String?> get socialNetwork => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +37,8 @@ abstract class $TeamMemberEntityCopyWith<$Res> {
           TeamMemberEntity value, $Res Function(TeamMemberEntity) then) =
       _$TeamMemberEntityCopyWithImpl<$Res, TeamMemberEntity>;
   @useResult
-  $Res call({String id, String name, String about, String? socialNetwork});
+  $Res call(
+      {String id, String name, String about, List<String?> socialNetwork});
 }
 
 /// @nodoc
@@ -56,7 +57,7 @@ class _$TeamMemberEntityCopyWithImpl<$Res, $Val extends TeamMemberEntity>
     Object? id = null,
     Object? name = null,
     Object? about = null,
-    Object? socialNetwork = freezed,
+    Object? socialNetwork = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -71,10 +72,10 @@ class _$TeamMemberEntityCopyWithImpl<$Res, $Val extends TeamMemberEntity>
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
               as String,
-      socialNetwork: freezed == socialNetwork
+      socialNetwork: null == socialNetwork
           ? _value.socialNetwork
           : socialNetwork // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String?>,
     ) as $Val);
   }
 }
@@ -87,7 +88,8 @@ abstract class _$$_TeamMemberEntityCopyWith<$Res>
       __$$_TeamMemberEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String about, String? socialNetwork});
+  $Res call(
+      {String id, String name, String about, List<String?> socialNetwork});
 }
 
 /// @nodoc
@@ -104,7 +106,7 @@ class __$$_TeamMemberEntityCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? about = null,
-    Object? socialNetwork = freezed,
+    Object? socialNetwork = null,
   }) {
     return _then(_$_TeamMemberEntity(
       id: null == id
@@ -119,10 +121,10 @@ class __$$_TeamMemberEntityCopyWithImpl<$Res>
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
               as String,
-      socialNetwork: freezed == socialNetwork
-          ? _value.socialNetwork
+      socialNetwork: null == socialNetwork
+          ? _value._socialNetwork
           : socialNetwork // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String?>,
     ));
   }
 }
@@ -136,7 +138,8 @@ class _$_TeamMemberEntity
       {required this.id,
       required this.name,
       required this.about,
-      required this.socialNetwork});
+      required final List<String?> socialNetwork})
+      : _socialNetwork = socialNetwork;
 
   factory _$_TeamMemberEntity.fromJson(Map<String, dynamic> json) =>
       _$$_TeamMemberEntityFromJson(json);
@@ -147,8 +150,12 @@ class _$_TeamMemberEntity
   final String name;
   @override
   final String about;
+  final List<String?> _socialNetwork;
   @override
-  final String? socialNetwork;
+  List<String?> get socialNetwork {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_socialNetwork);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -174,13 +181,14 @@ class _$_TeamMemberEntity
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
-            (identical(other.socialNetwork, socialNetwork) ||
-                other.socialNetwork == socialNetwork));
+            const DeepCollectionEquality()
+                .equals(other._socialNetwork, _socialNetwork));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, about, socialNetwork);
+  int get hashCode => Object.hash(runtimeType, id, name, about,
+      const DeepCollectionEquality().hash(_socialNetwork));
 
   @JsonKey(ignore: true)
   @override
@@ -201,7 +209,7 @@ abstract class _TeamMemberEntity implements TeamMemberEntity {
       {required final String id,
       required final String name,
       required final String about,
-      required final String? socialNetwork}) = _$_TeamMemberEntity;
+      required final List<String?> socialNetwork}) = _$_TeamMemberEntity;
 
   factory _TeamMemberEntity.fromJson(Map<String, dynamic> json) =
       _$_TeamMemberEntity.fromJson;
@@ -213,7 +221,7 @@ abstract class _TeamMemberEntity implements TeamMemberEntity {
   @override
   String get about;
   @override
-  String? get socialNetwork;
+  List<String?> get socialNetwork;
   @override
   @JsonKey(ignore: true)
   _$$_TeamMemberEntityCopyWith<_$_TeamMemberEntity> get copyWith =>

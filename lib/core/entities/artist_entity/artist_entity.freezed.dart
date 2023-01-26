@@ -19,7 +19,7 @@ mixin _$Artist {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
-  String? get socialNetwork => throw _privateConstructorUsedError;
+  List<String?> get socialNetwork => throw _privateConstructorUsedError;
   List<String> get photos => throw _privateConstructorUsedError;
   List<Music> get music => throw _privateConstructorUsedError;
 
@@ -36,7 +36,7 @@ abstract class $ArtistCopyWith<$Res> {
       {String id,
       String name,
       String about,
-      String? socialNetwork,
+      List<String?> socialNetwork,
       List<String> photos,
       List<Music> music});
 }
@@ -57,7 +57,7 @@ class _$ArtistCopyWithImpl<$Res, $Val extends Artist>
     Object? id = null,
     Object? name = null,
     Object? about = null,
-    Object? socialNetwork = freezed,
+    Object? socialNetwork = null,
     Object? photos = null,
     Object? music = null,
   }) {
@@ -74,10 +74,10 @@ class _$ArtistCopyWithImpl<$Res, $Val extends Artist>
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
               as String,
-      socialNetwork: freezed == socialNetwork
+      socialNetwork: null == socialNetwork
           ? _value.socialNetwork
           : socialNetwork // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String?>,
       photos: null == photos
           ? _value.photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -100,7 +100,7 @@ abstract class _$$_ArtistCopyWith<$Res> implements $ArtistCopyWith<$Res> {
       {String id,
       String name,
       String about,
-      String? socialNetwork,
+      List<String?> socialNetwork,
       List<String> photos,
       List<Music> music});
 }
@@ -118,7 +118,7 @@ class __$$_ArtistCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? about = null,
-    Object? socialNetwork = freezed,
+    Object? socialNetwork = null,
     Object? photos = null,
     Object? music = null,
   }) {
@@ -135,10 +135,10 @@ class __$$_ArtistCopyWithImpl<$Res>
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
               as String,
-      socialNetwork: freezed == socialNetwork
-          ? _value.socialNetwork
+      socialNetwork: null == socialNetwork
+          ? _value._socialNetwork
           : socialNetwork // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String?>,
       photos: null == photos
           ? _value._photos
           : photos // ignore: cast_nullable_to_non_nullable
@@ -158,10 +158,11 @@ class _$_Artist with DiagnosticableTreeMixin implements _Artist {
       {required this.id,
       required this.name,
       required this.about,
-      required this.socialNetwork,
+      required final List<String?> socialNetwork,
       required final List<String> photos,
       required final List<Music> music})
-      : _photos = photos,
+      : _socialNetwork = socialNetwork,
+        _photos = photos,
         _music = music;
 
   @override
@@ -170,8 +171,13 @@ class _$_Artist with DiagnosticableTreeMixin implements _Artist {
   final String name;
   @override
   final String about;
+  final List<String?> _socialNetwork;
   @override
-  final String? socialNetwork;
+  List<String?> get socialNetwork {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_socialNetwork);
+  }
+
   final List<String> _photos;
   @override
   List<String> get photos {
@@ -212,8 +218,8 @@ class _$_Artist with DiagnosticableTreeMixin implements _Artist {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
-            (identical(other.socialNetwork, socialNetwork) ||
-                other.socialNetwork == socialNetwork) &&
+            const DeepCollectionEquality()
+                .equals(other._socialNetwork, _socialNetwork) &&
             const DeepCollectionEquality().equals(other._photos, _photos) &&
             const DeepCollectionEquality().equals(other._music, _music));
   }
@@ -224,7 +230,7 @@ class _$_Artist with DiagnosticableTreeMixin implements _Artist {
       id,
       name,
       about,
-      socialNetwork,
+      const DeepCollectionEquality().hash(_socialNetwork),
       const DeepCollectionEquality().hash(_photos),
       const DeepCollectionEquality().hash(_music));
 
@@ -240,7 +246,7 @@ abstract class _Artist implements Artist {
       {required final String id,
       required final String name,
       required final String about,
-      required final String? socialNetwork,
+      required final List<String?> socialNetwork,
       required final List<String> photos,
       required final List<Music> music}) = _$_Artist;
 
@@ -251,7 +257,7 @@ abstract class _Artist implements Artist {
   @override
   String get about;
   @override
-  String? get socialNetwork;
+  List<String?> get socialNetwork;
   @override
   List<String> get photos;
   @override

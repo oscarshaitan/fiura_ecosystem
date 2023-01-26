@@ -23,7 +23,7 @@ mixin _$SponsorEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
-  String? get socialNetwork => throw _privateConstructorUsedError;
+  List<String?> get socialNetwork => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +37,8 @@ abstract class $SponsorEntityCopyWith<$Res> {
           SponsorEntity value, $Res Function(SponsorEntity) then) =
       _$SponsorEntityCopyWithImpl<$Res, SponsorEntity>;
   @useResult
-  $Res call({String id, String name, String about, String? socialNetwork});
+  $Res call(
+      {String id, String name, String about, List<String?> socialNetwork});
 }
 
 /// @nodoc
@@ -56,7 +57,7 @@ class _$SponsorEntityCopyWithImpl<$Res, $Val extends SponsorEntity>
     Object? id = null,
     Object? name = null,
     Object? about = null,
-    Object? socialNetwork = freezed,
+    Object? socialNetwork = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -71,10 +72,10 @@ class _$SponsorEntityCopyWithImpl<$Res, $Val extends SponsorEntity>
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
               as String,
-      socialNetwork: freezed == socialNetwork
+      socialNetwork: null == socialNetwork
           ? _value.socialNetwork
           : socialNetwork // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String?>,
     ) as $Val);
   }
 }
@@ -87,7 +88,8 @@ abstract class _$$_SponsorEntityCopyWith<$Res>
       __$$_SponsorEntityCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String name, String about, String? socialNetwork});
+  $Res call(
+      {String id, String name, String about, List<String?> socialNetwork});
 }
 
 /// @nodoc
@@ -104,7 +106,7 @@ class __$$_SponsorEntityCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? about = null,
-    Object? socialNetwork = freezed,
+    Object? socialNetwork = null,
   }) {
     return _then(_$_SponsorEntity(
       id: null == id
@@ -119,10 +121,10 @@ class __$$_SponsorEntityCopyWithImpl<$Res>
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
               as String,
-      socialNetwork: freezed == socialNetwork
-          ? _value.socialNetwork
+      socialNetwork: null == socialNetwork
+          ? _value._socialNetwork
           : socialNetwork // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as List<String?>,
     ));
   }
 }
@@ -134,7 +136,8 @@ class _$_SponsorEntity with DiagnosticableTreeMixin implements _SponsorEntity {
       {required this.id,
       required this.name,
       required this.about,
-      required this.socialNetwork});
+      required final List<String?> socialNetwork})
+      : _socialNetwork = socialNetwork;
 
   factory _$_SponsorEntity.fromJson(Map<String, dynamic> json) =>
       _$$_SponsorEntityFromJson(json);
@@ -145,8 +148,12 @@ class _$_SponsorEntity with DiagnosticableTreeMixin implements _SponsorEntity {
   final String name;
   @override
   final String about;
+  final List<String?> _socialNetwork;
   @override
-  final String? socialNetwork;
+  List<String?> get socialNetwork {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_socialNetwork);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -172,13 +179,14 @@ class _$_SponsorEntity with DiagnosticableTreeMixin implements _SponsorEntity {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
-            (identical(other.socialNetwork, socialNetwork) ||
-                other.socialNetwork == socialNetwork));
+            const DeepCollectionEquality()
+                .equals(other._socialNetwork, _socialNetwork));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, about, socialNetwork);
+  int get hashCode => Object.hash(runtimeType, id, name, about,
+      const DeepCollectionEquality().hash(_socialNetwork));
 
   @JsonKey(ignore: true)
   @override
@@ -199,7 +207,7 @@ abstract class _SponsorEntity implements SponsorEntity {
       {required final String id,
       required final String name,
       required final String about,
-      required final String? socialNetwork}) = _$_SponsorEntity;
+      required final List<String?> socialNetwork}) = _$_SponsorEntity;
 
   factory _SponsorEntity.fromJson(Map<String, dynamic> json) =
       _$_SponsorEntity.fromJson;
@@ -211,7 +219,7 @@ abstract class _SponsorEntity implements SponsorEntity {
   @override
   String get about;
   @override
-  String? get socialNetwork;
+  List<String?> get socialNetwork;
   @override
   @JsonKey(ignore: true)
   _$$_SponsorEntityCopyWith<_$_SponsorEntity> get copyWith =>
