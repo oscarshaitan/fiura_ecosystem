@@ -1,5 +1,6 @@
 import 'package:fiura_ecosystem/dependencies.dart';
 import 'package:fiura_ecosystem/router/app_router.gr.dart';
+import 'package:fiura_ecosystem/theming.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_strategy/url_strategy.dart';
@@ -18,31 +19,8 @@ class FiuraApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       routeInformationParser: _appRouter.defaultRouteParser(),
+      theme: Theming().themeData,
       routerDelegate: _appRouter.delegate(),
-      theme: ThemeData(
-        primaryColor: Colors.black,
-        primarySwatch: Colors.red,
-        scaffoldBackgroundColor: Colors.black,
-        appBarTheme: const AppBarTheme(
-          elevation: 0,
-          color: Colors.black,
-        ),
-        drawerTheme: const DrawerThemeData(
-          elevation: 3,
-          backgroundColor: Colors.black,
-        ),
-        textTheme: const TextTheme(
-          titleLarge: TextStyle(color: Colors.white),
-          titleMedium: TextStyle(color: Colors.white),
-          titleSmall: TextStyle(color: Colors.white),
-          headlineLarge: TextStyle(color: Colors.white),
-          headlineMedium: TextStyle(color: Colors.white),
-          headlineSmall: TextStyle(color: Colors.white),
-          bodyLarge: TextStyle(color: Colors.white),
-          bodyMedium: TextStyle(color: Colors.white),
-          bodySmall: TextStyle(color: Colors.white),
-        ),
-      ),
     );
   }
 }
