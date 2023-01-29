@@ -1,17 +1,16 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
-import '../music_entity/music_entity.dart';
-
 part 'artist_entity.freezed.dart';
+part 'artist_entity.g.dart';
 
 @freezed
-class Artist with _$Artist {
-  factory Artist({
+class ArtistEntity with _$ArtistEntity {
+  factory ArtistEntity({
     required String id,
     required String name,
     required String about,
     required List<String?> socialNetwork,
-    required List<String> photos,
-    required List<Music> music,
-  }) = _Artist;
+  }) = _ArtistEntity;
+
+  factory ArtistEntity.fromJson(Map<String, dynamic> json) =>
+      _$ArtistEntityFromJson(json);
 }
