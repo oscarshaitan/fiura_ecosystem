@@ -23,6 +23,7 @@ class FiuraApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routeInformationParser: _appRouter.defaultRouteParser(),
       theme: Theming().themeData,
       routerDelegate: _appRouter.delegate(),
