@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "399976051488",
+    "firebase_url": "https://fiurapp.firebaseio.com",
+    "project_id": "fiurapp",
+    "storage_bucket": "fiurapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399976051488:android:e078a9ff20b501651c9d45",
+        "android_client_info": {
+          "package_name": "com.AllegorIT.fiura2018.fiura_ecosystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399976051488-9uup1b633f9if1ilb6ak1ofdiangsjhh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfalWDaxYfvcAf5b6ON98_-smKoxiKunQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399976051488-9uup1b633f9if1ilb6ak1ofdiangsjhh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

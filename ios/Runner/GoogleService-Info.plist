@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>399976051488-6klfabmon1fskvppkv4orjmt7r1c0mau.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.399976051488-6klfabmon1fskvppkv4orjmt7r1c0mau</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBWL1y6MAX0ue26MGTXdSlMgha5l27iaEo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>399976051488</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.AllegorIT.fiura2018.fiuraEcosystem</string>
+	<key>PROJECT_ID</key>
+	<string>fiurapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fiurapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:399976051488:ios:61ea8d7848ae9a091c9d45</string>
+	<key>DATABASE_URL</key>
+	<string>https://fiurapp.firebaseio.com</string>
+</dict>
+</plist>
