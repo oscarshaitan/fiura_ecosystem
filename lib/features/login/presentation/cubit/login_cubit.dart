@@ -1,0 +1,1 @@
+// class Splashcubit extends Cubit<>
