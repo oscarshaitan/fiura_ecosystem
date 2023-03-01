@@ -16,7 +16,8 @@ import 'package:fiura_ecosystem/features/artists/artitis_screen.dart' as _i6;
 import 'package:fiura_ecosystem/features/artits_detail_screen/artist_detail.dart'
     as _i4;
 import 'package:fiura_ecosystem/features/home/home_screen.dart' as _i3;
-import 'package:fiura_ecosystem/features/login/login_screen.dart' as _i2;
+import 'package:fiura_ecosystem/features/login/presentation/pages/login_screen.dart'
+    as _i2;
 import 'package:fiura_ecosystem/features/posts/posts_screen.dart' as _i5;
 import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart'
     as _i1;

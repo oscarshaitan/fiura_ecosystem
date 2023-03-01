@@ -1,11 +1,29 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fiura_ecosystem/features/login/domain/repositories/login_repository.dart';
+import 'package:fiura_ecosystem/features/login/presentation/cubit/login_cubit.dart';
 import 'package:fiura_ecosystem/features/splash/domain/repositories/splash_repository.dart';
 import 'package:get_it/get_it.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'features/splash/data/local/splash_repository_imp.dart';
 import 'features/splash/presentation/cubit/splash_cubit.dart';
+
+//Cloud firestore
+final FirebaseFirestore db = FirebaseFirestore.instance;
+
+//Firabase Auth
+final GoogleSignIn googleSignIn = GoogleSignIn();
+final FirebaseAuth auth = FirebaseAuth.instance;
 
 final getIt = GetIt.instance;
 
 void setup() {
+  //Splash
   getIt.registerFactory<SplashRepository>(() => SplashRepositoryImp());
   getIt.registerFactory<Splashcubit>(() => Splashcubit(getIt()));
+
+  //Login
+  getIt.registerFactory<LoginRepository>(
+      () => LoginRepository(googleSignIn: googleSignIn, auth: auth, db: db));
+  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
 }

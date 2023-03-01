@@ -6,7 +6,7 @@ import 'package:fiura_ecosystem/features/posts/posts_screen.dart';
 import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart';
 import 'package:fiura_ecosystem/router/router_paths.dart';
 
-import '../features/login/login_screen.dart';
+import '../features/login/presentation/pages/login_screen.dart';
 
 @AdaptiveAutoRouter(
   replaceInRouteName: 'Route',
