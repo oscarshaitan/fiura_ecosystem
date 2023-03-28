@@ -6,6 +6,7 @@ import 'package:fiura_ecosystem/features/posts/posts_screen.dart';
 import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart';
 import 'package:fiura_ecosystem/router/router_paths.dart';
 
+import '../features/judge/presentation/pages/create_judge_screen.dart';
 import '../features/login/presentation/pages/login_screen.dart';
 
 @AdaptiveAutoRouter(
@@ -19,6 +20,7 @@ import '../features/login/presentation/pages/login_screen.dart';
       AutoRoute(page: ArtistsScreen, path: artists, children: []),
     ]),
     AutoRoute(page: ArtistsDetailScreen, path: artistsDetail),
+    AutoRoute(page: CreateJudgeScreen, path: createJudge)
   ],
 )
 // extend the generated private router
