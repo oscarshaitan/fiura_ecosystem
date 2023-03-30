@@ -54,23 +54,23 @@ class Theming {
     ),
     inputDecorationTheme: const InputDecorationTheme(
       labelStyle: TextStyle(
-        color: Color(0xFFe1e1e1),
+        color: Color(0xFFd4d4d4),
         fontSize: 15.0,
         fontWeight: FontWeight.w500,
       ),
       hintStyle: TextStyle(
-        color: Color(0xFFe3e3e3),
+        color: Color(0xFF4c4a4b),
         fontSize: 15.0,
         fontWeight: FontWeight.w500,
       ),
-      enabledBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Color(0xFFFFFFFD)),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Color(0xFF4c4a4b)),
       ),
-      focusedBorder: UnderlineInputBorder(
-        borderSide: BorderSide(color: Color(0xFFFFFFFD)),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Color(0xFFd4d4d4)),
       ),
-      border: UnderlineInputBorder(
-        borderSide: BorderSide(color: Color(0xFFe1e1e1)),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: Color(0xFFd4d4d4)),
       ),
     ),
   );
