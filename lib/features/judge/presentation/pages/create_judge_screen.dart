@@ -1,6 +1,11 @@
+import 'package:fiura_ecosystem/core/entities/judge_entity/judge_entity.dart';
+import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
+import '../cubit/judge_cubit.dart';
 
 class CreateJudgeScreen extends StatefulWidget {
   const CreateJudgeScreen({super.key});
@@ -23,84 +28,154 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('New Judge Register'),
+          title: const Text('Registro de nuevo Juez'),
         ),
-        body: SingleChildScrollView(
-          child: Form(
-              key: _formKey,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 30.0, vertical: 20.0),
-                child: Column(
-                  children: [
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'Enter the Judge name',
-                        labelText: 'Name*',
-                      ),
-                      validator: (value) {
-                        return nullValidator(value, 'Please enter a name');
-                      },
-                    ),
-                    const SizedBox(
-                      height: 30.0,
-                    ),
-                    TextFormField(
-                        maxLines: 3,
-                        decoration: const InputDecoration(
-                          hintText: 'Enter the about',
-                          labelText: 'About*',
-                        ),
-                        validator: (value) {
-                          return nullValidator(
-                              value, 'Please enter an about description');
-                        }),
-                    const SizedBox(
-                      height: 30.0,
-                    ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'Enter Facebook account',
-                        labelText: 'Facebook',
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 30.0,
-                    ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'Enter Twitter account',
-                        labelText: 'Twitter',
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 30.0,
-                    ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        hintText: 'Enter Instagram account',
-                        labelText: 'Instagram',
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 30.0,
-                    ),
-                    ElevatedButton(
-                        onPressed: () {
-                          onPressed(_formKey, context);
-                        },
-                        child: const Text("Submit"))
-                  ],
+        body: BlocProvider(
+          create: (_) => getIt<JudgeCubit>(),
+          child: BlocConsumer<JudgeCubit, JudgeState>(
+              listener: (context, snapshot) {
+            if (snapshot is Loading) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Añadiendo nuevo Juez...'),
                 ),
-              )),
+              );
+            } else if (snapshot is Success) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Juez añadido correctamente'),
+                ),
+              );
+            } else if (snapshot is Error) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Error añadiendo nuevo Juez'),
+                ),
+              );
+            }
+          }, builder: (context, snapshot) {
+            return SingleChildScrollView(
+              child: Form(
+                  key: _formKey,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0, vertical: 20.0),
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: 'Ingresa el nombre completo del Juez',
+                            labelText: 'Nombre*',
+                          ),
+                          controller: controllerJudgeName,
+                          validator: (value) {
+                            return nullValidator(
+                                value, 'Este campo es obligatorio');
+                          },
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        TextFormField(
+                            maxLines: 3,
+                            decoration: const InputDecoration(
+                              hintText: 'Ingresa el acerca de, del juez',
+                              labelText: 'Acerca de*',
+                            ),
+                            controller: controllerJudgeAbout,
+                            validator: (value) {
+                              return nullValidator(
+                                  value, 'Este campo es obligatorio');
+                            }),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: 'Ingresa la cuenta de Facebook del juez',
+                            labelText: 'Facebook',
+                          ),
+                          controller: controllerJudgeFacebook,
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: 'Ingresa la cuenta de Twitter del juez',
+                            labelText: 'Twitter',
+                          ),
+                          controller: controllerJudgeTwitter,
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: 'Ingresa la cuenta de Instagram del juez',
+                            labelText: 'Instagram',
+                          ),
+                          controller: controllerJudgeInstagram,
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              onPressed(
+                                _formKey,
+                                context,
+                                controllerJudgeName,
+                                controllerJudgeAbout,
+                                controllerJudgeFacebook,
+                                controllerJudgeTwitter,
+                                controllerJudgeInstagram,
+                              );
+                            },
+                            child: const Text("Submit"))
+                      ],
+                    ),
+                  )),
+            );
+          }),
         ));
   }
 }
 
-void onPressed(GlobalKey<FormState> formKey, BuildContext context) {
+void onPressed(
+  GlobalKey<FormState> formKey,
+  BuildContext context,
+  TextEditingController controllerJudgeName,
+  TextEditingController controllerJudgeAbout,
+  TextEditingController controllerJudgeFacebook,
+  TextEditingController controllerJudgeTwitter,
+  TextEditingController controllerJudgeInstagram,
+) {
   if (formKey.currentState!.validate()) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Processing Data')),
+    //Set the value to Judge entity
+
+    final String name = controllerJudgeName.text;
+    final String about = controllerJudgeAbout.text;
+    final String facebook = controllerJudgeFacebook.text;
+    final String twitter = controllerJudgeTwitter.text;
+    final String instagram = controllerJudgeInstagram.text;
+    final List<String> socialNetwork = [facebook, twitter, instagram];
+    JudgeEntity judge = JudgeEntity(
+      name: name,
+      about: about,
+      socialNetwork: socialNetwork,
+      id: '',
     );
+
+    //Clear the Text fields
+
+    controllerJudgeName.clear();
+    controllerJudgeAbout.clear();
+    controllerJudgeFacebook.clear();
+    controllerJudgeTwitter.clear();
+    controllerJudgeInstagram.clear();
+
+    //Use the function to add the judge
+    context.read<JudgeCubit>().addJudge(judge);
   }
 }

@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fiura_ecosystem/features/splash/domain/repositories/splash_repository.dart';
 
 class SplashRepositoryImp extends SplashRepository {
-  final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseAuth auth;
+
+  SplashRepositoryImp({required this.auth});
 
   @override
   Future<bool> getSplash() async {
