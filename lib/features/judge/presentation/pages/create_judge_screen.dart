@@ -1,4 +1,3 @@
-import 'package:fiura_ecosystem/core/entities/judge_entity/judge_entity.dart';
 import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -34,25 +33,24 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
           create: (_) => getIt<JudgeCubit>(),
           child: BlocConsumer<JudgeCubit, JudgeState>(
               listener: (context, snapshot) {
-            if (snapshot is Loading) {
-              ScaffoldMessenger.of(context).showSnackBar(
+            snapshot.whenOrNull(
+              loading: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Añadiendo nuevo Juez...'),
                 ),
-              );
-            } else if (snapshot is Success) {
-              ScaffoldMessenger.of(context).showSnackBar(
+              ),
+              success: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Juez añadido correctamente'),
                 ),
-              );
-            } else if (snapshot is Error) {
-              ScaffoldMessenger.of(context).showSnackBar(
+              ),
+              error: (message) => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Error añadiendo nuevo Juez'),
+                  content:
+                      Text('Error añadiendo nuevo Juez, intentalo nuevamente'),
                 ),
-              );
-            }
+              ),
+            );
           }, builder: (context, snapshot) {
             return SingleChildScrollView(
               child: Form(
@@ -160,12 +158,6 @@ void onPressed(
     final String twitter = controllerJudgeTwitter.text;
     final String instagram = controllerJudgeInstagram.text;
     final List<String> socialNetwork = [facebook, twitter, instagram];
-    JudgeEntity judge = JudgeEntity(
-      name: name,
-      about: about,
-      socialNetwork: socialNetwork,
-      id: '',
-    );
 
     //Clear the Text fields
 
@@ -176,6 +168,6 @@ void onPressed(
     controllerJudgeInstagram.clear();
 
     //Use the function to add the judge
-    context.read<JudgeCubit>().addJudge(judge);
+    context.read<JudgeCubit>().addJudge(name, about, socialNetwork);
   }
 }

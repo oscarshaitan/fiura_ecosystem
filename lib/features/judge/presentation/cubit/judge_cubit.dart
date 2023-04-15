@@ -8,7 +8,14 @@ class JudgeCubit extends Cubit<JudgeState> {
 
   final JudgeRepository _judgeRepository;
 
-  void addJudge(JudgeEntity judge) async {
+  void addJudge(String name, String about, List<String> socialNetwork) async {
+    JudgeEntity judge = JudgeEntity(
+      name: name,
+      about: about,
+      socialNetwork: socialNetwork,
+      id: '',
+    );
+
     emit(const Loading());
     final result = await _judgeRepository.addJudge(judge);
     if (result) {
