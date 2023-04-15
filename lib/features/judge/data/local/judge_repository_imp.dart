@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fiura_ecosystem/core/entities/judge_entity/judge_entity.dart';
-
 import '../../domain/repositories/judge_repository.dart';
 
 class JudgeRepositoryImp extends JudgeRepository {

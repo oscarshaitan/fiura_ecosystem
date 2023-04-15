@@ -5,3 +5,4 @@ const posts = 'posts';
 const artists = 'artists';
 const artistsDetail = 'detail/:artistId';
 const createJudge = 'create-judge';
+const createSponsor = 'create-sponsor';

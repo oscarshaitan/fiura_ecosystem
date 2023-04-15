@@ -5,11 +5,14 @@ import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_cubit.da
 import 'package:fiura_ecosystem/features/login/domain/repositories/login_repository.dart';
 import 'package:fiura_ecosystem/features/login/presentation/cubit/login_cubit.dart';
 import 'package:fiura_ecosystem/features/splash/domain/repositories/splash_repository.dart';
+import 'package:fiura_ecosystem/features/sponsor/data/local/sponsor_repository_imp.dart';
+import 'package:fiura_ecosystem/features/sponsor/domain/repositories/sponsor_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'features/judge/data/local/judge_repository_imp.dart';
 import 'features/splash/data/local/splash_repository_imp.dart';
 import 'features/splash/presentation/cubit/splash_cubit.dart';
+import 'features/sponsor/presentation/cubit/sponsor_cubit.dart';
 
 //Cloud firestore
 final FirebaseFirestore db = FirebaseFirestore.instance;
@@ -35,4 +38,9 @@ void setup() {
   getIt.registerFactory<JudgeRepository>(
       () => JudgeRepositoryImp(db: db, auth: auth));
   getIt.registerFactory<JudgeCubit>(() => JudgeCubit(getIt()));
+
+  //Sponsor
+  getIt.registerFactory<SponsorRepository>(
+      () => SponsorRepositoryImp(db: db, auth: auth));
+  getIt.registerFactory<SponsorCubit>(() => SponsorCubit(getIt()));
 }
