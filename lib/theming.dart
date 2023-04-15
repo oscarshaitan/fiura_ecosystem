@@ -17,39 +17,82 @@ ThemeData buildThemeData() {
 
 class Theming {
   ThemeData themeData = ThemeData(
-      primaryColor: Colors.black,
-      primarySwatch: Colors.red,
-      scaffoldBackgroundColor: Colors.black,
-      appBarTheme: const AppBarTheme(
-        elevation: 0,
-        color: Colors.black,
+    primaryColor: getMaterialColor(const Color(0xFF1D1D1D)),
+    primarySwatch: getMaterialColor(const Color(0xFFff5151)),
+    scaffoldBackgroundColor: getMaterialColor(const Color(0xFF1D1D1D)),
+    appBarTheme: AppBarTheme(
+      elevation: 0,
+      color: getMaterialColor(const Color(0xFF1D1D1D)),
+    ),
+    drawerTheme: DrawerThemeData(
+      elevation: 3,
+      backgroundColor: getMaterialColor(const Color(0xFF1D1D1D)),
+    ),
+    textTheme: const TextTheme(
+      titleLarge: TextStyle(color: Colors.white),
+      titleMedium: TextStyle(color: Colors.white),
+      titleSmall: TextStyle(
+        color: Color(0xFFFFFFFD),
+        fontSize: 27.0,
+        fontWeight: FontWeight.bold,
       ),
-      drawerTheme: const DrawerThemeData(
-        elevation: 3,
-        backgroundColor: Colors.black,
+      headlineLarge: TextStyle(color: Colors.white),
+      headlineMedium: TextStyle(
+        color: Color(0xFFFFFFFD),
+        fontSize: 16.0,
+        fontWeight: FontWeight.normal,
       ),
-      textTheme: const TextTheme(
-        titleLarge: TextStyle(color: Colors.white),
-        titleMedium: TextStyle(color: Colors.white),
-        titleSmall: TextStyle(
-          color: Color(0xFFFFFFFD),
-          fontSize: 27.0,
-          fontWeight: FontWeight.bold,
-        ),
-        headlineLarge: TextStyle(color: Colors.white),
-        headlineMedium: TextStyle(
-          color: Color(0xFFFFFFFD),
-          fontSize: 16.0,
-          fontWeight: FontWeight.normal,
-        ),
-        headlineSmall: TextStyle(color: Colors.white),
-        bodyLarge: TextStyle(color: Colors.white),
-        bodyMedium: TextStyle(color: Colors.white),
-        bodySmall: TextStyle(color: Colors.white),
-        labelSmall: TextStyle(
-          color: Color(0xFFFFFFFD),
-          fontSize: 15.0,
-          fontWeight: FontWeight.w500,
-        ),
-      ));
+      headlineSmall: TextStyle(color: Colors.white),
+      bodyLarge: TextStyle(color: Colors.white),
+      bodyMedium: TextStyle(color: Colors.white),
+      bodySmall: TextStyle(color: Colors.white),
+      labelSmall: TextStyle(
+        color: Color(0xFFFFFFFD),
+        fontSize: 15.0,
+        fontWeight: FontWeight.w500,
+      ),
+    ),
+    inputDecorationTheme: const InputDecorationTheme(
+      labelStyle: TextStyle(
+        color: Color(0xFFd4d4d4),
+        fontSize: 15.0,
+        fontWeight: FontWeight.w500,
+      ),
+      hintStyle: TextStyle(
+        color: Color(0xFF4c4a4b),
+        fontSize: 15.0,
+        fontWeight: FontWeight.w500,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Color(0xFF4c4a4b)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Color(0xFFd4d4d4)),
+      ),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: Color(0xFFd4d4d4)),
+      ),
+    ),
+  );
+}
+
+MaterialColor getMaterialColor(Color color) {
+  final int red = color.red;
+  final int green = color.green;
+  final int blue = color.blue;
+
+  final Map<int, Color> shades = {
+    50: Color.fromRGBO(red, green, blue, .1),
+    100: Color.fromRGBO(red, green, blue, .2),
+    200: Color.fromRGBO(red, green, blue, .3),
+    300: Color.fromRGBO(red, green, blue, .4),
+    400: Color.fromRGBO(red, green, blue, .5),
+    500: Color.fromRGBO(red, green, blue, .6),
+    600: Color.fromRGBO(red, green, blue, .7),
+    700: Color.fromRGBO(red, green, blue, .8),
+    800: Color.fromRGBO(red, green, blue, .9),
+    900: Color.fromRGBO(red, green, blue, 1),
+  };
+
+  return MaterialColor(color.value, shades);
 }
