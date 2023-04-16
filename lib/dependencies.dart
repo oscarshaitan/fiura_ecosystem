@@ -43,4 +43,3 @@ void setup() {
   getIt.registerFactory<SponsorRepository>(
       () => SponsorRepositoryImp(db: db, auth: auth));
   getIt.registerFactory<SponsorCubit>(() => SponsorCubit(getIt()));
-}
