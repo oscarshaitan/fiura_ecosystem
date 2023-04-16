@@ -1,0 +1,42 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fiura_ecosystem/core/entities/post_entity/post_entity.dart';
+import '../../domain/repositories/post_repository.dart';
+
+class PostRepositoryImp extends PostRepository {
+  final FirebaseFirestore db;
+  final FirebaseAuth auth;
+
+  //Collections
+  final String posts = "posts";
+
+  PostRepositoryImp({required this.db, required this.auth});
+
+  @override
+  Future<bool> addPost(PostEntity post) async {
+    final User? user = auth.currentUser;
+    late DocumentReference docRef;
+    late bool status;
+
+    if (user != null) {
+      docRef = await db.collection(posts).add({
+        "redirectionUrl": post.redirectionUrl,
+        "urlPhoto": post.urlPhoto,
+        "description": post.description,
+        "uid": user.uid,
+        "creation_date": DateTime.now(),
+      });
+      final DocumentSnapshot result = await docRef.get();
+
+      if (result.data() != null) {
+        var id = result.id;
+        await db.collection(posts).doc(id).update({"id": id});
+        status = true;
+      } else {
+        status = false;
+      }
+    }
+
+    return status;
+  }
+}
