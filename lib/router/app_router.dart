@@ -22,7 +22,7 @@ import '../features/login/presentation/pages/login_screen.dart';
     ]),
     AutoRoute(page: ArtistsDetailScreen, path: artistsDetail),
     AutoRoute(page: CreateJudgeScreen, path: createJudge),
-    AutoRoute(page: CreateSponsorScreen, path: createJudge)
+    AutoRoute(page: CreateSponsorScreen, path: createSponsor)
   ],
 )
 // extend the generated private router

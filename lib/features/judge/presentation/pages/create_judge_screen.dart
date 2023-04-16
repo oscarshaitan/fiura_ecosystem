@@ -1,7 +1,6 @@
 import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
 import '../cubit/judge_cubit.dart';

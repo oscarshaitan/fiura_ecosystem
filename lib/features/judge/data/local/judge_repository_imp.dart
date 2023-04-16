@@ -29,6 +29,8 @@ class JudgeRepositoryImp extends JudgeRepository {
       final DocumentSnapshot result = await docRef.get();
 
       if (result.data() != null) {
+        var id = result.id;
+        await db.collection(judges).doc(id).update({"id": id});
         status = true;
       } else {
         status = false;
