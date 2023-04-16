@@ -1,52 +1,52 @@
-import 'package:fiura_ecosystem/features/sponsor/presentation/cubit/sponsor_cubit.dart';
-import 'package:fiura_ecosystem/features/sponsor/presentation/cubit/sponsor_state.dart';
+import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
+import '../cubit/artist_state.dart';
 
-class CreateSponsorScreen extends StatefulWidget {
-  const CreateSponsorScreen({super.key});
+class CreateArtistScreen extends StatefulWidget {
+  const CreateArtistScreen({super.key});
 
   @override
-  State<CreateSponsorScreen> createState() => _CreateSponsorScreenState();
+  State<CreateArtistScreen> createState() => _CreateArtistScreenState();
 }
 
-class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
+class _CreateArtistScreenState extends State<CreateArtistScreen> {
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
-  final controllerSponsorName = TextEditingController();
-  final controllerSponsorAbout = TextEditingController();
-  final controllerSponsorFacebook = TextEditingController();
-  final controllerSponsorTwitter = TextEditingController();
-  final controllerSponsorInstagram = TextEditingController();
+  final controllerArtistName = TextEditingController();
+  final controllerArtistAbout = TextEditingController();
+  final controllerArtistFacebook = TextEditingController();
+  final controllerArtistTwitter = TextEditingController();
+  final controllerArtistInstagram = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Registro de nuevo Patrocinador'),
+          title: const Text('Registro de nuevo Artista'),
         ),
         body: BlocProvider(
-          create: (_) => getIt<SponsorCubit>(),
-          child: BlocConsumer<SponsorCubit, SponsorState>(
+          create: (_) => getIt<ArtistCubit>(),
+          child: BlocConsumer<ArtistCubit, ArtistState>(
               listener: (context, snapshot) {
             snapshot.whenOrNull(
               loading: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Añadiendo nuevo Patrocinador...'),
+                  content: Text('Añadiendo nuevo Artista...'),
                 ),
               ),
               success: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Patrocinador añadido correctamente'),
+                  content: Text('Artista añadido correctamente'),
                 ),
               ),
               error: (message) => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text(
-                      'Error añadiendo nuevo Patrocinador, intentalo nuevamente'),
+                      'Error añadiendo nuevo Artista, intentalo nuevamente'),
                 ),
               ),
             );
@@ -61,10 +61,10 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                       children: [
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa el nombre del patrocinador',
+                            hintText: 'Ingresa el nombre del artista',
                             labelText: 'Nombre*',
                           ),
-                          controller: controllerSponsorName,
+                          controller: controllerArtistName,
                           validator: (value) {
                             return nullValidator(
                                 value, 'Este campo es obligatorio');
@@ -76,11 +76,10 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                         TextFormField(
                             maxLines: 3,
                             decoration: const InputDecoration(
-                              hintText:
-                                  'Ingresa el acerca de, del patrocinador',
+                              hintText: 'Ingresa el acerca de, del artista',
                               labelText: 'Acerca de*',
                             ),
-                            controller: controllerSponsorAbout,
+                            controller: controllerArtistAbout,
                             validator: (value) {
                               return nullValidator(
                                   value, 'Este campo es obligatorio');
@@ -91,10 +90,10 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                         TextFormField(
                           decoration: const InputDecoration(
                             hintText:
-                                'Ingresa la cuenta de Facebook del patrocinador',
+                                'Ingresa la cuenta de Facebook del artista',
                             labelText: 'Facebook',
                           ),
-                          controller: controllerSponsorFacebook,
+                          controller: controllerArtistFacebook,
                         ),
                         const SizedBox(
                           height: 30.0,
@@ -102,10 +101,10 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                         TextFormField(
                           decoration: const InputDecoration(
                             hintText:
-                                'Ingresa la cuenta de Twitter del patrocinador',
+                                'Ingresa la cuenta de Twitter del artista',
                             labelText: 'Twitter',
                           ),
-                          controller: controllerSponsorTwitter,
+                          controller: controllerArtistTwitter,
                         ),
                         const SizedBox(
                           height: 30.0,
@@ -113,10 +112,10 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                         TextFormField(
                           decoration: const InputDecoration(
                             hintText:
-                                'Ingresa la cuenta de Instagram del patrocinador',
+                                'Ingresa la cuenta de Instagram del artista',
                             labelText: 'Instagram',
                           ),
-                          controller: controllerSponsorInstagram,
+                          controller: controllerArtistInstagram,
                         ),
                         const SizedBox(
                           height: 30.0,
@@ -126,14 +125,14 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                               _onPressed(
                                 _formKey,
                                 context,
-                                controllerSponsorName,
-                                controllerSponsorAbout,
-                                controllerSponsorFacebook,
-                                controllerSponsorTwitter,
-                                controllerSponsorInstagram,
+                                controllerArtistName,
+                                controllerArtistAbout,
+                                controllerArtistFacebook,
+                                controllerArtistTwitter,
+                                controllerArtistInstagram,
                               );
                             },
-                            child: const Text("Crear patrocinador"))
+                            child: const Text("Crear artista"))
                       ],
                     ),
                   )),
@@ -146,31 +145,31 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
 void _onPressed(
   GlobalKey<FormState> formKey,
   BuildContext context,
-  TextEditingController controllerSponsorName,
-  TextEditingController controllerSponsorAbout,
-  TextEditingController controllerSponsorFacebook,
-  TextEditingController controllerSponsorTwitter,
-  TextEditingController controllerSponsorInstagram,
+  TextEditingController controllerArtistName,
+  TextEditingController controllerArtistAbout,
+  TextEditingController controllerArtistFacebook,
+  TextEditingController controllerArtistTwitter,
+  TextEditingController controllerArtistInstagram,
 ) {
   if (formKey.currentState!.validate()) {
-    //Set the value to Sponsor entity
+    //Set the value to Artist entity
 
-    final String name = controllerSponsorName.text;
-    final String about = controllerSponsorAbout.text;
-    final String facebook = controllerSponsorFacebook.text;
-    final String twitter = controllerSponsorTwitter.text;
-    final String instagram = controllerSponsorInstagram.text;
+    final String name = controllerArtistName.text;
+    final String about = controllerArtistAbout.text;
+    final String facebook = controllerArtistFacebook.text;
+    final String twitter = controllerArtistTwitter.text;
+    final String instagram = controllerArtistInstagram.text;
     final List<String> socialNetwork = [facebook, twitter, instagram];
 
     //Clear the Text fields
 
-    controllerSponsorName.clear();
-    controllerSponsorAbout.clear();
-    controllerSponsorFacebook.clear();
-    controllerSponsorTwitter.clear();
-    controllerSponsorInstagram.clear();
+    controllerArtistName.clear();
+    controllerArtistAbout.clear();
+    controllerArtistFacebook.clear();
+    controllerArtistTwitter.clear();
+    controllerArtistInstagram.clear();
 
-    //Use the function to add the Sponsor
-    context.read<SponsorCubit>().addSponsor(name, about, socialNetwork);
+    //Use the function to add the Artist
+    context.read<ArtistCubit>().addArtist(name, about, socialNetwork);
   }
 }
