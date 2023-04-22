@@ -1,5 +1,8 @@
+import 'dart:io';
+import 'package:fiura_ecosystem/features/widgets/card_image_selector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
 import '../cubit/post_cubit.dart';
@@ -13,18 +16,20 @@ class CreatePostScreen extends StatefulWidget {
 }
 
 class _CreatePostScreenState extends State<CreatePostScreen> {
+  // Image Picker
+  final ImagePicker picker = ImagePicker();
+  File? image;
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
   final controllerPostRedirectionUrl = TextEditingController();
-  final controllerPostUrlPhoto = TextEditingController();
   final controllerPostDescription = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Registro de nuevo Patrocinador'),
+          title: const Text('Registro de nueva noticia'),
         ),
         body: BlocProvider(
           create: (_) => getIt<PostCubit>(),
@@ -33,18 +38,18 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
             snapshot.whenOrNull(
               loading: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Añadiendo nuevo Patrocinador...'),
+                  content: Text('Añadiendo nueva Noticia...'),
                 ),
               ),
               success: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Patrocinador añadido correctamente'),
+                  content: Text('Noticia añadida correctamente'),
                 ),
               ),
               error: (message) => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text(
-                      'Error añadiendo nuevo Patrocinador, intentalo nuevamente'),
+                      'Error añadiendo nueva Noticia, intentalo nuevamente'),
                 ),
               ),
             );
@@ -57,25 +62,24 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                         horizontal: 30.0, vertical: 20.0),
                     child: Column(
                       children: [
-                        TextFormField(
-                            decoration: const InputDecoration(
-                              hintText: 'Ingresa la url de la foto',
-                              labelText: 'Ingrese una url*',
-                            ),
-                            controller: controllerPostUrlPhoto,
-                            validator: (value) {
-                              return nullValidator(
-                                  value, 'Este campo es obligatorio');
-                            }),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        CardImageSelector(
+                            label: "Selecciona una imagen*",
+                            imageFile: image,
+                            height: 250.0,
+                            width: 350.0,
+                            onTap: imagePicker),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
                         TextFormField(
                           decoration: const InputDecoration(
                             hintText: 'Ingresa el url de redirección',
                             labelText: 'Ingrese una url',
                           ),
                           controller: controllerPostRedirectionUrl,
-                        ),
-                        const SizedBox(
-                          height: 30.0,
                         ),
                         const SizedBox(
                           height: 30.0,
@@ -96,13 +100,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                         ),
                         ElevatedButton(
                             onPressed: () {
-                              _onPressed(
-                                _formKey,
-                                context,
-                                controllerPostRedirectionUrl,
-                                controllerPostUrlPhoto,
-                                controllerPostDescription,
-                              );
+                              _onPressed(_formKey, context);
                             },
                             child: const Text("Crear patrocinador"))
                       ],
@@ -112,29 +110,36 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
           }),
         ));
   }
-}
 
-void _onPressed(
-  GlobalKey<FormState> formKey,
-  BuildContext context,
-  TextEditingController controllerSponsorRedirectionUrl,
-  TextEditingController controllerSponsorUrlPhoto,
-  TextEditingController controllerSponsorDescription,
-) {
-  if (formKey.currentState!.validate()) {
-    //Set the value to Sponsor entity
+  void imagePicker() {
+    picker.pickImage(source: ImageSource.camera).then((pickedImage) {
+      setState(() {
+        image = File(pickedImage!.path);
+      });
+    });
+  }
 
-    final String redirectionUrl = controllerSponsorRedirectionUrl.text;
-    final String urlPhoto = controllerSponsorUrlPhoto.text;
-    final String description = controllerSponsorDescription.text;
+  void _onPressed(GlobalKey<FormState> formKey, BuildContext context) {
+    if (formKey.currentState!.validate() && image != null) {
+      //Set the value to Sponsor entity
 
-    //Clear the Text fields
+      final String redirectionUrl = controllerPostRedirectionUrl.text;
+      final String description = controllerPostDescription.text;
+      final File? imageSelected = image;
 
-    controllerSponsorRedirectionUrl.clear();
-    controllerSponsorUrlPhoto.clear();
-    controllerSponsorDescription.clear();
+      //Clear the Text fields
 
-    //Use the function to add the Sponsor
-    context.read<PostCubit>().addPost(redirectionUrl, urlPhoto, description);
+      controllerPostRedirectionUrl.clear();
+      controllerPostDescription.clear();
+
+      setState(() {
+        image = null;
+      });
+
+      //Use the function to add the Sponsor
+      context
+          .read<PostCubit>()
+          .addPost(redirectionUrl, description, imageSelected);
+    }
   }
 }

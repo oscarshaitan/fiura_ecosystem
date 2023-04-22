@@ -1,3 +1,5 @@
+import 'dart:io';
+import 'package:path/path.dart' as path;
 import 'package:fiura_ecosystem/core/entities/post_entity/post_entity.dart';
 import 'package:fiura_ecosystem/features/posts/presentation/cubit/post_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,8 +10,9 @@ class PostCubit extends Cubit<PostState> {
 
   final PostRepository _postRepository;
 
-  void addPost(
-      String redirectionUrl, String urlPhoto, String description) async {
+  void addPost(String redirectionUrl, String description, File? image) async {
+    String urlPhoto = 'Posts/${path.basename(image!.path)}';
+
     PostEntity post = PostEntity(
       id: '',
       redirectionUrl: redirectionUrl,
@@ -18,7 +21,7 @@ class PostCubit extends Cubit<PostState> {
     );
 
     emit(const Loading());
-    final result = await _postRepository.addPost(post);
+    final result = await _postRepository.addPost(post, image);
     if (result) {
       emit(const Success());
     } else {

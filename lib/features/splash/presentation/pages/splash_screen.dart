@@ -43,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen>
             context.router.popAndPush(const LoginScreenRoute());
           } else {
             // context.router.popAndPush(const HomeScreenRoute());
-            context.router.popAndPush(const CreateArtistScreenRoute());
+            context.router.popAndPush(const CreatePostScreenRoute());
           }
         },
         child: Scaffold(
