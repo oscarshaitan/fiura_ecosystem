@@ -19,6 +19,8 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
   // Image Picker
   final ImagePicker picker = ImagePicker();
   File? image;
+  bool showErrorMessage = false;
+  bool isImageSelected = false;
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
@@ -65,12 +67,28 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                         const SizedBox(
                           height: 30.0,
                         ),
-                        CardImageSelector(
-                            label: "Selecciona una imagen*",
-                            imageFile: image,
-                            height: 250.0,
-                            width: 350.0,
-                            onTap: imagePicker),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CardImageSelector(
+                              label: "Selecciona una imagen*",
+                              imageFile: image,
+                              height: 250.0,
+                              width: 350.0,
+                              onTap: imagePicker,
+                              borderColor: showErrorMessage
+                                  ? Colors.red
+                                  : Theme.of(context)
+                                      .inputDecorationTheme
+                                      .enabledBorder!
+                                      .borderSide
+                                      .color,
+                            ),
+                            if (showErrorMessage!)
+                              _dangerText(
+                                  "Debes seleccionar una imagen de tu galería"),
+                          ],
+                        ),
                         const SizedBox(
                           height: 30.0,
                         ),
@@ -112,15 +130,19 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
   }
 
   void imagePicker() {
-    picker.pickImage(source: ImageSource.camera).then((pickedImage) {
+    picker.pickImage(source: ImageSource.gallery).then((pickedImage) {
       setState(() {
         image = File(pickedImage!.path);
+        isImageSelected = true;
+        showErrorMessage = false;
       });
     });
   }
 
   void _onPressed(GlobalKey<FormState> formKey, BuildContext context) {
-    if (formKey.currentState!.validate() && image != null) {
+    if (formKey.currentState!.validate() && isImageSelected) {
+      showErrorMessage = false;
+
       //Set the value to Sponsor entity
 
       final String redirectionUrl = controllerPostRedirectionUrl.text;
@@ -140,6 +162,24 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       context
           .read<PostCubit>()
           .addPost(redirectionUrl, description, imageSelected);
+    } else if (!isImageSelected) {
+      setState(() {
+        showErrorMessage = true;
+      });
     }
   }
+}
+
+Widget _dangerText(String text) {
+  return Padding(
+    padding: const EdgeInsets.all(10.0),
+    child: Text(
+      textAlign: TextAlign.start,
+      text,
+      style: const TextStyle(
+        color: Colors.red,
+        fontSize: 12.0,
+      ),
+    ),
+  );
 }

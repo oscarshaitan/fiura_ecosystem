@@ -59,6 +59,9 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                         horizontal: 30.0, vertical: 20.0),
                     child: Column(
                       children: [
+                        const SizedBox(
+                          height: 30.0,
+                        ),
                         TextFormField(
                           decoration: const InputDecoration(
                             hintText: 'Ingresa el nombre del patrocinador',

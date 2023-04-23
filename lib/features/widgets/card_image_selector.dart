@@ -7,6 +7,7 @@ class CardImageSelector extends StatelessWidget {
   final double width;
   final VoidCallback onTap;
   final String label;
+  final Color borderColor;
 
   const CardImageSelector(
       {super.key,
@@ -14,7 +15,8 @@ class CardImageSelector extends StatelessWidget {
       required this.height,
       required this.width,
       required this.onTap,
-      required this.label});
+      required this.label,
+      required this.borderColor});
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +35,7 @@ class CardImageSelector extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(10.0)),
             color: imageFile == null ? Colors.transparent : null,
             border: Border.all(
-              color: Theme.of(context)
-                  .inputDecorationTheme
-                  .enabledBorder!
-                  .borderSide
-                  .color,
+              color: borderColor,
             ),
             shape: BoxShape.rectangle,
             boxShadow: imageFile != null
@@ -50,37 +48,48 @@ class CardImageSelector extends StatelessWidget {
                   ]
                 : null),
         child: imageFile == null
-            ? _WithoutImage(
-                label: label,
-              )
+            ? _withoutImage(label: label, context: context)
             : null,
       ),
     );
   }
 }
 
-class _WithoutImage extends StatelessWidget {
-  final String label;
-
-  const _WithoutImage({
-    Key? key,
-    required this.label,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      Icon(
-        Icons.add_photo_alternate,
-        size: 100.0,
-        color: Theme.of(context)
-            .inputDecorationTheme
-            .enabledBorder!
-            .borderSide
-            .color,
-      ),
-      const SizedBox(height: 10.0),
-      Text(label)
-    ]);
-  }
+Widget _withoutImage({required String label, required BuildContext context}) {
+  return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+    Icon(
+      Icons.add_photo_alternate,
+      size: 100.0,
+      color: Theme.of(context)
+          .inputDecorationTheme
+          .enabledBorder!
+          .borderSide
+          .color,
+    ),
+    const SizedBox(height: 10.0),
+    Text(label)
+  ]);
 }
+
+// class _WithoutImage extends StatelessWidget {
+//   final String label;
+//   final Color borderColor;
+
+//   const _WithoutImage({
+//     Key? key,
+//     required this.label,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+//       Icon(
+//         Icons.add_photo_alternate,
+//         size: 100.0,
+//         color: borderColor,
+//       ),
+//       const SizedBox(height: 10.0),
+//       Text(label)
+//     ]);
+//   }
+// }
