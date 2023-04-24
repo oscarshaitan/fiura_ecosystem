@@ -1,52 +1,52 @@
-import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_state.dart';
+import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
-import '../cubit/judge_cubit.dart';
+import '../cubit/artist_state.dart';
 
-class CreateJudgeScreen extends StatefulWidget {
-  const CreateJudgeScreen({super.key});
+class CreateArtistScreen extends StatefulWidget {
+  const CreateArtistScreen({super.key});
 
   @override
-  State<CreateJudgeScreen> createState() => _CreateJudgeScreenState();
+  State<CreateArtistScreen> createState() => _CreateArtistScreenState();
 }
 
-class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
+class _CreateArtistScreenState extends State<CreateArtistScreen> {
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
-  final controllerJudgeName = TextEditingController();
-  final controllerJudgeAbout = TextEditingController();
-  final controllerJudgeFacebook = TextEditingController();
-  final controllerJudgeTwitter = TextEditingController();
-  final controllerJudgeInstagram = TextEditingController();
+  final controllerArtistName = TextEditingController();
+  final controllerArtistAbout = TextEditingController();
+  final controllerArtistFacebook = TextEditingController();
+  final controllerArtistTwitter = TextEditingController();
+  final controllerArtistInstagram = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Registro de nuevo Juez'),
+          title: const Text('Registro de nuevo Artista'),
         ),
         body: BlocProvider(
-          create: (_) => getIt<JudgeCubit>(),
-          child: BlocConsumer<JudgeCubit, JudgeState>(
+          create: (_) => getIt<ArtistCubit>(),
+          child: BlocConsumer<ArtistCubit, ArtistState>(
               listener: (context, snapshot) {
             snapshot.whenOrNull(
               loading: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Añadiendo nuevo Juez...'),
+                  content: Text('Añadiendo nuevo Artista...'),
                 ),
               ),
               success: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Juez añadido correctamente'),
+                  content: Text('Artista añadido correctamente'),
                 ),
               ),
               error: (message) => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content:
-                      Text('Error añadiendo nuevo Juez, intentalo nuevamente'),
+                  content: Text(
+                      'Error añadiendo nuevo Artista, intentalo nuevamente'),
                 ),
               ),
             );
@@ -59,12 +59,15 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         horizontal: 30.0, vertical: 20.0),
                     child: Column(
                       children: [
+                        const SizedBox(
+                          height: 30.0,
+                        ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa el nombre completo del Juez',
+                            hintText: 'Ingresa el nombre del artista',
                             labelText: 'Nombre*',
                           ),
-                          controller: controllerJudgeName,
+                          controller: controllerArtistName,
                           validator: (value) {
                             return nullValidator(
                                 value, 'Este campo es obligatorio');
@@ -76,10 +79,10 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         TextFormField(
                             maxLines: 3,
                             decoration: const InputDecoration(
-                              hintText: 'Ingresa el acerca de, del juez',
+                              hintText: 'Ingresa el acerca de, del artista',
                               labelText: 'Acerca de*',
                             ),
-                            controller: controllerJudgeAbout,
+                            controller: controllerArtistAbout,
                             validator: (value) {
                               return nullValidator(
                                   value, 'Este campo es obligatorio');
@@ -89,30 +92,33 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Facebook del juez',
+                            hintText:
+                                'Ingresa la cuenta de Facebook del artista',
                             labelText: 'Facebook',
                           ),
-                          controller: controllerJudgeFacebook,
+                          controller: controllerArtistFacebook,
                         ),
                         const SizedBox(
                           height: 30.0,
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Twitter del juez',
+                            hintText:
+                                'Ingresa la cuenta de Twitter del artista',
                             labelText: 'Twitter',
                           ),
-                          controller: controllerJudgeTwitter,
+                          controller: controllerArtistTwitter,
                         ),
                         const SizedBox(
                           height: 30.0,
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Instagram del juez',
+                            hintText:
+                                'Ingresa la cuenta de Instagram del artista',
                             labelText: 'Instagram',
                           ),
-                          controller: controllerJudgeInstagram,
+                          controller: controllerArtistInstagram,
                         ),
                         const SizedBox(
                           height: 30.0,
@@ -122,14 +128,14 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                               _onPressed(
                                 _formKey,
                                 context,
-                                controllerJudgeName,
-                                controllerJudgeAbout,
-                                controllerJudgeFacebook,
-                                controllerJudgeTwitter,
-                                controllerJudgeInstagram,
+                                controllerArtistName,
+                                controllerArtistAbout,
+                                controllerArtistFacebook,
+                                controllerArtistTwitter,
+                                controllerArtistInstagram,
                               );
                             },
-                            child: const Text("Submit"))
+                            child: const Text("Crear artista"))
                       ],
                     ),
                   )),
@@ -142,31 +148,31 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
 void _onPressed(
   GlobalKey<FormState> formKey,
   BuildContext context,
-  TextEditingController controllerJudgeName,
-  TextEditingController controllerJudgeAbout,
-  TextEditingController controllerJudgeFacebook,
-  TextEditingController controllerJudgeTwitter,
-  TextEditingController controllerJudgeInstagram,
+  TextEditingController controllerArtistName,
+  TextEditingController controllerArtistAbout,
+  TextEditingController controllerArtistFacebook,
+  TextEditingController controllerArtistTwitter,
+  TextEditingController controllerArtistInstagram,
 ) {
   if (formKey.currentState!.validate()) {
-    //Set the value to Judge entity
+    //Set the value to Artist entity
 
-    final String name = controllerJudgeName.text;
-    final String about = controllerJudgeAbout.text;
-    final String facebook = controllerJudgeFacebook.text;
-    final String twitter = controllerJudgeTwitter.text;
-    final String instagram = controllerJudgeInstagram.text;
+    final String name = controllerArtistName.text;
+    final String about = controllerArtistAbout.text;
+    final String facebook = controllerArtistFacebook.text;
+    final String twitter = controllerArtistTwitter.text;
+    final String instagram = controllerArtistInstagram.text;
     final List<String> socialNetwork = [facebook, twitter, instagram];
 
     //Clear the Text fields
 
-    controllerJudgeName.clear();
-    controllerJudgeAbout.clear();
-    controllerJudgeFacebook.clear();
-    controllerJudgeTwitter.clear();
-    controllerJudgeInstagram.clear();
+    controllerArtistName.clear();
+    controllerArtistAbout.clear();
+    controllerArtistFacebook.clear();
+    controllerArtistTwitter.clear();
+    controllerArtistInstagram.clear();
 
-    //Use the function to add the judge
-    context.read<JudgeCubit>().addJudge(name, about, socialNetwork);
+    //Use the function to add the Artist
+    context.read<ArtistCubit>().addArtist(name, about, socialNetwork);
   }
 }
