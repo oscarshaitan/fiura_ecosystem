@@ -20,8 +20,9 @@ class PostRepositoryImp extends PostRepository {
   });
 
   @override
-  Future<bool> addPost(PostEntity post, File image) async {
+  Future<bool> addPost(PostEntity post, File image, String imagePath) async {
     final User? user = auth.currentUser;
+    final imageRef = storageRef.child(imagePath);
     late DocumentReference docRef;
     late TaskSnapshot taskSnapshot;
     late bool status;
@@ -29,7 +30,6 @@ class PostRepositoryImp extends PostRepository {
     if (user != null) {
       docRef = await db.collection(posts).add({
         "redirectionUrl": post.redirectionUrl,
-        "urlPhoto": post.urlPhoto,
         "description": post.description,
         "uid": user.uid,
         "creation_date": DateTime.now(),
@@ -37,11 +37,15 @@ class PostRepositoryImp extends PostRepository {
       final DocumentSnapshot result = await docRef.get();
 
       //Upload image to firebase storage
-      taskSnapshot = await storageRef.child(post.urlPhoto).putFile(image);
+      taskSnapshot = await imageRef.putFile(image);
 
       if (result.data() != null && taskSnapshot.state == TaskState.success) {
         var id = result.id;
-        await db.collection(posts).doc(id).update({"id": id});
+        var urlPhoto = await imageRef.getDownloadURL();
+        await db
+            .collection(posts)
+            .doc(id)
+            .update({"id": id, "urlPhoto": urlPhoto});
         status = true;
       } else {
         status = false;

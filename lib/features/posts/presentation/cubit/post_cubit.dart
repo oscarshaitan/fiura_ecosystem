@@ -11,17 +11,17 @@ class PostCubit extends Cubit<PostState> {
   final PostRepository _postRepository;
 
   void addPost(String redirectionUrl, String description, File? image) async {
-    String urlPhoto = 'Posts/${path.basename(image!.path)}';
+    String imagePath = 'Posts/${path.basename(image!.path)}';
 
     PostEntity post = PostEntity(
       id: '',
       redirectionUrl: redirectionUrl,
-      urlPhoto: urlPhoto,
+      urlPhoto: "",
       description: description,
     );
 
     emit(const Loading());
-    final result = await _postRepository.addPost(post, image);
+    final result = await _postRepository.addPost(post, image, imagePath);
     if (result) {
       emit(const Success());
     } else {
