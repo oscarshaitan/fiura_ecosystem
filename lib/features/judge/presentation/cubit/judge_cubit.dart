@@ -24,4 +24,14 @@ class JudgeCubit extends Cubit<JudgeState> {
       emit(const Error('Error añadiendo nuevo juez'));
     }
   }
+
+  void getJudges() async {
+    emit(const Loading());
+    final result = await _judgeRepository.getJudges();
+    if (result.isNotEmpty) {
+      emit(LoadData(result));
+    } else {
+      emit(const Error('Error obteniendo jueces'));
+    }
+  }
 }

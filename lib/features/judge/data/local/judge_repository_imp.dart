@@ -39,4 +39,31 @@ class JudgeRepositoryImp extends JudgeRepository {
 
     return status;
   }
+
+  @override
+  Future<List<JudgeEntity>> getJudges() async {
+    final User? user = auth.currentUser;
+    final CollectionReference collectionRef;
+    final QuerySnapshot querySnapshot;
+    final List<JudgeEntity> judgesList = [];
+
+    if (user != null) {
+      collectionRef = db.collection(judges);
+      querySnapshot = await collectionRef.get();
+
+      for (var element in querySnapshot.docs) {
+        Map<String, dynamic> data = element.data() as Map<String, dynamic>;
+
+        JudgeEntity judge = JudgeEntity(
+            id: data["id"],
+            name: data["name"],
+            about: data["about"],
+            socialNetwork: data["socialNetwork"]);
+
+        judgesList.add(judge);
+      }
+    }
+
+    return judgesList;
+  }
 }

@@ -8,3 +8,7 @@ const createJudge = 'create-judge';
 const createSponsor = 'create-sponsor';
 const createArtist = 'create-artist';
 const createPost = 'create-post';
+const viewJudges = 'view-judges';
+const viewSponsors = 'view-sponsors';
+const viewArtists = 'view-artists';
+const viewPosts = 'view-posts';

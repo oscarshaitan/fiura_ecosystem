@@ -3,6 +3,7 @@ import 'package:fiura_ecosystem/features/artists/presentation/pages/artist_scree
 import 'package:fiura_ecosystem/features/artists/presentation/pages/create_artist_screen.dart';
 import 'package:fiura_ecosystem/features/artits_detail_screen/artist_detail.dart';
 import 'package:fiura_ecosystem/features/home/home_screen.dart';
+import 'package:fiura_ecosystem/features/judge/presentation/pages/view_judge_screen.dart';
 import 'package:fiura_ecosystem/features/posts/posts_screen.dart';
 import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart';
 import 'package:fiura_ecosystem/features/sponsor/presentation/pages/create_sponsor_screen.dart';
@@ -27,6 +28,7 @@ import '../features/posts/presentation/pages/create_post_screen.dart';
     AutoRoute(page: CreateSponsorScreen, path: createSponsor),
     AutoRoute(page: CreateArtistScreen, path: createArtist),
     AutoRoute(page: CreatePostScreen, path: createPost),
+    AutoRoute(page: ViewJudgeScreen, path: viewJudges),
   ],
 )
 // extend the generated private router
