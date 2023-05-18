@@ -54,11 +54,17 @@ class JudgeRepositoryImp extends JudgeRepository {
       for (var element in querySnapshot.docs) {
         Map<String, dynamic> data = element.data() as Map<String, dynamic>;
 
+        List<dynamic> list = data["socialNetwork"];
+        List<String> socialNetwork =
+            list.map((e) => element.toString()).toList();
+
         JudgeEntity judge = JudgeEntity(
             id: data["id"],
             name: data["name"],
             about: data["about"],
-            socialNetwork: data["socialNetwork"]);
+            socialNetwork: socialNetwork);
+
+        print("Rresultados: $judge");
 
         judgesList.add(judge);
       }

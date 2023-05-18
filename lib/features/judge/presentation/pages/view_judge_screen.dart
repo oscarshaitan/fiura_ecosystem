@@ -13,7 +13,7 @@ class ViewJudgeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => getIt<JudgeCubit>(),
+      create: (_) => getIt<JudgeCubit>()..getJudges(),
       child: BlocBuilder<JudgeCubit, JudgeState>(builder: (context, snapshot) {
         return snapshot.maybeWhen(
           loading: () => const CircularProgressIndicator(),
