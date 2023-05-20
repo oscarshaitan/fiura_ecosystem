@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fiura_ecosystem/core/entities/judge_entity/judge_entity.dart';
 import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,16 +14,21 @@ class ViewJudgeScreen extends StatelessWidget {
       create: (_) => getIt<JudgeCubit>()..getJudges(),
       child: BlocBuilder<JudgeCubit, JudgeState>(builder: (context, snapshot) {
         return snapshot.maybeWhen(
-          loading: () => const CircularProgressIndicator(),
+          loading: () => const _ViewBody(
+              body: Center(
+            child: SizedBox(
+              height: 200.0,
+              width: 200.0,
+              child: CircularProgressIndicator(),
+            ),
+          )),
           orElse: () {
-            return const Text("Error al cargar los datos");
+            return const _ViewBody(
+                body: Center(child: Text("Error al cargar los datos")));
           },
           error: (message) => Text(message),
           loadData: (judges) {
-            return Scaffold(
-              appBar: AppBar(
-                title: const Text("Jueces inscritos"),
-              ),
+            return _ViewBody(
               body: ListView.builder(
                   itemCount: judges.length,
                   itemBuilder: (context, index) {
@@ -39,5 +42,22 @@ class ViewJudgeScreen extends StatelessWidget {
         );
       }),
     );
+  }
+}
+
+class _ViewBody extends StatelessWidget {
+  final Widget body;
+
+  const _ViewBody({
+    required this.body,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: const Text("Jueces inscritos"),
+        ),
+        body: body);
   }
 }
