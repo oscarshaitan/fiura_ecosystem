@@ -23,6 +23,7 @@ mixin _$JudgeEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
+  String get urlPhoto => throw _privateConstructorUsedError;
   List<String?> get socialNetwork => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +39,11 @@ abstract class $JudgeEntityCopyWith<$Res> {
       _$JudgeEntityCopyWithImpl<$Res, JudgeEntity>;
   @useResult
   $Res call(
-      {String id, String name, String about, List<String?> socialNetwork});
+      {String id,
+      String name,
+      String about,
+      String urlPhoto,
+      List<String?> socialNetwork});
 }
 
 /// @nodoc
@@ -57,6 +62,7 @@ class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
     Object? id = null,
     Object? name = null,
     Object? about = null,
+    Object? urlPhoto = null,
     Object? socialNetwork = null,
   }) {
     return _then(_value.copyWith(
@@ -71,6 +77,10 @@ class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
       about: null == about
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
+              as String,
+      urlPhoto: null == urlPhoto
+          ? _value.urlPhoto
+          : urlPhoto // ignore: cast_nullable_to_non_nullable
               as String,
       socialNetwork: null == socialNetwork
           ? _value.socialNetwork
@@ -89,7 +99,11 @@ abstract class _$$_JudgeEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id, String name, String about, List<String?> socialNetwork});
+      {String id,
+      String name,
+      String about,
+      String urlPhoto,
+      List<String?> socialNetwork});
 }
 
 /// @nodoc
@@ -106,6 +120,7 @@ class __$$_JudgeEntityCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? about = null,
+    Object? urlPhoto = null,
     Object? socialNetwork = null,
   }) {
     return _then(_$_JudgeEntity(
@@ -120,6 +135,10 @@ class __$$_JudgeEntityCopyWithImpl<$Res>
       about: null == about
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
+              as String,
+      urlPhoto: null == urlPhoto
+          ? _value.urlPhoto
+          : urlPhoto // ignore: cast_nullable_to_non_nullable
               as String,
       socialNetwork: null == socialNetwork
           ? _value._socialNetwork
@@ -136,6 +155,7 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
       {required this.id,
       required this.name,
       required this.about,
+      required this.urlPhoto,
       required final List<String?> socialNetwork})
       : _socialNetwork = socialNetwork;
 
@@ -148,6 +168,8 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
   final String name;
   @override
   final String about;
+  @override
+  final String urlPhoto;
   final List<String?> _socialNetwork;
   @override
   List<String?> get socialNetwork {
@@ -158,7 +180,7 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'JudgeEntity(id: $id, name: $name, about: $about, socialNetwork: $socialNetwork)';
+    return 'JudgeEntity(id: $id, name: $name, about: $about, urlPhoto: $urlPhoto, socialNetwork: $socialNetwork)';
   }
 
   @override
@@ -169,6 +191,7 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
       ..add(DiagnosticsProperty('about', about))
+      ..add(DiagnosticsProperty('urlPhoto', urlPhoto))
       ..add(DiagnosticsProperty('socialNetwork', socialNetwork));
   }
 
@@ -180,13 +203,15 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
+            (identical(other.urlPhoto, urlPhoto) ||
+                other.urlPhoto == urlPhoto) &&
             const DeepCollectionEquality()
                 .equals(other._socialNetwork, _socialNetwork));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, about,
+  int get hashCode => Object.hash(runtimeType, id, name, about, urlPhoto,
       const DeepCollectionEquality().hash(_socialNetwork));
 
   @JsonKey(ignore: true)
@@ -208,6 +233,7 @@ abstract class _JudgeEntity implements JudgeEntity {
       {required final String id,
       required final String name,
       required final String about,
+      required final String urlPhoto,
       required final List<String?> socialNetwork}) = _$_JudgeEntity;
 
   factory _JudgeEntity.fromJson(Map<String, dynamic> json) =
@@ -219,6 +245,8 @@ abstract class _JudgeEntity implements JudgeEntity {
   String get name;
   @override
   String get about;
+  @override
+  String get urlPhoto;
   @override
   List<String?> get socialNetwork;
   @override

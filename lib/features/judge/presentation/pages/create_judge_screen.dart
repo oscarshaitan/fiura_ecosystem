@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_state.dart';
+import 'package:fiura_ecosystem/features/widgets/danger_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
+import '../../../widgets/card_image_selector.dart';
 import '../cubit/judge_cubit.dart';
 
 class CreateJudgeScreen extends StatefulWidget {
@@ -13,6 +18,11 @@ class CreateJudgeScreen extends StatefulWidget {
 }
 
 class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
+  // Image Picker
+  final ImagePicker picker = ImagePicker();
+  File? image;
+  bool showErrorMessage = false;
+  bool isImageSelected = false;
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
@@ -59,6 +69,35 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         horizontal: 30.0, vertical: 20.0),
                     child: Column(
                       children: [
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CardImageSelector(
+                              label: "Selecciona una imagen*",
+                              imageFile: image,
+                              height: 250.0,
+                              width: 350.0,
+                              onTap: imagePicker,
+                              borderColor: showErrorMessage
+                                  ? Colors.red
+                                  : Theme.of(context)
+                                      .inputDecorationTheme
+                                      .enabledBorder!
+                                      .borderSide
+                                      .color,
+                            ),
+                            if (showErrorMessage)
+                              const DangerText(
+                                  text:
+                                      "Debes seleccionar una imagen de tu galería"),
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
                         TextFormField(
                           decoration: const InputDecoration(
                             hintText: 'Ingresa el nombre completo del Juez',
@@ -119,15 +158,7 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         ),
                         ElevatedButton(
                             onPressed: () {
-                              _onPressed(
-                                _formKey,
-                                context,
-                                controllerJudgeName,
-                                controllerJudgeAbout,
-                                controllerJudgeFacebook,
-                                controllerJudgeTwitter,
-                                controllerJudgeInstagram,
-                              );
+                              _onPressed(_formKey, context);
                             },
                             child: const Text("Submit"))
                       ],
@@ -137,36 +168,41 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
           }),
         ));
   }
-}
 
-void _onPressed(
-  GlobalKey<FormState> formKey,
-  BuildContext context,
-  TextEditingController controllerJudgeName,
-  TextEditingController controllerJudgeAbout,
-  TextEditingController controllerJudgeFacebook,
-  TextEditingController controllerJudgeTwitter,
-  TextEditingController controllerJudgeInstagram,
-) {
-  if (formKey.currentState!.validate()) {
-    //Set the value to Judge entity
+  void imagePicker() {
+    picker.pickImage(source: ImageSource.gallery).then((pickedImage) {
+      setState(() {
+        image = File(pickedImage!.path);
+        isImageSelected = true;
+        showErrorMessage = false;
+      });
+    });
+  }
 
-    final String name = controllerJudgeName.text;
-    final String about = controllerJudgeAbout.text;
-    final String facebook = controllerJudgeFacebook.text;
-    final String twitter = controllerJudgeTwitter.text;
-    final String instagram = controllerJudgeInstagram.text;
-    final List<String> socialNetwork = [facebook, twitter, instagram];
+  void _onPressed(GlobalKey<FormState> formKey, BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      //Set the value to Judge entity
 
-    //Clear the Text fields
+      final String name = controllerJudgeName.text;
+      final String about = controllerJudgeAbout.text;
+      final String facebook = controllerJudgeFacebook.text;
+      final String twitter = controllerJudgeTwitter.text;
+      final String instagram = controllerJudgeInstagram.text;
+      final List<String> socialNetwork = [facebook, twitter, instagram];
+      final File? imageSelected = image;
 
-    controllerJudgeName.clear();
-    controllerJudgeAbout.clear();
-    controllerJudgeFacebook.clear();
-    controllerJudgeTwitter.clear();
-    controllerJudgeInstagram.clear();
+      //Clear the Text fields
 
-    //Use the function to add the judge
-    context.read<JudgeCubit>().addJudge(name, about, socialNetwork);
+      controllerJudgeName.clear();
+      controllerJudgeAbout.clear();
+      controllerJudgeFacebook.clear();
+      controllerJudgeTwitter.clear();
+      controllerJudgeInstagram.clear();
+
+      //Use the function to add the judge
+      context
+          .read<JudgeCubit>()
+          .addJudge(name, about, socialNetwork, imageSelected);
+    }
   }
 }

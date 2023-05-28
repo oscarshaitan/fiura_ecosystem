@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:fiura_ecosystem/features/widgets/card_image_selector.dart';
+import 'package:fiura_ecosystem/features/widgets/danger_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -84,9 +85,10 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                                       .borderSide
                                       .color,
                             ),
-                            if (showErrorMessage!)
-                              _dangerText(
-                                  "Debes seleccionar una imagen de tu galería"),
+                            if (showErrorMessage)
+                              const DangerText(
+                                  text:
+                                      "Debes seleccionar una imagen de tu galería"),
                           ],
                         ),
                         const SizedBox(
@@ -168,18 +170,4 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
       });
     }
   }
-}
-
-Widget _dangerText(String text) {
-  return Padding(
-    padding: const EdgeInsets.all(10.0),
-    child: Text(
-      textAlign: TextAlign.start,
-      text,
-      style: const TextStyle(
-        color: Colors.red,
-        fontSize: 12.0,
-      ),
-    ),
-  );
 }

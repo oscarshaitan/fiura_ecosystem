@@ -13,7 +13,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i12;
 import 'package:fiura_ecosystem/features/artists/presentation/pages/artist_screen.dart'
-    as _i11;
+    as _i10;
 import 'package:fiura_ecosystem/features/artists/presentation/pages/create_artist_screen.dart'
     as _i7;
 import 'package:fiura_ecosystem/features/artits_detail_screen/artist_detail.dart'
@@ -22,10 +22,10 @@ import 'package:fiura_ecosystem/features/home/home_screen.dart' as _i3;
 import 'package:fiura_ecosystem/features/judge/presentation/pages/create_judge_screen.dart'
     as _i5;
 import 'package:fiura_ecosystem/features/judge/presentation/pages/view_judge_screen.dart'
-    as _i9;
+    as _i11;
 import 'package:fiura_ecosystem/features/login/presentation/pages/login_screen.dart'
     as _i2;
-import 'package:fiura_ecosystem/features/posts/posts_screen.dart' as _i10;
+import 'package:fiura_ecosystem/features/posts/posts_screen.dart' as _i9;
 import 'package:fiura_ecosystem/features/posts/presentation/pages/create_post_screen.dart'
     as _i8;
 import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart'
@@ -95,22 +95,22 @@ class AppRouter extends _i12.RootStackRouter {
         child: const _i8.CreatePostScreen(),
       );
     },
-    ViewJudgeScreenRoute.name: (routeData) {
-      return _i12.AdaptivePage<dynamic>(
-        routeData: routeData,
-        child: const _i9.ViewJudgeScreen(),
-      );
-    },
     PostsScreenRoute.name: (routeData) {
       return _i12.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i10.PostsScreen(),
+        child: const _i9.PostsScreen(),
       );
     },
     ArtistsScreenRoute.name: (routeData) {
       return _i12.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i11.ArtistsScreen(),
+        child: const _i10.ArtistsScreen(),
+      );
+    },
+    ViewJudgeScreenRoute.name: (routeData) {
+      return _i12.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: const _i11.ViewJudgeScreen(),
       );
     },
   };
@@ -146,6 +146,11 @@ class AppRouter extends _i12.RootStackRouter {
               path: 'artists',
               parent: HomeScreenRoute.name,
             ),
+            _i12.RouteConfig(
+              ViewJudgeScreenRoute.name,
+              path: 'view-judges',
+              parent: HomeScreenRoute.name,
+            ),
           ],
         ),
         _i12.RouteConfig(
@@ -167,10 +172,6 @@ class AppRouter extends _i12.RootStackRouter {
         _i12.RouteConfig(
           CreatePostScreenRoute.name,
           path: 'create-post',
-        ),
-        _i12.RouteConfig(
-          ViewJudgeScreenRoute.name,
-          path: '/view-judge-screen',
         ),
       ];
 }
@@ -297,19 +298,7 @@ class CreatePostScreenRoute extends _i12.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i9.ViewJudgeScreen]
-class ViewJudgeScreenRoute extends _i12.PageRouteInfo<void> {
-  const ViewJudgeScreenRoute()
-      : super(
-          ViewJudgeScreenRoute.name,
-          path: '/view-judge-screen',
-        );
-
-  static const String name = 'ViewJudgeScreenRoute';
-}
-
-/// generated route for
-/// [_i10.PostsScreen]
+/// [_i9.PostsScreen]
 class PostsScreenRoute extends _i12.PageRouteInfo<void> {
   const PostsScreenRoute()
       : super(
@@ -321,7 +310,7 @@ class PostsScreenRoute extends _i12.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i11.ArtistsScreen]
+/// [_i10.ArtistsScreen]
 class ArtistsScreenRoute extends _i12.PageRouteInfo<void> {
   const ArtistsScreenRoute()
       : super(
@@ -330,4 +319,16 @@ class ArtistsScreenRoute extends _i12.PageRouteInfo<void> {
         );
 
   static const String name = 'ArtistsScreenRoute';
+}
+
+/// generated route for
+/// [_i11.ViewJudgeScreen]
+class ViewJudgeScreenRoute extends _i12.PageRouteInfo<void> {
+  const ViewJudgeScreenRoute()
+      : super(
+          ViewJudgeScreenRoute.name,
+          path: 'view-judges',
+        );
+
+  static const String name = 'ViewJudgeScreenRoute';
 }

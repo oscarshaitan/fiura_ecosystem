@@ -70,26 +70,3 @@ Widget _withoutImage({required String label, required BuildContext context}) {
     Text(label)
   ]);
 }
-
-// class _WithoutImage extends StatelessWidget {
-//   final String label;
-//   final Color borderColor;
-
-//   const _WithoutImage({
-//     Key? key,
-//     required this.label,
-//   }) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-//       Icon(
-//         Icons.add_photo_alternate,
-//         size: 100.0,
-//         color: borderColor,
-//       ),
-//       const SizedBox(height: 10.0),
-//       Text(label)
-//     ]);
-//   }
-// }

@@ -22,13 +22,13 @@ import '../features/posts/presentation/pages/create_post_screen.dart';
       RedirectRoute(path: '', redirectTo: posts),
       AutoRoute(page: PostsScreen, path: posts, initial: true),
       AutoRoute(page: ArtistsScreen, path: artists, children: []),
+      AutoRoute(page: ViewJudgeScreen, path: viewJudges),
     ]),
     AutoRoute(page: ArtistsDetailScreen, path: artistsDetail),
     AutoRoute(page: CreateJudgeScreen, path: createJudge),
     AutoRoute(page: CreateSponsorScreen, path: createSponsor),
     AutoRoute(page: CreateArtistScreen, path: createArtist),
     AutoRoute(page: CreatePostScreen, path: createPost),
-    AutoRoute(page: ViewJudgeScreen, path: viewJudges),
   ],
 )
 // extend the generated private router

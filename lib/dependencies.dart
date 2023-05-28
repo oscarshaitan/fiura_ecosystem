@@ -46,7 +46,7 @@ void setup() {
 
   //Judge
   getIt.registerFactory<JudgeRepository>(
-      () => JudgeRepositoryImp(db: db, auth: auth));
+      () => JudgeRepositoryImp(db: db, auth: auth, storageRef: storageRef));
   getIt.registerFactory<JudgeCubit>(() => JudgeCubit(getIt()));
 
   //Sponsor

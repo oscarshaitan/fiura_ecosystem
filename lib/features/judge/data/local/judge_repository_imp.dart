@@ -1,21 +1,28 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fiura_ecosystem/core/entities/judge_entity/judge_entity.dart';
 import '../../domain/repositories/judge_repository.dart';
 
 class JudgeRepositoryImp extends JudgeRepository {
   final FirebaseFirestore db;
   final FirebaseAuth auth;
+  final Reference storageRef;
 
   //Collections
   final String judges = "judges";
 
-  JudgeRepositoryImp({required this.db, required this.auth});
+  JudgeRepositoryImp(
+      {required this.db, required this.auth, required this.storageRef});
 
   @override
-  Future<bool> addJudge(JudgeEntity judge) async {
+  Future<bool> addJudge(JudgeEntity judge, File image) async {
     final User? user = auth.currentUser;
+    final imageRef = storageRef.child(judge.urlPhoto);
     late DocumentReference docRef;
+    late TaskSnapshot taskSnapshot;
     late bool status;
 
     if (user != null) {
@@ -28,9 +35,16 @@ class JudgeRepositoryImp extends JudgeRepository {
       });
       final DocumentSnapshot result = await docRef.get();
 
-      if (result.data() != null) {
+      //Upload image to firebase storage
+      taskSnapshot = await imageRef.putFile(image);
+
+      if (result.data() != null && taskSnapshot.state == TaskState.success) {
         var id = result.id;
-        await db.collection(judges).doc(id).update({"id": id});
+        var urlPhoto = await imageRef.getDownloadURL();
+        await db
+            .collection(judges)
+            .doc(id)
+            .update({"id": id, "urlPhoto": urlPhoto});
         status = true;
       } else {
         status = false;
@@ -54,17 +68,7 @@ class JudgeRepositoryImp extends JudgeRepository {
       for (var element in querySnapshot.docs) {
         Map<String, dynamic> data = element.data() as Map<String, dynamic>;
 
-        List<dynamic> list = data["socialNetwork"];
-        List<String> socialNetwork =
-            list.map((e) => element.toString()).toList();
-
-        JudgeEntity judge = JudgeEntity(
-            id: data["id"],
-            name: data["name"],
-            about: data["about"],
-            socialNetwork: socialNetwork);
-
-        print("Rresultados: $judge");
+        JudgeEntity judge = JudgeEntity.fromJson(data);
 
         judgesList.add(judge);
       }
