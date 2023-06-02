@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fiura_ecosystem/core/entities/judge_entity/judge_entity.dart';
+import 'package:fiura_ecosystem/features/images/domain/repositories/image_repository.dart';
 import '../../domain/repositories/judge_repository.dart';
 
 class JudgeRepositoryImp extends JudgeRepository {
@@ -24,6 +25,7 @@ class JudgeRepositoryImp extends JudgeRepository {
     late DocumentReference docRef;
     late TaskSnapshot taskSnapshot;
     late bool status;
+    final ImageRepository _imageRepository = ImageRepository();
 
     if (user != null) {
       docRef = await db.collection(judges).add({
@@ -36,11 +38,11 @@ class JudgeRepositoryImp extends JudgeRepository {
       final DocumentSnapshot result = await docRef.get();
 
       //Upload image to firebase storage
-      taskSnapshot = await imageRef.putFile(image);
+      final String? urlPhoto =
+          await _imageRepository.saveImage(image, imageRef);
 
-      if (result.data() != null && taskSnapshot.state == TaskState.success) {
+      if (result.data() != null && urlPhoto != null) {
         var id = result.id;
-        var urlPhoto = await imageRef.getDownloadURL();
         await db
             .collection(judges)
             .doc(id)

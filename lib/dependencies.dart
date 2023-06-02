@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fiura_ecosystem/features/artists/domain/repositories/artist_repository.dart';
 import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
+import 'package:fiura_ecosystem/features/images/domain/repositories/image_repository.dart';
 import 'package:fiura_ecosystem/features/judge/domain/repositories/judge_repository.dart';
 import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_cubit.dart';
 import 'package:fiura_ecosystem/features/login/domain/repositories/login_repository.dart';
