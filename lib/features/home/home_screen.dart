@@ -45,8 +45,7 @@ class HomeScreen extends StatelessWidget {
                 title: const Text('Jueces'),
                 onTap: () {
                   Navigator.of(context).pop();
-                  context.router.pushAndPopUntil(const ViewJudgeScreenRoute(),
-                      predicate: (route) => false);
+                  context.router.push(const ViewJudgeScreenRoute());
                 },
               ),
             ],
