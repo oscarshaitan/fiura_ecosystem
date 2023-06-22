@@ -28,4 +28,14 @@ class PostCubit extends Cubit<PostState> {
       emit(const Error('Error añadiendo nuevo post'));
     }
   }
+
+  void getPosts() async {
+    emit(const Loading());
+    try {
+      final result = await _postRepository.getPosts();
+      emit(LoadData(result));
+    } catch (e) {
+      emit(Error(e.toString()));
+    }
+  }
 }

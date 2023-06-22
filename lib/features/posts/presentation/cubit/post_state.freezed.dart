@@ -22,6 +22,7 @@ mixin _$PostState {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function(List<PostEntity> posts) loadData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$PostState {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function(List<PostEntity> posts)? loadData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$PostState {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function(List<PostEntity> posts)? loadData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$PostState {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$PostState {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$PostState {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,6 +131,7 @@ class _$Initial implements Initial {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function(List<PostEntity> posts) loadData,
   }) {
     return initial();
   }
@@ -136,6 +143,7 @@ class _$Initial implements Initial {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function(List<PostEntity> posts)? loadData,
   }) {
     return initial?.call();
   }
@@ -147,6 +155,7 @@ class _$Initial implements Initial {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function(List<PostEntity> posts)? loadData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -162,6 +171,7 @@ class _$Initial implements Initial {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
   }) {
     return initial(this);
   }
@@ -173,6 +183,7 @@ class _$Initial implements Initial {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
   }) {
     return initial?.call(this);
   }
@@ -184,6 +195,7 @@ class _$Initial implements Initial {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -237,6 +249,7 @@ class _$Loading implements Loading {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function(List<PostEntity> posts) loadData,
   }) {
     return loading();
   }
@@ -248,6 +261,7 @@ class _$Loading implements Loading {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function(List<PostEntity> posts)? loadData,
   }) {
     return loading?.call();
   }
@@ -259,6 +273,7 @@ class _$Loading implements Loading {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function(List<PostEntity> posts)? loadData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -274,6 +289,7 @@ class _$Loading implements Loading {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
   }) {
     return loading(this);
   }
@@ -285,6 +301,7 @@ class _$Loading implements Loading {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
   }) {
     return loading?.call(this);
   }
@@ -296,6 +313,7 @@ class _$Loading implements Loading {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -374,6 +392,7 @@ class _$Error implements Error {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function(List<PostEntity> posts) loadData,
   }) {
     return error(message);
   }
@@ -385,6 +404,7 @@ class _$Error implements Error {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function(List<PostEntity> posts)? loadData,
   }) {
     return error?.call(message);
   }
@@ -396,6 +416,7 @@ class _$Error implements Error {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function(List<PostEntity> posts)? loadData,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -411,6 +432,7 @@ class _$Error implements Error {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
   }) {
     return error(this);
   }
@@ -422,6 +444,7 @@ class _$Error implements Error {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
   }) {
     return error?.call(this);
   }
@@ -433,6 +456,7 @@ class _$Error implements Error {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -490,6 +514,7 @@ class _$Success implements Success {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function(List<PostEntity> posts) loadData,
   }) {
     return success();
   }
@@ -501,6 +526,7 @@ class _$Success implements Success {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function(List<PostEntity> posts)? loadData,
   }) {
     return success?.call();
   }
@@ -512,6 +538,7 @@ class _$Success implements Success {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function(List<PostEntity> posts)? loadData,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -527,6 +554,7 @@ class _$Success implements Success {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
   }) {
     return success(this);
   }
@@ -538,6 +566,7 @@ class _$Success implements Success {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
   }) {
     return success?.call(this);
   }
@@ -549,6 +578,7 @@ class _$Success implements Success {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -560,4 +590,160 @@ class _$Success implements Success {
 
 abstract class Success implements PostState {
   const factory Success() = _$Success;
+}
+
+/// @nodoc
+abstract class _$$LoadDataCopyWith<$Res> {
+  factory _$$LoadDataCopyWith(
+          _$LoadData value, $Res Function(_$LoadData) then) =
+      __$$LoadDataCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<PostEntity> posts});
+}
+
+/// @nodoc
+class __$$LoadDataCopyWithImpl<$Res>
+    extends _$PostStateCopyWithImpl<$Res, _$LoadData>
+    implements _$$LoadDataCopyWith<$Res> {
+  __$$LoadDataCopyWithImpl(_$LoadData _value, $Res Function(_$LoadData) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? posts = null,
+  }) {
+    return _then(_$LoadData(
+      null == posts
+          ? _value._posts
+          : posts // ignore: cast_nullable_to_non_nullable
+              as List<PostEntity>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadData implements LoadData {
+  const _$LoadData(final List<PostEntity> posts) : _posts = posts;
+
+  final List<PostEntity> _posts;
+  @override
+  List<PostEntity> get posts {
+    if (_posts is EqualUnmodifiableListView) return _posts;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_posts);
+  }
+
+  @override
+  String toString() {
+    return 'PostState.loadData(posts: $posts)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadData &&
+            const DeepCollectionEquality().equals(other._posts, _posts));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_posts));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadDataCopyWith<_$LoadData> get copyWith =>
+      __$$LoadDataCopyWithImpl<_$LoadData>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function(List<PostEntity> posts) loadData,
+  }) {
+    return loadData(posts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function(List<PostEntity> posts)? loadData,
+  }) {
+    return loadData?.call(posts);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function(List<PostEntity> posts)? loadData,
+    required TResult orElse(),
+  }) {
+    if (loadData != null) {
+      return loadData(posts);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
+  }) {
+    return loadData(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
+  }) {
+    return loadData?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
+    required TResult orElse(),
+  }) {
+    if (loadData != null) {
+      return loadData(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadData implements PostState {
+  const factory LoadData(final List<PostEntity> posts) = _$LoadData;
+
+  List<PostEntity> get posts;
+  @JsonKey(ignore: true)
+  _$$LoadDataCopyWith<_$LoadData> get copyWith =>
+      throw _privateConstructorUsedError;
 }
