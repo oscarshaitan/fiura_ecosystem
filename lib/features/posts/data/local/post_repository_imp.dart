@@ -50,4 +50,27 @@ class PostRepositoryImp extends PostRepository {
 
     return status;
   }
+
+  @override
+  Future<List<PostEntity>> getPosts() async {
+    final User? user = auth.currentUser;
+    final CollectionReference collectionRef;
+    final QuerySnapshot querySnapshot;
+    final List<PostEntity> postsList = [];
+
+    if (user != null) {
+      collectionRef = db.collection(posts);
+      querySnapshot = await collectionRef.get();
+
+      for (QueryDocumentSnapshot element in querySnapshot.docs) {
+        Map<String, dynamic> data = element.data() as Map<String, dynamic>;
+
+        PostEntity post = PostEntity.fromJson(data);
+
+        postsList.add(post);
+      }
+    }
+
+    return postsList;
+  }
 }

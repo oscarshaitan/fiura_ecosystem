@@ -25,9 +25,10 @@ import 'package:fiura_ecosystem/features/judge/presentation/pages/view_judge_scr
     as _i11;
 import 'package:fiura_ecosystem/features/login/presentation/pages/login_screen.dart'
     as _i2;
-import 'package:fiura_ecosystem/features/posts/posts_screen.dart' as _i9;
 import 'package:fiura_ecosystem/features/posts/presentation/pages/create_post_screen.dart'
     as _i8;
+import 'package:fiura_ecosystem/features/posts/presentation/pages/posts_screen.dart'
+    as _i9;
 import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart'
     as _i1;
 import 'package:fiura_ecosystem/features/sponsor/presentation/pages/create_sponsor_screen.dart'
