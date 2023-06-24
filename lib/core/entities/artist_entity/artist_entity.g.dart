@@ -11,6 +11,7 @@ _$_ArtistEntity _$$_ArtistEntityFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String,
       name: json['name'] as String,
       about: json['about'] as String,
+      urlPhoto: json['urlPhoto'] as String,
       socialNetwork: (json['socialNetwork'] as List<dynamic>)
           .map((e) => e as String?)
           .toList(),
@@ -21,5 +22,6 @@ Map<String, dynamic> _$$_ArtistEntityToJson(_$_ArtistEntity instance) =>
       'id': instance.id,
       'name': instance.name,
       'about': instance.about,
+      'urlPhoto': instance.urlPhoto,
       'socialNetwork': instance.socialNetwork,
     };

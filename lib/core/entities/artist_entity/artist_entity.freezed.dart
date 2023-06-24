@@ -23,6 +23,7 @@ mixin _$ArtistEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
+  String get urlPhoto => throw _privateConstructorUsedError;
   List<String?> get socialNetwork => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +39,11 @@ abstract class $ArtistEntityCopyWith<$Res> {
       _$ArtistEntityCopyWithImpl<$Res, ArtistEntity>;
   @useResult
   $Res call(
-      {String id, String name, String about, List<String?> socialNetwork});
+      {String id,
+      String name,
+      String about,
+      String urlPhoto,
+      List<String?> socialNetwork});
 }
 
 /// @nodoc
@@ -57,6 +62,7 @@ class _$ArtistEntityCopyWithImpl<$Res, $Val extends ArtistEntity>
     Object? id = null,
     Object? name = null,
     Object? about = null,
+    Object? urlPhoto = null,
     Object? socialNetwork = null,
   }) {
     return _then(_value.copyWith(
@@ -71,6 +77,10 @@ class _$ArtistEntityCopyWithImpl<$Res, $Val extends ArtistEntity>
       about: null == about
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
+              as String,
+      urlPhoto: null == urlPhoto
+          ? _value.urlPhoto
+          : urlPhoto // ignore: cast_nullable_to_non_nullable
               as String,
       socialNetwork: null == socialNetwork
           ? _value.socialNetwork
@@ -89,7 +99,11 @@ abstract class _$$_ArtistEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id, String name, String about, List<String?> socialNetwork});
+      {String id,
+      String name,
+      String about,
+      String urlPhoto,
+      List<String?> socialNetwork});
 }
 
 /// @nodoc
@@ -106,6 +120,7 @@ class __$$_ArtistEntityCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? about = null,
+    Object? urlPhoto = null,
     Object? socialNetwork = null,
   }) {
     return _then(_$_ArtistEntity(
@@ -120,6 +135,10 @@ class __$$_ArtistEntityCopyWithImpl<$Res>
       about: null == about
           ? _value.about
           : about // ignore: cast_nullable_to_non_nullable
+              as String,
+      urlPhoto: null == urlPhoto
+          ? _value.urlPhoto
+          : urlPhoto // ignore: cast_nullable_to_non_nullable
               as String,
       socialNetwork: null == socialNetwork
           ? _value._socialNetwork
@@ -136,6 +155,7 @@ class _$_ArtistEntity implements _ArtistEntity {
       {required this.id,
       required this.name,
       required this.about,
+      required this.urlPhoto,
       required final List<String?> socialNetwork})
       : _socialNetwork = socialNetwork;
 
@@ -148,6 +168,8 @@ class _$_ArtistEntity implements _ArtistEntity {
   final String name;
   @override
   final String about;
+  @override
+  final String urlPhoto;
   final List<String?> _socialNetwork;
   @override
   List<String?> get socialNetwork {
@@ -158,7 +180,7 @@ class _$_ArtistEntity implements _ArtistEntity {
 
   @override
   String toString() {
-    return 'ArtistEntity(id: $id, name: $name, about: $about, socialNetwork: $socialNetwork)';
+    return 'ArtistEntity(id: $id, name: $name, about: $about, urlPhoto: $urlPhoto, socialNetwork: $socialNetwork)';
   }
 
   @override
@@ -169,13 +191,15 @@ class _$_ArtistEntity implements _ArtistEntity {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
+            (identical(other.urlPhoto, urlPhoto) ||
+                other.urlPhoto == urlPhoto) &&
             const DeepCollectionEquality()
                 .equals(other._socialNetwork, _socialNetwork));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, about,
+  int get hashCode => Object.hash(runtimeType, id, name, about, urlPhoto,
       const DeepCollectionEquality().hash(_socialNetwork));
 
   @JsonKey(ignore: true)
@@ -197,6 +221,7 @@ abstract class _ArtistEntity implements ArtistEntity {
       {required final String id,
       required final String name,
       required final String about,
+      required final String urlPhoto,
       required final List<String?> socialNetwork}) = _$_ArtistEntity;
 
   factory _ArtistEntity.fromJson(Map<String, dynamic> json) =
@@ -208,6 +233,8 @@ abstract class _ArtistEntity implements ArtistEntity {
   String get name;
   @override
   String get about;
+  @override
+  String get urlPhoto;
   @override
   List<String?> get socialNetwork;
   @override
