@@ -44,8 +44,7 @@ class Theming {
       ),
       headlineSmall: TextStyle(color: Colors.white),
       bodyLarge: TextStyle(color: Colors.white, fontSize: 20.0),
-      bodyMedium: TextStyle(
-          color: Colors.white, fontSize: 16.0, fontWeight: FontWeight.normal),
+      bodyMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.normal),
       bodySmall: TextStyle(color: Colors.white),
       labelSmall: TextStyle(
         color: Color(0xFFFFFFFD),
