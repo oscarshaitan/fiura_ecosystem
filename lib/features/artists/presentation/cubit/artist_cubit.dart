@@ -41,4 +41,15 @@ class ArtistCubit extends Cubit<ArtistState> {
       emit(Error('Error cargando artistas: ${e.toString()}'));
     }
   }
+
+  void getArtist(String artistId) async {
+    emit(const Loading());
+
+    try {
+      final result = await _artistRepository.getArtist(artistId);
+      emit(LoadArtist(result));
+    } catch (e) {
+      emit(Error('Error cargando artista: ${e.toString()}'));
+    }
+  }
 }

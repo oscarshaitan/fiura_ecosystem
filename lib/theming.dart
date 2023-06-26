@@ -29,7 +29,8 @@ class Theming {
       backgroundColor: getMaterialColor(const Color(0xFF1D1D1D)),
     ),
     textTheme: const TextTheme(
-      titleLarge: TextStyle(color: Colors.white),
+      titleLarge: TextStyle(
+          color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w900),
       titleMedium: TextStyle(color: Colors.white),
       titleSmall: TextStyle(
         color: Color(0xFFFFFFFD),

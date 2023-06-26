@@ -23,6 +23,7 @@ mixin _$ArtistState {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<ArtistEntity> artists) loadData,
+    required TResult Function(ArtistEntity artist) loadArtist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$ArtistState {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<ArtistEntity> artists)? loadData,
+    TResult? Function(ArtistEntity artist)? loadArtist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$ArtistState {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<ArtistEntity> artists)? loadData,
+    TResult Function(ArtistEntity artist)? loadArtist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$ArtistState {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadArtist value) loadArtist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$ArtistState {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadArtist value)? loadArtist,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$ArtistState {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadArtist value)? loadArtist,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +139,7 @@ class _$Initial implements Initial {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<ArtistEntity> artists) loadData,
+    required TResult Function(ArtistEntity artist) loadArtist,
   }) {
     return initial();
   }
@@ -145,6 +152,7 @@ class _$Initial implements Initial {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<ArtistEntity> artists)? loadData,
+    TResult? Function(ArtistEntity artist)? loadArtist,
   }) {
     return initial?.call();
   }
@@ -157,6 +165,7 @@ class _$Initial implements Initial {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<ArtistEntity> artists)? loadData,
+    TResult Function(ArtistEntity artist)? loadArtist,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -173,6 +182,7 @@ class _$Initial implements Initial {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadArtist value) loadArtist,
   }) {
     return initial(this);
   }
@@ -185,6 +195,7 @@ class _$Initial implements Initial {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadArtist value)? loadArtist,
   }) {
     return initial?.call(this);
   }
@@ -197,6 +208,7 @@ class _$Initial implements Initial {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadArtist value)? loadArtist,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -251,6 +263,7 @@ class _$Loading implements Loading {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<ArtistEntity> artists) loadData,
+    required TResult Function(ArtistEntity artist) loadArtist,
   }) {
     return loading();
   }
@@ -263,6 +276,7 @@ class _$Loading implements Loading {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<ArtistEntity> artists)? loadData,
+    TResult? Function(ArtistEntity artist)? loadArtist,
   }) {
     return loading?.call();
   }
@@ -275,6 +289,7 @@ class _$Loading implements Loading {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<ArtistEntity> artists)? loadData,
+    TResult Function(ArtistEntity artist)? loadArtist,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -291,6 +306,7 @@ class _$Loading implements Loading {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadArtist value) loadArtist,
   }) {
     return loading(this);
   }
@@ -303,6 +319,7 @@ class _$Loading implements Loading {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadArtist value)? loadArtist,
   }) {
     return loading?.call(this);
   }
@@ -315,6 +332,7 @@ class _$Loading implements Loading {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadArtist value)? loadArtist,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -395,6 +413,7 @@ class _$Error implements Error {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<ArtistEntity> artists) loadData,
+    required TResult Function(ArtistEntity artist) loadArtist,
   }) {
     return error(message);
   }
@@ -407,6 +426,7 @@ class _$Error implements Error {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<ArtistEntity> artists)? loadData,
+    TResult? Function(ArtistEntity artist)? loadArtist,
   }) {
     return error?.call(message);
   }
@@ -419,6 +439,7 @@ class _$Error implements Error {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<ArtistEntity> artists)? loadData,
+    TResult Function(ArtistEntity artist)? loadArtist,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -435,6 +456,7 @@ class _$Error implements Error {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadArtist value) loadArtist,
   }) {
     return error(this);
   }
@@ -447,6 +469,7 @@ class _$Error implements Error {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadArtist value)? loadArtist,
   }) {
     return error?.call(this);
   }
@@ -459,6 +482,7 @@ class _$Error implements Error {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadArtist value)? loadArtist,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -517,6 +541,7 @@ class _$Success implements Success {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<ArtistEntity> artists) loadData,
+    required TResult Function(ArtistEntity artist) loadArtist,
   }) {
     return success();
   }
@@ -529,6 +554,7 @@ class _$Success implements Success {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<ArtistEntity> artists)? loadData,
+    TResult? Function(ArtistEntity artist)? loadArtist,
   }) {
     return success?.call();
   }
@@ -541,6 +567,7 @@ class _$Success implements Success {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<ArtistEntity> artists)? loadData,
+    TResult Function(ArtistEntity artist)? loadArtist,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -557,6 +584,7 @@ class _$Success implements Success {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadArtist value) loadArtist,
   }) {
     return success(this);
   }
@@ -569,6 +597,7 @@ class _$Success implements Success {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadArtist value)? loadArtist,
   }) {
     return success?.call(this);
   }
@@ -581,6 +610,7 @@ class _$Success implements Success {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadArtist value)? loadArtist,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -668,6 +698,7 @@ class _$LoadData implements LoadData {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<ArtistEntity> artists) loadData,
+    required TResult Function(ArtistEntity artist) loadArtist,
   }) {
     return loadData(artists);
   }
@@ -680,6 +711,7 @@ class _$LoadData implements LoadData {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<ArtistEntity> artists)? loadData,
+    TResult? Function(ArtistEntity artist)? loadArtist,
   }) {
     return loadData?.call(artists);
   }
@@ -692,6 +724,7 @@ class _$LoadData implements LoadData {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<ArtistEntity> artists)? loadData,
+    TResult Function(ArtistEntity artist)? loadArtist,
     required TResult orElse(),
   }) {
     if (loadData != null) {
@@ -708,6 +741,7 @@ class _$LoadData implements LoadData {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadArtist value) loadArtist,
   }) {
     return loadData(this);
   }
@@ -720,6 +754,7 @@ class _$LoadData implements LoadData {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadArtist value)? loadArtist,
   }) {
     return loadData?.call(this);
   }
@@ -732,6 +767,7 @@ class _$LoadData implements LoadData {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadArtist value)? loadArtist,
     required TResult orElse(),
   }) {
     if (loadData != null) {
@@ -747,5 +783,172 @@ abstract class LoadData implements ArtistState {
   List<ArtistEntity> get artists;
   @JsonKey(ignore: true)
   _$$LoadDataCopyWith<_$LoadData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadArtistCopyWith<$Res> {
+  factory _$$LoadArtistCopyWith(
+          _$LoadArtist value, $Res Function(_$LoadArtist) then) =
+      __$$LoadArtistCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ArtistEntity artist});
+
+  $ArtistEntityCopyWith<$Res> get artist;
+}
+
+/// @nodoc
+class __$$LoadArtistCopyWithImpl<$Res>
+    extends _$ArtistStateCopyWithImpl<$Res, _$LoadArtist>
+    implements _$$LoadArtistCopyWith<$Res> {
+  __$$LoadArtistCopyWithImpl(
+      _$LoadArtist _value, $Res Function(_$LoadArtist) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? artist = null,
+  }) {
+    return _then(_$LoadArtist(
+      null == artist
+          ? _value.artist
+          : artist // ignore: cast_nullable_to_non_nullable
+              as ArtistEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ArtistEntityCopyWith<$Res> get artist {
+    return $ArtistEntityCopyWith<$Res>(_value.artist, (value) {
+      return _then(_value.copyWith(artist: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadArtist implements LoadArtist {
+  const _$LoadArtist(this.artist);
+
+  @override
+  final ArtistEntity artist;
+
+  @override
+  String toString() {
+    return 'ArtistState.loadArtist(artist: $artist)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadArtist &&
+            (identical(other.artist, artist) || other.artist == artist));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, artist);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadArtistCopyWith<_$LoadArtist> get copyWith =>
+      __$$LoadArtistCopyWithImpl<_$LoadArtist>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function(List<ArtistEntity> artists) loadData,
+    required TResult Function(ArtistEntity artist) loadArtist,
+  }) {
+    return loadArtist(artist);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function(List<ArtistEntity> artists)? loadData,
+    TResult? Function(ArtistEntity artist)? loadArtist,
+  }) {
+    return loadArtist?.call(artist);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function(List<ArtistEntity> artists)? loadData,
+    TResult Function(ArtistEntity artist)? loadArtist,
+    required TResult orElse(),
+  }) {
+    if (loadArtist != null) {
+      return loadArtist(artist);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadArtist value) loadArtist,
+  }) {
+    return loadArtist(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadArtist value)? loadArtist,
+  }) {
+    return loadArtist?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
+    TResult Function(LoadArtist value)? loadArtist,
+    required TResult orElse(),
+  }) {
+    if (loadArtist != null) {
+      return loadArtist(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadArtist implements ArtistState {
+  const factory LoadArtist(final ArtistEntity artist) = _$LoadArtist;
+
+  ArtistEntity get artist;
+  @JsonKey(ignore: true)
+  _$$LoadArtistCopyWith<_$LoadArtist> get copyWith =>
       throw _privateConstructorUsedError;
 }

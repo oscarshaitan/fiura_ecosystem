@@ -73,4 +73,22 @@ class ArtistRepositoryImp extends ArtistRepository {
 
     return artistList;
   }
+
+  @override
+  Future<ArtistEntity> getArtist(String id) async {
+    late ArtistEntity artist;
+    final User? user = auth.currentUser;
+    final CollectionReference collectionRef;
+    final DocumentSnapshot documentSnapshot;
+
+    if (user != null) {
+      collectionRef = db.collection(artists);
+      documentSnapshot = await collectionRef.doc(id).get();
+
+      artist = ArtistEntity.fromJson(
+          documentSnapshot.data() as Map<String, dynamic>);
+    }
+
+    return artist;
+  }
 }

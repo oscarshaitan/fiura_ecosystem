@@ -10,4 +10,5 @@ abstract class ArtistState with _$ArtistState {
   const factory ArtistState.error(String message) = Error;
   const factory ArtistState.success() = Success;
   const factory ArtistState.loadData(List<ArtistEntity> artists) = LoadData;
+  const factory ArtistState.loadArtist(ArtistEntity artist) = LoadArtist;
 }
