@@ -23,9 +23,8 @@ class JudgeRepositoryImp extends JudgeRepository {
     final User? user = auth.currentUser;
     final imageRef = storageRef.child(judge.urlPhoto);
     late DocumentReference docRef;
-    late TaskSnapshot taskSnapshot;
     late bool status;
-    final ImageRepository _imageRepository = ImageRepository();
+    final ImageRepository imageRepository = ImageRepository();
 
     if (user != null) {
       docRef = await db.collection(judges).add({
@@ -38,8 +37,7 @@ class JudgeRepositoryImp extends JudgeRepository {
       final DocumentSnapshot result = await docRef.get();
 
       //Upload image to firebase storage
-      final String? urlPhoto =
-          await _imageRepository.saveImage(image, imageRef);
+      final String? urlPhoto = await imageRepository.saveImage(image, imageRef);
 
       if (result.data() != null && urlPhoto != null) {
         var id = result.id;

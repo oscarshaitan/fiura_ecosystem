@@ -29,7 +29,8 @@ class Theming {
       backgroundColor: getMaterialColor(const Color(0xFF1D1D1D)),
     ),
     textTheme: const TextTheme(
-      titleLarge: TextStyle(color: Colors.white),
+      titleLarge: TextStyle(
+          color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w900),
       titleMedium: TextStyle(color: Colors.white),
       titleSmall: TextStyle(
         color: Color(0xFFFFFFFD),
@@ -43,8 +44,8 @@ class Theming {
         fontWeight: FontWeight.normal,
       ),
       headlineSmall: TextStyle(color: Colors.white),
-      bodyLarge: TextStyle(color: Colors.white),
-      bodyMedium: TextStyle(color: Colors.white),
+      bodyLarge: TextStyle(color: Colors.white, fontSize: 20.0),
+      bodyMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.normal),
       bodySmall: TextStyle(color: Colors.white),
       labelSmall: TextStyle(
         color: Color(0xFFFFFFFD),

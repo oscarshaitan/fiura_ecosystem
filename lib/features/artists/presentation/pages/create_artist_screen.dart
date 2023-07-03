@@ -1,8 +1,13 @@
+import 'dart:io';
+
 import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
+import '../../../widgets/card_image_selector.dart';
+import '../../../widgets/danger_text.dart';
 import '../cubit/artist_state.dart';
 
 class CreateArtistScreen extends StatefulWidget {
@@ -13,6 +18,11 @@ class CreateArtistScreen extends StatefulWidget {
 }
 
 class _CreateArtistScreenState extends State<CreateArtistScreen> {
+  // Image Picker
+  final ImagePicker picker = ImagePicker();
+  File? image;
+  bool showErrorMessage = false;
+  bool isImageSelected = false;
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
@@ -59,6 +69,29 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                         horizontal: 30.0, vertical: 20.0),
                     child: Column(
                       children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CardImageSelector(
+                              label: "Selecciona una imagen*",
+                              imageFile: image,
+                              height: 250.0,
+                              width: 350.0,
+                              onTap: imagePicker,
+                              borderColor: showErrorMessage
+                                  ? Colors.red
+                                  : Theme.of(context)
+                                      .inputDecorationTheme
+                                      .enabledBorder!
+                                      .borderSide
+                                      .color,
+                            ),
+                            if (showErrorMessage)
+                              const DangerText(
+                                  text:
+                                      "Debes seleccionar una imagen de tu galería"),
+                          ],
+                        ),
                         const SizedBox(
                           height: 30.0,
                         ),
@@ -125,15 +158,7 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                         ),
                         ElevatedButton(
                             onPressed: () {
-                              _onPressed(
-                                _formKey,
-                                context,
-                                controllerArtistName,
-                                controllerArtistAbout,
-                                controllerArtistFacebook,
-                                controllerArtistTwitter,
-                                controllerArtistInstagram,
-                              );
+                              _onPressed(_formKey, context);
                             },
                             child: const Text("Crear artista"))
                       ],
@@ -143,36 +168,51 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
           }),
         ));
   }
-}
 
-void _onPressed(
-  GlobalKey<FormState> formKey,
-  BuildContext context,
-  TextEditingController controllerArtistName,
-  TextEditingController controllerArtistAbout,
-  TextEditingController controllerArtistFacebook,
-  TextEditingController controllerArtistTwitter,
-  TextEditingController controllerArtistInstagram,
-) {
-  if (formKey.currentState!.validate()) {
-    //Set the value to Artist entity
+  void imagePicker() {
+    picker.pickImage(source: ImageSource.gallery).then((pickedImage) {
+      setState(() {
+        image = File(pickedImage!.path);
+        isImageSelected = true;
+        showErrorMessage = false;
+      });
+    });
+  }
 
-    final String name = controllerArtistName.text;
-    final String about = controllerArtistAbout.text;
-    final String facebook = controllerArtistFacebook.text;
-    final String twitter = controllerArtistTwitter.text;
-    final String instagram = controllerArtistInstagram.text;
-    final List<String> socialNetwork = [facebook, twitter, instagram];
+  void _onPressed(
+    GlobalKey<FormState> formKey,
+    BuildContext context,
+  ) {
+    if (formKey.currentState!.validate() && isImageSelected) {
+      //Set the value to Artist entity
 
-    //Clear the Text fields
+      final String name = controllerArtistName.text;
+      final String about = controllerArtistAbout.text;
+      final String facebook = controllerArtistFacebook.text;
+      final String twitter = controllerArtistTwitter.text;
+      final String instagram = controllerArtistInstagram.text;
+      final List<String> socialNetwork = [facebook, twitter, instagram];
+      final File? imageSelected = image;
 
-    controllerArtistName.clear();
-    controllerArtistAbout.clear();
-    controllerArtistFacebook.clear();
-    controllerArtistTwitter.clear();
-    controllerArtistInstagram.clear();
+      //Clear the Text fields
 
-    //Use the function to add the Artist
-    context.read<ArtistCubit>().addArtist(name, about, socialNetwork);
+      controllerArtistName.clear();
+      controllerArtistAbout.clear();
+      controllerArtistFacebook.clear();
+      controllerArtistTwitter.clear();
+      controllerArtistInstagram.clear();
+      setState(() {
+        image = null;
+      });
+
+      //Use the function to add the Artist
+      context
+          .read<ArtistCubit>()
+          .addArtist(name, about, socialNetwork, imageSelected!);
+    } else if (!isImageSelected) {
+      setState(() {
+        showErrorMessage = true;
+      });
+    }
   }
 }
