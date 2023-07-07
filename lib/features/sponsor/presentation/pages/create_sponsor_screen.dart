@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:fiura_ecosystem/features/sponsor/presentation/cubit/sponsor_cubit.dart';
 import 'package:fiura_ecosystem/features/sponsor/presentation/cubit/sponsor_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
+import '../../../widgets/card_image_selector.dart';
+import '../../../widgets/danger_text.dart';
 
 class CreateSponsorScreen extends StatefulWidget {
   const CreateSponsorScreen({super.key});
@@ -13,6 +18,11 @@ class CreateSponsorScreen extends StatefulWidget {
 }
 
 class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
+  // Image Picker
+  final ImagePicker picker = ImagePicker();
+  File? image;
+  bool showErrorMessage = false;
+  bool isImageSelected = false;
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
@@ -59,6 +69,32 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                         horizontal: 30.0, vertical: 20.0),
                     child: Column(
                       children: [
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CardImageSelector(
+                              label: "Selecciona el logo del patrocinador*",
+                              imageFile: image,
+                              height: 250.0,
+                              width: 350.0,
+                              onTap: imagePicker,
+                              borderColor: showErrorMessage
+                                  ? Colors.red
+                                  : Theme.of(context)
+                                      .inputDecorationTheme
+                                      .enabledBorder!
+                                      .borderSide
+                                      .color,
+                            ),
+                            if (showErrorMessage)
+                              const DangerText(
+                                  text:
+                                      "Debes seleccionar una imagen de tu galería"),
+                          ],
+                        ),
                         const SizedBox(
                           height: 30.0,
                         ),
@@ -129,11 +165,6 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                               _onPressed(
                                 _formKey,
                                 context,
-                                controllerSponsorName,
-                                controllerSponsorAbout,
-                                controllerSponsorFacebook,
-                                controllerSponsorTwitter,
-                                controllerSponsorInstagram,
                               );
                             },
                             child: const Text("Crear patrocinador"))
@@ -144,36 +175,45 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
           }),
         ));
   }
-}
 
-void _onPressed(
-  GlobalKey<FormState> formKey,
-  BuildContext context,
-  TextEditingController controllerSponsorName,
-  TextEditingController controllerSponsorAbout,
-  TextEditingController controllerSponsorFacebook,
-  TextEditingController controllerSponsorTwitter,
-  TextEditingController controllerSponsorInstagram,
-) {
-  if (formKey.currentState!.validate()) {
-    //Set the value to Sponsor entity
+  void imagePicker() {
+    picker.pickImage(source: ImageSource.gallery).then((pickedImage) {
+      setState(() {
+        image = File(pickedImage!.path);
+        isImageSelected = true;
+        showErrorMessage = false;
+      });
+    });
+  }
 
-    final String name = controllerSponsorName.text;
-    final String about = controllerSponsorAbout.text;
-    final String facebook = controllerSponsorFacebook.text;
-    final String twitter = controllerSponsorTwitter.text;
-    final String instagram = controllerSponsorInstagram.text;
-    final List<String> socialNetwork = [facebook, twitter, instagram];
+  void _onPressed(
+    GlobalKey<FormState> formKey,
+    BuildContext context,
+  ) {
+    if (formKey.currentState!.validate() && isImageSelected) {
+      //Set the value to Sponsor entity
 
-    //Clear the Text fields
+      final String name = controllerSponsorName.text;
+      final String about = controllerSponsorAbout.text;
+      final String facebook = controllerSponsorFacebook.text;
+      final String twitter = controllerSponsorTwitter.text;
+      final String instagram = controllerSponsorInstagram.text;
+      final List<String> socialNetwork = [facebook, twitter, instagram];
+      final File? imageSelected = image;
 
-    controllerSponsorName.clear();
-    controllerSponsorAbout.clear();
-    controllerSponsorFacebook.clear();
-    controllerSponsorTwitter.clear();
-    controllerSponsorInstagram.clear();
+      //Clear the Text fields
 
-    //Use the function to add the Sponsor
-    context.read<SponsorCubit>().addSponsor(name, about, socialNetwork);
+      controllerSponsorName.clear();
+      controllerSponsorAbout.clear();
+      controllerSponsorFacebook.clear();
+      controllerSponsorTwitter.clear();
+      controllerSponsorInstagram.clear();
+      image = null;
+
+      //Use the function to add the Sponsor
+      context
+          .read<SponsorCubit>()
+          .addSponsor(name, about, socialNetwork, imageSelected);
+    }
   }
 }

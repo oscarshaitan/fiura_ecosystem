@@ -12,6 +12,7 @@ import 'package:fiura_ecosystem/router/router_paths.dart';
 import '../features/judge/presentation/pages/create_judge_screen.dart';
 import '../features/login/presentation/pages/login_screen.dart';
 import '../features/posts/presentation/pages/create_post_screen.dart';
+import '../features/sponsor/presentation/pages/view_sponsor_screen.dart';
 
 @AdaptiveAutoRouter(
   replaceInRouteName: 'Route',
@@ -23,6 +24,7 @@ import '../features/posts/presentation/pages/create_post_screen.dart';
       AutoRoute(page: PostsScreen, path: posts, initial: true),
       AutoRoute(page: ArtistsScreen, path: artists, children: []),
       AutoRoute(page: ViewJudgeScreen, path: viewJudges),
+      AutoRoute(page: ViewSponsorScreen, path: viewSponsors)
     ]),
     AutoRoute(page: ArtistsDetailScreen, path: artistsDetail),
     AutoRoute(page: CreateJudgeScreen, path: createJudge),

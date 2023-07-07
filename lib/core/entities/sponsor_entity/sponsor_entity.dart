@@ -9,6 +9,7 @@ class SponsorEntity with _$SponsorEntity {
     required String id,
     required String name,
     required String about,
+    required String urlPhoto,
     required List<String?> socialNetwork,
   }) = _SponsorEntity;
 

@@ -51,7 +51,7 @@ void setup() {
 
   //Sponsor
   getIt.registerFactory<SponsorRepository>(
-      () => SponsorRepositoryImp(db: db, auth: auth));
+      () => SponsorRepositoryImp(db: db, auth: auth, storageRef: storageRef));
   getIt.registerFactory<SponsorCubit>(() => SponsorCubit(getIt()));
 
   //Artist

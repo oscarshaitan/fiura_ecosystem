@@ -180,7 +180,7 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
   }
 
   void _onPressed(GlobalKey<FormState> formKey, BuildContext context) {
-    if (formKey.currentState!.validate()) {
+    if (formKey.currentState!.validate() && isImageSelected) {
       //Set the value to Judge entity
 
       final String name = controllerJudgeName.text;

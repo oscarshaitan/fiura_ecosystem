@@ -3,7 +3,6 @@ import 'package:fiura_ecosystem/features/login/presentation/cubit/login_cubit.da
 import 'package:fiura_ecosystem/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../dependencies.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -29,16 +28,14 @@ class HomeScreen extends StatelessWidget {
                 title: const Text('Home'),
                 onTap: () {
                   Navigator.of(context).pop();
-                  context.router.pushAndPopUntil(const PostsScreenRoute(),
-                      predicate: (route) => false);
+                  context.router.push(const PostsScreenRoute());
                 },
               ),
               ListTile(
                 title: const Text('Artistas'),
                 onTap: () {
                   Navigator.of(context).pop();
-                  context.router.pushAndPopUntil(const ArtistsScreenRoute(),
-                      predicate: (route) => false);
+                  context.router.push(const ArtistsScreenRoute());
                 },
               ),
               ListTile(
@@ -48,11 +45,18 @@ class HomeScreen extends StatelessWidget {
                   context.router.push(const ViewJudgeScreenRoute());
                 },
               ),
+              ListTile(
+                title: const Text('Patrocinadores'),
+                onTap: () {
+                  Navigator.of(context).pop();
+                  context.router.push(const ViewSponsorScreenRoute());
+                },
+              ),
             ],
           ),
         ),
-        body: Column(
-          children: const [
+        body: const Column(
+          children: [
             Text('Fiura'),
             Expanded(child: AutoRouter()),
           ],
