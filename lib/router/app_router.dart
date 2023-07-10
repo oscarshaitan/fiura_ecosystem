@@ -7,6 +7,7 @@ import 'package:fiura_ecosystem/features/judge/presentation/pages/view_judge_scr
 import 'package:fiura_ecosystem/features/posts/presentation/pages/posts_screen.dart';
 import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart';
 import 'package:fiura_ecosystem/features/sponsor/presentation/pages/create_sponsor_screen.dart';
+import 'package:fiura_ecosystem/features/sponsor/presentation/pages/sponsor_detail_screen.dart';
 import 'package:fiura_ecosystem/router/router_paths.dart';
 
 import '../features/judge/presentation/pages/create_judge_screen.dart';
@@ -27,6 +28,7 @@ import '../features/sponsor/presentation/pages/view_sponsor_screen.dart';
       AutoRoute(page: ViewSponsorScreen, path: viewSponsors)
     ]),
     AutoRoute(page: ArtistsDetailScreen, path: artistsDetail),
+    AutoRoute(page: SponsorDetailScreen, path: sponsorDetail),
     AutoRoute(page: CreateJudgeScreen, path: createJudge),
     AutoRoute(page: CreateSponsorScreen, path: createSponsor),
     AutoRoute(page: CreateArtistScreen, path: createArtist),

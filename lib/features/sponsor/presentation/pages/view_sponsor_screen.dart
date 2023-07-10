@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fiura_ecosystem/core/entities/sponsor_entity/sponsor_entity.dart';
 import 'package:fiura_ecosystem/features/sponsor/presentation/cubit/sponsor_state.dart';
 import 'package:fiura_ecosystem/features/widgets/tile_image_widget.dart';
+import 'package:fiura_ecosystem/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,7 +52,9 @@ class ViewSponsorScreen extends StatelessWidget {
                             return ListTile(
                               leading:
                                   TileImageWidget(urlImage: sponsor.urlPhoto),
-                              // onTap: () => context.router.push(),
+                              onTap: () => context.router.push(
+                                  SponsorDetailScreenRoute(
+                                      sponsorId: sponsor.id)),
                               trailing: const Icon(Icons.more_vert),
                               title: Text(sponsor.name),
                               subtitle: Text(

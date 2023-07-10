@@ -19,40 +19,63 @@ class ArtistsScreen extends StatelessWidget {
       child: BlocBuilder<ArtistCubit, ArtistState>(
         builder: (context, state) {
           return state.maybeWhen(
-            loading: () => const Center(child: OnLoadMessage()),
-            loadData: (artistList) => Container(
-              margin: const EdgeInsets.only(top: 20.0),
-              child: ListView.builder(
-                itemCount: artistList.length,
-                itemBuilder: (context, index) {
-                  final artist = artistList[index];
-                  return ListTile(
-                    leading: TileImageWidget(urlImage: artist.urlPhoto),
-                    onTap: () => context.router.push(
-                      ArtistsDetailScreenRoute(artistId: artist.id),
+              loading: () => const Center(child: OnLoadMessage()),
+              error: (error) => Center(
+                    child: Center(child: Text(error)),
+                  ),
+              orElse: () => const Center(
+                    child: Text(
+                        "Ups! Ocurrió un error inesperado mientras cargabamos los artistas"),
+                  ),
+              loadData: (artistList) => FutureBuilder<void>(
+                  future: Future.wait(
+                    artistList.map(
+                      (artist) => precacheImage(
+                        NetworkImage(artist.urlPhoto),
+                        context,
+                      ),
                     ),
-                    trailing: const Icon(Icons.more_vert),
-                    title: Text(artist.name),
-                    subtitle: Text(
-                      artist.about,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: const Color(0xff717171)),
-                    ),
-                  );
-                },
-              ),
-            ),
-            error: (error) => Center(
-              child: Center(child: Text(error)),
-            ),
-            orElse: () => const Center(
-              child: Text(
-                  "Ups! Ocurrió un error inesperado mientras cargabamos los artistas"),
-            ),
-          );
+                  ),
+                  builder:
+                      (BuildContext context, AsyncSnapshot<void> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      if (snapshot.hasError) {
+                        return Center(
+                          child: Text(
+                              "Ups! Ocurrió un error mientras cargabamos los artistas: ${snapshot.error}"),
+                        );
+                      } else {
+                        return Container(
+                          margin: const EdgeInsets.only(top: 20.0),
+                          child: ListView.builder(
+                            itemCount: artistList.length,
+                            itemBuilder: (context, index) {
+                              final artist = artistList[index];
+                              return ListTile(
+                                leading:
+                                    TileImageWidget(urlImage: artist.urlPhoto),
+                                onTap: () => context.router.push(
+                                  ArtistsDetailScreenRoute(artistId: artist.id),
+                                ),
+                                trailing: const Icon(Icons.more_vert),
+                                title: Text(artist.name),
+                                subtitle: Text(
+                                  artist.about,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(color: const Color(0xff717171)),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      }
+                    } else {
+                      return const Center(child: OnLoadMessage());
+                    }
+                  }));
         },
       ),
     );

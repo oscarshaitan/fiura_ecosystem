@@ -6,11 +6,13 @@ class ImageAppBarWidget extends StatelessWidget {
     required this.urlImage,
     required this.artistName,
     required this.isExpanded,
+    required this.type,
   });
 
   final String urlImage;
   final String artistName;
   final bool isExpanded;
+  final String type;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,7 @@ class ImageAppBarWidget extends StatelessWidget {
             ),
             if (isExpanded)
               Text(
-                "Artista",
+                type,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: const Color(0XFFe45343),
                     ),

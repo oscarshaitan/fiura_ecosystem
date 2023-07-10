@@ -4,6 +4,7 @@ const home = 'home';
 const posts = 'posts';
 const artists = 'artists';
 const artistsDetail = 'detail/:artistId';
+const sponsorDetail = 'detail/:sponsorId';
 const createJudge = 'create-judge';
 const createSponsor = 'create-sponsor';
 const createArtist = 'create-artist';
