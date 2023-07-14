@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fiura_ecosystem/core/entities/judge_entity/judge_entity.dart';
 import 'package:fiura_ecosystem/features/images/domain/repositories/image_repository.dart';
 import '../../domain/repositories/judge_repository.dart';
@@ -10,21 +8,19 @@ import '../../domain/repositories/judge_repository.dart';
 class JudgeRepositoryImp extends JudgeRepository {
   final FirebaseFirestore db;
   final FirebaseAuth auth;
-  final Reference storageRef;
+  final ImageRepository imageRepository;
 
   //Collections
   final String judges = "judges";
 
   JudgeRepositoryImp(
-      {required this.db, required this.auth, required this.storageRef});
+      {required this.db, required this.auth, required this.imageRepository});
 
   @override
   Future<bool> addJudge(JudgeEntity judge, File image) async {
     final User? user = auth.currentUser;
-    final imageRef = storageRef.child(judge.urlPhoto);
     late DocumentReference docRef;
     late bool status;
-    final ImageRepository imageRepository = ImageRepository();
 
     if (user != null) {
       docRef = await db.collection(judges).add({
@@ -37,7 +33,8 @@ class JudgeRepositoryImp extends JudgeRepository {
       final DocumentSnapshot result = await docRef.get();
 
       //Upload image to firebase storage
-      final String? urlPhoto = await imageRepository.saveImage(image, imageRef);
+      final String? urlPhoto =
+          await imageRepository.saveImage(image, judge.urlPhoto);
 
       if (result.data() != null && urlPhoto != null) {
         var id = result.id;

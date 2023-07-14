@@ -54,7 +54,7 @@ class ImageAppBarWidget extends StatelessWidget {
               artistName,
               style: Theme.of(context)
                   .textTheme
-                  .titleLarge!
+                  .headlineLarge!
                   .copyWith(fontSize: isExpanded ? 30.0 : 20.0),
             ),
             if (isExpanded)

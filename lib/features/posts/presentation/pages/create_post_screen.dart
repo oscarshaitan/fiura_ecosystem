@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../../../dependencies.dart';
+import '../../../images/presentation/cubit/image_cubit.dart';
+import '../../../images/presentation/cubit/image_state.dart';
 import '../../../utils/validators.dart';
 import '../cubit/post_cubit.dart';
 import '../cubit/post_state.dart';
@@ -31,11 +33,26 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Registro de nueva noticia'),
-        ),
-        body: BlocProvider(
-          create: (_) => getIt<PostCubit>(),
+      appBar: AppBar(
+        title: const Text('Registro de nueva noticia'),
+      ),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => getIt<ImageCubit>()),
+          BlocProvider(create: (_) => getIt<PostCubit>()),
+        ],
+        child: BlocListener<ImageCubit, ImageState>(
+          listener: (context, snapshot) {
+            snapshot.whenOrNull(
+              pickedImage: (result) {
+                setState(() {
+                  image = result['image'];
+                  isImageSelected = result['isImageSelected'];
+                  showErrorMessage = result['showErrorMessage'];
+                });
+              },
+            );
+          },
           child:
               BlocConsumer<PostCubit, PostState>(listener: (context, snapshot) {
             snapshot.whenOrNull(
@@ -76,7 +93,9 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                               imageFile: image,
                               height: 250.0,
                               width: 350.0,
-                              onTap: imagePicker,
+                              onTap: () {
+                                context.read<ImageCubit>().imagePicker();
+                              },
                               borderColor: showErrorMessage
                                   ? Colors.red
                                   : Theme.of(context)
@@ -128,17 +147,9 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                   )),
             );
           }),
-        ));
-  }
-
-  void imagePicker() {
-    picker.pickImage(source: ImageSource.gallery).then((pickedImage) {
-      setState(() {
-        image = File(pickedImage!.path);
-        isImageSelected = true;
-        showErrorMessage = false;
-      });
-    });
+        ),
+      ),
+    );
   }
 
   void _onPressed(GlobalKey<FormState> formKey, BuildContext context) {

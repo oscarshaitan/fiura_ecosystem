@@ -1,11 +1,11 @@
 import 'dart:io';
-
+import 'package:fiura_ecosystem/features/images/presentation/cubit/image_state.dart';
 import 'package:fiura_ecosystem/features/sponsor/presentation/cubit/sponsor_cubit.dart';
 import 'package:fiura_ecosystem/features/sponsor/presentation/cubit/sponsor_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import '../../../../dependencies.dart';
+import '../../../images/presentation/cubit/image_cubit.dart';
 import '../../../utils/validators.dart';
 import '../../../widgets/card_image_selector.dart';
 import '../../../widgets/danger_text.dart';
@@ -18,8 +18,6 @@ class CreateSponsorScreen extends StatefulWidget {
 }
 
 class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
-  // Image Picker
-  final ImagePicker picker = ImagePicker();
   File? image;
   bool showErrorMessage = false;
   bool isImageSelected = false;
@@ -35,11 +33,26 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Registro de nuevo Patrocinador'),
-        ),
-        body: BlocProvider(
-          create: (_) => getIt<SponsorCubit>(),
+      appBar: AppBar(
+        title: const Text('Registro de nuevo Patrocinador'),
+      ),
+      body: MultiBlocProvider(
+        providers: [
+          BlocProvider(create: (_) => getIt<ImageCubit>()),
+          BlocProvider(create: (_) => getIt<SponsorCubit>()),
+        ],
+        child: BlocListener<ImageCubit, ImageState>(
+          listener: (context, snapshot) {
+            snapshot.whenOrNull(
+              pickedImage: (result) {
+                setState(() {
+                  image = result['image'];
+                  isImageSelected = result['isImageSelected'];
+                  showErrorMessage = result['showErrorMessage'];
+                });
+              },
+            );
+          },
           child: BlocConsumer<SponsorCubit, SponsorState>(
               listener: (context, snapshot) {
             snapshot.whenOrNull(
@@ -80,7 +93,9 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                               imageFile: image,
                               height: 250.0,
                               width: 350.0,
-                              onTap: imagePicker,
+                              onTap: () {
+                                context.read<ImageCubit>().imagePicker();
+                              },
                               borderColor: showErrorMessage
                                   ? Colors.red
                                   : Theme.of(context)
@@ -173,17 +188,9 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                   )),
             );
           }),
-        ));
-  }
-
-  void imagePicker() {
-    picker.pickImage(source: ImageSource.gallery).then((pickedImage) {
-      setState(() {
-        image = File(pickedImage!.path);
-        isImageSelected = true;
-        showErrorMessage = false;
-      });
-    });
+        ),
+      ),
+    );
   }
 
   void _onPressed(
@@ -214,6 +221,10 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
       context
           .read<SponsorCubit>()
           .addSponsor(name, about, socialNetwork, imageSelected);
+    } else if (!isImageSelected) {
+      setState(() {
+        showErrorMessage = true;
+      });
     }
   }
 }

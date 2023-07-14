@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fiura_ecosystem/core/entities/sponsor_entity/sponsor_entity.dart';
 import '../../../images/domain/repositories/image_repository.dart';
 import '../../domain/repositories/sponsor_repository.dart';
@@ -10,21 +8,22 @@ import '../../domain/repositories/sponsor_repository.dart';
 class SponsorRepositoryImp extends SponsorRepository {
   final FirebaseFirestore db;
   final FirebaseAuth auth;
-  final Reference storageRef;
+  final ImageRepository imageRepository;
 
   //Collections
   final String sponsors = "sponsors";
 
-  SponsorRepositoryImp(
-      {required this.db, required this.auth, required this.storageRef});
+  SponsorRepositoryImp({
+    required this.db,
+    required this.auth,
+    required this.imageRepository,
+  });
 
   @override
   Future<bool> addSponsor(SponsorEntity sponsor, File image) async {
     final User? user = auth.currentUser;
-    final imageRef = storageRef.child(sponsor.urlPhoto);
     late DocumentReference docRef;
     late bool status;
-    final ImageRepository imageRepository = ImageRepository();
 
     if (user != null) {
       docRef = await db.collection(sponsors).add({
@@ -37,7 +36,8 @@ class SponsorRepositoryImp extends SponsorRepository {
       final DocumentSnapshot result = await docRef.get();
 
       //Upload image to firebase storage
-      final String? urlPhoto = await imageRepository.saveImage(image, imageRef);
+      final String? urlPhoto =
+          await imageRepository.saveImage(image, sponsor.urlPhoto);
 
       if (result.data() != null && urlPhoto != null) {
         var id = result.id;

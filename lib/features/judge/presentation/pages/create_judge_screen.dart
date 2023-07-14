@@ -1,11 +1,11 @@
 import 'dart:io';
-
+import 'package:fiura_ecosystem/features/images/presentation/cubit/image_cubit.dart';
 import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_state.dart';
 import 'package:fiura_ecosystem/features/widgets/danger_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import '../../../../dependencies.dart';
+import '../../../images/presentation/cubit/image_state.dart';
 import '../../../utils/validators.dart';
 import '../../../widgets/card_image_selector.dart';
 import '../cubit/judge_cubit.dart';
@@ -18,8 +18,6 @@ class CreateJudgeScreen extends StatefulWidget {
 }
 
 class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
-  // Image Picker
-  final ImagePicker picker = ImagePicker();
   File? image;
   bool showErrorMessage = false;
   bool isImageSelected = false;
@@ -38,145 +36,155 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
         appBar: AppBar(
           title: const Text('Registro de nuevo Juez'),
         ),
-        body: BlocProvider(
-          create: (_) => getIt<JudgeCubit>(),
-          child: BlocConsumer<JudgeCubit, JudgeState>(
-              listener: (context, snapshot) {
-            snapshot.whenOrNull(
-              loading: () => ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Añadiendo nuevo Juez...'),
+        body: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (_) => getIt<JudgeCubit>()),
+            BlocProvider(create: (_) => getIt<ImageCubit>()),
+          ],
+          child: BlocListener<ImageCubit, ImageState>(
+            listener: (context, snapshot) {
+              snapshot.whenOrNull(
+                pickedImage: (result) {
+                  setState(() {
+                    image = result['image'];
+                    isImageSelected = result['isImageSelected'];
+                    showErrorMessage = result['showErrorMessage'];
+                  });
+                },
+              );
+            },
+            child: BlocConsumer<JudgeCubit, JudgeState>(
+                listener: (context, snapshot) {
+              snapshot.whenOrNull(
+                loading: () => ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Añadiendo nuevo Juez...'),
+                  ),
                 ),
-              ),
-              success: () => ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Juez añadido correctamente'),
+                success: () => ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Juez añadido correctamente'),
+                  ),
                 ),
-              ),
-              error: (message) => ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content:
-                      Text('Error añadiendo nuevo Juez, intentalo nuevamente'),
+                error: (message) => ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text(
+                        'Error añadiendo nuevo Juez, intentalo nuevamente'),
+                  ),
                 ),
-              ),
-            );
-          }, builder: (context, snapshot) {
-            return SingleChildScrollView(
-              child: Form(
-                  key: _formKey,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 30.0, vertical: 20.0),
-                    child: Column(
-                      children: [
-                        const SizedBox(
-                          height: 30.0,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            CardImageSelector(
-                              label: "Selecciona una imagen*",
-                              imageFile: image,
-                              height: 250.0,
-                              width: 350.0,
-                              onTap: imagePicker,
-                              borderColor: showErrorMessage
-                                  ? Colors.red
-                                  : Theme.of(context)
-                                      .inputDecorationTheme
-                                      .enabledBorder!
-                                      .borderSide
-                                      .color,
-                            ),
-                            if (showErrorMessage)
-                              const DangerText(
-                                  text:
-                                      "Debes seleccionar una imagen de tu galería"),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 30.0,
-                        ),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            hintText: 'Ingresa el nombre completo del Juez',
-                            labelText: 'Nombre*',
+              );
+            }, builder: (context, snapshot) {
+              return SingleChildScrollView(
+                child: Form(
+                    key: _formKey,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30.0, vertical: 20.0),
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 30.0,
                           ),
-                          controller: controllerJudgeName,
-                          validator: (value) {
-                            return nullValidator(
-                                value, 'Este campo es obligatorio');
-                          },
-                        ),
-                        const SizedBox(
-                          height: 30.0,
-                        ),
-                        TextFormField(
-                            maxLines: 3,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              CardImageSelector(
+                                label: "Selecciona una imagen*",
+                                imageFile: image,
+                                height: 250.0,
+                                width: 350.0,
+                                onTap: () {
+                                  context.read<ImageCubit>().imagePicker();
+                                },
+                                borderColor: showErrorMessage
+                                    ? Colors.red
+                                    : Theme.of(context)
+                                        .inputDecorationTheme
+                                        .enabledBorder!
+                                        .borderSide
+                                        .color,
+                              ),
+                              if (showErrorMessage)
+                                const DangerText(
+                                    text:
+                                        "Debes seleccionar una imagen de tu galería"),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 30.0,
+                          ),
+                          TextFormField(
                             decoration: const InputDecoration(
-                              hintText: 'Ingresa el acerca de, del juez',
-                              labelText: 'Acerca de*',
+                              hintText: 'Ingresa el nombre completo del Juez',
+                              labelText: 'Nombre*',
                             ),
-                            controller: controllerJudgeAbout,
+                            controller: controllerJudgeName,
                             validator: (value) {
                               return nullValidator(
                                   value, 'Este campo es obligatorio');
-                            }),
-                        const SizedBox(
-                          height: 30.0,
-                        ),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Facebook del juez',
-                            labelText: 'Facebook',
-                          ),
-                          controller: controllerJudgeFacebook,
-                        ),
-                        const SizedBox(
-                          height: 30.0,
-                        ),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Twitter del juez',
-                            labelText: 'Twitter',
-                          ),
-                          controller: controllerJudgeTwitter,
-                        ),
-                        const SizedBox(
-                          height: 30.0,
-                        ),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Instagram del juez',
-                            labelText: 'Instagram',
-                          ),
-                          controller: controllerJudgeInstagram,
-                        ),
-                        const SizedBox(
-                          height: 30.0,
-                        ),
-                        ElevatedButton(
-                            onPressed: () {
-                              _onPressed(_formKey, context);
                             },
-                            child: const Text("Submit"))
-                      ],
-                    ),
-                  )),
-            );
-          }),
+                          ),
+                          const SizedBox(
+                            height: 30.0,
+                          ),
+                          TextFormField(
+                              maxLines: 3,
+                              decoration: const InputDecoration(
+                                hintText: 'Ingresa el acerca de, del juez',
+                                labelText: 'Acerca de*',
+                              ),
+                              controller: controllerJudgeAbout,
+                              validator: (value) {
+                                return nullValidator(
+                                    value, 'Este campo es obligatorio');
+                              }),
+                          const SizedBox(
+                            height: 30.0,
+                          ),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              hintText:
+                                  'Ingresa la cuenta de Facebook del juez',
+                              labelText: 'Facebook',
+                            ),
+                            controller: controllerJudgeFacebook,
+                          ),
+                          const SizedBox(
+                            height: 30.0,
+                          ),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              hintText: 'Ingresa la cuenta de Twitter del juez',
+                              labelText: 'Twitter',
+                            ),
+                            controller: controllerJudgeTwitter,
+                          ),
+                          const SizedBox(
+                            height: 30.0,
+                          ),
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              hintText:
+                                  'Ingresa la cuenta de Instagram del juez',
+                              labelText: 'Instagram',
+                            ),
+                            controller: controllerJudgeInstagram,
+                          ),
+                          const SizedBox(
+                            height: 30.0,
+                          ),
+                          ElevatedButton(
+                              onPressed: () {
+                                _onPressed(_formKey, context);
+                              },
+                              child: const Text("Submit"))
+                        ],
+                      ),
+                    )),
+              );
+            }),
+          ),
         ));
-  }
-
-  void imagePicker() {
-    picker.pickImage(source: ImageSource.gallery).then((pickedImage) {
-      setState(() {
-        image = File(pickedImage!.path);
-        isImageSelected = true;
-        showErrorMessage = false;
-      });
-    });
   }
 
   void _onPressed(GlobalKey<FormState> formKey, BuildContext context) {
@@ -203,6 +211,10 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
       context
           .read<JudgeCubit>()
           .addJudge(name, about, socialNetwork, imageSelected);
+    } else if (!isImageSelected) {
+      setState(() {
+        showErrorMessage = true;
+      });
     }
   }
 }
