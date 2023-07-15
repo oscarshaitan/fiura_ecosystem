@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fiura_ecosystem/features/artists/domain/repositories/artist_repository.dart';
 import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
+import 'package:fiura_ecosystem/features/home/cubit/session_cubit.dart';
+import 'package:fiura_ecosystem/features/home/repository/user_respository.dart';
 import 'package:fiura_ecosystem/features/judge/domain/repositories/judge_repository.dart';
 import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_cubit.dart';
 import 'package:fiura_ecosystem/features/login/domain/repositories/login_repository.dart';
@@ -21,46 +23,46 @@ import 'features/splash/data/local/splash_repository_imp.dart';
 import 'features/splash/presentation/cubit/splash_cubit.dart';
 import 'features/sponsor/presentation/cubit/sponsor_cubit.dart';
 
-//Cloud firestore
-final FirebaseFirestore db = FirebaseFirestore.instance;
-
-//Firabase Auth
-final GoogleSignIn googleSignIn = GoogleSignIn();
-final FirebaseAuth auth = FirebaseAuth.instance;
-
-//Firebase Storage
-final Reference storageRef = FirebaseStorage.instance.ref();
-
 final getIt = GetIt.instance;
 
 void setup() {
   //Splash
-  getIt
-      .registerFactory<SplashRepository>(() => SplashRepositoryImp(auth: auth));
+  getIt.registerFactory<SplashRepository>(() => SplashRepositoryImp(auth: getIt()));
   getIt.registerFactory<Splashcubit>(() => Splashcubit(getIt()));
 
   //Login
   getIt.registerFactory<LoginRepository>(
-      () => LoginRepository(googleSignIn: googleSignIn, auth: auth, db: db));
+      () => LoginRepository(googleSignIn: getIt(), auth: getIt(), db: getIt()));
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
 
   //Judge
   getIt.registerFactory<JudgeRepository>(
-      () => JudgeRepositoryImp(db: db, auth: auth, storageRef: storageRef));
+      () => JudgeRepositoryImp(db: getIt(), auth: getIt(), storageRef: getIt()));
   getIt.registerFactory<JudgeCubit>(() => JudgeCubit(getIt()));
 
   //Sponsor
-  getIt.registerFactory<SponsorRepository>(
-      () => SponsorRepositoryImp(db: db, auth: auth));
+  getIt.registerFactory<SponsorRepository>(() => SponsorRepositoryImp(db: getIt(), auth: getIt()));
   getIt.registerFactory<SponsorCubit>(() => SponsorCubit(getIt()));
 
   //Artist
   getIt.registerFactory<ArtistRepository>(
-      () => ArtistRepositoryImp(db: db, auth: auth, storageRef: storageRef));
+      () => ArtistRepositoryImp(db: getIt(), auth: getIt(), storageRef: getIt()));
   getIt.registerFactory<ArtistCubit>(() => ArtistCubit(getIt()));
 
   //Post
   getIt.registerFactory<PostRepository>(
-      () => PostRepositoryImp(db: db, auth: auth, storageRef: storageRef));
+      () => PostRepositoryImp(db: getIt(), auth: getIt(), storageRef: getIt()));
   getIt.registerFactory<PostCubit>(() => PostCubit(getIt()));
+
+  //User
+
+  getIt.registerFactory<UserRepository>(() => UserRepository(getIt(), getIt()));
+  getIt.registerFactory<SessionCubit>(() => SessionCubit(getIt()));
+
+  //ThirdParty
+
+  getIt.registerFactory<FirebaseFirestore>(() => FirebaseFirestore.instance);
+  getIt.registerFactory<GoogleSignIn>(() => GoogleSignIn());
+  getIt.registerFactory<FirebaseAuth>(() => FirebaseAuth.instance);
+  getIt.registerFactory<Reference>(() => FirebaseStorage.instance.ref());
 }

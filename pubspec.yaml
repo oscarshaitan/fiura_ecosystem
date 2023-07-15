@@ -14,7 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   #IMAGE PICKER
-  image_picker: ^0.8.7+3
+  image_picker: ^0.8.9
   path: ^1.8.2
 
   #NAVIGATION
@@ -29,14 +29,14 @@ dependencies:
   json_annotation: ^4.7.0
 
   #Firebase
-  firebase_core: ^2.5.0
-  firebase_auth: ^4.2.6
-  google_sign_in: ^5.4.3
-  cloud_firestore: ^4.3.1
-  firebase_storage: ^11.1.1
+  firebase_core: ^2.15.0
+  firebase_auth: ^4.7.0
+  google_sign_in: ^5.4.4
+  cloud_firestore: ^4.8.3
+  firebase_storage: ^11.2.5
 
   #Url redirect
-  url_launcher: ^6.0.4
+  url_launcher: ^6.1.12
 
 dev_dependencies:
   flutter_test:

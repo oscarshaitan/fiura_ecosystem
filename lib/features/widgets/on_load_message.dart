@@ -5,9 +5,9 @@ class OnLoadMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
+      children: [
         CircularProgressIndicator(),
         SizedBox(
           height: 20.0,

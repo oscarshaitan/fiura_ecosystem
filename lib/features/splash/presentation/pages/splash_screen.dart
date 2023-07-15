@@ -13,15 +13,13 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> opacity;
 
   @override
   void initState() {
-    controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 500))
+    controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 500))
       ..repeat(reverse: true);
     opacity = Tween(begin: 0.7, end: 1.0).animate(controller);
     super.initState();
@@ -40,9 +38,9 @@ class _SplashScreenState extends State<SplashScreen>
       child: BlocListener<Splashcubit, SplashState>(
         listener: (context, snapshot) {
           if (snapshot == const SplashState.none()) {
-            context.router.popAndPush(const LoginScreenRoute());
+            context.router.pushAndPopUntil(const LoginScreenRoute(), predicate: (route) => false);
           } else {
-            context.router.popAndPush(const HomeScreenRoute());
+            context.router.pushAndPopUntil(const HomeScreenRoute(), predicate: (route) => false);
           }
         },
         child: Scaffold(

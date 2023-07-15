@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 ThemeData buildThemeData() {
   return ThemeData(
-      textTheme: TextTheme(
-          titleSmall: const TextStyle(
+      textTheme: const TextTheme(
+          titleSmall: TextStyle(
             color: Color(0xFFFFFFFD),
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
           ),
-          headline1: const TextStyle(
+          displayLarge: TextStyle(
             color: Color(0xFFFFFFFD),
             fontSize: 16.0,
             fontWeight: FontWeight.bold,
@@ -29,8 +29,7 @@ class Theming {
       backgroundColor: getMaterialColor(const Color(0xFF1D1D1D)),
     ),
     textTheme: const TextTheme(
-      titleLarge: TextStyle(
-          color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w900),
+      titleLarge: TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w900),
       titleMedium: TextStyle(color: Colors.white),
       titleSmall: TextStyle(
         color: Color(0xFFFFFFFD),
