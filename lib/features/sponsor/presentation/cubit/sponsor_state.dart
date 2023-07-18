@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../core/entities/sponsor_entity/sponsor_entity.dart';
 part 'sponsor_state.freezed.dart';
@@ -11,4 +13,5 @@ abstract class SponsorState with _$SponsorState {
   const factory SponsorState.loadData(List<SponsorEntity> sponsorList) =
       LoadData;
   const factory SponsorState.loadSponsor(SponsorEntity sponsor) = LoadSponsor;
+  const factory SponsorState.pickedImage(File image) = PickedImage;
 }

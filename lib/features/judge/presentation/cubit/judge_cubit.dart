@@ -5,10 +5,14 @@ import 'package:fiura_ecosystem/features/judge/domain/repositories/judge_reposit
 import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../images/domain/repositories/image_repository.dart';
+
 class JudgeCubit extends Cubit<JudgeState> {
-  JudgeCubit(this._judgeRepository) : super(const Initial());
+  JudgeCubit(this._judgeRepository, this._imageRepository)
+      : super(const Initial());
 
   final JudgeRepository _judgeRepository;
+  final ImageRepository _imageRepository;
 
   void addJudge(String name, String about, List<String> socialNetwork,
       File? image) async {
@@ -39,6 +43,14 @@ class JudgeCubit extends Cubit<JudgeState> {
       emit(LoadData(result));
     } catch (e) {
       emit(Error(e.toString()));
+    }
+  }
+
+  void imagePicker() async {
+    final File? image = await _imageRepository.imagePicker();
+
+    if (image != null) {
+      emit(PickedImage(image));
     }
   }
 }

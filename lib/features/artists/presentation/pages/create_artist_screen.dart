@@ -3,8 +3,6 @@ import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../dependencies.dart';
-import '../../../images/presentation/cubit/image_cubit.dart';
-import '../../../images/presentation/cubit/image_state.dart';
 import '../../../utils/validators.dart';
 import '../../../widgets/card_image_selector.dart';
 import '../../../widgets/danger_text.dart';
@@ -21,7 +19,6 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
   // Image Picker
   File? image;
   bool showErrorMessage = false;
-  bool isImageSelected = false;
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
@@ -37,160 +34,148 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
         appBar: AppBar(
           title: const Text('Registro de nuevo Artista'),
         ),
-        body: MultiBlocProvider(
-            providers: [
-              BlocProvider(create: (_) => getIt<ArtistCubit>()),
-              BlocProvider(create: (_) => getIt<ImageCubit>()),
-            ],
-            child: BlocListener<ImageCubit, ImageState>(
+        body: BlocProvider(
+          create: (_) => getIt<ArtistCubit>(),
+          child: BlocConsumer<ArtistCubit, ArtistState>(
               listener: (context, snapshot) {
-                snapshot.whenOrNull(
-                  pickedImage: (result) {
-                    setState(() {
-                      image = result['image'];
-                      isImageSelected = result['isImageSelected'];
-                      showErrorMessage = result['showErrorMessage'];
-                    });
-                  },
-                );
-              },
-              child: BlocConsumer<ArtistCubit, ArtistState>(
-                  listener: (context, snapshot) {
-                snapshot.whenOrNull(
-                  loading: () => ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Añadiendo nuevo Artista...'),
-                    ),
-                  ),
-                  success: () => ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Artista añadido correctamente'),
-                    ),
-                  ),
-                  error: (message) =>
-                      ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text(
-                          'Error añadiendo nuevo Artista, intentalo nuevamente'),
-                    ),
-                  ),
-                );
-              }, builder: (context, snapshot) {
-                return SingleChildScrollView(
-                  child: Form(
-                      key: _formKey,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 30.0, vertical: 20.0),
-                        child: Column(
+            snapshot.whenOrNull(
+              loading: () => ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Añadiendo nuevo Artista...'),
+                ),
+              ),
+              success: () => ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Artista añadido correctamente'),
+                ),
+              ),
+              error: (message) => ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                      'Error añadiendo nuevo Artista, intentalo nuevamente'),
+                ),
+              ),
+              pickedImage: (image) => setState(() {
+                this.image = image;
+                showErrorMessage = false;
+              }),
+            );
+          }, builder: (context, snapshot) {
+            return SingleChildScrollView(
+              child: Form(
+                  key: _formKey,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0, vertical: 20.0),
+                    child: Column(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                CardImageSelector(
-                                  label: "Selecciona una imagen*",
-                                  imageFile: image,
-                                  height: 250.0,
-                                  width: 350.0,
-                                  onTap: () {
-                                    context.read<ImageCubit>().imagePicker();
-                                  },
-                                  borderColor: showErrorMessage
-                                      ? Colors.red
-                                      : Theme.of(context)
-                                          .inputDecorationTheme
-                                          .enabledBorder!
-                                          .borderSide
-                                          .color,
-                                ),
-                                if (showErrorMessage)
-                                  const DangerText(
-                                      text:
-                                          "Debes seleccionar una imagen de tu galería"),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 30.0,
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                hintText: 'Ingresa el nombre del artista',
-                                labelText: 'Nombre*',
-                              ),
-                              controller: controllerArtistName,
-                              validator: (value) {
-                                return nullValidator(
-                                    value, 'Este campo es obligatorio');
+                            CardImageSelector(
+                              label: "Selecciona una imagen*",
+                              imageFile: image,
+                              height: 250.0,
+                              width: 350.0,
+                              onTap: () {
+                                context.read<ArtistCubit>().imagePicker();
                               },
+                              borderColor: showErrorMessage
+                                  ? Colors.red
+                                  : Theme.of(context)
+                                      .inputDecorationTheme
+                                      .enabledBorder!
+                                      .borderSide
+                                      .color,
                             ),
-                            const SizedBox(
-                              height: 30.0,
-                            ),
-                            TextFormField(
-                                maxLines: 3,
-                                decoration: const InputDecoration(
-                                  hintText: 'Ingresa el acerca de, del artista',
-                                  labelText: 'Acerca de*',
-                                ),
-                                controller: controllerArtistAbout,
-                                validator: (value) {
-                                  return nullValidator(
-                                      value, 'Este campo es obligatorio');
-                                }),
-                            const SizedBox(
-                              height: 30.0,
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                hintText:
-                                    'Ingresa la cuenta de Facebook del artista',
-                                labelText: 'Facebook',
-                              ),
-                              controller: controllerArtistFacebook,
-                            ),
-                            const SizedBox(
-                              height: 30.0,
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                hintText:
-                                    'Ingresa la cuenta de Twitter del artista',
-                                labelText: 'Twitter',
-                              ),
-                              controller: controllerArtistTwitter,
-                            ),
-                            const SizedBox(
-                              height: 30.0,
-                            ),
-                            TextFormField(
-                              decoration: const InputDecoration(
-                                hintText:
-                                    'Ingresa la cuenta de Instagram del artista',
-                                labelText: 'Instagram',
-                              ),
-                              controller: controllerArtistInstagram,
-                            ),
-                            const SizedBox(
-                              height: 30.0,
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  _onPressed(_formKey, context);
-                                },
-                                child: const Text("Crear artista"))
+                            if (showErrorMessage)
+                              const DangerText(
+                                  text:
+                                      "Debes seleccionar una imagen de tu galería"),
                           ],
                         ),
-                      )),
-                );
-              }),
-            )));
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            hintText: 'Ingresa el nombre del artista',
+                            labelText: 'Nombre*',
+                          ),
+                          controller: controllerArtistName,
+                          validator: (value) {
+                            return nullValidator(
+                                value, 'Este campo es obligatorio');
+                          },
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        TextFormField(
+                            maxLines: 3,
+                            decoration: const InputDecoration(
+                              hintText: 'Ingresa el acerca de, del artista',
+                              labelText: 'Acerca de*',
+                            ),
+                            controller: controllerArtistAbout,
+                            validator: (value) {
+                              return nullValidator(
+                                  value, 'Este campo es obligatorio');
+                            }),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            hintText:
+                                'Ingresa la cuenta de Facebook del artista',
+                            labelText: 'Facebook',
+                          ),
+                          controller: controllerArtistFacebook,
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            hintText:
+                                'Ingresa la cuenta de Twitter del artista',
+                            labelText: 'Twitter',
+                          ),
+                          controller: controllerArtistTwitter,
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            hintText:
+                                'Ingresa la cuenta de Instagram del artista',
+                            labelText: 'Instagram',
+                          ),
+                          controller: controllerArtistInstagram,
+                        ),
+                        const SizedBox(
+                          height: 30.0,
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              _onPressed(_formKey, context);
+                            },
+                            child: const Text("Crear artista"))
+                      ],
+                    ),
+                  )),
+            );
+          }),
+        ));
   }
 
   void _onPressed(
     GlobalKey<FormState> formKey,
     BuildContext context,
   ) {
-    if (formKey.currentState!.validate() && isImageSelected) {
+    if (formKey.currentState!.validate() && image != null) {
       //Set the value to Artist entity
 
       final String name = controllerArtistName.text;
@@ -216,7 +201,7 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
       context
           .read<ArtistCubit>()
           .addArtist(name, about, socialNetwork, imageSelected!);
-    } else if (!isImageSelected) {
+    } else if (image == null) {
       setState(() {
         showErrorMessage = true;
       });

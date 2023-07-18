@@ -58,22 +58,22 @@ void setup() {
   //Judge
   getIt.registerFactory<JudgeRepository>(() =>
       JudgeRepositoryImp(db: db, auth: auth, imageRepository: imageRepository));
-  getIt.registerFactory<JudgeCubit>(() => JudgeCubit(getIt()));
+  getIt.registerFactory<JudgeCubit>(() => JudgeCubit(getIt(), getIt()));
 
   //Sponsor
   getIt.registerFactory<SponsorRepository>(() => SponsorRepositoryImp(
       db: db, auth: auth, imageRepository: imageRepository));
-  getIt.registerFactory<SponsorCubit>(() => SponsorCubit(getIt()));
+  getIt.registerFactory<SponsorCubit>(() => SponsorCubit(getIt(), getIt()));
 
   //Artist
   getIt.registerFactory<ArtistRepository>(() => ArtistRepositoryImp(
       db: db, auth: auth, imageRepository: imageRepository));
-  getIt.registerFactory<ArtistCubit>(() => ArtistCubit(getIt()));
+  getIt.registerFactory<ArtistCubit>(() => ArtistCubit(getIt(), getIt()));
 
   //Post
   getIt.registerFactory<PostRepository>(() =>
       PostRepositoryImp(db: db, auth: auth, imageRepository: imageRepository));
-  getIt.registerFactory<PostCubit>(() => PostCubit(getIt()));
+  getIt.registerFactory<PostCubit>(() => PostCubit(getIt(), getIt()));
 
   //ImageRepository
   getIt.registerFactory<ImageRepository>(

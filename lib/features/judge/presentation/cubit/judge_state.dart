@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/entities/judge_entity/judge_entity.dart';
@@ -10,4 +12,5 @@ abstract class JudgeState with _$JudgeState {
   const factory JudgeState.error(String message) = Error;
   const factory JudgeState.success() = Success;
   const factory JudgeState.loadData(List<JudgeEntity> judges) = LoadData;
+  const factory JudgeState.pickedImage(File image) = PickedImage;
 }
