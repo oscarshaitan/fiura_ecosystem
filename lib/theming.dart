@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 ThemeData buildThemeData() {
   return ThemeData(
-      textTheme: TextTheme(
-          titleSmall: const TextStyle(
+      textTheme: const TextTheme(
+          titleSmall: TextStyle(
             color: Color(0xFFFFFFFD),
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
           ),
-          headline1: const TextStyle(
+          displayLarge: TextStyle(
             color: Color(0xFFFFFFFD),
             fontSize: 16.0,
             fontWeight: FontWeight.bold,
