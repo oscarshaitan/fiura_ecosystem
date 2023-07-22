@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fiura_ecosystem/features/artists/domain/repositories/artist_repository.dart';
 import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
+import 'package:fiura_ecosystem/features/images/data/local/image_repository_imp.dart';
 import 'package:fiura_ecosystem/features/home/cubit/session_cubit.dart';
 import 'package:fiura_ecosystem/features/home/repository/user_respository.dart';
 import 'package:fiura_ecosystem/features/judge/domain/repositories/judge_repository.dart';
@@ -15,7 +16,10 @@ import 'package:fiura_ecosystem/features/sponsor/data/local/sponsor_repository_i
 import 'package:fiura_ecosystem/features/sponsor/domain/repositories/sponsor_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:image_picker/image_picker.dart';
 import 'features/artists/data/local/artist_repository_imp.dart';
+import 'features/images/domain/repositories/image_repository.dart';
+import 'features/images/presentation/cubit/image_cubit.dart';
 import 'features/judge/data/local/judge_repository_imp.dart';
 import 'features/posts/data/local/post_repository_imp.dart';
 import 'features/posts/presentation/cubit/post_cubit.dart';
@@ -27,7 +31,8 @@ final getIt = GetIt.instance;
 
 void setup() {
   //Splash
-  getIt.registerFactory<SplashRepository>(() => SplashRepositoryImp(auth: getIt()));
+  getIt.registerFactory<SplashRepository>(
+      () => SplashRepositoryImp(auth: getIt()));
   getIt.registerFactory<Splashcubit>(() => Splashcubit(getIt()));
 
   //Login
@@ -36,23 +41,29 @@ void setup() {
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
 
   //Judge
-  getIt.registerFactory<JudgeRepository>(
-      () => JudgeRepositoryImp(db: getIt(), auth: getIt(), storageRef: getIt()));
-  getIt.registerFactory<JudgeCubit>(() => JudgeCubit(getIt()));
+  getIt.registerFactory<JudgeRepository>(() =>
+      JudgeRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt()));
+  getIt.registerFactory<JudgeCubit>(() => JudgeCubit(getIt(), getIt()));
 
   //Sponsor
-  getIt.registerFactory<SponsorRepository>(() => SponsorRepositoryImp(db: getIt(), auth: getIt()));
-  getIt.registerFactory<SponsorCubit>(() => SponsorCubit(getIt()));
+  getIt.registerFactory<SponsorRepository>(() => SponsorRepositoryImp(
+      db: getIt(), auth: getIt(), imageRepository: getIt()));
+  getIt.registerFactory<SponsorCubit>(() => SponsorCubit(getIt(), getIt()));
 
   //Artist
-  getIt.registerFactory<ArtistRepository>(
-      () => ArtistRepositoryImp(db: getIt(), auth: getIt(), storageRef: getIt()));
-  getIt.registerFactory<ArtistCubit>(() => ArtistCubit(getIt()));
+  getIt.registerFactory<ArtistRepository>(() => ArtistRepositoryImp(
+      db: getIt(), auth: getIt(), imageRepository: getIt()));
+  getIt.registerFactory<ArtistCubit>(() => ArtistCubit(getIt(), getIt()));
 
   //Post
-  getIt.registerFactory<PostRepository>(
-      () => PostRepositoryImp(db: getIt(), auth: getIt(), storageRef: getIt()));
-  getIt.registerFactory<PostCubit>(() => PostCubit(getIt()));
+  getIt.registerFactory<PostRepository>(() =>
+      PostRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt()));
+  getIt.registerFactory<PostCubit>(() => PostCubit(getIt(), getIt()));
+
+  //ImageRepository
+  getIt.registerFactory<ImageRepository>(
+      () => ImageRepositoryImp(storageRef: getIt(), picker: getIt()));
+  getIt.registerFactory<ImageCubit>(() => ImageCubit(getIt()));
 
   //User
 
@@ -65,4 +76,5 @@ void setup() {
   getIt.registerFactory<GoogleSignIn>(() => GoogleSignIn());
   getIt.registerFactory<FirebaseAuth>(() => FirebaseAuth.instance);
   getIt.registerFactory<Reference>(() => FirebaseStorage.instance.ref());
+  getIt.registerFactory<ImagePicker>(() => ImagePicker());
 }

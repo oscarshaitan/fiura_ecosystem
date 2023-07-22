@@ -1,9 +1,7 @@
 import 'dart:io';
-
 import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
 import '../../../widgets/card_image_selector.dart';
@@ -19,10 +17,8 @@ class CreateArtistScreen extends StatefulWidget {
 
 class _CreateArtistScreenState extends State<CreateArtistScreen> {
   // Image Picker
-  final ImagePicker picker = ImagePicker();
   File? image;
   bool showErrorMessage = false;
-  bool isImageSelected = false;
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
@@ -59,6 +55,10 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                       'Error añadiendo nuevo Artista, intentalo nuevamente'),
                 ),
               ),
+              pickedImage: (image) => setState(() {
+                this.image = image;
+                showErrorMessage = false;
+              }),
             );
           }, builder: (context, snapshot) {
             return SingleChildScrollView(
@@ -77,7 +77,9 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                               imageFile: image,
                               height: 250.0,
                               width: 350.0,
-                              onTap: imagePicker,
+                              onTap: () {
+                                context.read<ArtistCubit>().imagePicker();
+                              },
                               borderColor: showErrorMessage
                                   ? Colors.red
                                   : Theme.of(context)
@@ -169,21 +171,11 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
         ));
   }
 
-  void imagePicker() {
-    picker.pickImage(source: ImageSource.gallery).then((pickedImage) {
-      setState(() {
-        image = File(pickedImage!.path);
-        isImageSelected = true;
-        showErrorMessage = false;
-      });
-    });
-  }
-
   void _onPressed(
     GlobalKey<FormState> formKey,
     BuildContext context,
   ) {
-    if (formKey.currentState!.validate() && isImageSelected) {
+    if (formKey.currentState!.validate() && image != null) {
       //Set the value to Artist entity
 
       final String name = controllerArtistName.text;
@@ -209,7 +201,7 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
       context
           .read<ArtistCubit>()
           .addArtist(name, about, socialNetwork, imageSelected!);
-    } else if (!isImageSelected) {
+    } else if (image == null) {
       setState(() {
         showErrorMessage = true;
       });

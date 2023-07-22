@@ -12,6 +12,7 @@ class PostViewWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 20.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             width: double.infinity,
@@ -21,7 +22,10 @@ class PostViewWidget extends StatelessWidget {
           Container(
               margin:
                   const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
-              child: Text(description)),
+              child: Text(
+                description,
+                textAlign: TextAlign.start,
+              )),
         ],
       ),
     );

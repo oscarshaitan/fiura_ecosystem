@@ -29,14 +29,15 @@ class Theming {
       backgroundColor: getMaterialColor(const Color(0xFF1D1D1D)),
     ),
     textTheme: const TextTheme(
-      titleLarge: TextStyle(color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w900),
+      titleLarge: TextStyle(color: Colors.white),
       titleMedium: TextStyle(color: Colors.white),
       titleSmall: TextStyle(
         color: Color(0xFFFFFFFD),
         fontSize: 27.0,
         fontWeight: FontWeight.bold,
       ),
-      headlineLarge: TextStyle(color: Colors.white),
+      headlineLarge: TextStyle(
+          color: Colors.white, fontSize: 30.0, fontWeight: FontWeight.w900),
       headlineMedium: TextStyle(
         color: Color(0xFFFFFFFD),
         fontSize: 16.0,

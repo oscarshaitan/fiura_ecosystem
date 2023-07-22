@@ -53,6 +53,7 @@ class _ArtistDetailBodyWidgetState extends State<ArtistDetailBodyWidget> {
       controller: _scrollController,
       slivers: [
         ImageAppBarWidget(
+          type: "Artista",
           urlImage: widget.artist.urlPhoto,
           artistName: widget.artist.name,
           isExpanded: _isExpanded,

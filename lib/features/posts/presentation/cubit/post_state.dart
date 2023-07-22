@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/entities/post_entity/post_entity.dart';
@@ -10,4 +12,5 @@ abstract class PostState with _$PostState {
   const factory PostState.error(String message) = Error;
   const factory PostState.success() = Success;
   const factory PostState.loadData(List<PostEntity> posts) = LoadData;
+  const factory PostState.pickedImage(File image) = PickedImage;
 }

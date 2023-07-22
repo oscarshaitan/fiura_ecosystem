@@ -1,10 +1,8 @@
 import 'dart:io';
-
 import 'package:fiura_ecosystem/features/judge/presentation/cubit/judge_state.dart';
 import 'package:fiura_ecosystem/features/widgets/danger_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
 import '../../../widgets/card_image_selector.dart';
@@ -18,11 +16,8 @@ class CreateJudgeScreen extends StatefulWidget {
 }
 
 class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
-  // Image Picker
-  final ImagePicker picker = ImagePicker();
   File? image;
   bool showErrorMessage = false;
-  bool isImageSelected = false;
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
@@ -59,6 +54,10 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                       Text('Error añadiendo nuevo Juez, intentalo nuevamente'),
                 ),
               ),
+              pickedImage: (image) => setState(() {
+                this.image = image;
+                showErrorMessage = false;
+              }),
             );
           }, builder: (context, snapshot) {
             return SingleChildScrollView(
@@ -80,7 +79,9 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                               imageFile: image,
                               height: 250.0,
                               width: 350.0,
-                              onTap: imagePicker,
+                              onTap: () {
+                                context.read<JudgeCubit>().imagePicker();
+                              },
                               borderColor: showErrorMessage
                                   ? Colors.red
                                   : Theme.of(context)
@@ -169,18 +170,8 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
         ));
   }
 
-  void imagePicker() {
-    picker.pickImage(source: ImageSource.gallery).then((pickedImage) {
-      setState(() {
-        image = File(pickedImage!.path);
-        isImageSelected = true;
-        showErrorMessage = false;
-      });
-    });
-  }
-
   void _onPressed(GlobalKey<FormState> formKey, BuildContext context) {
-    if (formKey.currentState!.validate()) {
+    if (formKey.currentState!.validate() && image != null) {
       //Set the value to Judge entity
 
       final String name = controllerJudgeName.text;
@@ -203,6 +194,10 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
       context
           .read<JudgeCubit>()
           .addJudge(name, about, socialNetwork, imageSelected);
+    } else if (image == null) {
+      setState(() {
+        showErrorMessage = true;
+      });
     }
   }
 }

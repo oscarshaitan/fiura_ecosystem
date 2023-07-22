@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'post_state.dart';
+part of 'image_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,15 +15,13 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$PostState {
+mixin _$ImageState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function() success,
-    required TResult Function(List<PostEntity> posts) loadData,
-    required TResult Function(File image) pickedImage,
+    required TResult Function(Map<String, dynamic> result) pickedImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,9 +29,7 @@ mixin _$PostState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function()? success,
-    TResult? Function(List<PostEntity> posts)? loadData,
-    TResult? Function(File image)? pickedImage,
+    TResult? Function(Map<String, dynamic> result)? pickedImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,9 +37,7 @@ mixin _$PostState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function()? success,
-    TResult Function(List<PostEntity> posts)? loadData,
-    TResult Function(File image)? pickedImage,
+    TResult Function(Map<String, dynamic> result)? pickedImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,8 +46,6 @@ mixin _$PostState {
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
     required TResult Function(PickedImage value) pickedImage,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,8 +54,6 @@ mixin _$PostState {
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
     TResult? Function(PickedImage value)? pickedImage,
   }) =>
       throw _privateConstructorUsedError;
@@ -72,8 +62,6 @@ mixin _$PostState {
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
     TResult Function(PickedImage value)? pickedImage,
     required TResult orElse(),
   }) =>
@@ -81,15 +69,16 @@ mixin _$PostState {
 }
 
 /// @nodoc
-abstract class $PostStateCopyWith<$Res> {
-  factory $PostStateCopyWith(PostState value, $Res Function(PostState) then) =
-      _$PostStateCopyWithImpl<$Res, PostState>;
+abstract class $ImageStateCopyWith<$Res> {
+  factory $ImageStateCopyWith(
+          ImageState value, $Res Function(ImageState) then) =
+      _$ImageStateCopyWithImpl<$Res, ImageState>;
 }
 
 /// @nodoc
-class _$PostStateCopyWithImpl<$Res, $Val extends PostState>
-    implements $PostStateCopyWith<$Res> {
-  _$PostStateCopyWithImpl(this._value, this._then);
+class _$ImageStateCopyWithImpl<$Res, $Val extends ImageState>
+    implements $ImageStateCopyWith<$Res> {
+  _$ImageStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -105,7 +94,7 @@ abstract class _$$InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialCopyWithImpl<$Res>
-    extends _$PostStateCopyWithImpl<$Res, _$Initial>
+    extends _$ImageStateCopyWithImpl<$Res, _$Initial>
     implements _$$InitialCopyWith<$Res> {
   __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
       : super(_value, _then);
@@ -118,7 +107,7 @@ class _$Initial implements Initial {
 
   @override
   String toString() {
-    return 'PostState.initial()';
+    return 'ImageState.initial()';
   }
 
   @override
@@ -136,9 +125,7 @@ class _$Initial implements Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function() success,
-    required TResult Function(List<PostEntity> posts) loadData,
-    required TResult Function(File image) pickedImage,
+    required TResult Function(Map<String, dynamic> result) pickedImage,
   }) {
     return initial();
   }
@@ -149,9 +136,7 @@ class _$Initial implements Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function()? success,
-    TResult? Function(List<PostEntity> posts)? loadData,
-    TResult? Function(File image)? pickedImage,
+    TResult? Function(Map<String, dynamic> result)? pickedImage,
   }) {
     return initial?.call();
   }
@@ -162,9 +147,7 @@ class _$Initial implements Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function()? success,
-    TResult Function(List<PostEntity> posts)? loadData,
-    TResult Function(File image)? pickedImage,
+    TResult Function(Map<String, dynamic> result)? pickedImage,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -179,8 +162,6 @@ class _$Initial implements Initial {
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
     required TResult Function(PickedImage value) pickedImage,
   }) {
     return initial(this);
@@ -192,8 +173,6 @@ class _$Initial implements Initial {
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
     TResult? Function(PickedImage value)? pickedImage,
   }) {
     return initial?.call(this);
@@ -205,8 +184,6 @@ class _$Initial implements Initial {
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
     TResult Function(PickedImage value)? pickedImage,
     required TResult orElse(),
   }) {
@@ -217,7 +194,7 @@ class _$Initial implements Initial {
   }
 }
 
-abstract class Initial implements PostState {
+abstract class Initial implements ImageState {
   const factory Initial() = _$Initial;
 }
 
@@ -229,7 +206,7 @@ abstract class _$$LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadingCopyWithImpl<$Res>
-    extends _$PostStateCopyWithImpl<$Res, _$Loading>
+    extends _$ImageStateCopyWithImpl<$Res, _$Loading>
     implements _$$LoadingCopyWith<$Res> {
   __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
       : super(_value, _then);
@@ -242,7 +219,7 @@ class _$Loading implements Loading {
 
   @override
   String toString() {
-    return 'PostState.loading()';
+    return 'ImageState.loading()';
   }
 
   @override
@@ -260,9 +237,7 @@ class _$Loading implements Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function() success,
-    required TResult Function(List<PostEntity> posts) loadData,
-    required TResult Function(File image) pickedImage,
+    required TResult Function(Map<String, dynamic> result) pickedImage,
   }) {
     return loading();
   }
@@ -273,9 +248,7 @@ class _$Loading implements Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function()? success,
-    TResult? Function(List<PostEntity> posts)? loadData,
-    TResult? Function(File image)? pickedImage,
+    TResult? Function(Map<String, dynamic> result)? pickedImage,
   }) {
     return loading?.call();
   }
@@ -286,9 +259,7 @@ class _$Loading implements Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function()? success,
-    TResult Function(List<PostEntity> posts)? loadData,
-    TResult Function(File image)? pickedImage,
+    TResult Function(Map<String, dynamic> result)? pickedImage,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -303,8 +274,6 @@ class _$Loading implements Loading {
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
     required TResult Function(PickedImage value) pickedImage,
   }) {
     return loading(this);
@@ -316,8 +285,6 @@ class _$Loading implements Loading {
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
     TResult? Function(PickedImage value)? pickedImage,
   }) {
     return loading?.call(this);
@@ -329,8 +296,6 @@ class _$Loading implements Loading {
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
     TResult Function(PickedImage value)? pickedImage,
     required TResult orElse(),
   }) {
@@ -341,7 +306,7 @@ class _$Loading implements Loading {
   }
 }
 
-abstract class Loading implements PostState {
+abstract class Loading implements ImageState {
   const factory Loading() = _$Loading;
 }
 
@@ -354,7 +319,8 @@ abstract class _$$ErrorCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res> extends _$PostStateCopyWithImpl<$Res, _$Error>
+class __$$ErrorCopyWithImpl<$Res>
+    extends _$ImageStateCopyWithImpl<$Res, _$Error>
     implements _$$ErrorCopyWith<$Res> {
   __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
       : super(_value, _then);
@@ -383,7 +349,7 @@ class _$Error implements Error {
 
   @override
   String toString() {
-    return 'PostState.error(message: $message)';
+    return 'ImageState.error(message: $message)';
   }
 
   @override
@@ -409,9 +375,7 @@ class _$Error implements Error {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function() success,
-    required TResult Function(List<PostEntity> posts) loadData,
-    required TResult Function(File image) pickedImage,
+    required TResult Function(Map<String, dynamic> result) pickedImage,
   }) {
     return error(message);
   }
@@ -422,9 +386,7 @@ class _$Error implements Error {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function()? success,
-    TResult? Function(List<PostEntity> posts)? loadData,
-    TResult? Function(File image)? pickedImage,
+    TResult? Function(Map<String, dynamic> result)? pickedImage,
   }) {
     return error?.call(message);
   }
@@ -435,9 +397,7 @@ class _$Error implements Error {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function()? success,
-    TResult Function(List<PostEntity> posts)? loadData,
-    TResult Function(File image)? pickedImage,
+    TResult Function(Map<String, dynamic> result)? pickedImage,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -452,8 +412,6 @@ class _$Error implements Error {
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
     required TResult Function(PickedImage value) pickedImage,
   }) {
     return error(this);
@@ -465,8 +423,6 @@ class _$Error implements Error {
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
     TResult? Function(PickedImage value)? pickedImage,
   }) {
     return error?.call(this);
@@ -478,8 +434,6 @@ class _$Error implements Error {
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
     TResult Function(PickedImage value)? pickedImage,
     required TResult orElse(),
   }) {
@@ -490,7 +444,7 @@ class _$Error implements Error {
   }
 }
 
-abstract class Error implements PostState {
+abstract class Error implements ImageState {
   const factory Error(final String message) = _$Error;
 
   String get message;
@@ -499,303 +453,17 @@ abstract class Error implements PostState {
 }
 
 /// @nodoc
-abstract class _$$SuccessCopyWith<$Res> {
-  factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
-      __$$SuccessCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$SuccessCopyWithImpl<$Res>
-    extends _$PostStateCopyWithImpl<$Res, _$Success>
-    implements _$$SuccessCopyWith<$Res> {
-  __$$SuccessCopyWithImpl(_$Success _value, $Res Function(_$Success) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$Success implements Success {
-  const _$Success();
-
-  @override
-  String toString() {
-    return 'PostState.success()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Success);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function() success,
-    required TResult Function(List<PostEntity> posts) loadData,
-    required TResult Function(File image) pickedImage,
-  }) {
-    return success();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function()? success,
-    TResult? Function(List<PostEntity> posts)? loadData,
-    TResult? Function(File image)? pickedImage,
-  }) {
-    return success?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function()? success,
-    TResult Function(List<PostEntity> posts)? loadData,
-    TResult Function(File image)? pickedImage,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Error value) error,
-    required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(PickedImage value) pickedImage,
-  }) {
-    return success(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(Error value)? error,
-    TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(PickedImage value)? pickedImage,
-  }) {
-    return success?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-    TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(PickedImage value)? pickedImage,
-    required TResult orElse(),
-  }) {
-    if (success != null) {
-      return success(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Success implements PostState {
-  const factory Success() = _$Success;
-}
-
-/// @nodoc
-abstract class _$$LoadDataCopyWith<$Res> {
-  factory _$$LoadDataCopyWith(
-          _$LoadData value, $Res Function(_$LoadData) then) =
-      __$$LoadDataCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<PostEntity> posts});
-}
-
-/// @nodoc
-class __$$LoadDataCopyWithImpl<$Res>
-    extends _$PostStateCopyWithImpl<$Res, _$LoadData>
-    implements _$$LoadDataCopyWith<$Res> {
-  __$$LoadDataCopyWithImpl(_$LoadData _value, $Res Function(_$LoadData) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? posts = null,
-  }) {
-    return _then(_$LoadData(
-      null == posts
-          ? _value._posts
-          : posts // ignore: cast_nullable_to_non_nullable
-              as List<PostEntity>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$LoadData implements LoadData {
-  const _$LoadData(final List<PostEntity> posts) : _posts = posts;
-
-  final List<PostEntity> _posts;
-  @override
-  List<PostEntity> get posts {
-    if (_posts is EqualUnmodifiableListView) return _posts;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_posts);
-  }
-
-  @override
-  String toString() {
-    return 'PostState.loadData(posts: $posts)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadData &&
-            const DeepCollectionEquality().equals(other._posts, _posts));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_posts));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadDataCopyWith<_$LoadData> get copyWith =>
-      __$$LoadDataCopyWithImpl<_$LoadData>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function() success,
-    required TResult Function(List<PostEntity> posts) loadData,
-    required TResult Function(File image) pickedImage,
-  }) {
-    return loadData(posts);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function()? success,
-    TResult? Function(List<PostEntity> posts)? loadData,
-    TResult? Function(File image)? pickedImage,
-  }) {
-    return loadData?.call(posts);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function()? success,
-    TResult Function(List<PostEntity> posts)? loadData,
-    TResult Function(File image)? pickedImage,
-    required TResult orElse(),
-  }) {
-    if (loadData != null) {
-      return loadData(posts);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Error value) error,
-    required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(PickedImage value) pickedImage,
-  }) {
-    return loadData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(Error value)? error,
-    TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(PickedImage value)? pickedImage,
-  }) {
-    return loadData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-    TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(PickedImage value)? pickedImage,
-    required TResult orElse(),
-  }) {
-    if (loadData != null) {
-      return loadData(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoadData implements PostState {
-  const factory LoadData(final List<PostEntity> posts) = _$LoadData;
-
-  List<PostEntity> get posts;
-  @JsonKey(ignore: true)
-  _$$LoadDataCopyWith<_$LoadData> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 abstract class _$$PickedImageCopyWith<$Res> {
   factory _$$PickedImageCopyWith(
           _$PickedImage value, $Res Function(_$PickedImage) then) =
       __$$PickedImageCopyWithImpl<$Res>;
   @useResult
-  $Res call({File image});
+  $Res call({Map<String, dynamic> result});
 }
 
 /// @nodoc
 class __$$PickedImageCopyWithImpl<$Res>
-    extends _$PostStateCopyWithImpl<$Res, _$PickedImage>
+    extends _$ImageStateCopyWithImpl<$Res, _$PickedImage>
     implements _$$PickedImageCopyWith<$Res> {
   __$$PickedImageCopyWithImpl(
       _$PickedImage _value, $Res Function(_$PickedImage) _then)
@@ -804,13 +472,13 @@ class __$$PickedImageCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? image = null,
+    Object? result = null,
   }) {
     return _then(_$PickedImage(
-      null == image
-          ? _value.image
-          : image // ignore: cast_nullable_to_non_nullable
-              as File,
+      null == result
+          ? _value._result
+          : result // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -818,14 +486,19 @@ class __$$PickedImageCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PickedImage implements PickedImage {
-  const _$PickedImage(this.image);
+  const _$PickedImage(final Map<String, dynamic> result) : _result = result;
 
+  final Map<String, dynamic> _result;
   @override
-  final File image;
+  Map<String, dynamic> get result {
+    if (_result is EqualUnmodifiableMapView) return _result;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_result);
+  }
 
   @override
   String toString() {
-    return 'PostState.pickedImage(image: $image)';
+    return 'ImageState.pickedImage(result: $result)';
   }
 
   @override
@@ -833,11 +506,12 @@ class _$PickedImage implements PickedImage {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PickedImage &&
-            (identical(other.image, image) || other.image == image));
+            const DeepCollectionEquality().equals(other._result, _result));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, image);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_result));
 
   @JsonKey(ignore: true)
   @override
@@ -851,11 +525,9 @@ class _$PickedImage implements PickedImage {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(String message) error,
-    required TResult Function() success,
-    required TResult Function(List<PostEntity> posts) loadData,
-    required TResult Function(File image) pickedImage,
+    required TResult Function(Map<String, dynamic> result) pickedImage,
   }) {
-    return pickedImage(image);
+    return pickedImage(result);
   }
 
   @override
@@ -864,11 +536,9 @@ class _$PickedImage implements PickedImage {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(String message)? error,
-    TResult? Function()? success,
-    TResult? Function(List<PostEntity> posts)? loadData,
-    TResult? Function(File image)? pickedImage,
+    TResult? Function(Map<String, dynamic> result)? pickedImage,
   }) {
-    return pickedImage?.call(image);
+    return pickedImage?.call(result);
   }
 
   @override
@@ -877,13 +547,11 @@ class _$PickedImage implements PickedImage {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(String message)? error,
-    TResult Function()? success,
-    TResult Function(List<PostEntity> posts)? loadData,
-    TResult Function(File image)? pickedImage,
+    TResult Function(Map<String, dynamic> result)? pickedImage,
     required TResult orElse(),
   }) {
     if (pickedImage != null) {
-      return pickedImage(image);
+      return pickedImage(result);
     }
     return orElse();
   }
@@ -894,8 +562,6 @@ class _$PickedImage implements PickedImage {
     required TResult Function(Initial value) initial,
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
-    required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
     required TResult Function(PickedImage value) pickedImage,
   }) {
     return pickedImage(this);
@@ -907,8 +573,6 @@ class _$PickedImage implements PickedImage {
     TResult? Function(Initial value)? initial,
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
-    TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
     TResult? Function(PickedImage value)? pickedImage,
   }) {
     return pickedImage?.call(this);
@@ -920,8 +584,6 @@ class _$PickedImage implements PickedImage {
     TResult Function(Initial value)? initial,
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
-    TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
     TResult Function(PickedImage value)? pickedImage,
     required TResult orElse(),
   }) {
@@ -932,10 +594,10 @@ class _$PickedImage implements PickedImage {
   }
 }
 
-abstract class PickedImage implements PostState {
-  const factory PickedImage(final File image) = _$PickedImage;
+abstract class PickedImage implements ImageState {
+  const factory PickedImage(final Map<String, dynamic> result) = _$PickedImage;
 
-  File get image;
+  Map<String, dynamic> get result;
   @JsonKey(ignore: true)
   _$$PickedImageCopyWith<_$PickedImage> get copyWith =>
       throw _privateConstructorUsedError;

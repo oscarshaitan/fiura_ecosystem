@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:fiura_ecosystem/core/entities/artist_entity/artist_entity.dart';
 import '../../../images/domain/repositories/image_repository.dart';
 import '../../domain/repositories/artist_repository.dart';
@@ -9,21 +8,19 @@ import '../../domain/repositories/artist_repository.dart';
 class ArtistRepositoryImp extends ArtistRepository {
   final FirebaseFirestore db;
   final FirebaseAuth auth;
-  final Reference storageRef;
+  final ImageRepository imageRepository;
 
   //Collections
   final String artists = "artists";
 
   ArtistRepositoryImp(
-      {required this.db, required this.auth, required this.storageRef});
+      {required this.db, required this.auth, required this.imageRepository});
 
   @override
   Future<bool> addArtist(ArtistEntity artist, File image) async {
     final User? user = auth.currentUser;
-    final imageRef = storageRef.child(artist.urlPhoto);
     late DocumentReference docRef;
     late bool status;
-    final ImageRepository imageRepository = ImageRepository();
 
     if (user != null) {
       Map<String, dynamic> itemToAdd = artist.toJson();
@@ -34,7 +31,8 @@ class ArtistRepositoryImp extends ArtistRepository {
       final DocumentSnapshot result = await docRef.get();
 
       //Upload image to firebase storage
-      final String? urlPhoto = await imageRepository.saveImage(image, imageRef);
+      final String? urlPhoto =
+          await imageRepository.saveImage(image, artist.urlPhoto);
 
       if (result.data() != null && urlPhoto != null) {
         var id = result.id;

@@ -22,26 +22,48 @@ class ViewJudgeScreen extends StatelessWidget {
           },
           error: (message) => Text(message),
           loadData: (judges) {
-            return Container(
-              margin: const EdgeInsets.only(top: 20.0),
-              child: ListView.builder(
-                  itemCount: judges.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      leading:
-                          TileImageWidget(urlImage: judges[index].urlPhoto),
-                      title: Text(judges[index].name),
-                      subtitle: Text(
-                        judges[index].about,
-                        overflow: TextOverflow.ellipsis,
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(color: const Color(0xff717171)),
-                      ),
-                    );
-                  }),
-            );
+            return FutureBuilder<void>(
+                future: Future.wait(
+                  judges.map(
+                    (judge) => precacheImage(
+                      NetworkImage(judge.urlPhoto),
+                      context,
+                    ),
+                  ),
+                ),
+                builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text(
+                            "Ups! Ocurrió un error mientras cargabamos los jueces: ${snapshot.error}"),
+                      );
+                    } else {
+                      return Container(
+                        margin: const EdgeInsets.only(top: 20.0),
+                        child: ListView.builder(
+                            itemCount: judges.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                leading: TileImageWidget(
+                                    urlImage: judges[index].urlPhoto),
+                                title: Text(judges[index].name),
+                                subtitle: Text(
+                                  judges[index].about,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(color: const Color(0xff717171)),
+                                ),
+                              );
+                            }),
+                      );
+                    }
+                  } else {
+                    return const Center(child: OnLoadMessage());
+                  }
+                });
           },
         );
       }),
