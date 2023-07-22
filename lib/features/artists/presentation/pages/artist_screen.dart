@@ -60,7 +60,8 @@ class ArtistsScreen extends StatelessWidget {
                                       return null;
                                     }
                                   },
-                                  orElse: () => null),
+                                  orElse: () => null,
+                              ),
                               body: Container(
                                 margin: const EdgeInsets.only(top: 20.0),
                                 child: ListView.builder(
