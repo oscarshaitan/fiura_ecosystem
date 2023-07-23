@@ -23,6 +23,7 @@ mixin _$AdminState {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
+    required TResult Function() updateAdmins,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$AdminState {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
+    TResult? Function()? updateAdmins,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$AdminState {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
+    TResult Function()? updateAdmins,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +54,7 @@ mixin _$AdminState {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(UpdateAdmins value) updateAdmins,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +64,7 @@ mixin _$AdminState {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(UpdateAdmins value)? updateAdmins,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$AdminState {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(UpdateAdmins value)? updateAdmins,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +139,7 @@ class _$Initial implements Initial {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
+    required TResult Function() updateAdmins,
   }) {
     return initial();
   }
@@ -145,6 +152,7 @@ class _$Initial implements Initial {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
+    TResult? Function()? updateAdmins,
   }) {
     return initial?.call();
   }
@@ -157,6 +165,7 @@ class _$Initial implements Initial {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
+    TResult Function()? updateAdmins,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -173,6 +182,7 @@ class _$Initial implements Initial {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(UpdateAdmins value) updateAdmins,
   }) {
     return initial(this);
   }
@@ -185,6 +195,7 @@ class _$Initial implements Initial {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(UpdateAdmins value)? updateAdmins,
   }) {
     return initial?.call(this);
   }
@@ -197,6 +208,7 @@ class _$Initial implements Initial {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(UpdateAdmins value)? updateAdmins,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -251,6 +263,7 @@ class _$Loading implements Loading {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
+    required TResult Function() updateAdmins,
   }) {
     return loading();
   }
@@ -263,6 +276,7 @@ class _$Loading implements Loading {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
+    TResult? Function()? updateAdmins,
   }) {
     return loading?.call();
   }
@@ -275,6 +289,7 @@ class _$Loading implements Loading {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
+    TResult Function()? updateAdmins,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -291,6 +306,7 @@ class _$Loading implements Loading {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(UpdateAdmins value) updateAdmins,
   }) {
     return loading(this);
   }
@@ -303,6 +319,7 @@ class _$Loading implements Loading {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(UpdateAdmins value)? updateAdmins,
   }) {
     return loading?.call(this);
   }
@@ -315,6 +332,7 @@ class _$Loading implements Loading {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(UpdateAdmins value)? updateAdmins,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -395,6 +413,7 @@ class _$Error implements Error {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
+    required TResult Function() updateAdmins,
   }) {
     return error(message);
   }
@@ -407,6 +426,7 @@ class _$Error implements Error {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
+    TResult? Function()? updateAdmins,
   }) {
     return error?.call(message);
   }
@@ -419,6 +439,7 @@ class _$Error implements Error {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
+    TResult Function()? updateAdmins,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -435,6 +456,7 @@ class _$Error implements Error {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(UpdateAdmins value) updateAdmins,
   }) {
     return error(this);
   }
@@ -447,6 +469,7 @@ class _$Error implements Error {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(UpdateAdmins value)? updateAdmins,
   }) {
     return error?.call(this);
   }
@@ -459,6 +482,7 @@ class _$Error implements Error {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(UpdateAdmins value)? updateAdmins,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -517,6 +541,7 @@ class _$Success implements Success {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
+    required TResult Function() updateAdmins,
   }) {
     return success();
   }
@@ -529,6 +554,7 @@ class _$Success implements Success {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
+    TResult? Function()? updateAdmins,
   }) {
     return success?.call();
   }
@@ -541,6 +567,7 @@ class _$Success implements Success {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
+    TResult Function()? updateAdmins,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -557,6 +584,7 @@ class _$Success implements Success {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(UpdateAdmins value) updateAdmins,
   }) {
     return success(this);
   }
@@ -569,6 +597,7 @@ class _$Success implements Success {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(UpdateAdmins value)? updateAdmins,
   }) {
     return success?.call(this);
   }
@@ -581,6 +610,7 @@ class _$Success implements Success {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(UpdateAdmins value)? updateAdmins,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -668,6 +698,7 @@ class _$LoadData implements LoadData {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
+    required TResult Function() updateAdmins,
   }) {
     return loadData(artists);
   }
@@ -680,6 +711,7 @@ class _$LoadData implements LoadData {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
+    TResult? Function()? updateAdmins,
   }) {
     return loadData?.call(artists);
   }
@@ -692,6 +724,7 @@ class _$LoadData implements LoadData {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
+    TResult Function()? updateAdmins,
     required TResult orElse(),
   }) {
     if (loadData != null) {
@@ -708,6 +741,7 @@ class _$LoadData implements LoadData {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(UpdateAdmins value) updateAdmins,
   }) {
     return loadData(this);
   }
@@ -720,6 +754,7 @@ class _$LoadData implements LoadData {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(UpdateAdmins value)? updateAdmins,
   }) {
     return loadData?.call(this);
   }
@@ -732,6 +767,7 @@ class _$LoadData implements LoadData {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(UpdateAdmins value)? updateAdmins,
     required TResult orElse(),
   }) {
     if (loadData != null) {
@@ -748,4 +784,130 @@ abstract class LoadData implements AdminState {
   @JsonKey(ignore: true)
   _$$LoadDataCopyWith<_$LoadData> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateAdminsCopyWith<$Res> {
+  factory _$$UpdateAdminsCopyWith(
+          _$UpdateAdmins value, $Res Function(_$UpdateAdmins) then) =
+      __$$UpdateAdminsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$UpdateAdminsCopyWithImpl<$Res>
+    extends _$AdminStateCopyWithImpl<$Res, _$UpdateAdmins>
+    implements _$$UpdateAdminsCopyWith<$Res> {
+  __$$UpdateAdminsCopyWithImpl(
+      _$UpdateAdmins _value, $Res Function(_$UpdateAdmins) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$UpdateAdmins implements UpdateAdmins {
+  const _$UpdateAdmins();
+
+  @override
+  String toString() {
+    return 'AdminState.updateAdmins()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$UpdateAdmins);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function(List<UserEntity> artists) loadData,
+    required TResult Function() updateAdmins,
+  }) {
+    return updateAdmins();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function(List<UserEntity> artists)? loadData,
+    TResult? Function()? updateAdmins,
+  }) {
+    return updateAdmins?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function(List<UserEntity> artists)? loadData,
+    TResult Function()? updateAdmins,
+    required TResult orElse(),
+  }) {
+    if (updateAdmins != null) {
+      return updateAdmins();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
+    required TResult Function(UpdateAdmins value) updateAdmins,
+  }) {
+    return updateAdmins(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
+    TResult? Function(UpdateAdmins value)? updateAdmins,
+  }) {
+    return updateAdmins?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
+    TResult Function(UpdateAdmins value)? updateAdmins,
+    required TResult orElse(),
+  }) {
+    if (updateAdmins != null) {
+      return updateAdmins(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateAdmins implements AdminState {
+  const factory UpdateAdmins() = _$UpdateAdmins;
 }

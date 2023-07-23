@@ -70,7 +70,8 @@ class AdminRepositoryImp extends AdminRepository {
       querySnapshot = await collectionRef.get();
 
       for (QueryDocumentSnapshot doc in querySnapshot.docs) {
-        if (doc["admin"] == true) {
+        //If the user is admin and is not the current user save it to the list
+        if (doc["admin"] == true && doc["uid"] != user.uid) {
           userList.add(UserEntity.fromJson(doc.data() as Map<String, dynamic>));
         }
       }

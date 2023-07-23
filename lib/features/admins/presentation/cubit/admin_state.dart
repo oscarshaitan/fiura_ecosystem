@@ -9,4 +9,5 @@ abstract class AdminState with _$AdminState {
   const factory AdminState.error(String message) = Error;
   const factory AdminState.success() = Success;
   const factory AdminState.loadData(List<UserEntity> artists) = LoadData;
+  const factory AdminState.updateAdmins() = UpdateAdmins;
 }
