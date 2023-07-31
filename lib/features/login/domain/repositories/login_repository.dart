@@ -40,6 +40,7 @@ class LoginRepository {
             "photo": user.user!.photoURL,
             "uid": user.user!.uid,
             "lastLogin": DateTime.now(),
+            "admin": false,
           });
         }
       });

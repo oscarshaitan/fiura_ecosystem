@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fiura_ecosystem/dependencies.dart';
 import 'package:fiura_ecosystem/features/admins/presentation/cubit/admin_cubit.dart';
 import 'package:fiura_ecosystem/features/admins/presentation/cubit/admin_state.dart';
@@ -5,6 +6,7 @@ import 'package:fiura_ecosystem/features/widgets/empty_list_widget.dart';
 import 'package:fiura_ecosystem/features/widgets/on_load_message.dart';
 import 'package:fiura_ecosystem/features/admins/presentation/widgets/remove_admin_modal.dart';
 import 'package:fiura_ecosystem/features/widgets/tile_image_widget.dart';
+import 'package:fiura_ecosystem/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,7 +27,7 @@ class AdminScreen extends StatelessWidget {
             loadData: (adminList) => Scaffold(
               floatingActionButton: FloatingActionButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/add_admin');
+                  context.router.push(const CreateAdminScreenRoute());
                 },
                 child: const Icon(Icons.add),
               ),

@@ -36,4 +36,14 @@ class AdminCubit extends Cubit<AdminState> {
       emit(Error(e.toString()));
     }
   }
+
+  void searchUser(String email) async {
+    emit(const Loading());
+    try {
+      final result = await _adminRepository.searchUser(email);
+      emit(UsersFound(result));
+    } catch (e) {
+      emit(Error(e.toString()));
+    }
+  }
 }

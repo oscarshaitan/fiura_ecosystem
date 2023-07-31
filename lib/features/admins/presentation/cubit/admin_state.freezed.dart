@@ -24,6 +24,7 @@ mixin _$AdminState {
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
     required TResult Function() updateAdmins,
+    required TResult Function(List<UserEntity> user) usersFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$AdminState {
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
     TResult? Function()? updateAdmins,
+    TResult? Function(List<UserEntity> user)? usersFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$AdminState {
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
     TResult Function()? updateAdmins,
+    TResult Function(List<UserEntity> user)? usersFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$AdminState {
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
     required TResult Function(UpdateAdmins value) updateAdmins,
+    required TResult Function(UsersFound value) usersFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$AdminState {
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
     TResult? Function(UpdateAdmins value)? updateAdmins,
+    TResult? Function(UsersFound value)? usersFound,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$AdminState {
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
     TResult Function(UpdateAdmins value)? updateAdmins,
+    TResult Function(UsersFound value)? usersFound,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,6 +146,7 @@ class _$Initial implements Initial {
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
     required TResult Function() updateAdmins,
+    required TResult Function(List<UserEntity> user) usersFound,
   }) {
     return initial();
   }
@@ -153,6 +160,7 @@ class _$Initial implements Initial {
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
     TResult? Function()? updateAdmins,
+    TResult? Function(List<UserEntity> user)? usersFound,
   }) {
     return initial?.call();
   }
@@ -166,6 +174,7 @@ class _$Initial implements Initial {
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
     TResult Function()? updateAdmins,
+    TResult Function(List<UserEntity> user)? usersFound,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -183,6 +192,7 @@ class _$Initial implements Initial {
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
     required TResult Function(UpdateAdmins value) updateAdmins,
+    required TResult Function(UsersFound value) usersFound,
   }) {
     return initial(this);
   }
@@ -196,6 +206,7 @@ class _$Initial implements Initial {
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
     TResult? Function(UpdateAdmins value)? updateAdmins,
+    TResult? Function(UsersFound value)? usersFound,
   }) {
     return initial?.call(this);
   }
@@ -209,6 +220,7 @@ class _$Initial implements Initial {
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
     TResult Function(UpdateAdmins value)? updateAdmins,
+    TResult Function(UsersFound value)? usersFound,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -264,6 +276,7 @@ class _$Loading implements Loading {
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
     required TResult Function() updateAdmins,
+    required TResult Function(List<UserEntity> user) usersFound,
   }) {
     return loading();
   }
@@ -277,6 +290,7 @@ class _$Loading implements Loading {
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
     TResult? Function()? updateAdmins,
+    TResult? Function(List<UserEntity> user)? usersFound,
   }) {
     return loading?.call();
   }
@@ -290,6 +304,7 @@ class _$Loading implements Loading {
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
     TResult Function()? updateAdmins,
+    TResult Function(List<UserEntity> user)? usersFound,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -307,6 +322,7 @@ class _$Loading implements Loading {
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
     required TResult Function(UpdateAdmins value) updateAdmins,
+    required TResult Function(UsersFound value) usersFound,
   }) {
     return loading(this);
   }
@@ -320,6 +336,7 @@ class _$Loading implements Loading {
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
     TResult? Function(UpdateAdmins value)? updateAdmins,
+    TResult? Function(UsersFound value)? usersFound,
   }) {
     return loading?.call(this);
   }
@@ -333,6 +350,7 @@ class _$Loading implements Loading {
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
     TResult Function(UpdateAdmins value)? updateAdmins,
+    TResult Function(UsersFound value)? usersFound,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -414,6 +432,7 @@ class _$Error implements Error {
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
     required TResult Function() updateAdmins,
+    required TResult Function(List<UserEntity> user) usersFound,
   }) {
     return error(message);
   }
@@ -427,6 +446,7 @@ class _$Error implements Error {
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
     TResult? Function()? updateAdmins,
+    TResult? Function(List<UserEntity> user)? usersFound,
   }) {
     return error?.call(message);
   }
@@ -440,6 +460,7 @@ class _$Error implements Error {
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
     TResult Function()? updateAdmins,
+    TResult Function(List<UserEntity> user)? usersFound,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -457,6 +478,7 @@ class _$Error implements Error {
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
     required TResult Function(UpdateAdmins value) updateAdmins,
+    required TResult Function(UsersFound value) usersFound,
   }) {
     return error(this);
   }
@@ -470,6 +492,7 @@ class _$Error implements Error {
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
     TResult? Function(UpdateAdmins value)? updateAdmins,
+    TResult? Function(UsersFound value)? usersFound,
   }) {
     return error?.call(this);
   }
@@ -483,6 +506,7 @@ class _$Error implements Error {
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
     TResult Function(UpdateAdmins value)? updateAdmins,
+    TResult Function(UsersFound value)? usersFound,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -542,6 +566,7 @@ class _$Success implements Success {
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
     required TResult Function() updateAdmins,
+    required TResult Function(List<UserEntity> user) usersFound,
   }) {
     return success();
   }
@@ -555,6 +580,7 @@ class _$Success implements Success {
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
     TResult? Function()? updateAdmins,
+    TResult? Function(List<UserEntity> user)? usersFound,
   }) {
     return success?.call();
   }
@@ -568,6 +594,7 @@ class _$Success implements Success {
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
     TResult Function()? updateAdmins,
+    TResult Function(List<UserEntity> user)? usersFound,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -585,6 +612,7 @@ class _$Success implements Success {
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
     required TResult Function(UpdateAdmins value) updateAdmins,
+    required TResult Function(UsersFound value) usersFound,
   }) {
     return success(this);
   }
@@ -598,6 +626,7 @@ class _$Success implements Success {
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
     TResult? Function(UpdateAdmins value)? updateAdmins,
+    TResult? Function(UsersFound value)? usersFound,
   }) {
     return success?.call(this);
   }
@@ -611,6 +640,7 @@ class _$Success implements Success {
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
     TResult Function(UpdateAdmins value)? updateAdmins,
+    TResult Function(UsersFound value)? usersFound,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -699,6 +729,7 @@ class _$LoadData implements LoadData {
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
     required TResult Function() updateAdmins,
+    required TResult Function(List<UserEntity> user) usersFound,
   }) {
     return loadData(artists);
   }
@@ -712,6 +743,7 @@ class _$LoadData implements LoadData {
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
     TResult? Function()? updateAdmins,
+    TResult? Function(List<UserEntity> user)? usersFound,
   }) {
     return loadData?.call(artists);
   }
@@ -725,6 +757,7 @@ class _$LoadData implements LoadData {
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
     TResult Function()? updateAdmins,
+    TResult Function(List<UserEntity> user)? usersFound,
     required TResult orElse(),
   }) {
     if (loadData != null) {
@@ -742,6 +775,7 @@ class _$LoadData implements LoadData {
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
     required TResult Function(UpdateAdmins value) updateAdmins,
+    required TResult Function(UsersFound value) usersFound,
   }) {
     return loadData(this);
   }
@@ -755,6 +789,7 @@ class _$LoadData implements LoadData {
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
     TResult? Function(UpdateAdmins value)? updateAdmins,
+    TResult? Function(UsersFound value)? usersFound,
   }) {
     return loadData?.call(this);
   }
@@ -768,6 +803,7 @@ class _$LoadData implements LoadData {
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
     TResult Function(UpdateAdmins value)? updateAdmins,
+    TResult Function(UsersFound value)? usersFound,
     required TResult orElse(),
   }) {
     if (loadData != null) {
@@ -830,6 +866,7 @@ class _$UpdateAdmins implements UpdateAdmins {
     required TResult Function() success,
     required TResult Function(List<UserEntity> artists) loadData,
     required TResult Function() updateAdmins,
+    required TResult Function(List<UserEntity> user) usersFound,
   }) {
     return updateAdmins();
   }
@@ -843,6 +880,7 @@ class _$UpdateAdmins implements UpdateAdmins {
     TResult? Function()? success,
     TResult? Function(List<UserEntity> artists)? loadData,
     TResult? Function()? updateAdmins,
+    TResult? Function(List<UserEntity> user)? usersFound,
   }) {
     return updateAdmins?.call();
   }
@@ -856,6 +894,7 @@ class _$UpdateAdmins implements UpdateAdmins {
     TResult Function()? success,
     TResult Function(List<UserEntity> artists)? loadData,
     TResult Function()? updateAdmins,
+    TResult Function(List<UserEntity> user)? usersFound,
     required TResult orElse(),
   }) {
     if (updateAdmins != null) {
@@ -873,6 +912,7 @@ class _$UpdateAdmins implements UpdateAdmins {
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
     required TResult Function(UpdateAdmins value) updateAdmins,
+    required TResult Function(UsersFound value) usersFound,
   }) {
     return updateAdmins(this);
   }
@@ -886,6 +926,7 @@ class _$UpdateAdmins implements UpdateAdmins {
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
     TResult? Function(UpdateAdmins value)? updateAdmins,
+    TResult? Function(UsersFound value)? usersFound,
   }) {
     return updateAdmins?.call(this);
   }
@@ -899,6 +940,7 @@ class _$UpdateAdmins implements UpdateAdmins {
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
     TResult Function(UpdateAdmins value)? updateAdmins,
+    TResult Function(UsersFound value)? usersFound,
     required TResult orElse(),
   }) {
     if (updateAdmins != null) {
@@ -910,4 +952,173 @@ class _$UpdateAdmins implements UpdateAdmins {
 
 abstract class UpdateAdmins implements AdminState {
   const factory UpdateAdmins() = _$UpdateAdmins;
+}
+
+/// @nodoc
+abstract class _$$UsersFoundCopyWith<$Res> {
+  factory _$$UsersFoundCopyWith(
+          _$UsersFound value, $Res Function(_$UsersFound) then) =
+      __$$UsersFoundCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<UserEntity> user});
+}
+
+/// @nodoc
+class __$$UsersFoundCopyWithImpl<$Res>
+    extends _$AdminStateCopyWithImpl<$Res, _$UsersFound>
+    implements _$$UsersFoundCopyWith<$Res> {
+  __$$UsersFoundCopyWithImpl(
+      _$UsersFound _value, $Res Function(_$UsersFound) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$UsersFound(
+      null == user
+          ? _value._user
+          : user // ignore: cast_nullable_to_non_nullable
+              as List<UserEntity>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UsersFound implements UsersFound {
+  const _$UsersFound(final List<UserEntity> user) : _user = user;
+
+  final List<UserEntity> _user;
+  @override
+  List<UserEntity> get user {
+    if (_user is EqualUnmodifiableListView) return _user;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_user);
+  }
+
+  @override
+  String toString() {
+    return 'AdminState.usersFound(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UsersFound &&
+            const DeepCollectionEquality().equals(other._user, _user));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_user));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UsersFoundCopyWith<_$UsersFound> get copyWith =>
+      __$$UsersFoundCopyWithImpl<_$UsersFound>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function(List<UserEntity> artists) loadData,
+    required TResult Function() updateAdmins,
+    required TResult Function(List<UserEntity> user) usersFound,
+  }) {
+    return usersFound(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function(List<UserEntity> artists)? loadData,
+    TResult? Function()? updateAdmins,
+    TResult? Function(List<UserEntity> user)? usersFound,
+  }) {
+    return usersFound?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function(List<UserEntity> artists)? loadData,
+    TResult Function()? updateAdmins,
+    TResult Function(List<UserEntity> user)? usersFound,
+    required TResult orElse(),
+  }) {
+    if (usersFound != null) {
+      return usersFound(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
+    required TResult Function(UpdateAdmins value) updateAdmins,
+    required TResult Function(UsersFound value) usersFound,
+  }) {
+    return usersFound(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
+    TResult? Function(UpdateAdmins value)? updateAdmins,
+    TResult? Function(UsersFound value)? usersFound,
+  }) {
+    return usersFound?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
+    TResult Function(UpdateAdmins value)? updateAdmins,
+    TResult Function(UsersFound value)? usersFound,
+    required TResult orElse(),
+  }) {
+    if (usersFound != null) {
+      return usersFound(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UsersFound implements AdminState {
+  const factory UsersFound(final List<UserEntity> user) = _$UsersFound;
+
+  List<UserEntity> get user;
+  @JsonKey(ignore: true)
+  _$$UsersFoundCopyWith<_$UsersFound> get copyWith =>
+      throw _privateConstructorUsedError;
 }

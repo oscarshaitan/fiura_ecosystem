@@ -79,4 +79,26 @@ class AdminRepositoryImp extends AdminRepository {
 
     return userList;
   }
+
+  @override
+  Future<List<UserEntity>> searchUser(String email) async {
+    final User? user = auth.currentUser;
+    final CollectionReference collectionRef;
+    final QuerySnapshot querySnapshot;
+    final List<UserEntity> userList = [];
+
+    if (user != null) {
+      collectionRef = db.collection(users);
+      querySnapshot = await collectionRef
+          .where("email", isGreaterThanOrEqualTo: email)
+          .where("admin", isEqualTo: false)
+          .get();
+
+      for (QueryDocumentSnapshot doc in querySnapshot.docs) {
+        userList.add(UserEntity.fromJson(doc.data() as Map<String, dynamic>));
+      }
+    }
+
+    return userList;
+  }
 }
