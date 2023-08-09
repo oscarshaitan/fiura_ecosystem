@@ -21,38 +21,15 @@ class PostsScreen extends StatelessWidget {
                 orElse: () =>
                     const Center(child: Text("Ocurrió un error inesperado")),
                 loadData: (posts) {
-                  return FutureBuilder<void>(
-                      future: Future.wait(
-                        posts.map(
-                          (post) => precacheImage(
-                            NetworkImage(post.urlPhoto),
-                            context,
-                          ),
-                        ),
-                      ),
-                      builder:
-                          (BuildContext context, AsyncSnapshot<void> snapshot) {
-                        if (snapshot.connectionState == ConnectionState.done) {
-                          if (snapshot.hasError) {
-                            return Center(
-                              child: Text(
-                                  "Ups! Ocurrió un error mientras cargabamos las noticias: ${snapshot.error}"),
-                            );
-                          } else {
-                            return ListView.builder(
-                              itemCount: posts.length,
-                              itemBuilder: (context, index) {
-                                return PostViewWidget(
-                                  description: posts[index].description,
-                                  urlPhoto: posts[index].urlPhoto,
-                                );
-                              },
-                            );
-                          }
-                        } else {
-                          return const Center(child: OnLoadMessage());
-                        }
-                      });
+                  return ListView.builder(
+                    itemCount: posts.length,
+                    itemBuilder: (context, index) {
+                      return PostViewWidget(
+                        description: posts[index].description,
+                        urlPhoto: posts[index].urlPhoto,
+                      );
+                    },
+                  );
                 });
           },
         ));

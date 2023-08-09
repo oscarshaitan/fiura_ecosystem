@@ -75,7 +75,6 @@ class HomeScreen extends StatelessWidget {
             ),
             body: const Column(
               children: [
-                // Text('Fiura'),
                 Expanded(child: AutoRouter()),
               ],
             ),
