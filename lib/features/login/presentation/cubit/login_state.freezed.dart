@@ -21,6 +21,7 @@ mixin _$LoginState {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$LoginState {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$LoginState {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function()? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$LoginState {
     required TResult Function(Initial value) initial,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$LoginState {
     TResult? Function(Initial value)? initial,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$LoginState {
     TResult Function(Initial value)? initial,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +125,7 @@ class _$Initial implements Initial {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function() loading,
   }) {
     return initial();
   }
@@ -129,6 +136,7 @@ class _$Initial implements Initial {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function()? loading,
   }) {
     return initial?.call();
   }
@@ -139,6 +147,7 @@ class _$Initial implements Initial {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -153,6 +162,7 @@ class _$Initial implements Initial {
     required TResult Function(Initial value) initial,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
   }) {
     return initial(this);
   }
@@ -163,6 +173,7 @@ class _$Initial implements Initial {
     TResult? Function(Initial value)? initial,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
   }) {
     return initial?.call(this);
   }
@@ -173,6 +184,7 @@ class _$Initial implements Initial {
     TResult Function(Initial value)? initial,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -251,6 +263,7 @@ class _$Error implements Error {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function() loading,
   }) {
     return error(message);
   }
@@ -261,6 +274,7 @@ class _$Error implements Error {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function()? loading,
   }) {
     return error?.call(message);
   }
@@ -271,6 +285,7 @@ class _$Error implements Error {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -285,6 +300,7 @@ class _$Error implements Error {
     required TResult Function(Initial value) initial,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
   }) {
     return error(this);
   }
@@ -295,6 +311,7 @@ class _$Error implements Error {
     TResult? Function(Initial value)? initial,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
   }) {
     return error?.call(this);
   }
@@ -305,6 +322,7 @@ class _$Error implements Error {
     TResult Function(Initial value)? initial,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -361,6 +379,7 @@ class _$Success implements Success {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function() loading,
   }) {
     return success();
   }
@@ -371,6 +390,7 @@ class _$Success implements Success {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function()? loading,
   }) {
     return success?.call();
   }
@@ -381,6 +401,7 @@ class _$Success implements Success {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -395,6 +416,7 @@ class _$Success implements Success {
     required TResult Function(Initial value) initial,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
   }) {
     return success(this);
   }
@@ -405,6 +427,7 @@ class _$Success implements Success {
     TResult? Function(Initial value)? initial,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
   }) {
     return success?.call(this);
   }
@@ -415,6 +438,7 @@ class _$Success implements Success {
     TResult Function(Initial value)? initial,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -426,4 +450,116 @@ class _$Success implements Success {
 
 abstract class Success implements LoginState {
   const factory Success() = _$Success;
+}
+
+/// @nodoc
+abstract class _$$LoadingCopyWith<$Res> {
+  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
+      __$$LoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$Loading>
+    implements _$$LoadingCopyWith<$Res> {
+  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$Loading implements Loading {
+  const _$Loading();
+
+  @override
+  String toString() {
+    return 'LoginState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function() loading,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function()? loading,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function()? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Loading implements LoginState {
+  const factory Loading() = _$Loading;
 }

@@ -16,4 +16,14 @@ class LoginCubit extends Cubit<LoginState> {
       emit(const Error('Error'));
     }
   }
+
+  void logout() async {
+    emit(const Loading());
+    try {
+      await _loginRepository.logOut();
+      emit(const Success());
+    } catch (e) {
+      emit(const Error("Error al cerrar sesión"));
+    }
+  }
 }
