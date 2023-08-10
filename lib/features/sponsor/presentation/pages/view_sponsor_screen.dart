@@ -27,51 +27,25 @@ class ViewSponsorScreen extends StatelessWidget {
               loading: () => const Center(child: OnLoadMessage()),
               error: (message) => Center(child: Text(message)),
               loadData: (sponsors) {
-                return FutureBuilder<void>(
-                  future: Future.wait(
-                    sponsors.map(
-                      (sponsor) => precacheImage(
-                        NetworkImage(sponsor.urlPhoto),
-                        context,
+                return ListView.builder(
+                  itemCount: sponsors.length,
+                  itemBuilder: (context, index) {
+                    final SponsorEntity sponsor = sponsors[index];
+                    return ListTile(
+                      leading: TileImageWidget(urlImage: sponsor.urlPhoto),
+                      onTap: () => context.router.push(
+                          SponsorDetailScreenRoute(sponsorId: sponsor.id)),
+                      trailing: const Icon(Icons.more_vert),
+                      title: Text(sponsor.name),
+                      subtitle: Text(
+                        sponsor.about,
+                        overflow: TextOverflow.ellipsis,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(color: const Color(0xff717171)),
                       ),
-                    ),
-                  ),
-                  builder:
-                      (BuildContext context, AsyncSnapshot<void> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      if (snapshot.hasError) {
-                        return Center(
-                          child: Text(
-                              "Ups! Ocurrió un error mientras cargabamos los patrocinadores: ${snapshot.error}"),
-                        );
-                      } else {
-                        return ListView.builder(
-                          itemCount: sponsors.length,
-                          itemBuilder: (context, index) {
-                            final SponsorEntity sponsor = sponsors[index];
-                            return ListTile(
-                              leading:
-                                  TileImageWidget(urlImage: sponsor.urlPhoto),
-                              onTap: () => context.router.push(
-                                  SponsorDetailScreenRoute(
-                                      sponsorId: sponsor.id)),
-                              trailing: const Icon(Icons.more_vert),
-                              title: Text(sponsor.name),
-                              subtitle: Text(
-                                sponsor.about,
-                                overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(color: const Color(0xff717171)),
-                              ),
-                            );
-                          },
-                        );
-                      }
-                    } else {
-                      return const Center(child: OnLoadMessage());
-                    }
+                    );
                   },
                 );
               });

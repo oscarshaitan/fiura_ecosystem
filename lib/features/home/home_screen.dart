@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => getIt<SessionCubit>(),
       child: BlocBuilder<SessionCubit, SessionState>(
-        builder: (context, state) {
+        builder: (context, sessionState) {
           return Scaffold(
             appBar: AppBar(title: const Text('Fiura')),
             drawer: Drawer(
@@ -55,12 +55,26 @@ class HomeScreen extends StatelessWidget {
                       context.router.push(const ViewSponsorScreenRoute());
                     },
                   ),
+                  sessionState.maybeMap(
+                      userFetched: (state) {
+                        if (state.isAdmin) {
+                          return ListTile(
+                            title: const Text('Administradores'),
+                            onTap: () {
+                              Navigator.of(context).pop();
+                              context.router.push(const AdminScreenRoute());
+                            },
+                          );
+                        } else {
+                          return Container();
+                        }
+                      },
+                      orElse: () => Container())
                 ],
               ),
             ),
             body: const Column(
               children: [
-                Text('Fiura'),
                 Expanded(child: AutoRouter()),
               ],
             ),
