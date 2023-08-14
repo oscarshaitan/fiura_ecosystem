@@ -11,12 +11,13 @@ class SessionCubit extends Cubit<SessionState> {
   final UserRepository _userRepository;
 
   SessionCubit(this._userRepository) : super(const SessionState.initial()) {
-    _init();
+    init();
   }
 
-  _init() async {
+  init() async {
     try {
-      emit(SessionState.userFetched(currentUser: await _userRepository.getCurrentUser()));
+      emit(SessionState.userFetched(
+          currentUser: await _userRepository.getCurrentUser()));
     } on Exception catch (_) {
       emit(SessionState.userFetched(currentUser: state.currentUser));
     }

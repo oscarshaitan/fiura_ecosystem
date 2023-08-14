@@ -14,14 +14,13 @@ void logoutModal({
       builder: ((context) {
         return BlocProvider(
           create: (_) => getIt<LoginCubit>(),
-          child: BlocListener<LoginCubit, LoginState>(
-            listener: (context, state) {
-              state.whenOrNull(
-                success: () =>
-                    context.router.replace(const SplashScreenRoute()),
-              );
-            },
-            child: AlertDialog(
+          child:
+              BlocConsumer<LoginCubit, LoginState>(listener: (context, state) {
+            state.whenOrNull(
+              success: () => context.router.replace(const SplashScreenRoute()),
+            );
+          }, builder: (context, state) {
+            return AlertDialog(
               backgroundColor: const Color(0xff353535),
               title: const Text('¿Cerrar sesión de la cuenta?'),
               actions: [
@@ -32,12 +31,12 @@ void logoutModal({
                     child: const Text("Cancelar")),
                 TextButton(
                     onPressed: () {
-                      context.read().logout();
+                      context.read<LoginCubit>().logout();
                     },
                     child: const Text("Cerrar sesión")),
               ],
-            ),
-          ),
+            );
+          }),
         );
       }));
 }

@@ -8,6 +8,7 @@ import 'package:fiura_ecosystem/features/posts/presentation/pages/posts_screen.d
 import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart';
 import 'package:fiura_ecosystem/features/sponsor/presentation/pages/create_sponsor_screen.dart';
 import 'package:fiura_ecosystem/features/sponsor/presentation/pages/sponsor_detail_screen.dart';
+import 'package:fiura_ecosystem/features/user/profile_screen.dart';
 import 'package:fiura_ecosystem/router/router_paths.dart';
 
 import '../features/judge/presentation/pages/create_judge_screen.dart';
@@ -33,6 +34,7 @@ import '../features/sponsor/presentation/pages/view_sponsor_screen.dart';
     AutoRoute(page: CreateSponsorScreen, path: createSponsor),
     AutoRoute(page: CreateArtistScreen, path: createArtist),
     AutoRoute(page: CreatePostScreen, path: createPost),
+    AutoRoute(page: ProfileScreen, path: profile),
   ],
 )
 // extend the generated private router

@@ -34,10 +34,16 @@ class HomeScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                CircleAvatar(
-                                  radius: 25,
-                                  backgroundImage:
-                                      NetworkImage(state.currentUser!.photo),
+                                InkWell(
+                                  onTap: () {
+                                    context.router
+                                        .push(const ProfileScreenRoute());
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 25,
+                                    backgroundImage:
+                                        NetworkImage(state.currentUser!.photo),
+                                  ),
                                 ),
                                 const SizedBox(height: 20),
                                 Text(name,

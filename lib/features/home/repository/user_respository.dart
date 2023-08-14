@@ -11,13 +11,14 @@ class UserRepository {
   Future<UserEntity> getCurrentUser() async {
     if (auth.currentUser != null) {
       try {
-        var result = await db.collection('users').doc(auth.currentUser!.uid).get();
+        var result =
+            await db.collection('users').doc(auth.currentUser!.uid).get();
         return UserEntity.fromJson(result.data()!);
       } catch (e) {
         throw Exception('User not found');
       }
     } else {
-      throw Exception('NoUser connected');
+      throw Exception('No User connected');
     }
   }
 }
