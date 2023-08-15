@@ -6,6 +6,8 @@ import 'package:fiura_ecosystem/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../widgets/alert_dialogs.dart';
+
 void deleteAccountModal({
   required BuildContext context,
 }) {
@@ -20,23 +22,35 @@ void deleteAccountModal({
               success: () => context.router.replace(const SplashScreenRoute()),
             );
           }, builder: (context, state) {
-            return AlertDialog(
-              backgroundColor: const Color(0xff353535),
-              title: const Text('¿Eliminar la cuenta?'),
-              content: const Text(
-                  'Si eliminas tu cuenta, no podrás recuperarla. ¿Estás seguro de continuar?'),
-              actions: [
-                TextButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Text("Cancelar")),
-                TextButton(
-                    onPressed: () {
-                      context.read<LoginCubit>().deleteAccount();
-                    },
-                    child: const Text("Eliminar")),
-              ],
+            return state.maybeWhen(
+              error: (message) => getErrorAlertDialog(
+                contentText: "Ocurrió un error inesperado al cerrar sesión",
+                continueFunction: () => Navigator.pop(context),
+              ),
+              orElse: () => getErrorAlertDialog(
+                contentText: "Ocurrió un error inesperado al cerrar sesión",
+                continueFunction: () => Navigator.pop(context),
+              ),
+              initial: () => AlertDialog(
+                backgroundColor: const Color(0xff353535),
+                title: const Text('¿Eliminar la cuenta?'),
+                content: const Text(
+                    'Si eliminas tu cuenta, no podrás recuperarla. ¿Estás seguro de continuar?'),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text("Cancelar")),
+                  TextButton(
+                      onPressed: () {
+                        context.read<LoginCubit>().deleteAccount();
+                      },
+                      child: const Text("Eliminar")),
+                ],
+              ),
+              loading: () => getLoadingAlertDialog(
+                  contentText: "Eliminando tu cuenta, espera un momento"),
             );
           }),
         );

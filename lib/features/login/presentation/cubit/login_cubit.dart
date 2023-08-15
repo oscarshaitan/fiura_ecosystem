@@ -46,7 +46,6 @@ class LoginCubit extends Cubit<LoginState> {
       await _userRepository.deleteUser();
       emit(const Success());
     } catch (e) {
-      print("Error");
       emit(const Error("Error al eliminar la cuenta"));
     }
   }

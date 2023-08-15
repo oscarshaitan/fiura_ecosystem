@@ -10,7 +10,8 @@ import 'package:fiura_ecosystem/features/sponsor/presentation/pages/create_spons
 import 'package:fiura_ecosystem/features/sponsor/presentation/pages/sponsor_detail_screen.dart';
 import 'package:fiura_ecosystem/features/user/profile_screen.dart';
 import 'package:fiura_ecosystem/router/router_paths.dart';
-
+import '../features/admins/presentation/pages/admins_screen.dart';
+import '../features/admins/presentation/pages/create_admin_screen.dart';
 import '../features/judge/presentation/pages/create_judge_screen.dart';
 import '../features/login/presentation/pages/login_screen.dart';
 import '../features/posts/presentation/pages/create_post_screen.dart';
@@ -23,15 +24,22 @@ import '../features/sponsor/presentation/pages/view_sponsor_screen.dart';
     AutoRoute(page: LoginScreen, path: login),
     AutoRoute(page: HomeScreen, path: home, children: [
       RedirectRoute(path: '', redirectTo: posts),
-      AutoRoute(page: PostsScreen, path: posts, initial: true),
+      //Posts
+      AutoRoute(page: PostsScreen, path: posts, initial: true, children: []),
+      //Artists
       AutoRoute(page: ArtistsScreen, path: artists, children: []),
-      AutoRoute(page: ViewJudgeScreen, path: viewJudges),
-      AutoRoute(page: ViewSponsorScreen, path: viewSponsors)
+      //Judges
+      AutoRoute(page: ViewJudgeScreen, path: viewJudges, children: []),
+      //Sponsors
+      AutoRoute(page: ViewSponsorScreen, path: viewSponsors, children: []),
+      //Admins
+      AutoRoute(page: AdminScreen, path: viewAdmins, children: []),
     ]),
-    AutoRoute(page: ArtistsDetailScreen, path: artistsDetail),
+    AutoRoute(page: CreateAdminScreen, path: createAdmin),
     AutoRoute(page: SponsorDetailScreen, path: sponsorDetail),
-    AutoRoute(page: CreateJudgeScreen, path: createJudge),
     AutoRoute(page: CreateSponsorScreen, path: createSponsor),
+    AutoRoute(page: CreateJudgeScreen, path: createJudge),
+    AutoRoute(page: ArtistsDetailScreen, path: artistsDetail),
     AutoRoute(page: CreateArtistScreen, path: createArtist),
     AutoRoute(page: CreatePostScreen, path: createPost),
     AutoRoute(page: ProfileScreen, path: profile),

@@ -44,9 +44,13 @@ class Theming {
         fontWeight: FontWeight.normal,
       ),
       headlineSmall: TextStyle(color: Colors.white),
-      bodyLarge: TextStyle(color: Colors.white, fontSize: 20.0),
-      bodyMedium: TextStyle(color: Colors.white, fontWeight: FontWeight.normal),
-      bodySmall: TextStyle(color: Colors.white),
+      bodyLarge: TextStyle(
+        color: Colors.white,
+        fontSize: 20.0,
+      ),
+      bodyMedium:
+          TextStyle(color: Color(0xff999999), fontWeight: FontWeight.normal),
+      bodySmall: TextStyle(color: Color(0xff999999)),
       labelSmall: TextStyle(
         color: Color(0xFFFFFFFD),
         fontSize: 15.0,
@@ -72,6 +76,17 @@ class Theming {
       ),
       border: OutlineInputBorder(
         borderSide: BorderSide(color: Color(0xFFd4d4d4)),
+      ),
+    ),
+    dialogTheme: const DialogTheme(
+      backgroundColor: Color(0xff353535),
+      //Put the bodyMedium style here
+      contentTextStyle:
+          TextStyle(color: Color(0xff999999), fontWeight: FontWeight.normal),
+      titleTextStyle: TextStyle(
+        color: Color(0xffe5e5e5),
+        fontSize: 20.0,
+        fontWeight: FontWeight.bold,
       ),
     ),
   );

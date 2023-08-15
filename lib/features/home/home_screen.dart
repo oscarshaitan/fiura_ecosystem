@@ -59,7 +59,13 @@ class HomeScreen extends StatelessWidget {
                                 Text(
                                   state.isAdmin ? 'Administrador' : 'Usuario',
                                   textAlign: TextAlign.start,
-                                  style: Theme.of(context).textTheme.bodyMedium,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                 )
                               ],
                             );
@@ -98,6 +104,21 @@ class HomeScreen extends StatelessWidget {
                       context.router.push(const ViewSponsorScreenRoute());
                     },
                   ),
+                  sessionState.maybeMap(
+                      userFetched: (state) {
+                        if (state.isAdmin) {
+                          return ListTile(
+                            title: const Text('Administradores'),
+                            onTap: () {
+                              Navigator.of(context).pop();
+                              context.router.push(const AdminScreenRoute());
+                            },
+                          );
+                        } else {
+                          return Container();
+                        }
+                      },
+                      orElse: () => Container()),
                   const SizedBox(height: 10),
                   const Expanded(child: SizedBox()),
                   const Divider(
@@ -124,7 +145,6 @@ class HomeScreen extends StatelessWidget {
             ),
             body: const Column(
               children: [
-                Text('Fiura'),
                 Expanded(child: AutoRouter()),
               ],
             ),

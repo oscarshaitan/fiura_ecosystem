@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:fiura_ecosystem/features/admins/data/local/admin_repository_imp.dart';
+import 'package:fiura_ecosystem/features/admins/domain/repositories/admin_repository.dart';
+import 'package:fiura_ecosystem/features/admins/presentation/cubit/admin_cubit.dart';
 import 'package:fiura_ecosystem/features/artists/domain/repositories/artist_repository.dart';
 import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
 import 'package:fiura_ecosystem/features/images/data/local/image_repository_imp.dart';
@@ -73,6 +76,11 @@ void setup() {
         getIt(),
       ));
   getIt.registerFactory<SessionCubit>(() => SessionCubit(getIt()));
+
+  //Admin
+  getIt.registerFactory<AdminRepository>(() =>
+      AdminRepositoryImp(db: getIt(), auth: getIt(), userRepository: getIt()));
+  getIt.registerFactory<AdminCubit>(() => AdminCubit(getIt()));
 
   //ThirdParty
 
