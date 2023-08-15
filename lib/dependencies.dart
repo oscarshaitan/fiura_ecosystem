@@ -67,7 +67,11 @@ void setup() {
 
   //User
 
-  getIt.registerFactory<UserRepository>(() => UserRepository(getIt(), getIt()));
+  getIt.registerFactory<UserRepository>(() => UserRepository(
+        getIt(),
+        getIt(),
+        getIt(),
+      ));
   getIt.registerFactory<SessionCubit>(() => SessionCubit(getIt()));
 
   //ThirdParty

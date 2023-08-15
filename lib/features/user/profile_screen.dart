@@ -2,7 +2,8 @@ import 'package:fiura_ecosystem/dependencies.dart';
 import 'package:fiura_ecosystem/features/home/widgets/logout_modal.dart';
 import 'package:fiura_ecosystem/features/login/presentation/cubit/login_cubit.dart';
 import 'package:fiura_ecosystem/features/login/presentation/cubit/login_state.dart';
-import 'package:fiura_ecosystem/features/user/profile_item_widget.dart';
+import 'package:fiura_ecosystem/features/user/widgets/delete_account_modal.dart';
+import 'package:fiura_ecosystem/features/user/widgets/profile_item_widget.dart';
 import 'package:fiura_ecosystem/features/widgets/on_load_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,7 +68,9 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         const Expanded(child: SizedBox()),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            deleteAccountModal(context: context);
+                          },
                           child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

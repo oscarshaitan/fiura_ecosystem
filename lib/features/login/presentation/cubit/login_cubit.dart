@@ -39,4 +39,15 @@ class LoginCubit extends Cubit<LoginState> {
       emit(const Error("Error al obtener el usuario"));
     }
   }
+
+  void deleteAccount() async {
+    emit(const Loading());
+    try {
+      await _userRepository.deleteUser();
+      emit(const Success());
+    } catch (e) {
+      print("Error");
+      emit(const Error("Error al eliminar la cuenta"));
+    }
+  }
 }
