@@ -21,6 +21,8 @@ mixin _$LoginState {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function() loading,
+    required TResult Function(UserEntity user) userFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +30,8 @@ mixin _$LoginState {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(UserEntity user)? userFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +39,8 @@ mixin _$LoginState {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function()? loading,
+    TResult Function(UserEntity user)? userFetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +49,8 @@ mixin _$LoginState {
     required TResult Function(Initial value) initial,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
+    required TResult Function(UserFetched value) userFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +58,8 @@ mixin _$LoginState {
     TResult? Function(Initial value)? initial,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(UserFetched value)? userFetched,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +67,8 @@ mixin _$LoginState {
     TResult Function(Initial value)? initial,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
+    TResult Function(UserFetched value)? userFetched,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -119,6 +131,8 @@ class _$Initial implements Initial {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function() loading,
+    required TResult Function(UserEntity user) userFetched,
   }) {
     return initial();
   }
@@ -129,6 +143,8 @@ class _$Initial implements Initial {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(UserEntity user)? userFetched,
   }) {
     return initial?.call();
   }
@@ -139,6 +155,8 @@ class _$Initial implements Initial {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function()? loading,
+    TResult Function(UserEntity user)? userFetched,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -153,6 +171,8 @@ class _$Initial implements Initial {
     required TResult Function(Initial value) initial,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
+    required TResult Function(UserFetched value) userFetched,
   }) {
     return initial(this);
   }
@@ -163,6 +183,8 @@ class _$Initial implements Initial {
     TResult? Function(Initial value)? initial,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(UserFetched value)? userFetched,
   }) {
     return initial?.call(this);
   }
@@ -173,6 +195,8 @@ class _$Initial implements Initial {
     TResult Function(Initial value)? initial,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
+    TResult Function(UserFetched value)? userFetched,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -251,6 +275,8 @@ class _$Error implements Error {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function() loading,
+    required TResult Function(UserEntity user) userFetched,
   }) {
     return error(message);
   }
@@ -261,6 +287,8 @@ class _$Error implements Error {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(UserEntity user)? userFetched,
   }) {
     return error?.call(message);
   }
@@ -271,6 +299,8 @@ class _$Error implements Error {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function()? loading,
+    TResult Function(UserEntity user)? userFetched,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -285,6 +315,8 @@ class _$Error implements Error {
     required TResult Function(Initial value) initial,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
+    required TResult Function(UserFetched value) userFetched,
   }) {
     return error(this);
   }
@@ -295,6 +327,8 @@ class _$Error implements Error {
     TResult? Function(Initial value)? initial,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(UserFetched value)? userFetched,
   }) {
     return error?.call(this);
   }
@@ -305,6 +339,8 @@ class _$Error implements Error {
     TResult Function(Initial value)? initial,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
+    TResult Function(UserFetched value)? userFetched,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -361,6 +397,8 @@ class _$Success implements Success {
     required TResult Function() initial,
     required TResult Function(String message) error,
     required TResult Function() success,
+    required TResult Function() loading,
+    required TResult Function(UserEntity user) userFetched,
   }) {
     return success();
   }
@@ -371,6 +409,8 @@ class _$Success implements Success {
     TResult? Function()? initial,
     TResult? Function(String message)? error,
     TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(UserEntity user)? userFetched,
   }) {
     return success?.call();
   }
@@ -381,6 +421,8 @@ class _$Success implements Success {
     TResult Function()? initial,
     TResult Function(String message)? error,
     TResult Function()? success,
+    TResult Function()? loading,
+    TResult Function(UserEntity user)? userFetched,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -395,6 +437,8 @@ class _$Success implements Success {
     required TResult Function(Initial value) initial,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
+    required TResult Function(UserFetched value) userFetched,
   }) {
     return success(this);
   }
@@ -405,6 +449,8 @@ class _$Success implements Success {
     TResult? Function(Initial value)? initial,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(UserFetched value)? userFetched,
   }) {
     return success?.call(this);
   }
@@ -415,6 +461,8 @@ class _$Success implements Success {
     TResult Function(Initial value)? initial,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
+    TResult Function(UserFetched value)? userFetched,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -426,4 +474,283 @@ class _$Success implements Success {
 
 abstract class Success implements LoginState {
   const factory Success() = _$Success;
+}
+
+/// @nodoc
+abstract class _$$LoadingCopyWith<$Res> {
+  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
+      __$$LoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadingCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$Loading>
+    implements _$$LoadingCopyWith<$Res> {
+  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$Loading implements Loading {
+  const _$Loading();
+
+  @override
+  String toString() {
+    return 'LoginState.loading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$Loading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function() loading,
+    required TResult Function(UserEntity user) userFetched,
+  }) {
+    return loading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(UserEntity user)? userFetched,
+  }) {
+    return loading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function()? loading,
+    TResult Function(UserEntity user)? userFetched,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
+    required TResult Function(UserFetched value) userFetched,
+  }) {
+    return loading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(UserFetched value)? userFetched,
+  }) {
+    return loading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
+    TResult Function(UserFetched value)? userFetched,
+    required TResult orElse(),
+  }) {
+    if (loading != null) {
+      return loading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Loading implements LoginState {
+  const factory Loading() = _$Loading;
+}
+
+/// @nodoc
+abstract class _$$UserFetchedCopyWith<$Res> {
+  factory _$$UserFetchedCopyWith(
+          _$UserFetched value, $Res Function(_$UserFetched) then) =
+      __$$UserFetchedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({UserEntity user});
+
+  $UserEntityCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$$UserFetchedCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$UserFetched>
+    implements _$$UserFetchedCopyWith<$Res> {
+  __$$UserFetchedCopyWithImpl(
+      _$UserFetched _value, $Res Function(_$UserFetched) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$UserFetched(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserEntityCopyWith<$Res> get user {
+    return $UserEntityCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$UserFetched implements UserFetched {
+  const _$UserFetched(this.user);
+
+  @override
+  final UserEntity user;
+
+  @override
+  String toString() {
+    return 'LoginState.userFetched(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UserFetched &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UserFetchedCopyWith<_$UserFetched> get copyWith =>
+      __$$UserFetchedCopyWithImpl<_$UserFetched>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function() loading,
+    required TResult Function(UserEntity user) userFetched,
+  }) {
+    return userFetched(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function()? loading,
+    TResult? Function(UserEntity user)? userFetched,
+  }) {
+    return userFetched?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function()? loading,
+    TResult Function(UserEntity user)? userFetched,
+    required TResult orElse(),
+  }) {
+    if (userFetched != null) {
+      return userFetched(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(Loading value) loading,
+    required TResult Function(UserFetched value) userFetched,
+  }) {
+    return userFetched(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(UserFetched value)? userFetched,
+  }) {
+    return userFetched?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(Loading value)? loading,
+    TResult Function(UserFetched value)? userFetched,
+    required TResult orElse(),
+  }) {
+    if (userFetched != null) {
+      return userFetched(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UserFetched implements LoginState {
+  const factory UserFetched(final UserEntity user) = _$UserFetched;
+
+  UserEntity get user;
+  @JsonKey(ignore: true)
+  _$$UserFetchedCopyWith<_$UserFetched> get copyWith =>
+      throw _privateConstructorUsedError;
 }

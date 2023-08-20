@@ -13,5 +13,6 @@ const viewJudges = 'view-judges';
 const viewSponsors = 'view-sponsors';
 const viewArtists = 'view-artists';
 const viewPosts = 'view-posts';
+const profile = 'profile';
 const viewAdmins = 'view-admins';
 const createAdmin = 'create-admin';

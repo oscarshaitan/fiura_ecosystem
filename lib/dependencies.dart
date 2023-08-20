@@ -41,7 +41,7 @@ void setup() {
   //Login
   getIt.registerFactory<LoginRepository>(
       () => LoginRepository(googleSignIn: getIt(), auth: getIt(), db: getIt()));
-  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
+  getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt(), getIt()));
 
   //Judge
   getIt.registerFactory<JudgeRepository>(() =>
@@ -70,7 +70,11 @@ void setup() {
 
   //User
 
-  getIt.registerFactory<UserRepository>(() => UserRepository(getIt(), getIt()));
+  getIt.registerFactory<UserRepository>(() => UserRepository(
+        getIt(),
+        getIt(),
+        getIt(),
+      ));
   getIt.registerFactory<SessionCubit>(() => SessionCubit(getIt()));
 
   //Admin

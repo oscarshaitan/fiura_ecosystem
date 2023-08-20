@@ -11,13 +11,13 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i16;
+import 'package:auto_route/auto_route.dart' as _i17;
 import 'package:fiura_ecosystem/features/admins/presentation/pages/admins_screen.dart'
-    as _i15;
+    as _i16;
 import 'package:fiura_ecosystem/features/admins/presentation/pages/create_admin_screen.dart'
     as _i4;
 import 'package:fiura_ecosystem/features/artists/presentation/pages/artist_screen.dart'
-    as _i12;
+    as _i13;
 import 'package:fiura_ecosystem/features/artists/presentation/pages/create_artist_screen.dart'
     as _i9;
 import 'package:fiura_ecosystem/features/artits_detail_screen/artist_detail.dart'
@@ -26,13 +26,13 @@ import 'package:fiura_ecosystem/features/home/home_screen.dart' as _i3;
 import 'package:fiura_ecosystem/features/judge/presentation/pages/create_judge_screen.dart'
     as _i7;
 import 'package:fiura_ecosystem/features/judge/presentation/pages/view_judge_screen.dart'
-    as _i13;
+    as _i14;
 import 'package:fiura_ecosystem/features/login/presentation/pages/login_screen.dart'
     as _i2;
 import 'package:fiura_ecosystem/features/posts/presentation/pages/create_post_screen.dart'
     as _i10;
 import 'package:fiura_ecosystem/features/posts/presentation/pages/posts_screen.dart'
-    as _i11;
+    as _i12;
 import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart'
     as _i1;
 import 'package:fiura_ecosystem/features/sponsor/presentation/pages/create_sponsor_screen.dart'
@@ -40,35 +40,36 @@ import 'package:fiura_ecosystem/features/sponsor/presentation/pages/create_spons
 import 'package:fiura_ecosystem/features/sponsor/presentation/pages/sponsor_detail_screen.dart'
     as _i5;
 import 'package:fiura_ecosystem/features/sponsor/presentation/pages/view_sponsor_screen.dart'
-    as _i14;
-import 'package:flutter/material.dart' as _i17;
+    as _i15;
+import 'package:fiura_ecosystem/features/user/profile_screen.dart' as _i11;
+import 'package:flutter/material.dart' as _i18;
 
-class AppRouter extends _i16.RootStackRouter {
-  AppRouter([_i17.GlobalKey<_i17.NavigatorState>? navigatorKey])
+class AppRouter extends _i17.RootStackRouter {
+  AppRouter([_i18.GlobalKey<_i18.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i16.PageFactory> pagesMap = {
+  final Map<String, _i17.PageFactory> pagesMap = {
     SplashScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i1.SplashScreen(),
       );
     },
     LoginScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i2.LoginScreen(),
       );
     },
     HomeScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i3.HomeScreen(),
       );
     },
     CreateAdminScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i4.CreateAdminScreen(),
       );
@@ -78,7 +79,7 @@ class AppRouter extends _i16.RootStackRouter {
       final args = routeData.argsAs<SponsorDetailScreenRouteArgs>(
           orElse: () => SponsorDetailScreenRouteArgs(
               sponsorId: pathParams.getString('sponsorId')));
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i5.SponsorDetailScreen(
           key: args.key,
@@ -87,13 +88,13 @@ class AppRouter extends _i16.RootStackRouter {
       );
     },
     CreateSponsorScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i6.CreateSponsorScreen(),
       );
     },
     CreateJudgeScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i7.CreateJudgeScreen(),
       );
@@ -103,7 +104,7 @@ class AppRouter extends _i16.RootStackRouter {
       final args = routeData.argsAs<ArtistsDetailScreenRouteArgs>(
           orElse: () => ArtistsDetailScreenRouteArgs(
               artistId: pathParams.getString('artistId')));
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
         child: _i8.ArtistsDetailScreen(
           key: args.key,
@@ -112,131 +113,141 @@ class AppRouter extends _i16.RootStackRouter {
       );
     },
     CreateArtistScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i9.CreateArtistScreen(),
       );
     },
     CreatePostScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
         child: const _i10.CreatePostScreen(),
       );
     },
-    PostsScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+    ProfileScreenRoute.name: (routeData) {
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i11.PostsScreen(),
+        child: const _i11.ProfileScreen(),
+      );
+    },
+    PostsScreenRoute.name: (routeData) {
+      return _i17.AdaptivePage<dynamic>(
+        routeData: routeData,
+        child: const _i12.PostsScreen(),
       );
     },
     ArtistsScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i12.ArtistsScreen(),
+        child: const _i13.ArtistsScreen(),
       );
     },
     ViewJudgeScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i13.ViewJudgeScreen(),
+        child: const _i14.ViewJudgeScreen(),
       );
     },
     ViewSponsorScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i14.ViewSponsorScreen(),
+        child: const _i15.ViewSponsorScreen(),
       );
     },
     AdminScreenRoute.name: (routeData) {
-      return _i16.AdaptivePage<dynamic>(
+      return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i15.AdminScreen(),
+        child: const _i16.AdminScreen(),
       );
     },
   };
 
   @override
-  List<_i16.RouteConfig> get routes => [
-        _i16.RouteConfig(
+  List<_i17.RouteConfig> get routes => [
+        _i17.RouteConfig(
           SplashScreenRoute.name,
           path: '/',
         ),
-        _i16.RouteConfig(
+        _i17.RouteConfig(
           LoginScreenRoute.name,
           path: 'login',
         ),
-        _i16.RouteConfig(
+        _i17.RouteConfig(
           HomeScreenRoute.name,
           path: 'home',
           children: [
-            _i16.RouteConfig(
+            _i17.RouteConfig(
               '#redirect',
               path: '',
               parent: HomeScreenRoute.name,
               redirectTo: 'posts',
               fullMatch: true,
             ),
-            _i16.RouteConfig(
+            _i17.RouteConfig(
               PostsScreenRoute.name,
               path: 'posts',
               parent: HomeScreenRoute.name,
             ),
-            _i16.RouteConfig(
+            _i17.RouteConfig(
               ArtistsScreenRoute.name,
               path: 'artists',
               parent: HomeScreenRoute.name,
             ),
-            _i16.RouteConfig(
+            _i17.RouteConfig(
               ViewJudgeScreenRoute.name,
               path: 'view-judges',
               parent: HomeScreenRoute.name,
             ),
-            _i16.RouteConfig(
+            _i17.RouteConfig(
               ViewSponsorScreenRoute.name,
               path: 'view-sponsors',
               parent: HomeScreenRoute.name,
             ),
-            _i16.RouteConfig(
+            _i17.RouteConfig(
               AdminScreenRoute.name,
               path: 'view-admins',
               parent: HomeScreenRoute.name,
             ),
           ],
         ),
-        _i16.RouteConfig(
+        _i17.RouteConfig(
           CreateAdminScreenRoute.name,
           path: 'create-admin',
         ),
-        _i16.RouteConfig(
+        _i17.RouteConfig(
           SponsorDetailScreenRoute.name,
           path: 'detail/:sponsorId',
         ),
-        _i16.RouteConfig(
+        _i17.RouteConfig(
           CreateSponsorScreenRoute.name,
           path: 'create-sponsor',
         ),
-        _i16.RouteConfig(
+        _i17.RouteConfig(
           CreateJudgeScreenRoute.name,
           path: 'create-judge',
         ),
-        _i16.RouteConfig(
+        _i17.RouteConfig(
           ArtistsDetailScreenRoute.name,
           path: 'detail/:artistId',
         ),
-        _i16.RouteConfig(
+        _i17.RouteConfig(
           CreateArtistScreenRoute.name,
           path: 'create-artist',
         ),
-        _i16.RouteConfig(
+        _i17.RouteConfig(
           CreatePostScreenRoute.name,
           path: 'create-post',
+        ),
+        _i17.RouteConfig(
+          ProfileScreenRoute.name,
+          path: 'profile',
         ),
       ];
 }
 
 /// generated route for
 /// [_i1.SplashScreen]
-class SplashScreenRoute extends _i16.PageRouteInfo<void> {
+class SplashScreenRoute extends _i17.PageRouteInfo<void> {
   const SplashScreenRoute()
       : super(
           SplashScreenRoute.name,
@@ -248,7 +259,7 @@ class SplashScreenRoute extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LoginScreen]
-class LoginScreenRoute extends _i16.PageRouteInfo<void> {
+class LoginScreenRoute extends _i17.PageRouteInfo<void> {
   const LoginScreenRoute()
       : super(
           LoginScreenRoute.name,
@@ -260,8 +271,8 @@ class LoginScreenRoute extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.HomeScreen]
-class HomeScreenRoute extends _i16.PageRouteInfo<void> {
-  const HomeScreenRoute({List<_i16.PageRouteInfo>? children})
+class HomeScreenRoute extends _i17.PageRouteInfo<void> {
+  const HomeScreenRoute({List<_i17.PageRouteInfo>? children})
       : super(
           HomeScreenRoute.name,
           path: 'home',
@@ -273,7 +284,7 @@ class HomeScreenRoute extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.CreateAdminScreen]
-class CreateAdminScreenRoute extends _i16.PageRouteInfo<void> {
+class CreateAdminScreenRoute extends _i17.PageRouteInfo<void> {
   const CreateAdminScreenRoute()
       : super(
           CreateAdminScreenRoute.name,
@@ -286,9 +297,9 @@ class CreateAdminScreenRoute extends _i16.PageRouteInfo<void> {
 /// generated route for
 /// [_i5.SponsorDetailScreen]
 class SponsorDetailScreenRoute
-    extends _i16.PageRouteInfo<SponsorDetailScreenRouteArgs> {
+    extends _i17.PageRouteInfo<SponsorDetailScreenRouteArgs> {
   SponsorDetailScreenRoute({
-    _i17.Key? key,
+    _i18.Key? key,
     required String sponsorId,
   }) : super(
           SponsorDetailScreenRoute.name,
@@ -309,7 +320,7 @@ class SponsorDetailScreenRouteArgs {
     required this.sponsorId,
   });
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   final String sponsorId;
 
@@ -321,7 +332,7 @@ class SponsorDetailScreenRouteArgs {
 
 /// generated route for
 /// [_i6.CreateSponsorScreen]
-class CreateSponsorScreenRoute extends _i16.PageRouteInfo<void> {
+class CreateSponsorScreenRoute extends _i17.PageRouteInfo<void> {
   const CreateSponsorScreenRoute()
       : super(
           CreateSponsorScreenRoute.name,
@@ -333,7 +344,7 @@ class CreateSponsorScreenRoute extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.CreateJudgeScreen]
-class CreateJudgeScreenRoute extends _i16.PageRouteInfo<void> {
+class CreateJudgeScreenRoute extends _i17.PageRouteInfo<void> {
   const CreateJudgeScreenRoute()
       : super(
           CreateJudgeScreenRoute.name,
@@ -346,9 +357,9 @@ class CreateJudgeScreenRoute extends _i16.PageRouteInfo<void> {
 /// generated route for
 /// [_i8.ArtistsDetailScreen]
 class ArtistsDetailScreenRoute
-    extends _i16.PageRouteInfo<ArtistsDetailScreenRouteArgs> {
+    extends _i17.PageRouteInfo<ArtistsDetailScreenRouteArgs> {
   ArtistsDetailScreenRoute({
-    _i17.Key? key,
+    _i18.Key? key,
     required String artistId,
   }) : super(
           ArtistsDetailScreenRoute.name,
@@ -369,7 +380,7 @@ class ArtistsDetailScreenRouteArgs {
     required this.artistId,
   });
 
-  final _i17.Key? key;
+  final _i18.Key? key;
 
   final String artistId;
 
@@ -381,7 +392,7 @@ class ArtistsDetailScreenRouteArgs {
 
 /// generated route for
 /// [_i9.CreateArtistScreen]
-class CreateArtistScreenRoute extends _i16.PageRouteInfo<void> {
+class CreateArtistScreenRoute extends _i17.PageRouteInfo<void> {
   const CreateArtistScreenRoute()
       : super(
           CreateArtistScreenRoute.name,
@@ -393,7 +404,7 @@ class CreateArtistScreenRoute extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.CreatePostScreen]
-class CreatePostScreenRoute extends _i16.PageRouteInfo<void> {
+class CreatePostScreenRoute extends _i17.PageRouteInfo<void> {
   const CreatePostScreenRoute()
       : super(
           CreatePostScreenRoute.name,
@@ -404,8 +415,20 @@ class CreatePostScreenRoute extends _i16.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i11.PostsScreen]
-class PostsScreenRoute extends _i16.PageRouteInfo<void> {
+/// [_i11.ProfileScreen]
+class ProfileScreenRoute extends _i17.PageRouteInfo<void> {
+  const ProfileScreenRoute()
+      : super(
+          ProfileScreenRoute.name,
+          path: 'profile',
+        );
+
+  static const String name = 'ProfileScreenRoute';
+}
+
+/// generated route for
+/// [_i12.PostsScreen]
+class PostsScreenRoute extends _i17.PageRouteInfo<void> {
   const PostsScreenRoute()
       : super(
           PostsScreenRoute.name,
@@ -416,8 +439,8 @@ class PostsScreenRoute extends _i16.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i12.ArtistsScreen]
-class ArtistsScreenRoute extends _i16.PageRouteInfo<void> {
+/// [_i13.ArtistsScreen]
+class ArtistsScreenRoute extends _i17.PageRouteInfo<void> {
   const ArtistsScreenRoute()
       : super(
           ArtistsScreenRoute.name,
@@ -428,8 +451,8 @@ class ArtistsScreenRoute extends _i16.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i13.ViewJudgeScreen]
-class ViewJudgeScreenRoute extends _i16.PageRouteInfo<void> {
+/// [_i14.ViewJudgeScreen]
+class ViewJudgeScreenRoute extends _i17.PageRouteInfo<void> {
   const ViewJudgeScreenRoute()
       : super(
           ViewJudgeScreenRoute.name,
@@ -440,8 +463,8 @@ class ViewJudgeScreenRoute extends _i16.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i14.ViewSponsorScreen]
-class ViewSponsorScreenRoute extends _i16.PageRouteInfo<void> {
+/// [_i15.ViewSponsorScreen]
+class ViewSponsorScreenRoute extends _i17.PageRouteInfo<void> {
   const ViewSponsorScreenRoute()
       : super(
           ViewSponsorScreenRoute.name,
@@ -452,8 +475,8 @@ class ViewSponsorScreenRoute extends _i16.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i15.AdminScreen]
-class AdminScreenRoute extends _i16.PageRouteInfo<void> {
+/// [_i16.AdminScreen]
+class AdminScreenRoute extends _i17.PageRouteInfo<void> {
   const AdminScreenRoute()
       : super(
           AdminScreenRoute.name,

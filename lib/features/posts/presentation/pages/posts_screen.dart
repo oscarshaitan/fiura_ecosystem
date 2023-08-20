@@ -25,8 +25,7 @@ class PostsScreen extends StatelessWidget {
                     itemCount: posts.length,
                     itemBuilder: (context, index) {
                       return PostViewWidget(
-                        description: posts[index].description,
-                        urlPhoto: posts[index].urlPhoto,
+                        postEntity: posts[index],
                       );
                     },
                   );

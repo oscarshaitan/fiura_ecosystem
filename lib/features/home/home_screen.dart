@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fiura_ecosystem/features/home/cubit/session_cubit.dart';
+import 'package:fiura_ecosystem/features/home/widgets/logout_modal.dart';
 import 'package:fiura_ecosystem/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,15 +18,63 @@ class HomeScreen extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(title: const Text('Fiura')),
             drawer: Drawer(
-              child: ListView(
-                padding: EdgeInsets.zero,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const DrawerHeader(
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                    ),
-                    child: Text('Drawer Header'),
+                  SizedBox(
+                    width: double.infinity,
+                    child: DrawerHeader(
+                        decoration: const BoxDecoration(color: Colors.red),
+                        child: sessionState.maybeMap(
+                          userFetched: (state) {
+                            List<String> nameList =
+                                state.currentUser!.name.split(' ');
+                            String name = nameList.sublist(0, 2).join(' ');
+                            return Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    context.router
+                                        .push(const ProfileScreenRoute());
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 25,
+                                    backgroundImage:
+                                        NetworkImage(state.currentUser!.photo),
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                Text(name,
+                                    textAlign: TextAlign.start,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium!
+                                        .copyWith(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        )),
+                                const SizedBox(height: 5),
+                                Text(
+                                  state.isAdmin ? 'Administrador' : 'Usuario',
+                                  textAlign: TextAlign.start,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                )
+                              ],
+                            );
+                          },
+                          orElse: () => const Image(
+                              image: AssetImage('assets/images/logo.png')),
+                        )),
                   ),
+                  const SizedBox(height: 10),
                   ListTile(
                     title: const Text('Home'),
                     onTap: () {
@@ -69,7 +118,28 @@ class HomeScreen extends StatelessWidget {
                           return Container();
                         }
                       },
-                      orElse: () => Container())
+                      orElse: () => Container()),
+                  const SizedBox(height: 10),
+                  const Expanded(child: SizedBox()),
+                  const Divider(
+                    color: Color(0xff717171),
+                    height: 1,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10.0),
+                    child: ListTile(
+                        title: const Row(children: [
+                          Icon(
+                            Icons.logout,
+                            color: Colors.white,
+                          ),
+                          SizedBox(width: 10),
+                          Text('Cerrar sesión')
+                        ]),
+                        onTap: () {
+                          logoutModal(context: context);
+                        }),
+                  )
                 ],
               ),
             ),

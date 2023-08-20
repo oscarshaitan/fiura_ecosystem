@@ -78,7 +78,7 @@ AlertDialog getSuccessAlertDialog(
 
 AlertDialog getErrorAlertDialog(
     {required String contentText,
-    required TextStyle buttonTextStyle,
+    TextStyle? buttonTextStyle,
     required VoidCallback continueFunction}) {
   return AlertDialog(
     backgroundColor: const Color(0xff353535),

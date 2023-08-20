@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 25.0, vertical: 15.0)),
                       child: Text(
-                        'LOGIN',
+                        'INGRESAR',
                         style: Theme.of(context).textTheme.labelSmall,
                       ),
                     ),
