@@ -12,6 +12,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i17;
+import 'package:fiura_ecosystem/core/entities/artist_entity/artist_entity.dart'
+    as _i19;
 import 'package:fiura_ecosystem/features/admins/presentation/pages/admins_screen.dart'
     as _i16;
 import 'package:fiura_ecosystem/features/admins/presentation/pages/create_admin_screen.dart'
@@ -113,9 +115,14 @@ class AppRouter extends _i17.RootStackRouter {
       );
     },
     CreateArtistScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<CreateArtistScreenRouteArgs>(
+          orElse: () => const CreateArtistScreenRouteArgs());
       return _i17.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i9.CreateArtistScreen(),
+        child: _i9.CreateArtistScreen(
+          key: args.key,
+          artist: args.artist,
+        ),
       );
     },
     CreatePostScreenRoute.name: (routeData) {
@@ -392,14 +399,37 @@ class ArtistsDetailScreenRouteArgs {
 
 /// generated route for
 /// [_i9.CreateArtistScreen]
-class CreateArtistScreenRoute extends _i17.PageRouteInfo<void> {
-  const CreateArtistScreenRoute()
-      : super(
+class CreateArtistScreenRoute
+    extends _i17.PageRouteInfo<CreateArtistScreenRouteArgs> {
+  CreateArtistScreenRoute({
+    _i18.Key? key,
+    _i19.ArtistEntity? artist,
+  }) : super(
           CreateArtistScreenRoute.name,
           path: 'create-artist',
+          args: CreateArtistScreenRouteArgs(
+            key: key,
+            artist: artist,
+          ),
         );
 
   static const String name = 'CreateArtistScreenRoute';
+}
+
+class CreateArtistScreenRouteArgs {
+  const CreateArtistScreenRouteArgs({
+    this.key,
+    this.artist,
+  });
+
+  final _i18.Key? key;
+
+  final _i19.ArtistEntity? artist;
+
+  @override
+  String toString() {
+    return 'CreateArtistScreenRouteArgs{key: $key, artist: $artist}';
+  }
 }
 
 /// generated route for

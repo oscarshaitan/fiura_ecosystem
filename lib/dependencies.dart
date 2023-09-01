@@ -55,7 +55,10 @@ void setup() {
 
   //Artist
   getIt.registerFactory<ArtistRepository>(() => ArtistRepositoryImp(
-      db: getIt(), auth: getIt(), imageRepository: getIt()));
+      db: getIt(),
+      auth: getIt(),
+      imageRepository: getIt(),
+      userRepository: getIt()));
   getIt.registerFactory<ArtistCubit>(() => ArtistCubit(getIt(), getIt()));
 
   //Post

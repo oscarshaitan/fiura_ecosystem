@@ -13,6 +13,10 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
 
+  #Manipulate network images
+  http: ^1.1.0
+  path_provider: ^2.1.1
+
   #IMAGE PICKER
   image_picker: ^0.8.9
   path: ^1.8.2

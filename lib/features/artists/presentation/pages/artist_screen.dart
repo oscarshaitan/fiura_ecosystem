@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../dependencies.dart';
+import '../../../widgets/more_menu_widget.dart';
 import '../cubit/artist_state.dart';
 
 class ArtistsScreen extends StatelessWidget {
@@ -36,7 +37,7 @@ class ArtistsScreen extends StatelessWidget {
                         if (state.isAdmin) {
                           return FloatingActionButton(
                               onPressed: () => context.router.push(
-                                    const CreateArtistScreenRoute(),
+                                    CreateArtistScreenRoute(),
                                   ));
                         } else {
                           return null;
@@ -54,7 +55,22 @@ class ArtistsScreen extends StatelessWidget {
                           onTap: () => context.router.push(
                             ArtistsDetailScreenRoute(artistId: artist.id),
                           ),
-                          trailing: const Icon(Icons.more_vert),
+                          trailing: sessionState.maybeMap(
+                              userFetched: (state) {
+                                if (state.isAdmin) {
+                                  return MoreMenuWidget(
+                                    editFunction: () {
+                                      context.router.push(
+                                          CreateArtistScreenRoute(
+                                              artist: artist));
+                                    },
+                                    deleteFunction: () {},
+                                  );
+                                } else {
+                                  return null;
+                                }
+                              },
+                              orElse: () => const SizedBox()),
                           title: Text(artist.name),
                           subtitle: Text(
                             artist.about,

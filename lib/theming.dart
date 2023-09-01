@@ -28,6 +28,11 @@ class Theming {
       elevation: 3,
       backgroundColor: getMaterialColor(const Color(0xFF1D1D1D)),
     ),
+    popupMenuTheme: const PopupMenuThemeData(
+      color: Color(0xff353535),
+      textStyle:
+          TextStyle(color: Color(0xff999999), fontWeight: FontWeight.normal),
+    ),
     textTheme: const TextTheme(
       titleLarge: TextStyle(color: Colors.white),
       titleMedium: TextStyle(color: Colors.white),

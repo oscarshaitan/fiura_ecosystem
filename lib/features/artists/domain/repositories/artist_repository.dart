@@ -6,4 +6,7 @@ abstract class ArtistRepository {
   Future<bool> addArtist(ArtistEntity artist, File image);
   Future<List<ArtistEntity>> getArtists();
   Future<ArtistEntity> getArtist(String id);
+  Future<void> deleteArtist(String id);
+  Future<void> updateArtist(
+      ArtistEntity artist, File? image, String previousPhotoName);
 }

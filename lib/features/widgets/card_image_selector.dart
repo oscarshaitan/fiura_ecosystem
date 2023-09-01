@@ -8,15 +8,18 @@ class CardImageSelector extends StatelessWidget {
   final VoidCallback onTap;
   final String label;
   final Color borderColor;
+  final bool existingImage;
 
-  const CardImageSelector(
-      {super.key,
-      this.imageFile,
-      required this.height,
-      required this.width,
-      required this.onTap,
-      required this.label,
-      required this.borderColor});
+  const CardImageSelector({
+    super.key,
+    this.imageFile,
+    required this.height,
+    required this.width,
+    required this.onTap,
+    required this.label,
+    required this.borderColor,
+    required this.existingImage,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,25 +51,36 @@ class CardImageSelector extends StatelessWidget {
                   ]
                 : null),
         child: imageFile == null
-            ? _withoutImage(label: label, context: context)
+            ? _withoutImage(
+                label: label, context: context, existingImage: existingImage)
             : null,
       ),
     );
   }
 }
 
-Widget _withoutImage({required String label, required BuildContext context}) {
-  return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-    Icon(
-      Icons.add_photo_alternate,
-      size: 100.0,
-      color: Theme.of(context)
-          .inputDecorationTheme
-          .enabledBorder!
-          .borderSide
-          .color,
-    ),
-    const SizedBox(height: 10.0),
-    Text(label)
-  ]);
+Widget _withoutImage(
+    {required String label,
+    required BuildContext context,
+    required bool existingImage}) {
+  return existingImage
+      ? const Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircularProgressIndicator(),
+          ],
+        )
+      : Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Icon(
+            Icons.add_photo_alternate,
+            size: 100.0,
+            color: Theme.of(context)
+                .inputDecorationTheme
+                .enabledBorder!
+                .borderSide
+                .color,
+          ),
+          const SizedBox(height: 10.0),
+          Text(label)
+        ]);
 }
