@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
 import 'package:fiura_ecosystem/features/home/cubit/session_cubit.dart';
+import 'package:fiura_ecosystem/features/widgets/empty_list_widget.dart';
 import 'package:fiura_ecosystem/features/widgets/on_load_message.dart';
 import 'package:fiura_ecosystem/features/widgets/tile_image_widget.dart';
 import 'package:fiura_ecosystem/router/app_router.gr.dart';
@@ -47,48 +48,53 @@ class ArtistsScreen extends StatelessWidget {
                       orElse: () => null),
                   body: Container(
                     margin: const EdgeInsets.only(top: 20.0),
-                    child: ListView.builder(
-                      itemCount: artistList.length,
-                      itemBuilder: (context, index) {
-                        final artist = artistList[index];
-                        return ListTile(
-                          leading: TileImageWidget(urlImage: artist.urlPhoto),
-                          onTap: () => context.router.push(
-                            ArtistsDetailScreenRoute(artistId: artist.id),
-                          ),
-                          trailing: sessionState.maybeMap(
-                              userFetched: (state) {
-                                if (state.isAdmin) {
-                                  return MoreMenuWidget(
-                                    editFunction: () {
-                                      context.router.push(
-                                          CreateArtistScreenRoute(
-                                              artist: artist));
+                    child: artistList.isNotEmpty
+                        ? ListView.builder(
+                            itemCount: artistList.length,
+                            itemBuilder: (context, index) {
+                              final artist = artistList[index];
+                              return ListTile(
+                                leading:
+                                    TileImageWidget(urlImage: artist.urlPhoto),
+                                onTap: () => context.router.push(
+                                  ArtistsDetailScreenRoute(artistId: artist.id),
+                                ),
+                                trailing: sessionState.maybeMap(
+                                    userFetched: (state) {
+                                      if (state.isAdmin) {
+                                        return MoreMenuWidget(
+                                          editFunction: () {
+                                            context.router.push(
+                                                CreateArtistScreenRoute(
+                                                    artist: artist));
+                                          },
+                                          deleteFunction: () {
+                                            deleteArtistModal(
+                                              artistContext: context,
+                                              artist: artist,
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        return null;
+                                      }
                                     },
-                                    deleteFunction: () {
-                                      deleteArtistModal(
-                                        artistContext: context,
-                                        artist: artist,
-                                      );
-                                    },
-                                  );
-                                } else {
-                                  return null;
-                                }
-                              },
-                              orElse: () => const SizedBox()),
-                          title: Text(artist.name),
-                          subtitle: Text(
-                            artist.about,
-                            overflow: TextOverflow.ellipsis,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(color: const Color(0xff717171)),
+                                    orElse: () => const SizedBox()),
+                                title: Text(artist.name),
+                                subtitle: Text(
+                                  artist.about,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium!
+                                      .copyWith(color: const Color(0xff717171)),
+                                ),
+                              );
+                            },
+                          )
+                        : const EmptyListWidget(
+                            message: "No hay artistas registrados",
                           ),
-                        );
-                      },
-                    ),
                   ),
                 ),
               );
