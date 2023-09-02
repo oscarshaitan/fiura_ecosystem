@@ -74,7 +74,8 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                         : 'Artista añadido correctamente'),
                   ),
                 );
-                context.router.push(const ArtistsScreenRoute());
+                context.router.push(
+                    const HomeScreenRoute(children: [ArtistsScreenRoute()]));
               },
               error: (message) => ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
@@ -236,7 +237,6 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
       setState(() {
         image = null;
         previousPhotoName = "";
-        getImage = true;
       });
 
       if (widget.artist != null) {

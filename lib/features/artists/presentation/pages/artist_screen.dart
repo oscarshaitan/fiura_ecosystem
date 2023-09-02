@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../dependencies.dart';
 import '../../../widgets/more_menu_widget.dart';
 import '../cubit/artist_state.dart';
+import '../widgets/delete_artist_modal.dart';
 
 class ArtistsScreen extends StatelessWidget {
   const ArtistsScreen({Key? key}) : super(key: key);
@@ -64,7 +65,12 @@ class ArtistsScreen extends StatelessWidget {
                                           CreateArtistScreenRoute(
                                               artist: artist));
                                     },
-                                    deleteFunction: () {},
+                                    deleteFunction: () {
+                                      deleteArtistModal(
+                                        artistContext: context,
+                                        artist: artist,
+                                      );
+                                    },
                                   );
                                 } else {
                                   return null;
