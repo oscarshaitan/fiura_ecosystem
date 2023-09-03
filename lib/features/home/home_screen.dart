@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fiura_ecosystem/features/home/cubit/session_cubit.dart';
 import 'package:fiura_ecosystem/features/home/widgets/logout_modal.dart';
+import 'package:fiura_ecosystem/features/widgets/on_load_message.dart';
 import 'package:fiura_ecosystem/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +27,7 @@ class HomeScreen extends StatelessWidget {
                     child: DrawerHeader(
                         decoration: const BoxDecoration(color: Colors.red),
                         child: sessionState.maybeMap(
+                          error: (value) => const OnLoadMessage(),
                           userFetched: (state) {
                             List<String> nameList =
                                 state.currentUser!.name.split(' ');
