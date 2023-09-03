@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.AllegorIT.fiura2018.fiura_ecosystem">
+    package="com.AllegorIT.fiura2018">
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW"/>
