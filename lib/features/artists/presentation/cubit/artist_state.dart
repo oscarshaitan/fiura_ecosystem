@@ -14,4 +14,6 @@ abstract class ArtistState with _$ArtistState {
   const factory ArtistState.loadData(List<ArtistEntity> artists) = LoadData;
   const factory ArtistState.loadArtist(ArtistEntity artist) = LoadArtist;
   const factory ArtistState.pickedImage(File image) = PickedImage;
+  const factory ArtistState.chargedImage(File image, String name) =
+      ChargedImage;
 }

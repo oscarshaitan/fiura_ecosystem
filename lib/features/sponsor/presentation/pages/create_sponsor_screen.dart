@@ -75,6 +75,7 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           CardImageSelector(
+                            existingImage: false,
                             label: "Selecciona el logo del patrocinador*",
                             imageFile: image,
                             height: 250.0,

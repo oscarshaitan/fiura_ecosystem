@@ -39,4 +39,16 @@ class ImageRepositoryImp extends ImageRepository {
 
     return image;
   }
+
+  @override
+  Future<void> deleteImage(String imageName) async {
+    try {
+      String imagePath = 'Artists/$imageName';
+      Reference imageRef = storageRef.child(imagePath);
+
+      await imageRef.delete();
+    } catch (e) {
+      throw Exception('Error eliminando la imagen');
+    }
+  }
 }

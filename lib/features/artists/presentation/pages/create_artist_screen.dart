@@ -1,5 +1,8 @@
 import 'dart:io';
+import 'package:auto_route/auto_route.dart';
+import 'package:fiura_ecosystem/core/entities/artist_entity/artist_entity.dart';
 import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
+import 'package:fiura_ecosystem/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../dependencies.dart';
@@ -9,7 +12,8 @@ import '../../../widgets/danger_text.dart';
 import '../cubit/artist_state.dart';
 
 class CreateArtistScreen extends StatefulWidget {
-  const CreateArtistScreen({super.key});
+  final ArtistEntity? artist;
+  const CreateArtistScreen({super.key, this.artist});
 
   @override
   State<CreateArtistScreen> createState() => _CreateArtistScreenState();
@@ -28,6 +32,22 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
   final controllerArtistTwitter = TextEditingController();
   final controllerArtistInstagram = TextEditingController();
 
+  //Other vars
+  bool getImage = true;
+  String previousPhotoName = "";
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.artist != null) {
+      controllerArtistName.text = widget.artist!.name;
+      controllerArtistAbout.text = widget.artist!.about;
+      controllerArtistFacebook.text = widget.artist!.socialNetwork[0] ?? "";
+      controllerArtistTwitter.text = widget.artist!.socialNetwork[1] ?? "";
+      controllerArtistInstagram.text = widget.artist!.socialNetwork[2] ?? "";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,27 +60,44 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
               listener: (context, snapshot) {
             snapshot.whenOrNull(
               loading: () => ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Añadiendo nuevo Artista...'),
+                SnackBar(
+                  content: Text(widget.artist != null
+                      ? 'Actualizando datos del artista...'
+                      : 'Añadiendo nuevo Artista...'),
                 ),
               ),
-              success: () => ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Artista añadido correctamente'),
-                ),
-              ),
+              success: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(widget.artist != null
+                        ? 'Artista actualizado correctamente'
+                        : 'Artista añadido correctamente'),
+                  ),
+                );
+                context.router.push(
+                    const HomeScreenRoute(children: [ArtistsScreenRoute()]));
+              },
               error: (message) => ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text(
-                      'Error añadiendo nuevo Artista, intentalo nuevamente'),
+                SnackBar(
+                  content: Text(message),
                 ),
               ),
               pickedImage: (image) => setState(() {
                 this.image = image;
                 showErrorMessage = false;
               }),
+              chargedImage: (image, name) => setState(() {
+                this.image = image;
+                showErrorMessage = false;
+                previousPhotoName = name;
+              }),
             );
           }, builder: (context, snapshot) {
+            if (widget.artist != null && getImage) {
+              context.read<ArtistCubit>().setUrlToFile(widget.artist!.urlPhoto);
+              getImage = false;
+            }
+
             return SingleChildScrollView(
               child: Form(
                   key: _formKey,
@@ -73,6 +110,7 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CardImageSelector(
+                              existingImage: widget.artist != null,
                               label: "Selecciona una imagen*",
                               imageFile: image,
                               height: 250.0,
@@ -162,7 +200,9 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                             onPressed: () {
                               _onPressed(_formKey, context);
                             },
-                            child: const Text("Crear artista"))
+                            child: Text(widget.artist != null
+                                ? "Actualizar artista"
+                                : "Crear artista"))
                       ],
                     ),
                   )),
@@ -185,6 +225,7 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
       final String instagram = controllerArtistInstagram.text;
       final List<String> socialNetwork = [facebook, twitter, instagram];
       final File? imageSelected = image;
+      final String previousName = previousPhotoName;
 
       //Clear the Text fields
 
@@ -195,12 +236,19 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
       controllerArtistInstagram.clear();
       setState(() {
         image = null;
+        previousPhotoName = "";
       });
 
-      //Use the function to add the Artist
-      context
-          .read<ArtistCubit>()
-          .addArtist(name, about, socialNetwork, imageSelected!);
+      if (widget.artist != null) {
+        //If it is a created artist and we are editing it, use the function to update the Artist
+        context.read<ArtistCubit>().updateArtist(widget.artist!.id, name, about,
+            socialNetwork, imageSelected, previousName);
+      } else {
+        //If not, use the function to add the Artist
+        context
+            .read<ArtistCubit>()
+            .addArtist(name, about, socialNetwork, imageSelected!);
+      }
     } else if (image == null) {
       setState(() {
         showErrorMessage = true;

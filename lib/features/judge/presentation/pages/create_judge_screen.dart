@@ -75,6 +75,7 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CardImageSelector(
+                              existingImage: false,
                               label: "Selecciona una imagen*",
                               imageFile: image,
                               height: 250.0,

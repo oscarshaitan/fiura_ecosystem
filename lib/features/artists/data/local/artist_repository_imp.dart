@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fiura_ecosystem/core/entities/artist_entity/artist_entity.dart';
+import 'package:fiura_ecosystem/core/entities/user/user_entity.dart';
+import '../../../home/repository/user_respository.dart';
 import '../../../images/domain/repositories/image_repository.dart';
 import '../../domain/repositories/artist_repository.dart';
 
@@ -9,12 +11,16 @@ class ArtistRepositoryImp extends ArtistRepository {
   final FirebaseFirestore db;
   final FirebaseAuth auth;
   final ImageRepository imageRepository;
+  final UserRepository userRepository;
 
   //Collections
   final String artists = "artists";
 
   ArtistRepositoryImp(
-      {required this.db, required this.auth, required this.imageRepository});
+      {required this.db,
+      required this.auth,
+      required this.imageRepository,
+      required this.userRepository});
 
   @override
   Future<bool> addArtist(ArtistEntity artist, File image) async {
@@ -88,5 +94,63 @@ class ArtistRepositoryImp extends ArtistRepository {
     }
 
     return artist;
+  }
+
+  @override
+  Future<void> deleteArtist(String id) async {
+    final User? user = auth.currentUser;
+    final UserEntity currentUser = await userRepository.getCurrentUser();
+
+    if (user != null) {
+      if (currentUser.admin == true) {
+        try {
+          await db.collection(artists).doc(id).delete();
+        } catch (e) {
+          throw Exception('Error eliminando artista');
+        }
+      } else {
+        throw Exception('No tienes permisos para realizar esta acción');
+      }
+    } else {
+      throw Exception(
+          'Error al realizar esta acción, inicia sesión e intentalo de nuevo');
+    }
+  }
+
+  @override
+  Future<void> updateArtist(
+      ArtistEntity artist, File? image, String previousPhotoName) async {
+    final User? user = auth.currentUser;
+    final UserEntity currentUser = await userRepository.getCurrentUser();
+    late DocumentReference docRef;
+
+    if (user != null) {
+      if (currentUser.admin == true) {
+        docRef = db.collection(artists).doc(artist.id);
+
+        try {
+          //Delete previous photo
+          await imageRepository.deleteImage(previousPhotoName);
+
+          //Add new artist photo
+          final String? urlPhoto =
+              await imageRepository.saveImage(image!, artist.urlPhoto);
+
+          Map<String, dynamic> itemToUpdate = artist.toJson();
+
+          itemToUpdate["urlPhoto"] = urlPhoto;
+
+          //Update my item
+          await docRef.update(itemToUpdate);
+        } catch (e) {
+          throw Exception("Error actualizando el artista");
+        }
+      } else {
+        throw Exception('No tienes permisos para realizar esta acción');
+      }
+    } else {
+      throw Exception(
+          'Error al realizar esta acción, inicia sesión e intentalo de nuevo');
+    }
   }
 }
