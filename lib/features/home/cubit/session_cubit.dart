@@ -19,7 +19,7 @@ class SessionCubit extends Cubit<SessionState> {
       emit(SessionState.userFetched(
           currentUser: await _userRepository.getCurrentUser()));
     } on Exception catch (_) {
-      emit(SessionState.userFetched(currentUser: state.currentUser));
+      emit(SessionState.error(currentUser: state.currentUser));
     }
   }
 }

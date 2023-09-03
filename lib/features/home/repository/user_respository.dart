@@ -27,9 +27,8 @@ class UserRepository {
   Future<void> deleteUser() async {
     if (auth.currentUser != null) {
       try {
-        await db.collection('users').doc(auth.currentUser!.uid).delete();
         await auth.currentUser!.delete();
-        auth.signOut();
+        // auth.signOut();
         googleSignIn.signOut();
       } catch (e) {
         throw Exception('Error eliminando el usuario');
