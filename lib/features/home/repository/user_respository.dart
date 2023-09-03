@@ -28,7 +28,6 @@ class UserRepository {
     if (auth.currentUser != null) {
       try {
         await auth.currentUser!.delete();
-        // auth.signOut();
         googleSignIn.signOut();
       } catch (e) {
         throw Exception('Error eliminando el usuario');
