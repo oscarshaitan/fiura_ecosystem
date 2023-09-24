@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
                     child: DrawerHeader(
                         decoration: const BoxDecoration(color: Colors.red),
                         child: sessionState.maybeMap(
+                          error: (value) => const OnLoadMessage(),
                           userFetched: (state) {
                             List<String> nameList =
                                 state.currentUser!.name.split(' ');

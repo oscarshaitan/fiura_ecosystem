@@ -12,9 +12,12 @@ class LoginCubit extends Cubit<LoginState> {
   final UserRepository _userRepository;
 
   void login() async {
+    emit(const LoginState.loading());
     final result = await _loginRepository.signIn();
     if (result.user != null) {
-      emit(const LoginState.success());
+      Future.delayed(const Duration(seconds: 1)).then((value) {
+        emit(const LoginState.success());
+      });
     } else {
       emit(const Error('Error'));
     }

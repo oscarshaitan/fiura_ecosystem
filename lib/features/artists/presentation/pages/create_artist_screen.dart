@@ -227,18 +227,6 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
       final File? imageSelected = image;
       final String previousName = previousPhotoName;
 
-      //Clear the Text fields
-
-      controllerArtistName.clear();
-      controllerArtistAbout.clear();
-      controllerArtistFacebook.clear();
-      controllerArtistTwitter.clear();
-      controllerArtistInstagram.clear();
-      setState(() {
-        image = null;
-        previousPhotoName = "";
-      });
-
       if (widget.artist != null) {
         //If it is a created artist and we are editing it, use the function to update the Artist
         context.read<ArtistCubit>().updateArtist(widget.artist!.id, name, about,

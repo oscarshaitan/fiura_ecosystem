@@ -16,43 +16,47 @@ void deleteAccountModal({
       builder: ((context) {
         return BlocProvider(
           create: (_) => getIt<LoginCubit>(),
-          child:
-              BlocConsumer<LoginCubit, LoginState>(listener: (context, state) {
-            state.whenOrNull(
-              success: () => context.router.replace(const SplashScreenRoute()),
-            );
-          }, builder: (context, state) {
-            return state.maybeWhen(
-              error: (message) => getErrorAlertDialog(
-                contentText: "Ocurrió un error inesperado al cerrar sesión",
-                continueFunction: () => Navigator.pop(context),
-              ),
-              orElse: () => getErrorAlertDialog(
-                contentText: "Ocurrió un error inesperado al cerrar sesión",
-                continueFunction: () => Navigator.pop(context),
-              ),
-              initial: () => AlertDialog(
-                backgroundColor: const Color(0xff353535),
-                title: const Text('¿Eliminar la cuenta?'),
-                content: const Text(
-                    'Si eliminas tu cuenta, no podrás recuperarla. ¿Estás seguro de continuar?'),
-                actions: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text("Cancelar")),
-                  TextButton(
-                      onPressed: () {
-                        context.read<LoginCubit>().deleteAccount();
-                      },
-                      child: const Text("Eliminar")),
-                ],
-              ),
-              loading: () => getLoadingAlertDialog(
-                  contentText: "Eliminando tu cuenta, espera un momento"),
-            );
-          }),
+          child: BlocConsumer<LoginCubit, LoginState>(
+            listener: (context, state) {
+              state.whenOrNull(
+                success: () =>
+                    context.router.replace(const SplashScreenRoute()),
+              );
+            },
+            builder: (context, state) {
+              return state.maybeWhen(
+                error: (message) => getErrorAlertDialog(
+                  contentText:
+                      "Ocurrió un error inesperado al eliminar la cuenta",
+                  continueFunction: () => Navigator.pop(context),
+                ),
+                orElse: () => getErrorAlertDialog(
+                  contentText: "Ocurrió un error inesperado al cerrar sesión",
+                  continueFunction: () => Navigator.pop(context),
+                ),
+                initial: () => AlertDialog(
+                  backgroundColor: const Color(0xff353535),
+                  title: const Text('¿Eliminar la cuenta?'),
+                  content: const Text(
+                      'Si eliminas tu cuenta, no podrás recuperarla. ¿Estás seguro de continuar?'),
+                  actions: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text("Cancelar")),
+                    TextButton(
+                        onPressed: () {
+                          context.read<LoginCubit>().deleteAccount();
+                        },
+                        child: const Text("Eliminar")),
+                  ],
+                ),
+                loading: () => getLoadingAlertDialog(
+                    contentText: "Eliminando tu cuenta, espera un momento"),
+              );
+            },
+          ),
         );
       }));
 }
