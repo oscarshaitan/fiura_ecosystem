@@ -41,6 +41,7 @@ dependencies:
 
   #Url redirect
   url_launcher: ^6.1.12
+  firebase_app_check: ^0.2.0
 
 dev_dependencies:
   flutter_test:
