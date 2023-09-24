@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fiura/features/home/cubit/session_cubit.dart';
 import 'package:fiura/features/home/widgets/logout_modal.dart';
+import 'package:fiura/features/widgets/on_load_message.dart';
 import 'package:fiura/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,8 +29,7 @@ class HomeScreen extends StatelessWidget {
                         child: sessionState.maybeMap(
                           error: (value) => const OnLoadMessage(),
                           userFetched: (state) {
-                            List<String> nameList =
-                                state.currentUser!.name.split(' ');
+                            List<String> nameList = state.currentUser!.name.split(' ');
                             String name = nameList.sublist(0, 2).join(' ');
                             return Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -37,22 +37,17 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    context.router
-                                        .push(const ProfileScreenRoute());
+                                    context.router.push(const ProfileScreenRoute());
                                   },
                                   child: CircleAvatar(
                                     radius: 25,
-                                    backgroundImage:
-                                        NetworkImage(state.currentUser!.photo),
+                                    backgroundImage: NetworkImage(state.currentUser!.photo),
                                   ),
                                 ),
                                 const SizedBox(height: 20),
                                 Text(name,
                                     textAlign: TextAlign.start,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineMedium!
-                                        .copyWith(
+                                    style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                         )),
@@ -60,10 +55,7 @@ class HomeScreen extends StatelessWidget {
                                 Text(
                                   state.isAdmin ? 'Administrador' : 'Usuario',
                                   textAlign: TextAlign.start,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(
+                                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                         color: Colors.white,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -71,8 +63,7 @@ class HomeScreen extends StatelessWidget {
                               ],
                             );
                           },
-                          orElse: () => const Image(
-                              image: AssetImage('assets/images/logo.png')),
+                          orElse: () => const Image(image: AssetImage('assets/images/logo.png')),
                         )),
                   ),
                   const SizedBox(height: 10),
@@ -80,8 +71,7 @@ class HomeScreen extends StatelessWidget {
                     title: const Text('Home'),
                     onTap: () {
                       Navigator.of(context).pop();
-                      context.router.pushAndPopUntil(const PostsScreenRoute(),
-                          predicate: (route) => false);
+                      context.router.pushAndPopUntil(const PostsScreenRoute(), predicate: (route) => false);
                     },
                   ),
                   ListTile(
