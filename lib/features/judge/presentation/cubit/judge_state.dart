@@ -12,5 +12,7 @@ abstract class JudgeState with _$JudgeState {
   const factory JudgeState.error(String message) = Error;
   const factory JudgeState.success() = Success;
   const factory JudgeState.loadData(List<JudgeEntity> judges) = LoadData;
+  const factory JudgeState.loadJudge(JudgeEntity judge) = LoadJudge;
   const factory JudgeState.pickedImage(File image) = PickedImage;
+  const factory JudgeState.chargedImage(File image, String name) = ChargedImage;
 }

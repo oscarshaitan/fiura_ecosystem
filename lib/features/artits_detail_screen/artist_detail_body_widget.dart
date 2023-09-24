@@ -1,6 +1,7 @@
-import 'package:fiura_ecosystem/core/entities/artist_entity/artist_entity.dart';
-import 'package:fiura_ecosystem/features/artits_detail_screen/artist_social_network_widget.dart';
-import 'package:fiura_ecosystem/features/widgets/image_app_bar_widget.dart';
+
+import 'package:fiura/core/entities/artist_entity/artist_entity.dart';
+import 'package:fiura/features/artits_detail_screen/artist_social_network_widget.dart';
+import 'package:fiura/features/widgets/image_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
 class ArtistDetailBodyWidget extends StatefulWidget {

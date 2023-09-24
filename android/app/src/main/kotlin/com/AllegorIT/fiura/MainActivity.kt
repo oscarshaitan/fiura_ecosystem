@@ -1,4 +1,4 @@
-package com.AllegorIT.fiura2018
+package com.AllegorIT.fiura
 
 import io.flutter.embedding.android.FlutterActivity
 

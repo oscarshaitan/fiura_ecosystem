@@ -1,14 +1,13 @@
 import 'dart:io';
 import 'package:path/path.dart' as path;
-import 'package:fiura_ecosystem/core/entities/post_entity/post_entity.dart';
-import 'package:fiura_ecosystem/features/posts/presentation/cubit/post_state.dart';
+import 'package:fiura/core/entities/post_entity/post_entity.dart';
+import 'package:fiura/features/posts/presentation/cubit/post_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../images/domain/repositories/image_repository.dart';
 import '../../domain/repositories/post_repository.dart';
 
 class PostCubit extends Cubit<PostState> {
-  PostCubit(this._postRepository, this._imageRepository)
-      : super(const Initial());
+  PostCubit(this._postRepository, this._imageRepository) : super(const Initial());
 
   final PostRepository _postRepository;
   final ImageRepository _imageRepository;
@@ -21,6 +20,7 @@ class PostCubit extends Cubit<PostState> {
       redirectionUrl: redirectionUrl,
       urlPhoto: urlPhoto,
       description: description,
+      creationDate: DateTime.now().millisecondsSinceEpoch.toString(),
     );
 
     emit(const Loading());

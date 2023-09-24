@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.AllegorIT.fiura2018.fiuraEcosystem</string>
+	<string>com.AllegorIT.fiura.fiuraEcosystem</string>
 	<key>PROJECT_ID</key>
 	<string>fiurapp</string>
 	<key>STORAGE_BUCKET</key>

@@ -1,4 +1,4 @@
-import 'package:fiura_ecosystem/core/entities/user/user_entity.dart';
+import 'package:fiura/core/entities/user/user_entity.dart';
 
 abstract class AdminRepository {
   Future<List<UserEntity>> getAdmins();

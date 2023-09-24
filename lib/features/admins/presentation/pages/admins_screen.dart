@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fiura_ecosystem/dependencies.dart';
-import 'package:fiura_ecosystem/features/admins/presentation/cubit/admin_cubit.dart';
-import 'package:fiura_ecosystem/features/admins/presentation/cubit/admin_state.dart';
-import 'package:fiura_ecosystem/features/widgets/empty_list_widget.dart';
-import 'package:fiura_ecosystem/features/widgets/on_load_message.dart';
-import 'package:fiura_ecosystem/features/admins/presentation/widgets/remove_admin_modal.dart';
-import 'package:fiura_ecosystem/features/widgets/tile_image_widget.dart';
-import 'package:fiura_ecosystem/router/app_router.gr.dart';
+import 'package:fiura/dependencies.dart';
+import 'package:fiura/features/admins/presentation/cubit/admin_cubit.dart';
+import 'package:fiura/features/admins/presentation/cubit/admin_state.dart';
+import 'package:fiura/features/widgets/empty_list_widget.dart';
+import 'package:fiura/features/widgets/on_load_message.dart';
+import 'package:fiura/features/admins/presentation/widgets/remove_admin_modal.dart';
+import 'package:fiura/features/widgets/tile_image_widget.dart';
+import 'package:fiura/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,10 +26,10 @@ class AdminScreen extends StatelessWidget {
                   ),
               loadData: (adminList) => Scaffold(
                     floatingActionButton: FloatingActionButton(
+                      child: const Icon(Icons.add),
                       onPressed: () {
                         context.router.push(const CreateAdminScreenRoute());
                       },
-                      child: const Icon(Icons.add),
                     ),
                     body: adminList.isNotEmpty
                         ? Container(
@@ -39,16 +39,11 @@ class AdminScreen extends StatelessWidget {
                               itemBuilder: (context, index) {
                                 final admin = adminList[index];
                                 return ListTile(
-                                  leading:
-                                      TileImageWidget(urlImage: admin.photo),
+                                  leading: TileImageWidget(urlImage: admin.photo),
                                   title: Text(admin.name),
                                   subtitle: Text(
                                     admin.email,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
-                                            color: const Color(0xff717171)),
+                                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: const Color(0xff717171)),
                                   ),
                                   trailing: IconButton(
                                     onPressed: () {
@@ -71,8 +66,7 @@ class AdminScreen extends StatelessWidget {
                           ),
                   ),
               orElse: () => const EmptyListWidget(
-                    message:
-                        'Ups! Ocurrion un error al cargar los administradores',
+                    message: 'Ups! Ocurrion un error al cargar los administradores',
                   ));
         },
       ),

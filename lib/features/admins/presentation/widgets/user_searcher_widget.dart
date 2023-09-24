@@ -1,6 +1,6 @@
-import 'package:fiura_ecosystem/features/admins/presentation/cubit/admin_cubit.dart';
-import 'package:fiura_ecosystem/features/admins/presentation/cubit/admin_state.dart';
-import 'package:fiura_ecosystem/features/admins/presentation/widgets/add_admin_modal.dart';
+import 'package:fiura/features/admins/presentation/cubit/admin_cubit.dart';
+import 'package:fiura/features/admins/presentation/cubit/admin_state.dart';
+import 'package:fiura/features/admins/presentation/widgets/add_admin_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

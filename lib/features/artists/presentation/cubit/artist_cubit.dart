@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:path/path.dart' as path;
-import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_state.dart';
+import 'package:fiura/features/artists/presentation/cubit/artist_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import '../../../../core/entities/artist_entity/artist_entity.dart';

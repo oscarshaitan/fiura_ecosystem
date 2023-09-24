@@ -23,7 +23,9 @@ mixin _$JudgeState {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<JudgeEntity> judges) loadData,
+    required TResult Function(JudgeEntity judge) loadJudge,
     required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,7 +35,9 @@ mixin _$JudgeState {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<JudgeEntity> judges)? loadData,
+    TResult? Function(JudgeEntity judge)? loadJudge,
     TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +47,9 @@ mixin _$JudgeState {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<JudgeEntity> judges)? loadData,
+    TResult Function(JudgeEntity judge)? loadJudge,
     TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,7 +60,9 @@ mixin _$JudgeState {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadJudge value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,7 +72,9 @@ mixin _$JudgeState {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadJudge value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -74,7 +84,9 @@ mixin _$JudgeState {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadJudge value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -139,7 +151,9 @@ class _$Initial implements Initial {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<JudgeEntity> judges) loadData,
+    required TResult Function(JudgeEntity judge) loadJudge,
     required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
   }) {
     return initial();
   }
@@ -152,7 +166,9 @@ class _$Initial implements Initial {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<JudgeEntity> judges)? loadData,
+    TResult? Function(JudgeEntity judge)? loadJudge,
     TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
   }) {
     return initial?.call();
   }
@@ -165,7 +181,9 @@ class _$Initial implements Initial {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<JudgeEntity> judges)? loadData,
+    TResult Function(JudgeEntity judge)? loadJudge,
     TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -182,7 +200,9 @@ class _$Initial implements Initial {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadJudge value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
   }) {
     return initial(this);
   }
@@ -195,7 +215,9 @@ class _$Initial implements Initial {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadJudge value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
   }) {
     return initial?.call(this);
   }
@@ -208,7 +230,9 @@ class _$Initial implements Initial {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadJudge value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -263,7 +287,9 @@ class _$Loading implements Loading {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<JudgeEntity> judges) loadData,
+    required TResult Function(JudgeEntity judge) loadJudge,
     required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
   }) {
     return loading();
   }
@@ -276,7 +302,9 @@ class _$Loading implements Loading {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<JudgeEntity> judges)? loadData,
+    TResult? Function(JudgeEntity judge)? loadJudge,
     TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
   }) {
     return loading?.call();
   }
@@ -289,7 +317,9 @@ class _$Loading implements Loading {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<JudgeEntity> judges)? loadData,
+    TResult Function(JudgeEntity judge)? loadJudge,
     TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -306,7 +336,9 @@ class _$Loading implements Loading {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadJudge value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
   }) {
     return loading(this);
   }
@@ -319,7 +351,9 @@ class _$Loading implements Loading {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadJudge value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
   }) {
     return loading?.call(this);
   }
@@ -332,7 +366,9 @@ class _$Loading implements Loading {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadJudge value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -413,7 +449,9 @@ class _$Error implements Error {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<JudgeEntity> judges) loadData,
+    required TResult Function(JudgeEntity judge) loadJudge,
     required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
   }) {
     return error(message);
   }
@@ -426,7 +464,9 @@ class _$Error implements Error {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<JudgeEntity> judges)? loadData,
+    TResult? Function(JudgeEntity judge)? loadJudge,
     TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
   }) {
     return error?.call(message);
   }
@@ -439,7 +479,9 @@ class _$Error implements Error {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<JudgeEntity> judges)? loadData,
+    TResult Function(JudgeEntity judge)? loadJudge,
     TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -456,7 +498,9 @@ class _$Error implements Error {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadJudge value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
   }) {
     return error(this);
   }
@@ -469,7 +513,9 @@ class _$Error implements Error {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadJudge value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
   }) {
     return error?.call(this);
   }
@@ -482,7 +528,9 @@ class _$Error implements Error {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadJudge value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -541,7 +589,9 @@ class _$Success implements Success {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<JudgeEntity> judges) loadData,
+    required TResult Function(JudgeEntity judge) loadJudge,
     required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
   }) {
     return success();
   }
@@ -554,7 +604,9 @@ class _$Success implements Success {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<JudgeEntity> judges)? loadData,
+    TResult? Function(JudgeEntity judge)? loadJudge,
     TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
   }) {
     return success?.call();
   }
@@ -567,7 +619,9 @@ class _$Success implements Success {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<JudgeEntity> judges)? loadData,
+    TResult Function(JudgeEntity judge)? loadJudge,
     TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -584,7 +638,9 @@ class _$Success implements Success {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadJudge value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
   }) {
     return success(this);
   }
@@ -597,7 +653,9 @@ class _$Success implements Success {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadJudge value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
   }) {
     return success?.call(this);
   }
@@ -610,7 +668,9 @@ class _$Success implements Success {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadJudge value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -698,7 +758,9 @@ class _$LoadData implements LoadData {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<JudgeEntity> judges) loadData,
+    required TResult Function(JudgeEntity judge) loadJudge,
     required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
   }) {
     return loadData(judges);
   }
@@ -711,7 +773,9 @@ class _$LoadData implements LoadData {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<JudgeEntity> judges)? loadData,
+    TResult? Function(JudgeEntity judge)? loadJudge,
     TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
   }) {
     return loadData?.call(judges);
   }
@@ -724,7 +788,9 @@ class _$LoadData implements LoadData {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<JudgeEntity> judges)? loadData,
+    TResult Function(JudgeEntity judge)? loadJudge,
     TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
     required TResult orElse(),
   }) {
     if (loadData != null) {
@@ -741,7 +807,9 @@ class _$LoadData implements LoadData {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadJudge value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
   }) {
     return loadData(this);
   }
@@ -754,7 +822,9 @@ class _$LoadData implements LoadData {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadJudge value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
   }) {
     return loadData?.call(this);
   }
@@ -767,7 +837,9 @@ class _$LoadData implements LoadData {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadJudge value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
     required TResult orElse(),
   }) {
     if (loadData != null) {
@@ -783,6 +855,185 @@ abstract class LoadData implements JudgeState {
   List<JudgeEntity> get judges;
   @JsonKey(ignore: true)
   _$$LoadDataCopyWith<_$LoadData> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadJudgeCopyWith<$Res> {
+  factory _$$LoadJudgeCopyWith(
+          _$LoadJudge value, $Res Function(_$LoadJudge) then) =
+      __$$LoadJudgeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({JudgeEntity judge});
+
+  $JudgeEntityCopyWith<$Res> get judge;
+}
+
+/// @nodoc
+class __$$LoadJudgeCopyWithImpl<$Res>
+    extends _$JudgeStateCopyWithImpl<$Res, _$LoadJudge>
+    implements _$$LoadJudgeCopyWith<$Res> {
+  __$$LoadJudgeCopyWithImpl(
+      _$LoadJudge _value, $Res Function(_$LoadJudge) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? judge = null,
+  }) {
+    return _then(_$LoadJudge(
+      null == judge
+          ? _value.judge
+          : judge // ignore: cast_nullable_to_non_nullable
+              as JudgeEntity,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $JudgeEntityCopyWith<$Res> get judge {
+    return $JudgeEntityCopyWith<$Res>(_value.judge, (value) {
+      return _then(_value.copyWith(judge: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$LoadJudge implements LoadJudge {
+  const _$LoadJudge(this.judge);
+
+  @override
+  final JudgeEntity judge;
+
+  @override
+  String toString() {
+    return 'JudgeState.loadJudge(judge: $judge)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadJudge &&
+            (identical(other.judge, judge) || other.judge == judge));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, judge);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadJudgeCopyWith<_$LoadJudge> get copyWith =>
+      __$$LoadJudgeCopyWithImpl<_$LoadJudge>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function(List<JudgeEntity> judges) loadData,
+    required TResult Function(JudgeEntity judge) loadJudge,
+    required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
+  }) {
+    return loadJudge(judge);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function(List<JudgeEntity> judges)? loadData,
+    TResult? Function(JudgeEntity judge)? loadJudge,
+    TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
+  }) {
+    return loadJudge?.call(judge);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function(List<JudgeEntity> judges)? loadData,
+    TResult Function(JudgeEntity judge)? loadJudge,
+    TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
+    required TResult orElse(),
+  }) {
+    if (loadJudge != null) {
+      return loadJudge(judge);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadJudge value) loadJudge,
+    required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
+  }) {
+    return loadJudge(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadJudge value)? loadJudge,
+    TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
+  }) {
+    return loadJudge?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
+    TResult Function(LoadJudge value)? loadJudge,
+    TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
+    required TResult orElse(),
+  }) {
+    if (loadJudge != null) {
+      return loadJudge(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadJudge implements JudgeState {
+  const factory LoadJudge(final JudgeEntity judge) = _$LoadJudge;
+
+  JudgeEntity get judge;
+  @JsonKey(ignore: true)
+  _$$LoadJudgeCopyWith<_$LoadJudge> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -855,7 +1106,9 @@ class _$PickedImage implements PickedImage {
     required TResult Function(String message) error,
     required TResult Function() success,
     required TResult Function(List<JudgeEntity> judges) loadData,
+    required TResult Function(JudgeEntity judge) loadJudge,
     required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
   }) {
     return pickedImage(image);
   }
@@ -868,7 +1121,9 @@ class _$PickedImage implements PickedImage {
     TResult? Function(String message)? error,
     TResult? Function()? success,
     TResult? Function(List<JudgeEntity> judges)? loadData,
+    TResult? Function(JudgeEntity judge)? loadJudge,
     TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
   }) {
     return pickedImage?.call(image);
   }
@@ -881,7 +1136,9 @@ class _$PickedImage implements PickedImage {
     TResult Function(String message)? error,
     TResult Function()? success,
     TResult Function(List<JudgeEntity> judges)? loadData,
+    TResult Function(JudgeEntity judge)? loadJudge,
     TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
     required TResult orElse(),
   }) {
     if (pickedImage != null) {
@@ -898,7 +1155,9 @@ class _$PickedImage implements PickedImage {
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
     required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadJudge value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
   }) {
     return pickedImage(this);
   }
@@ -911,7 +1170,9 @@ class _$PickedImage implements PickedImage {
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
     TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadJudge value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
   }) {
     return pickedImage?.call(this);
   }
@@ -924,7 +1185,9 @@ class _$PickedImage implements PickedImage {
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
     TResult Function(LoadData value)? loadData,
+    TResult Function(LoadJudge value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
     required TResult orElse(),
   }) {
     if (pickedImage != null) {
@@ -940,5 +1203,184 @@ abstract class PickedImage implements JudgeState {
   File get image;
   @JsonKey(ignore: true)
   _$$PickedImageCopyWith<_$PickedImage> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ChargedImageCopyWith<$Res> {
+  factory _$$ChargedImageCopyWith(
+          _$ChargedImage value, $Res Function(_$ChargedImage) then) =
+      __$$ChargedImageCopyWithImpl<$Res>;
+  @useResult
+  $Res call({File image, String name});
+}
+
+/// @nodoc
+class __$$ChargedImageCopyWithImpl<$Res>
+    extends _$JudgeStateCopyWithImpl<$Res, _$ChargedImage>
+    implements _$$ChargedImageCopyWith<$Res> {
+  __$$ChargedImageCopyWithImpl(
+      _$ChargedImage _value, $Res Function(_$ChargedImage) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? image = null,
+    Object? name = null,
+  }) {
+    return _then(_$ChargedImage(
+      null == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as File,
+      null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ChargedImage implements ChargedImage {
+  const _$ChargedImage(this.image, this.name);
+
+  @override
+  final File image;
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'JudgeState.chargedImage(image: $image, name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ChargedImage &&
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.name, name) || other.name == name));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, image, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ChargedImageCopyWith<_$ChargedImage> get copyWith =>
+      __$$ChargedImageCopyWithImpl<_$ChargedImage>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function(List<JudgeEntity> judges) loadData,
+    required TResult Function(JudgeEntity judge) loadJudge,
+    required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
+  }) {
+    return chargedImage(image, name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function(List<JudgeEntity> judges)? loadData,
+    TResult? Function(JudgeEntity judge)? loadJudge,
+    TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
+  }) {
+    return chargedImage?.call(image, name);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function(List<JudgeEntity> judges)? loadData,
+    TResult Function(JudgeEntity judge)? loadJudge,
+    TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
+    required TResult orElse(),
+  }) {
+    if (chargedImage != null) {
+      return chargedImage(image, name);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(LoadData value) loadData,
+    required TResult Function(LoadJudge value) loadJudge,
+    required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
+  }) {
+    return chargedImage(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(LoadData value)? loadData,
+    TResult? Function(LoadJudge value)? loadJudge,
+    TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
+  }) {
+    return chargedImage?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(LoadData value)? loadData,
+    TResult Function(LoadJudge value)? loadJudge,
+    TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
+    required TResult orElse(),
+  }) {
+    if (chargedImage != null) {
+      return chargedImage(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChargedImage implements JudgeState {
+  const factory ChargedImage(final File image, final String name) =
+      _$ChargedImage;
+
+  File get image;
+  String get name;
+  @JsonKey(ignore: true)
+  _$$ChargedImageCopyWith<_$ChargedImage> get copyWith =>
       throw _privateConstructorUsedError;
 }

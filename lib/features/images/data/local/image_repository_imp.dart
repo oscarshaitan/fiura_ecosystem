@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:fiura_ecosystem/features/images/domain/repositories/image_repository.dart';
+import 'package:fiura/features/images/domain/repositories/image_repository.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImageRepositoryImp extends ImageRepository {

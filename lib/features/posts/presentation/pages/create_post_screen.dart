@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:fiura_ecosystem/features/widgets/card_image_selector.dart';
-import 'package:fiura_ecosystem/features/widgets/danger_text.dart';
+import 'package:fiura/features/widgets/card_image_selector.dart';
+import 'package:fiura/features/widgets/danger_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -128,7 +128,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
                           onPressed: () {
                             _onPressed(_formKey, context);
                           },
-                          child: const Text("Crear patrocinador"))
+                          child: const Text("Crear post"))
                     ],
                   ),
                 )),

@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
-import 'package:fiura_ecosystem/core/entities/artist_entity/artist_entity.dart';
-import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
-import 'package:fiura_ecosystem/router/app_router.gr.dart';
+import 'package:fiura/core/entities/artist_entity/artist_entity.dart';
+import 'package:fiura/features/artists/presentation/cubit/artist_cubit.dart';
+import 'package:fiura/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../dependencies.dart';

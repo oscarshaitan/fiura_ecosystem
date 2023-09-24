@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fiura_ecosystem/core/entities/user/user_entity.dart';
-import 'package:fiura_ecosystem/features/home/repository/user_respository.dart';
+import 'package:fiura/core/entities/user/user_entity.dart';
+import 'package:fiura/features/home/repository/user_respository.dart';
 
 import '../../domain/repositories/admin_repository.dart';
 

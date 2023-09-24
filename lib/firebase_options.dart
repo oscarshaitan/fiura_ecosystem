@@ -73,6 +73,6 @@ class DefaultFirebaseOptions {
     databaseURL: 'https://fiurapp.firebaseio.com',
     storageBucket: 'fiurapp.appspot.com',
     iosClientId: '399976051488-6klfabmon1fskvppkv4orjmt7r1c0mau.apps.googleusercontent.com',
-    iosBundleId: 'com.AllegorIT.fiura2018.fiuraEcosystem',
+    iosBundleId: 'com.AllegorIT.fiura.fiuraEcosystem',
   );
 }

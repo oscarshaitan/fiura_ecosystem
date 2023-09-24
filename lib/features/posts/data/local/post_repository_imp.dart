@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fiura_ecosystem/core/entities/post_entity/post_entity.dart';
+import 'package:fiura/core/entities/post_entity/post_entity.dart';
 import '../../../images/domain/repositories/image_repository.dart';
 import '../../domain/repositories/post_repository.dart';
 
@@ -31,20 +31,16 @@ class PostRepositoryImp extends PostRepository {
         "urlPhoto": post.urlPhoto,
         "description": post.description,
         "uid": user.uid,
-        "creation_date": DateTime.now(),
+        "creationDate": post.creationDate,
       });
       final DocumentSnapshot result = await docRef.get();
 
       //Upload image to firebase storage
-      final String? urlPhoto =
-          await imageRepository.saveImage(image, post.urlPhoto);
+      final String? urlPhoto = await imageRepository.saveImage(image, post.urlPhoto);
 
       if (result.data() != null && urlPhoto != null) {
         var id = result.id;
-        await db
-            .collection(posts)
-            .doc(id)
-            .update({"id": id, "urlPhoto": urlPhoto});
+        await db.collection(posts).doc(id).update({"id": id, "urlPhoto": urlPhoto});
         status = true;
       } else {
         status = false;
@@ -73,7 +69,7 @@ class PostRepositoryImp extends PostRepository {
         postsList.add(post);
       }
     }
-
+    postsList.sort((PostEntity a, PostEntity b) => int.parse(a.creationDate) > int.parse(b.creationDate) ? 0 : 1);
     return postsList;
   }
 }

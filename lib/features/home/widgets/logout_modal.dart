@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fiura_ecosystem/dependencies.dart';
-import 'package:fiura_ecosystem/features/login/presentation/cubit/login_cubit.dart';
-import 'package:fiura_ecosystem/features/login/presentation/cubit/login_state.dart';
-import 'package:fiura_ecosystem/features/widgets/alert_dialogs.dart';
-import 'package:fiura_ecosystem/router/app_router.gr.dart';
+import 'package:fiura/dependencies.dart';
+import 'package:fiura/features/login/presentation/cubit/login_cubit.dart';
+import 'package:fiura/features/login/presentation/cubit/login_state.dart';
+import 'package:fiura/features/widgets/alert_dialogs.dart';
+import 'package:fiura/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

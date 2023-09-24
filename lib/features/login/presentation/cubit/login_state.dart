@@ -1,4 +1,4 @@
-import 'package:fiura_ecosystem/core/entities/user/user_entity.dart';
+import 'package:fiura/core/entities/user/user_entity.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'login_state.freezed.dart';
 

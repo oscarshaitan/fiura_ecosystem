@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fiura_ecosystem/dependencies.dart';
-import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
-import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_state.dart';
-import 'package:fiura_ecosystem/features/artits_detail_screen/artist_detail_body_widget.dart';
-import 'package:fiura_ecosystem/features/widgets/on_load_message.dart';
+import 'package:fiura/dependencies.dart';
+import 'package:fiura/features/artists/presentation/cubit/artist_cubit.dart';
+import 'package:fiura/features/artists/presentation/cubit/artist_state.dart';
+import 'package:fiura/features/artits_detail_screen/artist_detail_body_widget.dart';
+import 'package:fiura/features/widgets/on_load_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

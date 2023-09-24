@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fiura_ecosystem/features/artists/presentation/cubit/artist_cubit.dart';
-import 'package:fiura_ecosystem/features/home/cubit/session_cubit.dart';
-import 'package:fiura_ecosystem/features/widgets/empty_list_widget.dart';
-import 'package:fiura_ecosystem/features/widgets/on_load_message.dart';
-import 'package:fiura_ecosystem/features/widgets/tile_image_widget.dart';
-import 'package:fiura_ecosystem/router/app_router.gr.dart';
+import 'package:fiura/features/artists/presentation/cubit/artist_cubit.dart';
+import 'package:fiura/features/home/cubit/session_cubit.dart';
+import 'package:fiura/features/widgets/empty_list_widget.dart';
+import 'package:fiura/features/widgets/on_load_message.dart';
+import 'package:fiura/features/widgets/tile_image_widget.dart';
+import 'package:fiura/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,6 +38,7 @@ class ArtistsScreen extends StatelessWidget {
                       userFetched: (state) {
                         if (state.isAdmin) {
                           return FloatingActionButton(
+                              child: const Icon(Icons.add),
                               onPressed: () => context.router.push(
                                     CreateArtistScreenRoute(),
                                   ));

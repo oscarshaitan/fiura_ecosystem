@@ -22,6 +22,7 @@ PostEntity _$PostEntityFromJson(Map<String, dynamic> json) {
 mixin _$PostEntity {
   String get id => throw _privateConstructorUsedError;
   String? get redirectionUrl => throw _privateConstructorUsedError;
+  String get creationDate => throw _privateConstructorUsedError;
   String get urlPhoto => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
@@ -38,7 +39,11 @@ abstract class $PostEntityCopyWith<$Res> {
       _$PostEntityCopyWithImpl<$Res, PostEntity>;
   @useResult
   $Res call(
-      {String id, String? redirectionUrl, String urlPhoto, String description});
+      {String id,
+      String? redirectionUrl,
+      String creationDate,
+      String urlPhoto,
+      String description});
 }
 
 /// @nodoc
@@ -56,6 +61,7 @@ class _$PostEntityCopyWithImpl<$Res, $Val extends PostEntity>
   $Res call({
     Object? id = null,
     Object? redirectionUrl = freezed,
+    Object? creationDate = null,
     Object? urlPhoto = null,
     Object? description = null,
   }) {
@@ -68,6 +74,10 @@ class _$PostEntityCopyWithImpl<$Res, $Val extends PostEntity>
           ? _value.redirectionUrl
           : redirectionUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      creationDate: null == creationDate
+          ? _value.creationDate
+          : creationDate // ignore: cast_nullable_to_non_nullable
+              as String,
       urlPhoto: null == urlPhoto
           ? _value.urlPhoto
           : urlPhoto // ignore: cast_nullable_to_non_nullable
@@ -89,7 +99,11 @@ abstract class _$$_PostEntityCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String id, String? redirectionUrl, String urlPhoto, String description});
+      {String id,
+      String? redirectionUrl,
+      String creationDate,
+      String urlPhoto,
+      String description});
 }
 
 /// @nodoc
@@ -105,6 +119,7 @@ class __$$_PostEntityCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? redirectionUrl = freezed,
+    Object? creationDate = null,
     Object? urlPhoto = null,
     Object? description = null,
   }) {
@@ -117,6 +132,10 @@ class __$$_PostEntityCopyWithImpl<$Res>
           ? _value.redirectionUrl
           : redirectionUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      creationDate: null == creationDate
+          ? _value.creationDate
+          : creationDate // ignore: cast_nullable_to_non_nullable
+              as String,
       urlPhoto: null == urlPhoto
           ? _value.urlPhoto
           : urlPhoto // ignore: cast_nullable_to_non_nullable
@@ -135,6 +154,7 @@ class _$_PostEntity with DiagnosticableTreeMixin implements _PostEntity {
   _$_PostEntity(
       {required this.id,
       this.redirectionUrl,
+      required this.creationDate,
       required this.urlPhoto,
       required this.description});
 
@@ -146,13 +166,15 @@ class _$_PostEntity with DiagnosticableTreeMixin implements _PostEntity {
   @override
   final String? redirectionUrl;
   @override
+  final String creationDate;
+  @override
   final String urlPhoto;
   @override
   final String description;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PostEntity(id: $id, redirectionUrl: $redirectionUrl, urlPhoto: $urlPhoto, description: $description)';
+    return 'PostEntity(id: $id, redirectionUrl: $redirectionUrl, creationDate: $creationDate, urlPhoto: $urlPhoto, description: $description)';
   }
 
   @override
@@ -162,6 +184,7 @@ class _$_PostEntity with DiagnosticableTreeMixin implements _PostEntity {
       ..add(DiagnosticsProperty('type', 'PostEntity'))
       ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('redirectionUrl', redirectionUrl))
+      ..add(DiagnosticsProperty('creationDate', creationDate))
       ..add(DiagnosticsProperty('urlPhoto', urlPhoto))
       ..add(DiagnosticsProperty('description', description));
   }
@@ -174,6 +197,8 @@ class _$_PostEntity with DiagnosticableTreeMixin implements _PostEntity {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.redirectionUrl, redirectionUrl) ||
                 other.redirectionUrl == redirectionUrl) &&
+            (identical(other.creationDate, creationDate) ||
+                other.creationDate == creationDate) &&
             (identical(other.urlPhoto, urlPhoto) ||
                 other.urlPhoto == urlPhoto) &&
             (identical(other.description, description) ||
@@ -182,8 +207,8 @@ class _$_PostEntity with DiagnosticableTreeMixin implements _PostEntity {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, redirectionUrl, urlPhoto, description);
+  int get hashCode => Object.hash(
+      runtimeType, id, redirectionUrl, creationDate, urlPhoto, description);
 
   @JsonKey(ignore: true)
   @override
@@ -203,6 +228,7 @@ abstract class _PostEntity implements PostEntity {
   factory _PostEntity(
       {required final String id,
       final String? redirectionUrl,
+      required final String creationDate,
       required final String urlPhoto,
       required final String description}) = _$_PostEntity;
 
@@ -213,6 +239,8 @@ abstract class _PostEntity implements PostEntity {
   String get id;
   @override
   String? get redirectionUrl;
+  @override
+  String get creationDate;
   @override
   String get urlPhoto;
   @override

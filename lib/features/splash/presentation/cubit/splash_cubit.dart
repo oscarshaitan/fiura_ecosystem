@@ -1,7 +1,7 @@
-// import 'package:fiura_ecosystem/features/splash/domain/use_cases/get_splash_use_case.dart';
-import 'package:fiura_ecosystem/features/splash/presentation/cubit/splash_state.dart';
+// import 'package:fiura/features/splash/domain/use_cases/get_splash_use_case.dart';
+import 'package:fiura/features/splash/presentation/cubit/splash_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fiura_ecosystem/features/splash/domain/repositories/splash_repository.dart';
+import 'package:fiura/features/splash/domain/repositories/splash_repository.dart';
 
 class Splashcubit extends Cubit<SplashState> {
   Splashcubit(this._splashRepository) : super(const None());

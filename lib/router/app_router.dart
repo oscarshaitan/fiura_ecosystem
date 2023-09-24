@@ -1,15 +1,16 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fiura_ecosystem/features/artists/presentation/pages/artist_screen.dart';
-import 'package:fiura_ecosystem/features/artists/presentation/pages/create_artist_screen.dart';
-import 'package:fiura_ecosystem/features/artits_detail_screen/artist_detail.dart';
-import 'package:fiura_ecosystem/features/home/home_screen.dart';
-import 'package:fiura_ecosystem/features/judge/presentation/pages/view_judge_screen.dart';
-import 'package:fiura_ecosystem/features/posts/presentation/pages/posts_screen.dart';
-import 'package:fiura_ecosystem/features/splash/presentation/pages/splash_screen.dart';
-import 'package:fiura_ecosystem/features/sponsor/presentation/pages/create_sponsor_screen.dart';
-import 'package:fiura_ecosystem/features/sponsor/presentation/pages/sponsor_detail_screen.dart';
-import 'package:fiura_ecosystem/features/user/profile_screen.dart';
-import 'package:fiura_ecosystem/router/router_paths.dart';
+import 'package:fiura/features/artists/presentation/pages/artist_screen.dart';
+import 'package:fiura/features/artists/presentation/pages/create_artist_screen.dart';
+import 'package:fiura/features/artits_detail_screen/artist_detail.dart';
+import 'package:fiura/features/home/home_screen.dart';
+import 'package:fiura/features/judge/presentation/pages/view_judge_screen.dart';
+import 'package:fiura/features/judge_detail_screen/judge_detail.dart';
+import 'package:fiura/features/posts/presentation/pages/posts_screen.dart';
+import 'package:fiura/features/splash/presentation/pages/splash_screen.dart';
+import 'package:fiura/features/sponsor/presentation/pages/create_sponsor_screen.dart';
+import 'package:fiura/features/sponsor/presentation/pages/sponsor_detail_screen.dart';
+import 'package:fiura/features/user/profile_screen.dart';
+import 'package:fiura/router/router_paths.dart';
 import '../features/admins/presentation/pages/admins_screen.dart';
 import '../features/admins/presentation/pages/create_admin_screen.dart';
 import '../features/judge/presentation/pages/create_judge_screen.dart';
@@ -40,6 +41,7 @@ import '../features/sponsor/presentation/pages/view_sponsor_screen.dart';
     AutoRoute(page: CreateSponsorScreen, path: createSponsor),
     AutoRoute(page: CreateJudgeScreen, path: createJudge),
     AutoRoute(page: ArtistsDetailScreen, path: artistsDetail),
+    AutoRoute(page: JudgeDetailScreen, path: judgeDetail),
     AutoRoute(page: CreateArtistScreen, path: createArtist),
     AutoRoute(page: CreatePostScreen, path: createPost),
     AutoRoute(page: ProfileScreen, path: profile),

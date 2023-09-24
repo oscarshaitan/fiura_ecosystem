@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:fiura_ecosystem/dependencies.dart';
-import 'package:fiura_ecosystem/firebase_options.dart';
-import 'package:fiura_ecosystem/router/app_router.gr.dart';
-import 'package:fiura_ecosystem/theming.dart';
+import 'package:fiura/dependencies.dart';
+import 'package:fiura/firebase_options.dart';
+import 'package:fiura/router/app_router.gr.dart';
+import 'package:fiura/theming.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:url_strategy/url_strategy.dart';

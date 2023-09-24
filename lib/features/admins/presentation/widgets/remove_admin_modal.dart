@@ -1,7 +1,7 @@
-import 'package:fiura_ecosystem/core/entities/user/user_entity.dart';
-import 'package:fiura_ecosystem/features/admins/presentation/cubit/admin_cubit.dart';
-import 'package:fiura_ecosystem/features/admins/presentation/cubit/admin_state.dart';
-import 'package:fiura_ecosystem/features/widgets/alert_dialogs.dart';
+import 'package:fiura/core/entities/user/user_entity.dart';
+import 'package:fiura/features/admins/presentation/cubit/admin_cubit.dart';
+import 'package:fiura/features/admins/presentation/cubit/admin_state.dart';
+import 'package:fiura/features/widgets/alert_dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../dependencies.dart';

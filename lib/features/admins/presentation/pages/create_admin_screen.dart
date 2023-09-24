@@ -1,6 +1,6 @@
-import 'package:fiura_ecosystem/dependencies.dart';
-import 'package:fiura_ecosystem/features/admins/presentation/cubit/admin_cubit.dart';
-import 'package:fiura_ecosystem/features/admins/presentation/widgets/user_searcher_widget.dart';
+import 'package:fiura/dependencies.dart';
+import 'package:fiura/features/admins/presentation/cubit/admin_cubit.dart';
+import 'package:fiura/features/admins/presentation/widgets/user_searcher_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,15 +1,20 @@
 import 'dart:io';
-import 'package:fiura_ecosystem/features/sponsor/presentation/cubit/sponsor_cubit.dart';
-import 'package:fiura_ecosystem/features/sponsor/presentation/cubit/sponsor_state.dart';
+
+import 'package:fiura/core/entities/sponsor_entity/sponsor_entity.dart';
+import 'package:fiura/features/sponsor/presentation/cubit/sponsor_cubit.dart';
+import 'package:fiura/features/sponsor/presentation/cubit/sponsor_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
 import '../../../widgets/card_image_selector.dart';
 import '../../../widgets/danger_text.dart';
 
 class CreateSponsorScreen extends StatefulWidget {
-  const CreateSponsorScreen({super.key});
+  final SponsorEntity? sponsor;
+
+  const CreateSponsorScreen({super.key, this.sponsor});
 
   @override
   State<CreateSponsorScreen> createState() => _CreateSponsorScreenState();
@@ -18,14 +23,32 @@ class CreateSponsorScreen extends StatefulWidget {
 class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
   File? image;
   bool showErrorMessage = false;
+
   // Form key
   final _formKey = GlobalKey<FormState>();
+
   // TextField controllers
   final controllerSponsorName = TextEditingController();
   final controllerSponsorAbout = TextEditingController();
   final controllerSponsorFacebook = TextEditingController();
   final controllerSponsorTwitter = TextEditingController();
   final controllerSponsorInstagram = TextEditingController();
+
+  //Other vars
+  bool getImage = true;
+  String previousPhotoName = "";
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.sponsor != null) {
+      controllerSponsorName.text = widget.sponsor!.name;
+      controllerSponsorAbout.text = widget.sponsor!.about;
+      controllerSponsorFacebook.text = widget.sponsor!.socialNetwork[0] ?? "";
+      controllerSponsorTwitter.text = widget.sponsor!.socialNetwork[1] ?? "";
+      controllerSponsorInstagram.text = widget.sponsor!.socialNetwork[2] ?? "";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +58,7 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
       ),
       body: BlocProvider(
         create: (_) => getIt<SponsorCubit>(),
-        child: BlocConsumer<SponsorCubit, SponsorState>(
-            listener: (context, snapshot) {
+        child: BlocConsumer<SponsorCubit, SponsorState>(listener: (context, snapshot) {
           snapshot.whenOrNull(
             loading: () => ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
@@ -50,8 +72,7 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
             ),
             error: (message) => ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text(
-                    'Error añadiendo nuevo Patrocinador, intentalo nuevamente'),
+                content: Text('Error añadiendo nuevo Patrocinador, intentalo nuevamente'),
               ),
             ),
             pickedImage: (image) => setState(() {
@@ -60,12 +81,15 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
             }),
           );
         }, builder: (context, snapshot) {
+          if (widget.sponsor != null && getImage) {
+            context.read<SponsorCubit>().setUrlToFile(widget.sponsor!.urlPhoto);
+            getImage = false;
+          }
           return SingleChildScrollView(
             child: Form(
                 key: _formKey,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 30.0, vertical: 20.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
                   child: Column(
                     children: [
                       const SizedBox(
@@ -83,18 +107,9 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                             onTap: () {
                               context.read<SponsorCubit>().imagePicker();
                             },
-                            borderColor: showErrorMessage
-                                ? Colors.red
-                                : Theme.of(context)
-                                    .inputDecorationTheme
-                                    .enabledBorder!
-                                    .borderSide
-                                    .color,
+                            borderColor: showErrorMessage ? Colors.red : Theme.of(context).inputDecorationTheme.enabledBorder!.borderSide.color,
                           ),
-                          if (showErrorMessage)
-                            const DangerText(
-                                text:
-                                    "Debes seleccionar una imagen de tu galería"),
+                          if (showErrorMessage) const DangerText(text: "Debes seleccionar una imagen de tu galería"),
                         ],
                       ),
                       const SizedBox(
@@ -107,8 +122,7 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                         ),
                         controller: controllerSponsorName,
                         validator: (value) {
-                          return nullValidator(
-                              value, 'Este campo es obligatorio');
+                          return nullValidator(value, 'Este campo es obligatorio');
                         },
                       ),
                       const SizedBox(
@@ -122,16 +136,14 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                           ),
                           controller: controllerSponsorAbout,
                           validator: (value) {
-                            return nullValidator(
-                                value, 'Este campo es obligatorio');
+                            return nullValidator(value, 'Este campo es obligatorio');
                           }),
                       const SizedBox(
                         height: 30.0,
                       ),
                       TextFormField(
                         decoration: const InputDecoration(
-                          hintText:
-                              'Ingresa la cuenta de Facebook del patrocinador',
+                          hintText: 'Ingresa la cuenta de Facebook del patrocinador',
                           labelText: 'Facebook',
                         ),
                         controller: controllerSponsorFacebook,
@@ -141,8 +153,7 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                       ),
                       TextFormField(
                         decoration: const InputDecoration(
-                          hintText:
-                              'Ingresa la cuenta de Twitter del patrocinador',
+                          hintText: 'Ingresa la cuenta de Twitter del patrocinador',
                           labelText: 'Twitter',
                         ),
                         controller: controllerSponsorTwitter,
@@ -152,8 +163,7 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
                       ),
                       TextFormField(
                         decoration: const InputDecoration(
-                          hintText:
-                              'Ingresa la cuenta de Instagram del patrocinador',
+                          hintText: 'Ingresa la cuenta de Instagram del patrocinador',
                           labelText: 'Instagram',
                         ),
                         controller: controllerSponsorInstagram,
@@ -192,6 +202,7 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
       final String instagram = controllerSponsorInstagram.text;
       final List<String> socialNetwork = [facebook, twitter, instagram];
       final File? imageSelected = image;
+      final String previousName = previousPhotoName;
 
       //Clear the Text fields
 
@@ -200,12 +211,18 @@ class _CreateSponsorScreenState extends State<CreateSponsorScreen> {
       controllerSponsorFacebook.clear();
       controllerSponsorTwitter.clear();
       controllerSponsorInstagram.clear();
-      image = null;
 
-      //Use the function to add the Sponsor
-      context
-          .read<SponsorCubit>()
-          .addSponsor(name, about, socialNetwork, imageSelected);
+      setState(() {
+        image = null;
+        previousPhotoName = "";
+      });
+      if (widget.sponsor != null) {
+        //If it is a created artist and we are editing it, use the function to update the Artist
+        context.read<SponsorCubit>().updateSponsor(widget.sponsor!.id, name, about, socialNetwork, imageSelected, previousName);
+      } else {
+        //Use the function to add the Sponsor
+        context.read<SponsorCubit>().addSponsor(name, about, socialNetwork, imageSelected);
+      }
     } else if (image == null) {
       setState(() {
         showErrorMessage = true;

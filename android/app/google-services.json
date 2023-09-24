@@ -8,6 +8,66 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:399976051488:android:6c2d4dfdee67bbe11c9d45",
+        "android_client_info": {
+          "package_name": "com.AllegorIT.fiura"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "399976051488-9sk98j5pn7l1p2tsl2q3g1dsno6su4ck.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.AllegorIT.fiura",
+            "certificate_hash": "2bb78973cf20c544f655ae4ce396b534b586e5e4"
+          }
+        },
+        {
+          "client_id": "399976051488-cti52hrmlm2va2avdhouruj6m3spdts7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.AllegorIT.fiura",
+            "certificate_hash": "d9b238085cadf031170664351815d1cdf590d820"
+          }
+        },
+        {
+          "client_id": "399976051488-glktii58i3n506h2p09u5jidip127132.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.AllegorIT.fiura",
+            "certificate_hash": "b4cbeb92c3a6990f2d128bf692de38e67b4d7d6b"
+          }
+        },
+        {
+          "client_id": "399976051488-9uup1b633f9if1ilb6ak1ofdiangsjhh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfalWDaxYfvcAf5b6ON98_-smKoxiKunQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "399976051488-9uup1b633f9if1ilb6ak1ofdiangsjhh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "399976051488-6klfabmon1fskvppkv4orjmt7r1c0mau.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.AllegorIT.fiura2018.fiuraEcosystem"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:399976051488:android:6b13511053736fa31c9d45",
         "android_client_info": {
           "package_name": "com.AllegorIT.fiura2018"

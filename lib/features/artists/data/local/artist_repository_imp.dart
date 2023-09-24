@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fiura_ecosystem/core/entities/artist_entity/artist_entity.dart';
-import 'package:fiura_ecosystem/core/entities/user/user_entity.dart';
+import 'package:fiura/core/entities/artist_entity/artist_entity.dart';
+import 'package:fiura/core/entities/user/user_entity.dart';
 import '../../../home/repository/user_respository.dart';
 import '../../../images/domain/repositories/image_repository.dart';
 import '../../domain/repositories/artist_repository.dart';

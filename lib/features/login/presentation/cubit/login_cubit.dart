@@ -1,5 +1,5 @@
-import 'package:fiura_ecosystem/features/home/repository/user_respository.dart';
-import 'package:fiura_ecosystem/features/login/presentation/cubit/login_state.dart';
+import 'package:fiura/features/home/repository/user_respository.dart';
+import 'package:fiura/features/login/presentation/cubit/login_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/repositories/login_repository.dart';

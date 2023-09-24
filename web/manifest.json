@@ -1,6 +1,6 @@
 {
-    "name": "fiura_ecosystem",
-    "short_name": "fiura_ecosystem",
+    "name": "Fiura",
+    "short_name": "Fiura",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

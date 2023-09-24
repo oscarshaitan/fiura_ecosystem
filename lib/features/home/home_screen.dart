@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fiura_ecosystem/features/home/cubit/session_cubit.dart';
-import 'package:fiura_ecosystem/features/home/widgets/logout_modal.dart';
-import 'package:fiura_ecosystem/router/app_router.gr.dart';
+import 'package:fiura/features/home/cubit/session_cubit.dart';
+import 'package:fiura/features/home/widgets/logout_modal.dart';
+import 'package:fiura/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../dependencies.dart';

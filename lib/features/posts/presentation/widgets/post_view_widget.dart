@@ -1,10 +1,11 @@
-import 'package:fiura_ecosystem/core/entities/post_entity/post_entity.dart';
-import 'package:fiura_ecosystem/features/posts/presentation/widgets/load_post_modal.dart';
-import 'package:fiura_ecosystem/features/widgets/image_loader_widget.dart';
+import 'package:fiura/core/entities/post_entity/post_entity.dart';
+import 'package:fiura/features/posts/presentation/widgets/load_post_modal.dart';
+import 'package:fiura/features/widgets/image_loader_widget.dart';
 import 'package:flutter/material.dart';
 
 class PostViewWidget extends StatelessWidget {
   final PostEntity postEntity;
+
   const PostViewWidget({super.key, required this.postEntity});
 
   @override
@@ -12,8 +13,7 @@ class PostViewWidget extends StatelessWidget {
     return GestureDetector(
       onTap: postEntity.redirectionUrl != null
           ? () {
-              loadPostModal(
-                  context: context, postUrl: postEntity.redirectionUrl!);
+              loadPostModal(context: context, postUrl: postEntity.redirectionUrl!);
             }
           : null,
       child: Container(
@@ -23,12 +23,11 @@ class PostViewWidget extends StatelessWidget {
           children: [
             SizedBox(
               width: double.infinity,
-              height: 200.0,
+              height: MediaQuery.sizeOf(context).height * .5,
               child: ImageLoaderWidget(url: postEntity.urlPhoto),
             ),
             Container(
-                margin: const EdgeInsets.symmetric(
-                    vertical: 30.0, horizontal: 20.0),
+                margin: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
                 child: Text(
                   postEntity.description,
                   textAlign: TextAlign.start,

@@ -14,4 +14,5 @@ abstract class SponsorState with _$SponsorState {
       LoadData;
   const factory SponsorState.loadSponsor(SponsorEntity sponsor) = LoadSponsor;
   const factory SponsorState.pickedImage(File image) = PickedImage;
+  const factory SponsorState.chargedImage(File image, String name) = ChargedImage;
 }

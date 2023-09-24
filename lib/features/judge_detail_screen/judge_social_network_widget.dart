@@ -3,8 +3,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/social_media_icon_selector.dart';
 
-class ArtistSocialNetworkWidget extends StatelessWidget {
-  const ArtistSocialNetworkWidget({super.key, required this.socialMediaLinks});
+class JudgeSocialNetworkWidget extends StatelessWidget {
+  const JudgeSocialNetworkWidget({super.key, required this.socialMediaLinks});
 
   final List<String?> socialMediaLinks;
 

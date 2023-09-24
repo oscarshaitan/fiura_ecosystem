@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:fiura_ecosystem/features/images/presentation/cubit/image_state.dart';
+import 'package:fiura/features/images/presentation/cubit/image_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/repositories/image_repository.dart';
 

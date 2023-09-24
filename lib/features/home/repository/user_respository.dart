@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fiura_ecosystem/core/entities/user/user_entity.dart';
+import 'package:fiura/core/entities/user/user_entity.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class UserRepository {
