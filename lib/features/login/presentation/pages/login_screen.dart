@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../dependencies.dart';
 import '../../../../router/app_router.gr.dart';
 import '../cubit/login_cubit.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -25,13 +26,11 @@ class LoginScreen extends StatelessWidget {
         builder: (context, snapshot) {
           return Scaffold(
             body: Padding(
-              padding:
-                  const EdgeInsets.only(left: 15.0, right: 15.0, top: 200.0),
+              padding: const EdgeInsets.only(left: 15.0, right: 15.0, top: 200.0),
               child: Center(
                 child: Column(
                   children: <Widget>[
-                    const Image(
-                        image: AssetImage('assets/logo.png'), height: 150.0),
+                    const Image(image: AssetImage('assets/logo.png'), height: 150.0),
                     Text(
                       'Bienvenido a Fiura',
                       style: Theme.of(context).textTheme.titleSmall,
@@ -46,17 +45,12 @@ class LoginScreen extends StatelessWidget {
                     const SizedBox(
                       height: 250.0,
                     ),
-                    ElevatedButton(
+                    SignInButton(
+                      Buttons.google,
+                      text: "Sign up with Google",
                       onPressed: () {
                         context.read<LoginCubit>().login();
                       },
-                      style: ElevatedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 25.0, vertical: 15.0)),
-                      child: Text(
-                        'INGRESAR',
-                        style: Theme.of(context).textTheme.labelSmall,
-                      ),
                     ),
                   ],
                 ),
