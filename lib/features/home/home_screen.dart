@@ -29,8 +29,6 @@ class HomeScreen extends StatelessWidget {
                         child: sessionState.maybeMap(
                           error: (value) => const OnLoadMessage(),
                           userFetched: (state) {
-                            List<String> nameList = state.currentUser!.name.split(' ');
-                            String name = nameList.sublist(0, 2).join(' ');
                             return Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,21 +43,23 @@ class HomeScreen extends StatelessWidget {
                                   ),
                                 ),
                                 const SizedBox(height: 20),
-                                Text(name,
+                                Text(state.currentUser!.name,
                                     textAlign: TextAlign.start,
                                     style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                         )),
-                                const SizedBox(height: 5),
-                                Text(
-                                  state.isAdmin ? 'Administrador' : 'Usuario',
-                                  textAlign: TextAlign.start,
-                                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                )
+                                if (state.isAdmin) ...[
+                                  const SizedBox(height: 5),
+                                  Text(
+                                    'Administrador',
+                                    textAlign: TextAlign.start,
+                                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                  )
+                                ]
                               ],
                             );
                           },

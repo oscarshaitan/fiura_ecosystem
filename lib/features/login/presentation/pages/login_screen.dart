@@ -33,13 +33,13 @@ class LoginScreen extends StatelessWidget {
                     const Image(
                         image: AssetImage('assets/logo.png'), height: 150.0),
                     Text(
-                      'Lorem ipsum dolor sit amet',
+                      'Bienvenido a Fiura',
                       style: Theme.of(context).textTheme.titleSmall,
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: 20.0),
                     Text(
-                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque viverra dapibus sem.',
+                      'Por favor inicia sesión para poder acceder a toda la información del Fiura',
                       style: Theme.of(context).textTheme.headlineMedium,
                       textAlign: TextAlign.center,
                     ),
