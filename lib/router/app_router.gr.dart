@@ -60,9 +60,11 @@ class AppRouter extends _i18.RootStackRouter {
       );
     },
     LoginScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<LoginScreenRouteArgs>(
+          orElse: () => const LoginScreenRouteArgs());
       return _i18.AdaptivePage<dynamic>(
         routeData: routeData,
-        child: const _i2.LoginScreen(),
+        child: _i2.LoginScreen(key: args.key),
       );
     },
     HomeScreenRoute.name: (routeData) {
@@ -294,14 +296,26 @@ class SplashScreenRoute extends _i18.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LoginScreen]
-class LoginScreenRoute extends _i18.PageRouteInfo<void> {
-  const LoginScreenRoute()
+class LoginScreenRoute extends _i18.PageRouteInfo<LoginScreenRouteArgs> {
+  LoginScreenRoute({_i19.Key? key})
       : super(
           LoginScreenRoute.name,
           path: 'login',
+          args: LoginScreenRouteArgs(key: key),
         );
 
   static const String name = 'LoginScreenRoute';
+}
+
+class LoginScreenRouteArgs {
+  const LoginScreenRouteArgs({this.key});
+
+  final _i19.Key? key;
+
+  @override
+  String toString() {
+    return 'LoginScreenRouteArgs{key: $key}';
+  }
 }
 
 /// generated route for
