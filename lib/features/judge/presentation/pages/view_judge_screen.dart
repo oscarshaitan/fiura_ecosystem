@@ -28,8 +28,21 @@ class ViewJudgeScreen extends StatelessWidget {
                   return const Center(child: Text("Error al cargar los datos"));
                 },
                 error: (message) => Text(message),
-                loadData: (judges) {
-                  return Scaffold(
+                loadData: (judges) => Scaffold(
+                  floatingActionButton: sessionState.maybeMap(
+                      userFetched: (state) {
+                        if (state.isAdmin) {
+                          return FloatingActionButton(
+                              child: const Icon(Icons.add),
+                              onPressed: () => context.router.push(
+                                CreateJudgeScreenRoute(),
+                              ));
+                        } else {
+                          return null;
+                        }
+                      },
+                      orElse: () => null),
+                  body: Scaffold(
                     floatingActionButton: sessionState.maybeMap(
                         userFetched: (state) {
                           if (state.isAdmin) {
@@ -85,8 +98,9 @@ class ViewJudgeScreen extends StatelessWidget {
                             );
                           }),
                     ),
-                  );
-                });
+                  ),
+                ),
+            );
           }),
         );
       },

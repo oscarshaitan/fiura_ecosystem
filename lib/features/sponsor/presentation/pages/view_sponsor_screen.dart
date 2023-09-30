@@ -30,8 +30,21 @@ class ViewSponsorScreen extends StatelessWidget {
                       ),
                   loading: () => const Center(child: OnLoadMessage()),
                   error: (message) => Center(child: Text(message)),
-                  loadData: (sponsors) {
-                    return Scaffold(
+                  loadData: (sponsors) => Scaffold(
+                    floatingActionButton: sessionState.maybeMap(
+                        userFetched: (state) {
+                          if (state.isAdmin) {
+                            return FloatingActionButton(
+                                child: const Icon(Icons.add),
+                                onPressed: () => context.router.push(
+                                  CreateSponsorScreenRoute(),
+                                ));
+                          } else {
+                            return null;
+                          }
+                        },
+                        orElse: () => null),
+                    body: Scaffold(
                       floatingActionButton: sessionState.maybeMap(
                           userFetched: (state) {
                             if (state.isAdmin) {
@@ -83,8 +96,9 @@ class ViewSponsorScreen extends StatelessWidget {
                           );
                         },
                       ),
-                    );
-                  });
+                    ),
+                  ),
+              );
             },
           ),
         );
