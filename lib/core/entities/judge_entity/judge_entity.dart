@@ -1,18 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../musician_entity/musician_entity.dart';
 part 'judge_entity.freezed.dart';
-part 'judge_entity.g.dart';
 
 @freezed
 class JudgeEntity with _$JudgeEntity {
   factory JudgeEntity({
-    required String id,
-    required String name,
-    required String about,
-    required String urlPhoto,
-    required List<String?> socialNetwork,
+    required MusicianEntity musician,
   }) = _JudgeEntity;
-
-  factory JudgeEntity.fromJson(Map<String, dynamic> json) =>
-      _$JudgeEntityFromJson(json);
 }

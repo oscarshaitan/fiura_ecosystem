@@ -40,11 +40,14 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
   void initState() {
     super.initState();
     if (widget.judge != null) {
-      controllerJudgeName.text = widget.judge!.name;
-      controllerJudgeAbout.text = widget.judge!.about;
-      controllerJudgeFacebook.text = widget.judge!.socialNetwork[0] ?? "";
-      controllerJudgeTwitter.text = widget.judge!.socialNetwork[1] ?? "";
-      controllerJudgeInstagram.text = widget.judge!.socialNetwork[2] ?? "";
+      controllerJudgeName.text = widget.judge!.musician.name;
+      controllerJudgeAbout.text = widget.judge!.musician.about;
+      controllerJudgeFacebook.text =
+          widget.judge!.musician.socialNetwork[0] ?? "";
+      controllerJudgeTwitter.text =
+          widget.judge!.musician.socialNetwork[1] ?? "";
+      controllerJudgeInstagram.text =
+          widget.judge!.musician.socialNetwork[2] ?? "";
     }
   }
 
@@ -56,7 +59,8 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
         ),
         body: BlocProvider(
           create: (_) => getIt<JudgeCubit>(),
-          child: BlocConsumer<JudgeCubit, JudgeState>(listener: (context, snapshot) {
+          child: BlocConsumer<JudgeCubit, JudgeState>(
+              listener: (context, snapshot) {
             snapshot.whenOrNull(
               loading: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
@@ -70,7 +74,8 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
               ),
               error: (message) => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Error añadiendo nuevo Juez, intentalo nuevamente'),
+                  content:
+                      Text('Error añadiendo nuevo Juez, intentalo nuevamente'),
                 ),
               ),
               pickedImage: (image) => setState(() {
@@ -80,7 +85,9 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
             );
           }, builder: (context, snapshot) {
             if (widget.judge != null && getImage) {
-              context.read<JudgeCubit>().setUrlToFile(widget.judge!.urlPhoto);
+              context
+                  .read<JudgeCubit>()
+                  .setUrlToFile(widget.judge!.musician.urlPhoto);
               getImage = false;
             }
 
@@ -88,7 +95,8 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
               child: Form(
                   key: _formKey,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0, vertical: 20.0),
                     child: Column(
                       children: [
                         const SizedBox(
@@ -106,9 +114,18 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                               onTap: () {
                                 context.read<JudgeCubit>().imagePicker();
                               },
-                              borderColor: showErrorMessage ? Colors.red : Theme.of(context).inputDecorationTheme.enabledBorder!.borderSide.color,
+                              borderColor: showErrorMessage
+                                  ? Colors.red
+                                  : Theme.of(context)
+                                      .inputDecorationTheme
+                                      .enabledBorder!
+                                      .borderSide
+                                      .color,
                             ),
-                            if (showErrorMessage) const DangerText(text: "Debes seleccionar una imagen de tu galería"),
+                            if (showErrorMessage)
+                              const DangerText(
+                                  text:
+                                      "Debes seleccionar una imagen de tu galería"),
                           ],
                         ),
                         const SizedBox(
@@ -121,7 +138,8 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                           ),
                           controller: controllerJudgeName,
                           validator: (value) {
-                            return nullValidator(value, 'Este campo es obligatorio');
+                            return nullValidator(
+                                value, 'Este campo es obligatorio');
                           },
                         ),
                         const SizedBox(
@@ -135,7 +153,8 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                             ),
                             controller: controllerJudgeAbout,
                             validator: (value) {
-                              return nullValidator(value, 'Este campo es obligatorio');
+                              return nullValidator(
+                                  value, 'Este campo es obligatorio');
                             }),
                         const SizedBox(
                           height: 30.0,
@@ -210,10 +229,13 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
       });
       if (widget.judge != null) {
         //If it is a created artist and we are editing it, use the function to update the Artist
-        context.read<JudgeCubit>().updateJudge(widget.judge!.id, name, about, socialNetwork, imageSelected, previousName);
+        context.read<JudgeCubit>().updateJudge(widget.judge!.musician.id, name,
+            about, socialNetwork, imageSelected, previousName);
       } else {
         //Use the function to add the judge
-        context.read<JudgeCubit>().addJudge(name, about, socialNetwork, imageSelected);
+        context
+            .read<JudgeCubit>()
+            .addJudge(name, about, socialNetwork, imageSelected);
       }
     } else if (image == null) {
       setState(() {

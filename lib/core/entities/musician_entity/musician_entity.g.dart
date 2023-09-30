@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'judge_entity.dart';
+part of 'musician_entity.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_JudgeEntity _$$_JudgeEntityFromJson(Map<String, dynamic> json) =>
-    _$_JudgeEntity(
+_$_MusicianEntity _$$_MusicianEntityFromJson(Map<String, dynamic> json) =>
+    _$_MusicianEntity(
       id: json['id'] as String,
       name: json['name'] as String,
       about: json['about'] as String,
@@ -17,7 +17,7 @@ _$_JudgeEntity _$$_JudgeEntityFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_JudgeEntityToJson(_$_JudgeEntity instance) =>
+Map<String, dynamic> _$$_MusicianEntityToJson(_$_MusicianEntity instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

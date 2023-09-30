@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fiura/core/entities/artist_entity/artist_entity.dart';
+import 'package:fiura/core/entities/musician_entity/musician_entity.dart';
 import 'package:fiura/core/entities/user/user_entity.dart';
 import '../../../home/repository/user_respository.dart';
 import '../../../images/domain/repositories/image_repository.dart';
@@ -29,7 +30,7 @@ class ArtistRepositoryImp extends ArtistRepository {
     late bool status;
 
     if (user != null) {
-      Map<String, dynamic> itemToAdd = artist.toJson();
+      Map<String, dynamic> itemToAdd = artist.musician.toJson();
       itemToAdd["creation_date"] = DateTime.now();
       itemToAdd["uid"] = user.uid;
 
@@ -38,7 +39,7 @@ class ArtistRepositoryImp extends ArtistRepository {
 
       //Upload image to firebase storage
       final String? urlPhoto =
-          await imageRepository.saveImage(image, artist.urlPhoto);
+          await imageRepository.saveImage(image, artist.musician.urlPhoto);
 
       if (result.data() != null && urlPhoto != null) {
         var id = result.id;
@@ -69,7 +70,9 @@ class ArtistRepositoryImp extends ArtistRepository {
       for (QueryDocumentSnapshot element in querySnapshot.docs) {
         Map<String, dynamic> data = element.data() as Map<String, dynamic>;
 
-        ArtistEntity artist = ArtistEntity.fromJson(data);
+        MusicianEntity musician = MusicianEntity.fromJson(data);
+
+        ArtistEntity artist = ArtistEntity(musician: musician);
 
         artistList.add(artist);
       }
@@ -80,6 +83,7 @@ class ArtistRepositoryImp extends ArtistRepository {
 
   @override
   Future<ArtistEntity> getArtist(String id) async {
+    late MusicianEntity musician;
     late ArtistEntity artist;
     final User? user = auth.currentUser;
     final CollectionReference collectionRef;
@@ -89,9 +93,11 @@ class ArtistRepositoryImp extends ArtistRepository {
       collectionRef = db.collection(artists);
       documentSnapshot = await collectionRef.doc(id).get();
 
-      artist = ArtistEntity.fromJson(
+      musician = MusicianEntity.fromJson(
           documentSnapshot.data() as Map<String, dynamic>);
     }
+
+    artist = ArtistEntity(musician: musician);
 
     return artist;
   }
@@ -126,7 +132,7 @@ class ArtistRepositoryImp extends ArtistRepository {
 
     if (user != null) {
       if (currentUser.admin == true) {
-        docRef = db.collection(artists).doc(artist.id);
+        docRef = db.collection(artists).doc(artist.musician.id);
 
         try {
           //Delete previous photo
@@ -134,9 +140,9 @@ class ArtistRepositoryImp extends ArtistRepository {
 
           //Add new artist photo
           final String? urlPhoto =
-              await imageRepository.saveImage(image!, artist.urlPhoto);
+              await imageRepository.saveImage(image!, artist.musician.urlPhoto);
 
-          Map<String, dynamic> itemToUpdate = artist.toJson();
+          Map<String, dynamic> itemToUpdate = artist.musician.toJson();
 
           itemToUpdate["urlPhoto"] = urlPhoto;
 

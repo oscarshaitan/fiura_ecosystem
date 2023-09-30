@@ -21,7 +21,8 @@ class ViewJudgeScreen extends StatelessWidget {
       builder: (context, sessionState) {
         return BlocProvider(
           create: (_) => getIt<JudgeCubit>()..getJudges(),
-          child: BlocBuilder<JudgeCubit, JudgeState>(builder: (context, snapshot) {
+          child:
+              BlocBuilder<JudgeCubit, JudgeState>(builder: (context, snapshot) {
             return snapshot.maybeWhen(
                 loading: () => const OnLoadMessage(),
                 orElse: () {
@@ -52,14 +53,19 @@ class ViewJudgeScreen extends StatelessWidget {
                             final judge = judges[index];
                             return ListTile(
                               onTap: () => context.router.push(
-                                JudgeDetailScreenRoute(judgeId: judge.id),
+                                JudgeDetailScreenRoute(
+                                    judgeId: judge.musician.id),
                               ),
-                              leading: TileImageWidget(urlImage: judges[index].urlPhoto),
-                              title: Text(judges[index].name),
+                              leading: TileImageWidget(
+                                  urlImage: judges[index].musician.urlPhoto),
+                              title: Text(judges[index].musician.name),
                               subtitle: Text(
-                                judges[index].about,
+                                judges[index].musician.about,
                                 overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: const Color(0xff717171)),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(color: const Color(0xff717171)),
                               ),
                               trailing: sessionState.maybeMap(
                                   userFetched: (state) {
@@ -67,7 +73,8 @@ class ViewJudgeScreen extends StatelessWidget {
                                       return MoreMenuWidget(
                                         editFunction: () {
                                           context.router.push(
-                                            CreateJudgeScreenRoute(judge: judge),
+                                            CreateJudgeScreenRoute(
+                                                judge: judge),
                                           );
                                         },
                                         deleteFunction: () {

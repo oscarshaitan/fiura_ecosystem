@@ -55,10 +55,11 @@ class ArtistsScreen extends StatelessWidget {
                             itemBuilder: (context, index) {
                               final artist = artistList[index];
                               return ListTile(
-                                leading:
-                                    TileImageWidget(urlImage: artist.urlPhoto),
+                                leading: TileImageWidget(
+                                    urlImage: artist.musician.urlPhoto),
                                 onTap: () => context.router.push(
-                                  ArtistsDetailScreenRoute(artistId: artist.id),
+                                  ArtistsDetailScreenRoute(
+                                      artistId: artist.musician.id),
                                 ),
                                 trailing: sessionState.maybeMap(
                                     userFetched: (state) {
@@ -81,9 +82,9 @@ class ArtistsScreen extends StatelessWidget {
                                       }
                                     },
                                     orElse: () => const SizedBox()),
-                                title: Text(artist.name),
+                                title: Text(artist.musician.name),
                                 subtitle: Text(
-                                  artist.about,
+                                  artist.musician.about,
                                   overflow: TextOverflow.ellipsis,
                                   style: Theme.of(context)
                                       .textTheme

@@ -1,4 +1,3 @@
-
 import 'package:fiura/core/entities/artist_entity/artist_entity.dart';
 import 'package:fiura/features/artits_detail_screen/artist_social_network_widget.dart';
 import 'package:fiura/features/widgets/image_app_bar_widget.dart';
@@ -55,8 +54,8 @@ class _ArtistDetailBodyWidgetState extends State<ArtistDetailBodyWidget> {
       slivers: [
         ImageAppBarWidget(
           type: "Artista",
-          urlImage: widget.artist.urlPhoto,
-          artistName: widget.artist.name,
+          urlImage: widget.artist.musician.urlPhoto,
+          artistName: widget.artist.musician.name,
           isExpanded: _isExpanded,
         ),
         SliverList(
@@ -72,13 +71,14 @@ class _ArtistDetailBodyWidgetState extends State<ArtistDetailBodyWidget> {
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       const SizedBox(height: 15.0),
-                      Text(widget.artist.about),
+                      Text(widget.artist.musician.about),
                       const SizedBox(height: 30.0),
-                      if (widget.artist.socialNetwork.isNotEmpty)
+                      if (widget.artist.musician.socialNetwork.isNotEmpty)
                         Align(
                           alignment: Alignment.center,
                           child: ArtistSocialNetworkWidget(
-                              socialMediaLinks: widget.artist.socialNetwork),
+                              socialMediaLinks:
+                                  widget.artist.musician.socialNetwork),
                         ),
                     ]),
               ),

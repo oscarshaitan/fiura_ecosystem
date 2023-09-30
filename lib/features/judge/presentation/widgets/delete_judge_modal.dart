@@ -31,8 +31,9 @@ void deleteJudgeModal({
               initial: () => getInitialAlertDialog(
                   title: "¿Revocar permisos de administrador?",
                   content:
-                      "Estás a punto de eliminar la información del jurado ${artist.name}. Una vez eliminada no se podrá recuperar ¿Continuar?",
-                  continueFunction: () => artistCubit.deleteJudge(artist.id),
+                      "Estás a punto de eliminar la información del jurado ${artist.musician.name}. Una vez eliminada no se podrá recuperar ¿Continuar?",
+                  continueFunction: () =>
+                      artistCubit.deleteJudge(artist.musician.id),
                   cancelFunction: () => Navigator.pop(context),
                   buttonTextStyle: buttonTextStyle),
               loading: () => getLoadingAlertDialog(

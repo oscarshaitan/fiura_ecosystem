@@ -40,11 +40,14 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
   void initState() {
     super.initState();
     if (widget.artist != null) {
-      controllerArtistName.text = widget.artist!.name;
-      controllerArtistAbout.text = widget.artist!.about;
-      controllerArtistFacebook.text = widget.artist!.socialNetwork[0] ?? "";
-      controllerArtistTwitter.text = widget.artist!.socialNetwork[1] ?? "";
-      controllerArtistInstagram.text = widget.artist!.socialNetwork[2] ?? "";
+      controllerArtistName.text = widget.artist!.musician.name;
+      controllerArtistAbout.text = widget.artist!.musician.about;
+      controllerArtistFacebook.text =
+          widget.artist!.musician.socialNetwork[0] ?? "";
+      controllerArtistTwitter.text =
+          widget.artist!.musician.socialNetwork[1] ?? "";
+      controllerArtistInstagram.text =
+          widget.artist!.musician.socialNetwork[2] ?? "";
     }
   }
 
@@ -94,7 +97,9 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
             );
           }, builder: (context, snapshot) {
             if (widget.artist != null && getImage) {
-              context.read<ArtistCubit>().setUrlToFile(widget.artist!.urlPhoto);
+              context
+                  .read<ArtistCubit>()
+                  .setUrlToFile(widget.artist!.musician.urlPhoto);
               getImage = false;
             }
 
@@ -229,8 +234,8 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
 
       if (widget.artist != null) {
         //If it is a created artist and we are editing it, use the function to update the Artist
-        context.read<ArtistCubit>().updateArtist(widget.artist!.id, name, about,
-            socialNetwork, imageSelected, previousName);
+        context.read<ArtistCubit>().updateArtist(widget.artist!.musician.id,
+            name, about, socialNetwork, imageSelected, previousName);
       } else {
         //If not, use the function to add the Artist
         context

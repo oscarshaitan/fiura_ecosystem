@@ -5,6 +5,7 @@ import 'package:fiura/core/entities/judge_entity/judge_entity.dart';
 import 'package:fiura/core/entities/user/user_entity.dart';
 import 'package:fiura/features/home/repository/user_respository.dart';
 import 'package:fiura/features/images/domain/repositories/image_repository.dart';
+import '../../../../core/entities/musician_entity/musician_entity.dart';
 import '../../domain/repositories/judge_repository.dart';
 
 class JudgeRepositoryImp extends JudgeRepository {
@@ -16,7 +17,11 @@ class JudgeRepositoryImp extends JudgeRepository {
   //Collections
   final String judges = "judges";
 
-  JudgeRepositoryImp({required this.db, required this.auth, required this.imageRepository, required this.userRepository});
+  JudgeRepositoryImp(
+      {required this.db,
+      required this.auth,
+      required this.imageRepository,
+      required this.userRepository});
 
   @override
   Future<bool> addJudge(JudgeEntity judge, File image) async {
@@ -26,20 +31,24 @@ class JudgeRepositoryImp extends JudgeRepository {
 
     if (user != null) {
       docRef = await db.collection(judges).add({
-        "name": judge.name,
-        "about": judge.about,
-        "socialNetwork": judge.socialNetwork,
+        "name": judge.musician.name,
+        "about": judge.musician.about,
+        "socialNetwork": judge.musician.socialNetwork,
         "uid": user.uid,
         "creation_date": DateTime.now(),
       });
       final DocumentSnapshot result = await docRef.get();
 
       //Upload image to firebase storage
-      final String? urlPhoto = await imageRepository.saveImage(image, judge.urlPhoto);
+      final String? urlPhoto =
+          await imageRepository.saveImage(image, judge.musician.urlPhoto);
 
       if (result.data() != null && urlPhoto != null) {
         var id = result.id;
-        await db.collection(judges).doc(id).update({"id": id, "urlPhoto": urlPhoto});
+        await db
+            .collection(judges)
+            .doc(id)
+            .update({"id": id, "urlPhoto": urlPhoto});
         status = true;
       } else {
         status = false;
@@ -63,7 +72,9 @@ class JudgeRepositoryImp extends JudgeRepository {
       for (var element in querySnapshot.docs) {
         Map<String, dynamic> data = element.data() as Map<String, dynamic>;
 
-        JudgeEntity judge = JudgeEntity.fromJson(data);
+        MusicianEntity musician = MusicianEntity.fromJson(data);
+
+        JudgeEntity judge = JudgeEntity(musician: musician);
 
         judgesList.add(judge);
       }
@@ -74,6 +85,7 @@ class JudgeRepositoryImp extends JudgeRepository {
 
   @override
   Future<JudgeEntity> getJudge(String id) async {
+    late MusicianEntity musician;
     late JudgeEntity judge;
     final User? user = auth.currentUser;
     final CollectionReference collectionRef;
@@ -83,30 +95,35 @@ class JudgeRepositoryImp extends JudgeRepository {
       collectionRef = db.collection(judges);
       documentSnapshot = await collectionRef.doc(id).get();
 
-      judge = JudgeEntity.fromJson(documentSnapshot.data() as Map<String, dynamic>);
+      musician = MusicianEntity.fromJson(
+          documentSnapshot.data() as Map<String, dynamic>);
+
+      judge = JudgeEntity(musician: musician);
     }
 
     return judge;
   }
 
   @override
-  Future<void> updateJudge(JudgeEntity judge, File? image, String previousPhotoName) async {
+  Future<void> updateJudge(
+      JudgeEntity judge, File? image, String previousPhotoName) async {
     final User? user = auth.currentUser;
     final UserEntity currentUser = await userRepository.getCurrentUser();
     late DocumentReference docRef;
 
     if (user != null) {
       if (currentUser.admin == true) {
-        docRef = db.collection(judges).doc(judge.id);
+        docRef = db.collection(judges).doc(judge.musician.id);
 
         try {
           //Delete previous photo
           await imageRepository.deleteImage(previousPhotoName);
 
           //Add new artist photo
-          final String? urlPhoto = await imageRepository.saveImage(image!, judge.urlPhoto);
+          final String? urlPhoto =
+              await imageRepository.saveImage(image!, judge.musician.urlPhoto);
 
-          Map<String, dynamic> itemToUpdate = judge.toJson();
+          Map<String, dynamic> itemToUpdate = judge.musician.toJson();
 
           itemToUpdate["urlPhoto"] = urlPhoto;
 
@@ -119,7 +136,8 @@ class JudgeRepositoryImp extends JudgeRepository {
         throw Exception('No tienes permisos para realizar esta acción');
       }
     } else {
-      throw Exception('Error al realizar esta acción, inicia sesión e intentalo de nuevo');
+      throw Exception(
+          'Error al realizar esta acción, inicia sesión e intentalo de nuevo');
     }
   }
 
@@ -143,5 +161,4 @@ class JudgeRepositoryImp extends JudgeRepository {
           'Error al realizar esta acción, inicia sesión e intentalo de nuevo');
     }
   }
-
 }

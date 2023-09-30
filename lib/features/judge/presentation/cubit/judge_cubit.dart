@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:fiura/core/entities/judge_entity/judge_entity.dart';
+import 'package:fiura/core/entities/musician_entity/musician_entity.dart';
 import 'package:fiura/features/judge/domain/repositories/judge_repository.dart';
 import 'package:fiura/features/judge/presentation/cubit/judge_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,22 +12,28 @@ import 'package:path_provider/path_provider.dart';
 import '../../../images/domain/repositories/image_repository.dart';
 
 class JudgeCubit extends Cubit<JudgeState> {
-  JudgeCubit(this._judgeRepository, this._imageRepository) : super(const Initial());
+  JudgeCubit(this._judgeRepository, this._imageRepository)
+      : super(const Initial());
 
   final JudgeRepository _judgeRepository;
   final ImageRepository _imageRepository;
 
-  void updateJudge(String id, String name, String about, List<String> socialNetwork, File? image, String previousPhotoName) async {
+  void updateJudge(String id, String name, String about,
+      List<String> socialNetwork, File? image, String previousPhotoName) async {
     emit(const Loading());
 
     final String urlPhoto = 'Artists/${path.basename(image!.path)}';
 
-    final JudgeEntity judge = JudgeEntity(
+    final MusicianEntity musician = MusicianEntity(
       name: name,
       about: about,
       socialNetwork: socialNetwork,
       id: id,
       urlPhoto: urlPhoto,
+    );
+
+    final JudgeEntity judge = JudgeEntity(
+      musician: musician,
     );
 
     try {
@@ -37,15 +44,20 @@ class JudgeCubit extends Cubit<JudgeState> {
     }
   }
 
-  void addJudge(String name, String about, List<String> socialNetwork, File? image) async {
+  void addJudge(String name, String about, List<String> socialNetwork,
+      File? image) async {
     String urlPhoto = 'Judges/${path.basename(image!.path)}';
 
-    JudgeEntity judge = JudgeEntity(
+    MusicianEntity musician = MusicianEntity(
       name: name,
       about: about,
       socialNetwork: socialNetwork,
       urlPhoto: urlPhoto,
       id: '',
+    );
+
+    JudgeEntity judge = JudgeEntity(
+      musician: musician,
     );
 
     emit(const Loading());

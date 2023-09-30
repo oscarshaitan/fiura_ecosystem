@@ -36,7 +36,8 @@ class _ArtistsDetailScreenState extends State<ArtistsDetailScreen> {
               error: (message) => Center(child: Text(message)),
               loadArtist: (artist) {
                 return FutureBuilder<void>(
-                  future: precacheImage(NetworkImage(artist.urlPhoto), context),
+                  future: precacheImage(
+                      NetworkImage(artist.musician.urlPhoto), context),
                   builder:
                       (BuildContext context, AsyncSnapshot<void> snapshot) {
                     if (snapshot.connectionState == ConnectionState.done) {

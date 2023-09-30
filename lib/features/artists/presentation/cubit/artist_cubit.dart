@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:fiura/core/entities/musician_entity/musician_entity.dart';
 import 'package:path/path.dart' as path;
 import 'package:fiura/features/artists/presentation/cubit/artist_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,12 +20,16 @@ class ArtistCubit extends Cubit<ArtistState> {
       File? image) async {
     final String urlPhoto = 'Artists/${path.basename(image!.path)}';
 
-    ArtistEntity artist = ArtistEntity(
+    MusicianEntity musician = MusicianEntity(
       name: name,
       about: about,
       socialNetwork: socialNetwork,
       id: '',
       urlPhoto: urlPhoto,
+    );
+
+    ArtistEntity artist = ArtistEntity(
+      musician: musician,
     );
 
     emit(const Loading());
@@ -82,12 +87,16 @@ class ArtistCubit extends Cubit<ArtistState> {
 
     final String urlPhoto = 'Artists/${path.basename(image!.path)}';
 
-    final ArtistEntity artist = ArtistEntity(
+    final MusicianEntity musician = MusicianEntity(
       name: name,
       about: about,
       socialNetwork: socialNetwork,
       id: id,
       urlPhoto: urlPhoto,
+    );
+
+    final ArtistEntity artist = ArtistEntity(
+      musician: musician,
     );
 
     try {

@@ -30,8 +30,9 @@ void deleteArtistModal({
               initial: () => getInitialAlertDialog(
                   title: "¿Revocar permisos de administrador?",
                   content:
-                      "Estás a punto de eliminar la información del artista ${artist.name}. Una vez eliminada no se podrá recuperar ¿Continuar?",
-                  continueFunction: () => artistCubit.deleteArtist(artist.id),
+                      "Estás a punto de eliminar la información del artista ${artist.musician.name}. Una vez eliminada no se podrá recuperar ¿Continuar?",
+                  continueFunction: () =>
+                      artistCubit.deleteArtist(artist.musician.id),
                   cancelFunction: () => Navigator.pop(context),
                   buttonTextStyle: buttonTextStyle),
               loading: () => getLoadingAlertDialog(

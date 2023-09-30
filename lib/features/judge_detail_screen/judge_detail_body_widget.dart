@@ -52,8 +52,8 @@ class _JudgeDetailBodyWidgetState extends State<JudgeDetailBodyWidget> {
       slivers: [
         ImageAppBarWidget(
           type: "Jurado",
-          urlImage: widget.judge.urlPhoto,
-          artistName: widget.judge.name,
+          urlImage: widget.judge.musician.urlPhoto,
+          artistName: widget.judge.musician.name,
           isExpanded: _isExpanded,
         ),
         SliverList(
@@ -61,20 +61,24 @@ class _JudgeDetailBodyWidgetState extends State<JudgeDetailBodyWidget> {
             [
               Container(
                 margin: const EdgeInsets.all(20.0),
-                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                  Text(
-                    "Descripción",
-                    style: Theme.of(context).textTheme.titleSmall,
-                  ),
-                  const SizedBox(height: 15.0),
-                  Text(widget.judge.about),
-                  const SizedBox(height: 30.0),
-                  if (widget.judge.socialNetwork.isNotEmpty)
-                    Align(
-                      alignment: Alignment.center,
-                      child: JudgeSocialNetworkWidget(socialMediaLinks: widget.judge.socialNetwork),
-                    ),
-                ]),
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Descripción",
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      const SizedBox(height: 15.0),
+                      Text(widget.judge.musician.about),
+                      const SizedBox(height: 30.0),
+                      if (widget.judge.musician.socialNetwork.isNotEmpty)
+                        Align(
+                          alignment: Alignment.center,
+                          child: JudgeSocialNetworkWidget(
+                              socialMediaLinks:
+                                  widget.judge.musician.socialNetwork),
+                        ),
+                    ]),
               ),
             ],
           ),
