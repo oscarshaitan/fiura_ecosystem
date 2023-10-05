@@ -94,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    title: const Text('Jueces'),
+                    title: const Text('Jurado'),
                     onTap: () {
                       Navigator.of(context).pop();
                       context.router.push(const ViewJudgeScreenRoute());
@@ -130,8 +130,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   sessionState.maybeMap(
                     userFetched: (state) => ButtonDrawerWithIcon(
-                      onTap: () => createUrl(
-                          "wa.me/+573178036494/?text=Hola, me llamo ${state.currentUser!.name} y estoy interesado en adquirir entradas para Fiura."),
+                      onTap: () => createUrl("https://wa.link/7cbhfd"),
                       text: 'Preventa',
                       imageUrl: 'assets/whatsapp.png',
                     ),

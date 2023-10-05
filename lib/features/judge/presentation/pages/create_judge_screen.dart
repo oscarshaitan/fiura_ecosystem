@@ -52,25 +52,27 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Registro de nuevo Juez'),
+          title: const Text('Registro de nuevo jurado'),
         ),
         body: BlocProvider(
           create: (_) => getIt<JudgeCubit>(),
-          child: BlocConsumer<JudgeCubit, JudgeState>(listener: (context, snapshot) {
+          child: BlocConsumer<JudgeCubit, JudgeState>(
+              listener: (context, snapshot) {
             snapshot.whenOrNull(
               loading: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Añadiendo nuevo Juez...'),
+                  content: Text('Añadiendo nuevo jurado...'),
                 ),
               ),
               success: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Juez añadido correctamente'),
+                  content: Text('jurado añadido correctamente'),
                 ),
               ),
               error: (message) => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Error añadiendo nuevo Juez, intentalo nuevamente'),
+                  content: Text(
+                      'Error añadiendo nuevo jurado, intentalo nuevamente'),
                 ),
               ),
               pickedImage: (image) => setState(() {
@@ -88,7 +90,8 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
               child: Form(
                   key: _formKey,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30.0, vertical: 20.0),
                     child: Column(
                       children: [
                         const SizedBox(
@@ -106,9 +109,18 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                               onTap: () {
                                 context.read<JudgeCubit>().imagePicker();
                               },
-                              borderColor: showErrorMessage ? Colors.red : Theme.of(context).inputDecorationTheme.enabledBorder!.borderSide.color,
+                              borderColor: showErrorMessage
+                                  ? Colors.red
+                                  : Theme.of(context)
+                                      .inputDecorationTheme
+                                      .enabledBorder!
+                                      .borderSide
+                                      .color,
                             ),
-                            if (showErrorMessage) const DangerText(text: "Debes seleccionar una imagen de tu galería"),
+                            if (showErrorMessage)
+                              const DangerText(
+                                  text:
+                                      "Debes seleccionar una imagen de tu galería"),
                           ],
                         ),
                         const SizedBox(
@@ -116,12 +128,13 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa el nombre completo del Juez',
+                            hintText: 'Ingresa el nombre completo del jurado',
                             labelText: 'Nombre*',
                           ),
                           controller: controllerJudgeName,
                           validator: (value) {
-                            return nullValidator(value, 'Este campo es obligatorio');
+                            return nullValidator(
+                                value, 'Este campo es obligatorio');
                           },
                         ),
                         const SizedBox(
@@ -130,19 +143,21 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         TextFormField(
                             maxLines: 3,
                             decoration: const InputDecoration(
-                              hintText: 'Ingresa el acerca de, del juez',
+                              hintText: 'Ingresa el acerca de, del jurado',
                               labelText: 'Acerca de*',
                             ),
                             controller: controllerJudgeAbout,
                             validator: (value) {
-                              return nullValidator(value, 'Este campo es obligatorio');
+                              return nullValidator(
+                                  value, 'Este campo es obligatorio');
                             }),
                         const SizedBox(
                           height: 30.0,
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Facebook del juez',
+                            hintText:
+                                'Ingresa la cuenta de Facebook del jurado',
                             labelText: 'Facebook',
                           ),
                           controller: controllerJudgeFacebook,
@@ -152,7 +167,7 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Twitter del juez',
+                            hintText: 'Ingresa la cuenta de Twitter del jurado',
                             labelText: 'Twitter',
                           ),
                           controller: controllerJudgeTwitter,
@@ -162,7 +177,8 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Instagram del juez',
+                            hintText:
+                                'Ingresa la cuenta de Instagram del jurado',
                             labelText: 'Instagram',
                           ),
                           controller: controllerJudgeInstagram,
@@ -210,10 +226,13 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
       });
       if (widget.judge != null) {
         //If it is a created artist and we are editing it, use the function to update the Artist
-        context.read<JudgeCubit>().updateJudge(widget.judge!.id, name, about, socialNetwork, imageSelected, previousName);
+        context.read<JudgeCubit>().updateJudge(widget.judge!.id, name, about,
+            socialNetwork, imageSelected, previousName);
       } else {
         //Use the function to add the judge
-        context.read<JudgeCubit>().addJudge(name, about, socialNetwork, imageSelected);
+        context
+            .read<JudgeCubit>()
+            .addJudge(name, about, socialNetwork, imageSelected);
       }
     } else if (image == null) {
       setState(() {
