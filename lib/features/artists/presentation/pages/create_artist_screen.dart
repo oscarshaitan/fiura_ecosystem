@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:auto_route/auto_route.dart';
 import 'package:fiura/core/entities/artist_entity/artist_entity.dart';
 import 'package:fiura/features/artists/presentation/cubit/artist_cubit.dart';
+import 'package:fiura/features/widgets/alert_dialogs.dart';
 import 'package:fiura/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -59,29 +60,44 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
           child: BlocConsumer<ArtistCubit, ArtistState>(
               listener: (context, snapshot) {
             snapshot.whenOrNull(
-              loading: () => ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(widget.artist != null
-                      ? 'Actualizando datos del artista...'
-                      : 'Añadiendo nuevo Artista...'),
-                ),
-              ),
+              loading: () => showDialog(
+                  barrierDismissible: false,
+                  context: context,
+                  builder: ((context) {
+                    return getLoadingAlertDialog(
+                        contentText: widget.artist != null
+                            ? 'Actualizando datos del artista...'
+                            : 'Añadiendo nuevo Artista...');
+                  })),
               success: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(widget.artist != null
-                        ? 'Artista actualizado correctamente'
-                        : 'Artista añadido correctamente'),
-                  ),
-                );
-                context.router.push(
-                    const HomeScreenRoute(children: [ArtistsScreenRoute()]));
+                Navigator.of(context).pop();
+                showDialog(
+                    context: context,
+                    builder: ((context) {
+                      return getSuccessAlertDialog(
+                          contentText: widget.artist != null
+                              ? 'Artista actualizado correctamente'
+                              : 'Artista añadido correctamente',
+                          continueFunction: () => context.router.push(
+                              const HomeScreenRoute(
+                                  children: [ArtistsScreenRoute()])),
+                          buttonTextStyle:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Colors.red,
+                                  ));
+                    }));
               },
-              error: (message) => ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(message),
-                ),
-              ),
+              error: (message) {
+                Navigator.of(context).pop();
+                context.router.pop();
+                showDialog(
+                    context: context,
+                    builder: ((context) {
+                      return getErrorAlertDialog(
+                          contentText: message,
+                          continueFunction: () => context.router.pop());
+                    }));
+              },
               pickedImage: (image) => setState(() {
                 this.image = image;
                 showErrorMessage = false;
