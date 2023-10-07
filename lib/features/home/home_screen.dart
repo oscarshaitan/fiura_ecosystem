@@ -98,10 +98,10 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    title: const Text('Horaios'),
+                    title: const Text('Horarios'),
                     onTap: () {
                       Navigator.of(context).pop();
-                      context.router.push(const ViewSponsorScreenRoute());
+                      context.router.push(SchedulesScreenRoute());
                     },
                   ),
                   sessionState.maybeMap(
@@ -126,7 +126,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   sessionState.maybeMap(
                     userFetched: (state) => ButtonDrawerWithIcon(
-                      onTap: () => createUrl("https://wa.link/7cbhfd"),
+                      onTap: () => createUrl('wa.me/573193392986/?text=Hola, vengo de la app ✨🤟🏼 Quisiera información sobre la boletería para el Fiura 2023.'),
                       text: 'Preventa',
                       imageUrl: 'assets/whatsapp.png',
                     ),

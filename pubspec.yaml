@@ -24,6 +24,7 @@ dependencies:
   #NAVIGATION
   auto_route: ^5.0.2
   url_strategy: ^0.2.0
+  smooth_page_indicator: ^1.1.0
 
   #LOGIC
   flutter_bloc: ^8.1.1

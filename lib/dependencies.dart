@@ -14,6 +14,9 @@ import 'package:fiura/features/judge/presentation/cubit/judge_cubit.dart';
 import 'package:fiura/features/login/domain/repositories/login_repository.dart';
 import 'package:fiura/features/login/presentation/cubit/login_cubit.dart';
 import 'package:fiura/features/posts/domain/repositories/post_repository.dart';
+import 'package:fiura/features/schedule/data/local/schedule_repository_imp.dart';
+import 'package:fiura/features/schedule/domain/repositories/schedule_repository.dart';
+import 'package:fiura/features/schedule/presentation/cubit/schedule_cubit.dart';
 import 'package:fiura/features/splash/domain/repositories/splash_repository.dart';
 import 'package:fiura/features/sponsor/data/local/sponsor_repository_imp.dart';
 import 'package:fiura/features/sponsor/domain/repositories/sponsor_repository.dart';
@@ -49,6 +52,10 @@ void setup() {
   getIt.registerFactory<SponsorRepository>(() => SponsorRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt(), userRepository: getIt()));
   getIt.registerFactory<SponsorCubit>(() => SponsorCubit(getIt(), getIt()));
 
+  //Schedule
+  getIt.registerFactory<ScheduleRepository>(() => ScheduleRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt(), userRepository: getIt()));
+  getIt.registerFactory<ScheduleCubit>(() => ScheduleCubit(getIt(), getIt()));
+
   //Artist
   getIt.registerFactory<ArtistRepository>(() => ArtistRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt(), userRepository: getIt()));
   getIt.registerFactory<ArtistCubit>(() => ArtistCubit(getIt(), getIt()));
@@ -63,11 +70,7 @@ void setup() {
 
   //User
 
-  getIt.registerFactory<UserRepository>(() => UserRepository(
-        getIt(),
-        getIt(),
-        getIt(),
-      ));
+  getIt.registerFactory<UserRepository>(() => UserRepository(getIt(), getIt(), getIt()));
   getIt.registerFactory<SessionCubit>(() => SessionCubit(getIt()));
 
   //Admin
