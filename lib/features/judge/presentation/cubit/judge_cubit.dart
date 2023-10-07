@@ -11,12 +11,14 @@ import 'package:path_provider/path_provider.dart';
 import '../../../images/domain/repositories/image_repository.dart';
 
 class JudgeCubit extends Cubit<JudgeState> {
-  JudgeCubit(this._judgeRepository, this._imageRepository) : super(const Initial());
+  JudgeCubit(this._judgeRepository, this._imageRepository)
+      : super(const Initial());
 
   final JudgeRepository _judgeRepository;
   final ImageRepository _imageRepository;
 
-  void updateJudge(String id, String name, String about, List<String> socialNetwork, File? image, String previousPhotoName) async {
+  void updateJudge(String id, String name, String about,
+      List<String> socialNetwork, File? image, String previousPhotoName) async {
     emit(const Loading());
 
     final String urlPhoto = 'Artists/${path.basename(image!.path)}';
@@ -37,7 +39,8 @@ class JudgeCubit extends Cubit<JudgeState> {
     }
   }
 
-  void addJudge(String name, String about, List<String> socialNetwork, File? image) async {
+  void addJudge(String name, String about, List<String> socialNetwork,
+      File? image) async {
     String urlPhoto = 'Judges/${path.basename(image!.path)}';
 
     JudgeEntity judge = JudgeEntity(
@@ -53,7 +56,7 @@ class JudgeCubit extends Cubit<JudgeState> {
     if (result) {
       emit(const Success());
     } else {
-      emit(const Error('Error añadiendo nuevo juez'));
+      emit(const Error('Error añadiendo nuevo jurado'));
     }
   }
 

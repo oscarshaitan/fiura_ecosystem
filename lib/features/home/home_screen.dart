@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fiura/features/home/cubit/session_cubit.dart';
+import 'package:fiura/features/home/widgets/button_drawer_with_icon.dart';
 import 'package:fiura/features/home/widgets/logout_modal.dart';
 import 'package:fiura/features/widgets/on_load_message.dart';
 import 'package:fiura/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../dependencies.dart';
+import '../utils/url_generator.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -35,17 +37,22 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    context.router.push(const ProfileScreenRoute());
+                                    context.router
+                                        .push(const ProfileScreenRoute());
                                   },
                                   child: CircleAvatar(
                                     radius: 25,
-                                    backgroundImage: NetworkImage(state.currentUser!.photo),
+                                    backgroundImage:
+                                        NetworkImage(state.currentUser!.photo),
                                   ),
                                 ),
                                 const SizedBox(height: 20),
                                 Text(state.currentUser!.name,
                                     textAlign: TextAlign.start,
-                                    style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .headlineMedium!
+                                        .copyWith(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                         )),
@@ -54,7 +61,10 @@ class HomeScreen extends StatelessWidget {
                                   Text(
                                     'Administrador',
                                     textAlign: TextAlign.start,
-                                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -63,15 +73,17 @@ class HomeScreen extends StatelessWidget {
                               ],
                             );
                           },
-                          orElse: () => const Image(image: AssetImage('assets/images/logo.png')),
+                          orElse: () => const Image(
+                              image: AssetImage('assets/images/logo.png')),
                         )),
                   ),
                   const SizedBox(height: 10),
                   ListTile(
-                    title: const Text('Home'),
+                    title: const Text('Inicio'),
                     onTap: () {
                       Navigator.of(context).pop();
-                      context.router.pushAndPopUntil(const PostsScreenRoute(), predicate: (route) => false);
+                      context.router.pushAndPopUntil(const PostsScreenRoute(),
+                          predicate: (route) => false);
                     },
                   ),
                   ListTile(
@@ -82,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    title: const Text('Jueces'),
+                    title: const Text('Jurado'),
                     onTap: () {
                       Navigator.of(context).pop();
                       context.router.push(const ViewJudgeScreenRoute());
@@ -116,21 +128,21 @@ class HomeScreen extends StatelessWidget {
                     color: Color(0xff717171),
                     height: 1,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: ListTile(
-                        title: const Row(children: [
-                          Icon(
-                            Icons.logout,
-                            color: Colors.white,
-                          ),
-                          SizedBox(width: 10),
-                          Text('Cerrar sesión')
-                        ]),
-                        onTap: () {
-                          logoutModal(context: context);
-                        }),
-                  )
+                  sessionState.maybeMap(
+                    userFetched: (state) => ButtonDrawerWithIcon(
+                      onTap: () => createUrl("https://wa.link/7cbhfd"),
+                      text: 'Preventa',
+                      imageUrl: 'assets/whatsapp.png',
+                    ),
+                    orElse: () => Container(),
+                  ),
+                  ButtonDrawerWithIcon(
+                    onTap: () {
+                      logoutModal(context: context);
+                    },
+                    text: 'Cerrar sesión',
+                    icon: Icons.logout,
+                  ),
                 ],
               ),
             ),
