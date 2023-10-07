@@ -2,6 +2,8 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fiura/core/entities/post_entity/post_entity.dart';
+import 'package:fiura/core/entities/user/user_entity.dart';
+import 'package:fiura/features/home/repository/user_respository.dart';
 import '../../../images/domain/repositories/image_repository.dart';
 import '../../domain/repositories/post_repository.dart';
 
@@ -9,6 +11,7 @@ class PostRepositoryImp extends PostRepository {
   final FirebaseFirestore db;
   final FirebaseAuth auth;
   final ImageRepository imageRepository;
+  final UserRepository userRepository;
 
   //Collections
   final String posts = "posts";
@@ -17,6 +20,7 @@ class PostRepositoryImp extends PostRepository {
     required this.db,
     required this.auth,
     required this.imageRepository,
+    required this.userRepository
   });
 
   @override
@@ -71,5 +75,25 @@ class PostRepositoryImp extends PostRepository {
     }
     postsList.sort((PostEntity a, PostEntity b) => int.parse(a.creationDate) > int.parse(b.creationDate) ? 0 : 1);
     return postsList;
+  }
+
+  @override
+  Future<void> deletePost(String id) async{
+    final User? user = auth.currentUser;
+    final UserEntity currentUser = await userRepository.getCurrentUser();
+
+    if (user != null) {
+      if (currentUser.admin == true) {
+        try {
+          await db.collection(posts).doc(id).delete();
+        } catch (e) {
+          throw Exception('Error eliminando post');
+        }
+      } else {
+        throw Exception('No tienes permisos para realizar esta acción');
+      }
+    } else {
+      throw Exception('Error al realizar esta acción, inicia sesión e intentalo de nuevo');
+    }
   }
 }

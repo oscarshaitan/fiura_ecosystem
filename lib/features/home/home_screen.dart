@@ -37,22 +37,17 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: () {
-                                    context.router
-                                        .push(const ProfileScreenRoute());
+                                    context.router.push(const ProfileScreenRoute());
                                   },
                                   child: CircleAvatar(
                                     radius: 25,
-                                    backgroundImage:
-                                        NetworkImage(state.currentUser!.photo),
+                                    backgroundImage: NetworkImage(state.currentUser!.photo),
                                   ),
                                 ),
                                 const SizedBox(height: 20),
                                 Text(state.currentUser!.name,
                                     textAlign: TextAlign.start,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headlineMedium!
-                                        .copyWith(
+                                    style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                         )),
@@ -61,10 +56,7 @@ class HomeScreen extends StatelessWidget {
                                   Text(
                                     'Administrador',
                                     textAlign: TextAlign.start,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyMedium!
-                                        .copyWith(
+                                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -73,8 +65,7 @@ class HomeScreen extends StatelessWidget {
                               ],
                             );
                           },
-                          orElse: () => const Image(
-                              image: AssetImage('assets/images/logo.png')),
+                          orElse: () => const Image(image: AssetImage('assets/images/logo.png')),
                         )),
                   ),
                   const SizedBox(height: 10),
@@ -82,8 +73,7 @@ class HomeScreen extends StatelessWidget {
                     title: const Text('Inicio'),
                     onTap: () {
                       Navigator.of(context).pop();
-                      context.router.pushAndPopUntil(const PostsScreenRoute(),
-                          predicate: (route) => false);
+                      context.router.pushAndPopUntil(const PostsScreenRoute(), predicate: (route) => false);
                     },
                   ),
                   ListTile(
@@ -107,6 +97,13 @@ class HomeScreen extends StatelessWidget {
                       context.router.push(const ViewSponsorScreenRoute());
                     },
                   ),
+                  ListTile(
+                    title: const Text('Horaios'),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      context.router.push(const ViewSponsorScreenRoute());
+                    },
+                  ),
                   sessionState.maybeMap(
                       userFetched: (state) {
                         if (state.isAdmin) {
@@ -123,7 +120,6 @@ class HomeScreen extends StatelessWidget {
                       },
                       orElse: () => Container()),
                   const SizedBox(height: 10),
-                  const Expanded(child: SizedBox()),
                   const Divider(
                     color: Color(0xff717171),
                     height: 1,
@@ -135,6 +131,11 @@ class HomeScreen extends StatelessWidget {
                       imageUrl: 'assets/whatsapp.png',
                     ),
                     orElse: () => Container(),
+                  ),
+                  const Expanded(child: SizedBox()),
+                  const Divider(
+                    color: Color(0xff717171),
+                    height: 1,
                   ),
                   ButtonDrawerWithIcon(
                     onTap: () {

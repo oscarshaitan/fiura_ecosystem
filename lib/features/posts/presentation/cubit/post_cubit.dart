@@ -42,6 +42,16 @@ class PostCubit extends Cubit<PostState> {
     }
   }
 
+  void deletePost(String id) async {
+    emit(const Loading());
+    try {
+      await _postRepository.deletePost(id);
+      getPosts();
+    } catch (e) {
+      emit(Error(e.toString()));
+    }
+  }
+
   void imagePicker() async {
     final File? image = await _imageRepository.imagePicker();
 

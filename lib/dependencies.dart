@@ -54,7 +54,7 @@ void setup() {
   getIt.registerFactory<ArtistCubit>(() => ArtistCubit(getIt(), getIt()));
 
   //Post
-  getIt.registerFactory<PostRepository>(() => PostRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt()));
+  getIt.registerFactory<PostRepository>(() => PostRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt(), userRepository: getIt()));
   getIt.registerFactory<PostCubit>(() => PostCubit(getIt(), getIt()));
 
   //ImageRepository
