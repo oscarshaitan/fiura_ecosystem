@@ -55,7 +55,7 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Registro de nuevo Juez'),
+          title: const Text('Registro de nuevo jurado'),
         ),
         body: BlocProvider(
           create: (_) => getIt<JudgeCubit>(),
@@ -64,18 +64,18 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
             snapshot.whenOrNull(
               loading: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Añadiendo nuevo Juez...'),
+                  content: Text('Añadiendo nuevo jurado...'),
                 ),
               ),
               success: () => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Juez añadido correctamente'),
+                  content: Text('jurado añadido correctamente'),
                 ),
               ),
               error: (message) => ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content:
-                      Text('Error añadiendo nuevo Juez, intentalo nuevamente'),
+                  content: Text(
+                      'Error añadiendo nuevo jurado, intentalo nuevamente'),
                 ),
               ),
               pickedImage: (image) => setState(() {
@@ -133,7 +133,7 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa el nombre completo del Juez',
+                            hintText: 'Ingresa el nombre completo del jurado',
                             labelText: 'Nombre*',
                           ),
                           controller: controllerJudgeName,
@@ -148,7 +148,7 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         TextFormField(
                             maxLines: 3,
                             decoration: const InputDecoration(
-                              hintText: 'Ingresa el acerca de, del juez',
+                              hintText: 'Ingresa el acerca de, del jurado',
                               labelText: 'Acerca de*',
                             ),
                             controller: controllerJudgeAbout,
@@ -161,7 +161,8 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Facebook del juez',
+                            hintText:
+                                'Ingresa la cuenta de Facebook del jurado',
                             labelText: 'Facebook',
                           ),
                           controller: controllerJudgeFacebook,
@@ -171,7 +172,7 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Twitter del juez',
+                            hintText: 'Ingresa la cuenta de Twitter del jurado',
                             labelText: 'Twitter',
                           ),
                           controller: controllerJudgeTwitter,
@@ -181,7 +182,8 @@ class _CreateJudgeScreenState extends State<CreateJudgeScreen> {
                         ),
                         TextFormField(
                           decoration: const InputDecoration(
-                            hintText: 'Ingresa la cuenta de Instagram del juez',
+                            hintText:
+                                'Ingresa la cuenta de Instagram del jurado',
                             labelText: 'Instagram',
                           ),
                           controller: controllerJudgeInstagram,

@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fiura/features/home/cubit/session_cubit.dart';
+import 'package:fiura/features/home/widgets/button_drawer_with_icon.dart';
 import 'package:fiura/features/home/widgets/logout_modal.dart';
 import 'package:fiura/features/widgets/on_load_message.dart';
 import 'package:fiura/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../dependencies.dart';
+import '../utils/url_generator.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -68,7 +70,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   ListTile(
-                    title: const Text('Home'),
+                    title: const Text('Inicio'),
                     onTap: () {
                       Navigator.of(context).pop();
                       context.router.pushAndPopUntil(const PostsScreenRoute(), predicate: (route) => false);
@@ -82,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    title: const Text('Jueces'),
+                    title: const Text('Jurado'),
                     onTap: () {
                       Navigator.of(context).pop();
                       context.router.push(const ViewJudgeScreenRoute());
@@ -93,6 +95,13 @@ class HomeScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).pop();
                       context.router.push(const ViewSponsorScreenRoute());
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Horarios'),
+                    onTap: () {
+                      Navigator.of(context).pop();
+                      context.router.push(SchedulesScreenRoute());
                     },
                   ),
                   sessionState.maybeMap(
@@ -111,26 +120,30 @@ class HomeScreen extends StatelessWidget {
                       },
                       orElse: () => Container()),
                   const SizedBox(height: 10),
+                  const Divider(
+                    color: Color(0xff717171),
+                    height: 1,
+                  ),
+                  sessionState.maybeMap(
+                    userFetched: (state) => ButtonDrawerWithIcon(
+                      onTap: () => createUrl('wa.me/573193392986/?text=Hola, vengo de la app ✨🤟🏼 Quisiera información sobre la boletería para el Fiura 2023.'),
+                      text: 'Preventa',
+                      imageUrl: 'assets/whatsapp.png',
+                    ),
+                    orElse: () => Container(),
+                  ),
                   const Expanded(child: SizedBox()),
                   const Divider(
                     color: Color(0xff717171),
                     height: 1,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10.0),
-                    child: ListTile(
-                        title: const Row(children: [
-                          Icon(
-                            Icons.logout,
-                            color: Colors.white,
-                          ),
-                          SizedBox(width: 10),
-                          Text('Cerrar sesión')
-                        ]),
-                        onTap: () {
-                          logoutModal(context: context);
-                        }),
-                  )
+                  ButtonDrawerWithIcon(
+                    onTap: () {
+                      logoutModal(context: context);
+                    },
+                    text: 'Cerrar sesión',
+                    icon: Icons.logout,
+                  ),
                 ],
               ),
             ),

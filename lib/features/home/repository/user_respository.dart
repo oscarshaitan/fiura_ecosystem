@@ -11,14 +11,15 @@ class UserRepository {
   UserRepository(this.db, this.auth, this.googleSignIn);
 
   Future<UserEntity> getCurrentUser() async {
-    if (auth.currentUser != null) {
+    if (auth.currentUser != null && !auth.currentUser!.isAnonymous) {
       try {
-        var result =
-            await db.collection('users').doc(auth.currentUser!.uid).get();
+        var result = await db.collection('users').doc(auth.currentUser!.uid).get();
         return UserEntity.fromJson(result.data()!);
       } catch (e) {
         throw Exception('User not found');
       }
+    } else if (auth.currentUser != null && auth.currentUser!.isAnonymous) {
+      return UserEntity(uid: '', name: 'Fiura', email: '', photo: '');
     } else {
       throw Exception('No User connected');
     }

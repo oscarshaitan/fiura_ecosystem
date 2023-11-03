@@ -65,7 +65,7 @@ class JudgeCubit extends Cubit<JudgeState> {
     if (result) {
       emit(const Success());
     } else {
-      emit(const Error('Error añadiendo nuevo juez'));
+      emit(const Error('Error añadiendo nuevo jurado'));
     }
   }
 

@@ -5,8 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../domain/repositories/login_repository.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this._loginRepository, this._userRepository)
-      : super(const Initial());
+  LoginCubit(this._loginRepository, this._userRepository) : super(const Initial());
 
   final LoginRepository _loginRepository;
   final UserRepository _userRepository;
@@ -20,6 +19,18 @@ class LoginCubit extends Cubit<LoginState> {
       });
     } else {
       emit(const Error('Error'));
+    }
+  }
+
+  emailLogin(String email, String pass) async {
+    emit(const LoginState.loading());
+    try {
+      await _loginRepository.signInWithEmail(email, pass);
+      Future.delayed(const Duration(seconds: 1)).then((value) {
+        emit(const LoginState.success());
+      });
+    } catch (e) {
+      emit(const Error("Error al iniciar sesión"));
     }
   }
 

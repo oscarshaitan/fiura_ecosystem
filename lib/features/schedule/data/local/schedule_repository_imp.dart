@@ -1,22 +1,22 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fiura/core/entities/post_entity/post_entity.dart';
+import 'package:fiura/core/entities/schedule_entity/schedule_entity.dart';
 import 'package:fiura/core/entities/user/user_entity.dart';
 import 'package:fiura/features/home/repository/user_respository.dart';
 import '../../../images/domain/repositories/image_repository.dart';
-import '../../domain/repositories/post_repository.dart';
+import '../../domain/repositories/schedule_repository.dart';
 
-class PostRepositoryImp extends PostRepository {
+class ScheduleRepositoryImp extends ScheduleRepository {
   final FirebaseFirestore db;
   final FirebaseAuth auth;
   final ImageRepository imageRepository;
   final UserRepository userRepository;
 
   //Collections
-  final String posts = "posts";
+  final String schedule = "schedule";
 
-  PostRepositoryImp({
+  ScheduleRepositoryImp({
     required this.db,
     required this.auth,
     required this.imageRepository,
@@ -24,16 +24,15 @@ class PostRepositoryImp extends PostRepository {
   });
 
   @override
-  Future<bool> addPost(PostEntity post, File image) async {
+  Future<bool> addSchedule(ScheduleEntity post, File image) async {
     final User? user = auth.currentUser;
     late DocumentReference docRef;
     late bool status;
 
     if (user != null) {
-      docRef = await db.collection(posts).add({
-        "redirectionUrl": post.redirectionUrl,
+      docRef = await db.collection(schedule).add({
+
         "urlPhoto": post.urlPhoto,
-        "description": post.description,
         "uid": user.uid,
         "creationDate": post.creationDate,
       });
@@ -44,7 +43,7 @@ class PostRepositoryImp extends PostRepository {
 
       if (result.data() != null && urlPhoto != null) {
         var id = result.id;
-        await db.collection(posts).doc(id).update({"id": id, "urlPhoto": urlPhoto});
+        await db.collection(schedule).doc(id).update({"id": id, "urlPhoto": urlPhoto});
         status = true;
       } else {
         status = false;
@@ -55,39 +54,39 @@ class PostRepositoryImp extends PostRepository {
   }
 
   @override
-  Future<List<PostEntity>> getPosts() async {
+  Future<List<ScheduleEntity>> getSchedules() async {
     final User? user = auth.currentUser;
     final CollectionReference collectionRef;
     final QuerySnapshot querySnapshot;
-    final List<PostEntity> postsList = [];
+    final List<ScheduleEntity> scheduleList = [];
 
     if (user != null) {
-      collectionRef = db.collection(posts);
+      collectionRef = db.collection(schedule);
       querySnapshot = await collectionRef.get();
 
       for (QueryDocumentSnapshot element in querySnapshot.docs) {
         Map<String, dynamic> data = element.data() as Map<String, dynamic>;
 
-        PostEntity post = PostEntity.fromJson(data);
+        ScheduleEntity post = ScheduleEntity.fromJson(data);
 
-        postsList.add(post);
+        scheduleList.add(post);
       }
     }
-    postsList.sort((PostEntity a, PostEntity b) => int.parse(a.creationDate) > int.parse(b.creationDate) ? 0 : 1);
-    return postsList;
+    scheduleList.sort((ScheduleEntity a, ScheduleEntity b) => int.parse(a.creationDate) > int.parse(b.creationDate) ? 0 : 1);
+    return scheduleList;
   }
 
   @override
-  Future<void> deletePost(String id) async{
+  Future<void> deleteSchedule(String id) async{
     final User? user = auth.currentUser;
     final UserEntity currentUser = await userRepository.getCurrentUser();
 
     if (user != null) {
       if (currentUser.admin == true) {
         try {
-          await db.collection(posts).doc(id).delete();
+          await db.collection(schedule).doc(id).delete();
         } catch (e) {
-          throw Exception('Error eliminando post');
+          throw Exception('Error eliminando horario');
         }
       } else {
         throw Exception('No tienes permisos para realizar esta acción');

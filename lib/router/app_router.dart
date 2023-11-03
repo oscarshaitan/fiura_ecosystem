@@ -6,6 +6,8 @@ import 'package:fiura/features/home/home_screen.dart';
 import 'package:fiura/features/judge/presentation/pages/view_judge_screen.dart';
 import 'package:fiura/features/judge_detail_screen/judge_detail.dart';
 import 'package:fiura/features/posts/presentation/pages/posts_screen.dart';
+import 'package:fiura/features/schedule/presentation/pages/create_schedule_screen.dart';
+import 'package:fiura/features/schedule/presentation/pages/schedule_screen.dart';
 import 'package:fiura/features/splash/presentation/pages/splash_screen.dart';
 import 'package:fiura/features/sponsor/presentation/pages/create_sponsor_screen.dart';
 import 'package:fiura/features/sponsor/presentation/pages/sponsor_detail_screen.dart';
@@ -27,6 +29,8 @@ import '../features/sponsor/presentation/pages/view_sponsor_screen.dart';
       RedirectRoute(path: '', redirectTo: posts),
       //Posts
       AutoRoute(page: PostsScreen, path: posts, initial: true, children: []),
+      //Schedules
+      AutoRoute(page: SchedulesScreen, path: posts, initial: true, children: []),
       //Artists
       AutoRoute(page: ArtistsScreen, path: artists, children: []),
       //Judges
@@ -44,6 +48,7 @@ import '../features/sponsor/presentation/pages/view_sponsor_screen.dart';
     AutoRoute(page: JudgeDetailScreen, path: judgeDetail),
     AutoRoute(page: CreateArtistScreen, path: createArtist),
     AutoRoute(page: CreatePostScreen, path: createPost),
+    AutoRoute(page: CreateScheduleScreen, path: createPost),
     AutoRoute(page: ProfileScreen, path: profile),
   ],
 )

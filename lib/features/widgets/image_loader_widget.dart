@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class ImageLoaderWidget extends StatelessWidget {
   final String url;
-  const ImageLoaderWidget({super.key, required this.url});
+  final BoxFit? fit;
+
+  const ImageLoaderWidget({super.key, required this.url, this.fit = BoxFit.cover});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class ImageLoaderWidget extends StatelessWidget {
           return ClipRect(
             child: Image(
               image: NetworkImage(url),
-              fit: BoxFit.cover,
+              fit: fit,
             ),
           );
         }
