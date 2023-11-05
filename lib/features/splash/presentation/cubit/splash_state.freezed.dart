@@ -75,25 +75,25 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
 }
 
 /// @nodoc
-abstract class _$$LogedUserCopyWith<$Res> {
-  factory _$$LogedUserCopyWith(
-          _$LogedUser value, $Res Function(_$LogedUser) then) =
-      __$$LogedUserCopyWithImpl<$Res>;
+abstract class _$$LogedUserImplCopyWith<$Res> {
+  factory _$$LogedUserImplCopyWith(
+          _$LogedUserImpl value, $Res Function(_$LogedUserImpl) then) =
+      __$$LogedUserImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LogedUserCopyWithImpl<$Res>
-    extends _$SplashStateCopyWithImpl<$Res, _$LogedUser>
-    implements _$$LogedUserCopyWith<$Res> {
-  __$$LogedUserCopyWithImpl(
-      _$LogedUser _value, $Res Function(_$LogedUser) _then)
+class __$$LogedUserImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$LogedUserImpl>
+    implements _$$LogedUserImplCopyWith<$Res> {
+  __$$LogedUserImplCopyWithImpl(
+      _$LogedUserImpl _value, $Res Function(_$LogedUserImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$LogedUser implements LogedUser {
-  const _$LogedUser();
+class _$LogedUserImpl implements LogedUser {
+  const _$LogedUserImpl();
 
   @override
   String toString() {
@@ -103,7 +103,7 @@ class _$LogedUser implements LogedUser {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LogedUser);
+        (other.runtimeType == runtimeType && other is _$LogedUserImpl);
   }
 
   @override
@@ -173,26 +173,28 @@ class _$LogedUser implements LogedUser {
 }
 
 abstract class LogedUser implements SplashState {
-  const factory LogedUser() = _$LogedUser;
+  const factory LogedUser() = _$LogedUserImpl;
 }
 
 /// @nodoc
-abstract class _$$NoneCopyWith<$Res> {
-  factory _$$NoneCopyWith(_$None value, $Res Function(_$None) then) =
-      __$$NoneCopyWithImpl<$Res>;
+abstract class _$$NoneImplCopyWith<$Res> {
+  factory _$$NoneImplCopyWith(
+          _$NoneImpl value, $Res Function(_$NoneImpl) then) =
+      __$$NoneImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$NoneCopyWithImpl<$Res> extends _$SplashStateCopyWithImpl<$Res, _$None>
-    implements _$$NoneCopyWith<$Res> {
-  __$$NoneCopyWithImpl(_$None _value, $Res Function(_$None) _then)
+class __$$NoneImplCopyWithImpl<$Res>
+    extends _$SplashStateCopyWithImpl<$Res, _$NoneImpl>
+    implements _$$NoneImplCopyWith<$Res> {
+  __$$NoneImplCopyWithImpl(_$NoneImpl _value, $Res Function(_$NoneImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$None implements None {
-  const _$None();
+class _$NoneImpl implements None {
+  const _$NoneImpl();
 
   @override
   String toString() {
@@ -202,7 +204,7 @@ class _$None implements None {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$None);
+        (other.runtimeType == runtimeType && other is _$NoneImpl);
   }
 
   @override
@@ -272,5 +274,5 @@ class _$None implements None {
 }
 
 abstract class None implements SplashState {
-  const factory None() = _$None;
+  const factory None() = _$NoneImpl;
 }

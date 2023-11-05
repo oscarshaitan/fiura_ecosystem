@@ -6,8 +6,8 @@ part of 'musician_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MusicianEntity _$$_MusicianEntityFromJson(Map<String, dynamic> json) =>
-    _$_MusicianEntity(
+_$MusicianEntityImpl _$$MusicianEntityImplFromJson(Map<String, dynamic> json) =>
+    _$MusicianEntityImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       about: json['about'] as String,
@@ -17,7 +17,8 @@ _$_MusicianEntity _$$_MusicianEntityFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_MusicianEntityToJson(_$_MusicianEntity instance) =>
+Map<String, dynamic> _$$MusicianEntityImplToJson(
+        _$MusicianEntityImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

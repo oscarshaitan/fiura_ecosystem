@@ -1,10 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fiura/features/artists/presentation/pages/artist_screen.dart';
 import 'package:fiura/features/artists/presentation/pages/create_artist_screen.dart';
-import 'package:fiura/features/artits_detail_screen/artist_detail.dart';
 import 'package:fiura/features/home/home_screen.dart';
 import 'package:fiura/features/judge/presentation/pages/view_judge_screen.dart';
-import 'package:fiura/features/judge_detail_screen/judge_detail.dart';
+import 'package:fiura/features/musician/presentation/pages/musician_detail.dart';
 import 'package:fiura/features/posts/presentation/pages/posts_screen.dart';
 import 'package:fiura/features/schedule/presentation/pages/create_schedule_screen.dart';
 import 'package:fiura/features/schedule/presentation/pages/schedule_screen.dart';
@@ -30,7 +29,8 @@ import '../features/sponsor/presentation/pages/view_sponsor_screen.dart';
       //Posts
       AutoRoute(page: PostsScreen, path: posts, initial: true, children: []),
       //Schedules
-      AutoRoute(page: SchedulesScreen, path: posts, initial: true, children: []),
+      AutoRoute(
+          page: SchedulesScreen, path: posts, initial: true, children: []),
       //Artists
       AutoRoute(page: ArtistsScreen, path: artists, children: []),
       //Judges
@@ -44,12 +44,11 @@ import '../features/sponsor/presentation/pages/view_sponsor_screen.dart';
     AutoRoute(page: SponsorDetailScreen, path: sponsorDetail),
     AutoRoute(page: CreateSponsorScreen, path: createSponsor),
     AutoRoute(page: CreateJudgeScreen, path: createJudge),
-    AutoRoute(page: ArtistsDetailScreen, path: artistsDetail),
-    AutoRoute(page: JudgeDetailScreen, path: judgeDetail),
     AutoRoute(page: CreateArtistScreen, path: createArtist),
     AutoRoute(page: CreatePostScreen, path: createPost),
     AutoRoute(page: CreateScheduleScreen, path: createPost),
     AutoRoute(page: ProfileScreen, path: profile),
+    AutoRoute(page: MusicianDetailScreen, path: musicianDetail),
   ],
 )
 // extend the generated private router

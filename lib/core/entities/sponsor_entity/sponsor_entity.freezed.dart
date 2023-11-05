@@ -91,11 +91,11 @@ class _$SponsorEntityCopyWithImpl<$Res, $Val extends SponsorEntity>
 }
 
 /// @nodoc
-abstract class _$$_SponsorEntityCopyWith<$Res>
+abstract class _$$SponsorEntityImplCopyWith<$Res>
     implements $SponsorEntityCopyWith<$Res> {
-  factory _$$_SponsorEntityCopyWith(
-          _$_SponsorEntity value, $Res Function(_$_SponsorEntity) then) =
-      __$$_SponsorEntityCopyWithImpl<$Res>;
+  factory _$$SponsorEntityImplCopyWith(
+          _$SponsorEntityImpl value, $Res Function(_$SponsorEntityImpl) then) =
+      __$$SponsorEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +107,11 @@ abstract class _$$_SponsorEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SponsorEntityCopyWithImpl<$Res>
-    extends _$SponsorEntityCopyWithImpl<$Res, _$_SponsorEntity>
-    implements _$$_SponsorEntityCopyWith<$Res> {
-  __$$_SponsorEntityCopyWithImpl(
-      _$_SponsorEntity _value, $Res Function(_$_SponsorEntity) _then)
+class __$$SponsorEntityImplCopyWithImpl<$Res>
+    extends _$SponsorEntityCopyWithImpl<$Res, _$SponsorEntityImpl>
+    implements _$$SponsorEntityImplCopyWith<$Res> {
+  __$$SponsorEntityImplCopyWithImpl(
+      _$SponsorEntityImpl _value, $Res Function(_$SponsorEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$_SponsorEntityCopyWithImpl<$Res>
     Object? urlPhoto = null,
     Object? socialNetwork = null,
   }) {
-    return _then(_$_SponsorEntity(
+    return _then(_$SponsorEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -150,8 +150,10 @@ class __$$_SponsorEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SponsorEntity with DiagnosticableTreeMixin implements _SponsorEntity {
-  _$_SponsorEntity(
+class _$SponsorEntityImpl
+    with DiagnosticableTreeMixin
+    implements _SponsorEntity {
+  _$SponsorEntityImpl(
       {required this.id,
       required this.name,
       required this.about,
@@ -159,8 +161,8 @@ class _$_SponsorEntity with DiagnosticableTreeMixin implements _SponsorEntity {
       required final List<String?> socialNetwork})
       : _socialNetwork = socialNetwork;
 
-  factory _$_SponsorEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_SponsorEntityFromJson(json);
+  factory _$SponsorEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SponsorEntityImplFromJson(json);
 
   @override
   final String id;
@@ -199,7 +201,7 @@ class _$_SponsorEntity with DiagnosticableTreeMixin implements _SponsorEntity {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SponsorEntity &&
+            other is _$SponsorEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
@@ -217,12 +219,12 @@ class _$_SponsorEntity with DiagnosticableTreeMixin implements _SponsorEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SponsorEntityCopyWith<_$_SponsorEntity> get copyWith =>
-      __$$_SponsorEntityCopyWithImpl<_$_SponsorEntity>(this, _$identity);
+  _$$SponsorEntityImplCopyWith<_$SponsorEntityImpl> get copyWith =>
+      __$$SponsorEntityImplCopyWithImpl<_$SponsorEntityImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SponsorEntityToJson(
+    return _$$SponsorEntityImplToJson(
       this,
     );
   }
@@ -234,10 +236,10 @@ abstract class _SponsorEntity implements SponsorEntity {
       required final String name,
       required final String about,
       required final String urlPhoto,
-      required final List<String?> socialNetwork}) = _$_SponsorEntity;
+      required final List<String?> socialNetwork}) = _$SponsorEntityImpl;
 
   factory _SponsorEntity.fromJson(Map<String, dynamic> json) =
-      _$_SponsorEntity.fromJson;
+      _$SponsorEntityImpl.fromJson;
 
   @override
   String get id;
@@ -251,6 +253,6 @@ abstract class _SponsorEntity implements SponsorEntity {
   List<String?> get socialNetwork;
   @override
   @JsonKey(ignore: true)
-  _$$_SponsorEntityCopyWith<_$_SponsorEntity> get copyWith =>
+  _$$SponsorEntityImplCopyWith<_$SponsorEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -87,23 +87,25 @@ class _$ImageStateCopyWithImpl<$Res, $Val extends ImageState>
 }
 
 /// @nodoc
-abstract class _$$InitialCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$ImageStateCopyWithImpl<$Res, _$Initial>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ImageStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Initial implements Initial {
-  const _$Initial();
+class _$InitialImpl implements Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -113,7 +115,7 @@ class _$Initial implements Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -195,27 +197,29 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements ImageState {
-  const factory Initial() = _$Initial;
+  const factory Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$ImageStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$ImageStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading implements Loading {
-  const _$Loading();
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -225,7 +229,7 @@ class _$Loading implements Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -307,22 +311,24 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements ImageState {
-  const factory Loading() = _$Loading;
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$ErrorCopyWith<$Res> {
-  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
-      __$$ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res>
-    extends _$ImageStateCopyWithImpl<$Res, _$Error>
-    implements _$$ErrorCopyWith<$Res> {
-  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$ImageStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -330,7 +336,7 @@ class __$$ErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$Error(
+    return _then(_$ErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -341,8 +347,8 @@ class __$$ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error implements Error {
-  const _$Error(this.message);
+class _$ErrorImpl implements Error {
+  const _$ErrorImpl(this.message);
 
   @override
   final String message;
@@ -356,7 +362,7 @@ class _$Error implements Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Error &&
+            other is _$ErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -366,8 +372,8 @@ class _$Error implements Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorCopyWith<_$Error> get copyWith =>
-      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -445,28 +451,29 @@ class _$Error implements Error {
 }
 
 abstract class Error implements ImageState {
-  const factory Error(final String message) = _$Error;
+  const factory Error(final String message) = _$ErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PickedImageCopyWith<$Res> {
-  factory _$$PickedImageCopyWith(
-          _$PickedImage value, $Res Function(_$PickedImage) then) =
-      __$$PickedImageCopyWithImpl<$Res>;
+abstract class _$$PickedImageImplCopyWith<$Res> {
+  factory _$$PickedImageImplCopyWith(
+          _$PickedImageImpl value, $Res Function(_$PickedImageImpl) then) =
+      __$$PickedImageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({Map<String, dynamic> result});
 }
 
 /// @nodoc
-class __$$PickedImageCopyWithImpl<$Res>
-    extends _$ImageStateCopyWithImpl<$Res, _$PickedImage>
-    implements _$$PickedImageCopyWith<$Res> {
-  __$$PickedImageCopyWithImpl(
-      _$PickedImage _value, $Res Function(_$PickedImage) _then)
+class __$$PickedImageImplCopyWithImpl<$Res>
+    extends _$ImageStateCopyWithImpl<$Res, _$PickedImageImpl>
+    implements _$$PickedImageImplCopyWith<$Res> {
+  __$$PickedImageImplCopyWithImpl(
+      _$PickedImageImpl _value, $Res Function(_$PickedImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -474,7 +481,7 @@ class __$$PickedImageCopyWithImpl<$Res>
   $Res call({
     Object? result = null,
   }) {
-    return _then(_$PickedImage(
+    return _then(_$PickedImageImpl(
       null == result
           ? _value._result
           : result // ignore: cast_nullable_to_non_nullable
@@ -485,8 +492,8 @@ class __$$PickedImageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PickedImage implements PickedImage {
-  const _$PickedImage(final Map<String, dynamic> result) : _result = result;
+class _$PickedImageImpl implements PickedImage {
+  const _$PickedImageImpl(final Map<String, dynamic> result) : _result = result;
 
   final Map<String, dynamic> _result;
   @override
@@ -505,7 +512,7 @@ class _$PickedImage implements PickedImage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PickedImage &&
+            other is _$PickedImageImpl &&
             const DeepCollectionEquality().equals(other._result, _result));
   }
 
@@ -516,8 +523,8 @@ class _$PickedImage implements PickedImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PickedImageCopyWith<_$PickedImage> get copyWith =>
-      __$$PickedImageCopyWithImpl<_$PickedImage>(this, _$identity);
+  _$$PickedImageImplCopyWith<_$PickedImageImpl> get copyWith =>
+      __$$PickedImageImplCopyWithImpl<_$PickedImageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -595,10 +602,11 @@ class _$PickedImage implements PickedImage {
 }
 
 abstract class PickedImage implements ImageState {
-  const factory PickedImage(final Map<String, dynamic> result) = _$PickedImage;
+  const factory PickedImage(final Map<String, dynamic> result) =
+      _$PickedImageImpl;
 
   Map<String, dynamic> get result;
   @JsonKey(ignore: true)
-  _$$PickedImageCopyWith<_$PickedImage> get copyWith =>
+  _$$PickedImageImplCopyWith<_$PickedImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

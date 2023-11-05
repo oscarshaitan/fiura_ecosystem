@@ -1,9 +1,10 @@
+import 'package:fiura/features/utils/url_generator.dart';
+import 'package:fiura/features/widgets/social_media_icon_selector.dart';
 import 'package:flutter/material.dart';
-import '../utils/url_generator.dart';
-import '../widgets/social_media_icon_selector.dart';
 
-class JudgeSocialNetworkWidget extends StatelessWidget {
-  const JudgeSocialNetworkWidget({super.key, required this.socialMediaLinks});
+class MusicianSocialNetworkWidget extends StatelessWidget {
+  const MusicianSocialNetworkWidget(
+      {super.key, required this.socialMediaLinks});
 
   final List<String?> socialMediaLinks;
 

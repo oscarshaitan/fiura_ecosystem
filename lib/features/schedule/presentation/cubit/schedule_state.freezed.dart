@@ -99,23 +99,25 @@ class _$ScheduleStateCopyWithImpl<$Res, $Val extends ScheduleState>
 }
 
 /// @nodoc
-abstract class _$$InitialCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$ScheduleStateCopyWithImpl<$Res, _$Initial>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$ScheduleStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Initial implements Initial {
-  const _$Initial();
+class _$InitialImpl implements Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -125,7 +127,7 @@ class _$Initial implements Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -219,27 +221,29 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements ScheduleState {
-  const factory Initial() = _$Initial;
+  const factory Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$ScheduleStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$ScheduleStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading implements Loading {
-  const _$Loading();
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -249,7 +253,7 @@ class _$Loading implements Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -343,22 +347,24 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements ScheduleState {
-  const factory Loading() = _$Loading;
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$ErrorCopyWith<$Res> {
-  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
-      __$$ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res>
-    extends _$ScheduleStateCopyWithImpl<$Res, _$Error>
-    implements _$$ErrorCopyWith<$Res> {
-  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$ScheduleStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -366,7 +372,7 @@ class __$$ErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$Error(
+    return _then(_$ErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -377,8 +383,8 @@ class __$$ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error implements Error {
-  const _$Error(this.message);
+class _$ErrorImpl implements Error {
+  const _$ErrorImpl(this.message);
 
   @override
   final String message;
@@ -392,7 +398,7 @@ class _$Error implements Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Error &&
+            other is _$ErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -402,8 +408,8 @@ class _$Error implements Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorCopyWith<_$Error> get copyWith =>
-      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -493,31 +499,34 @@ class _$Error implements Error {
 }
 
 abstract class Error implements ScheduleState {
-  const factory Error(final String message) = _$Error;
+  const factory Error(final String message) = _$ErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SuccessCopyWith<$Res> {
-  factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
-      __$$SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SuccessCopyWithImpl<$Res>
-    extends _$ScheduleStateCopyWithImpl<$Res, _$Success>
-    implements _$$SuccessCopyWith<$Res> {
-  __$$SuccessCopyWithImpl(_$Success _value, $Res Function(_$Success) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$ScheduleStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Success implements Success {
-  const _$Success();
+class _$SuccessImpl implements Success {
+  const _$SuccessImpl();
 
   @override
   String toString() {
@@ -527,7 +536,7 @@ class _$Success implements Success {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Success);
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
@@ -621,23 +630,24 @@ class _$Success implements Success {
 }
 
 abstract class Success implements ScheduleState {
-  const factory Success() = _$Success;
+  const factory Success() = _$SuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadDataCopyWith<$Res> {
-  factory _$$LoadDataCopyWith(
-          _$LoadData value, $Res Function(_$LoadData) then) =
-      __$$LoadDataCopyWithImpl<$Res>;
+abstract class _$$LoadDataImplCopyWith<$Res> {
+  factory _$$LoadDataImplCopyWith(
+          _$LoadDataImpl value, $Res Function(_$LoadDataImpl) then) =
+      __$$LoadDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<ScheduleEntity> posts});
 }
 
 /// @nodoc
-class __$$LoadDataCopyWithImpl<$Res>
-    extends _$ScheduleStateCopyWithImpl<$Res, _$LoadData>
-    implements _$$LoadDataCopyWith<$Res> {
-  __$$LoadDataCopyWithImpl(_$LoadData _value, $Res Function(_$LoadData) _then)
+class __$$LoadDataImplCopyWithImpl<$Res>
+    extends _$ScheduleStateCopyWithImpl<$Res, _$LoadDataImpl>
+    implements _$$LoadDataImplCopyWith<$Res> {
+  __$$LoadDataImplCopyWithImpl(
+      _$LoadDataImpl _value, $Res Function(_$LoadDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -645,7 +655,7 @@ class __$$LoadDataCopyWithImpl<$Res>
   $Res call({
     Object? posts = null,
   }) {
-    return _then(_$LoadData(
+    return _then(_$LoadDataImpl(
       null == posts
           ? _value._posts
           : posts // ignore: cast_nullable_to_non_nullable
@@ -656,8 +666,8 @@ class __$$LoadDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadData implements LoadData {
-  const _$LoadData(final List<ScheduleEntity> posts) : _posts = posts;
+class _$LoadDataImpl implements LoadData {
+  const _$LoadDataImpl(final List<ScheduleEntity> posts) : _posts = posts;
 
   final List<ScheduleEntity> _posts;
   @override
@@ -676,7 +686,7 @@ class _$LoadData implements LoadData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadData &&
+            other is _$LoadDataImpl &&
             const DeepCollectionEquality().equals(other._posts, _posts));
   }
 
@@ -687,8 +697,8 @@ class _$LoadData implements LoadData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadDataCopyWith<_$LoadData> get copyWith =>
-      __$$LoadDataCopyWithImpl<_$LoadData>(this, _$identity);
+  _$$LoadDataImplCopyWith<_$LoadDataImpl> get copyWith =>
+      __$$LoadDataImplCopyWithImpl<_$LoadDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -778,29 +788,29 @@ class _$LoadData implements LoadData {
 }
 
 abstract class LoadData implements ScheduleState {
-  const factory LoadData(final List<ScheduleEntity> posts) = _$LoadData;
+  const factory LoadData(final List<ScheduleEntity> posts) = _$LoadDataImpl;
 
   List<ScheduleEntity> get posts;
   @JsonKey(ignore: true)
-  _$$LoadDataCopyWith<_$LoadData> get copyWith =>
+  _$$LoadDataImplCopyWith<_$LoadDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PickedImageCopyWith<$Res> {
-  factory _$$PickedImageCopyWith(
-          _$PickedImage value, $Res Function(_$PickedImage) then) =
-      __$$PickedImageCopyWithImpl<$Res>;
+abstract class _$$PickedImageImplCopyWith<$Res> {
+  factory _$$PickedImageImplCopyWith(
+          _$PickedImageImpl value, $Res Function(_$PickedImageImpl) then) =
+      __$$PickedImageImplCopyWithImpl<$Res>;
   @useResult
   $Res call({File image});
 }
 
 /// @nodoc
-class __$$PickedImageCopyWithImpl<$Res>
-    extends _$ScheduleStateCopyWithImpl<$Res, _$PickedImage>
-    implements _$$PickedImageCopyWith<$Res> {
-  __$$PickedImageCopyWithImpl(
-      _$PickedImage _value, $Res Function(_$PickedImage) _then)
+class __$$PickedImageImplCopyWithImpl<$Res>
+    extends _$ScheduleStateCopyWithImpl<$Res, _$PickedImageImpl>
+    implements _$$PickedImageImplCopyWith<$Res> {
+  __$$PickedImageImplCopyWithImpl(
+      _$PickedImageImpl _value, $Res Function(_$PickedImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -808,7 +818,7 @@ class __$$PickedImageCopyWithImpl<$Res>
   $Res call({
     Object? image = null,
   }) {
-    return _then(_$PickedImage(
+    return _then(_$PickedImageImpl(
       null == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -819,8 +829,8 @@ class __$$PickedImageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PickedImage implements PickedImage {
-  const _$PickedImage(this.image);
+class _$PickedImageImpl implements PickedImage {
+  const _$PickedImageImpl(this.image);
 
   @override
   final File image;
@@ -834,7 +844,7 @@ class _$PickedImage implements PickedImage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PickedImage &&
+            other is _$PickedImageImpl &&
             (identical(other.image, image) || other.image == image));
   }
 
@@ -844,8 +854,8 @@ class _$PickedImage implements PickedImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PickedImageCopyWith<_$PickedImage> get copyWith =>
-      __$$PickedImageCopyWithImpl<_$PickedImage>(this, _$identity);
+  _$$PickedImageImplCopyWith<_$PickedImageImpl> get copyWith =>
+      __$$PickedImageImplCopyWithImpl<_$PickedImageImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -935,10 +945,10 @@ class _$PickedImage implements PickedImage {
 }
 
 abstract class PickedImage implements ScheduleState {
-  const factory PickedImage(final File image) = _$PickedImage;
+  const factory PickedImage(final File image) = _$PickedImageImpl;
 
   File get image;
   @JsonKey(ignore: true)
-  _$$PickedImageCopyWith<_$PickedImage> get copyWith =>
+  _$$PickedImageImplCopyWith<_$PickedImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

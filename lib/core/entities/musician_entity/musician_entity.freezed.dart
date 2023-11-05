@@ -91,11 +91,11 @@ class _$MusicianEntityCopyWithImpl<$Res, $Val extends MusicianEntity>
 }
 
 /// @nodoc
-abstract class _$$_MusicianEntityCopyWith<$Res>
+abstract class _$$MusicianEntityImplCopyWith<$Res>
     implements $MusicianEntityCopyWith<$Res> {
-  factory _$$_MusicianEntityCopyWith(
-          _$_MusicianEntity value, $Res Function(_$_MusicianEntity) then) =
-      __$$_MusicianEntityCopyWithImpl<$Res>;
+  factory _$$MusicianEntityImplCopyWith(_$MusicianEntityImpl value,
+          $Res Function(_$MusicianEntityImpl) then) =
+      __$$MusicianEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +107,11 @@ abstract class _$$_MusicianEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MusicianEntityCopyWithImpl<$Res>
-    extends _$MusicianEntityCopyWithImpl<$Res, _$_MusicianEntity>
-    implements _$$_MusicianEntityCopyWith<$Res> {
-  __$$_MusicianEntityCopyWithImpl(
-      _$_MusicianEntity _value, $Res Function(_$_MusicianEntity) _then)
+class __$$MusicianEntityImplCopyWithImpl<$Res>
+    extends _$MusicianEntityCopyWithImpl<$Res, _$MusicianEntityImpl>
+    implements _$$MusicianEntityImplCopyWith<$Res> {
+  __$$MusicianEntityImplCopyWithImpl(
+      _$MusicianEntityImpl _value, $Res Function(_$MusicianEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$_MusicianEntityCopyWithImpl<$Res>
     Object? urlPhoto = null,
     Object? socialNetwork = null,
   }) {
-    return _then(_$_MusicianEntity(
+    return _then(_$MusicianEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -150,8 +150,8 @@ class __$$_MusicianEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MusicianEntity implements _MusicianEntity {
-  _$_MusicianEntity(
+class _$MusicianEntityImpl implements _MusicianEntity {
+  _$MusicianEntityImpl(
       {required this.id,
       required this.name,
       required this.about,
@@ -159,8 +159,8 @@ class _$_MusicianEntity implements _MusicianEntity {
       required final List<String?> socialNetwork})
       : _socialNetwork = socialNetwork;
 
-  factory _$_MusicianEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_MusicianEntityFromJson(json);
+  factory _$MusicianEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MusicianEntityImplFromJson(json);
 
   @override
   final String id;
@@ -187,7 +187,7 @@ class _$_MusicianEntity implements _MusicianEntity {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MusicianEntity &&
+            other is _$MusicianEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
@@ -205,12 +205,13 @@ class _$_MusicianEntity implements _MusicianEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MusicianEntityCopyWith<_$_MusicianEntity> get copyWith =>
-      __$$_MusicianEntityCopyWithImpl<_$_MusicianEntity>(this, _$identity);
+  _$$MusicianEntityImplCopyWith<_$MusicianEntityImpl> get copyWith =>
+      __$$MusicianEntityImplCopyWithImpl<_$MusicianEntityImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MusicianEntityToJson(
+    return _$$MusicianEntityImplToJson(
       this,
     );
   }
@@ -222,10 +223,10 @@ abstract class _MusicianEntity implements MusicianEntity {
       required final String name,
       required final String about,
       required final String urlPhoto,
-      required final List<String?> socialNetwork}) = _$_MusicianEntity;
+      required final List<String?> socialNetwork}) = _$MusicianEntityImpl;
 
   factory _MusicianEntity.fromJson(Map<String, dynamic> json) =
-      _$_MusicianEntity.fromJson;
+      _$MusicianEntityImpl.fromJson;
 
   @override
   String get id;
@@ -239,6 +240,6 @@ abstract class _MusicianEntity implements MusicianEntity {
   List<String?> get socialNetwork;
   @override
   @JsonKey(ignore: true)
-  _$$_MusicianEntityCopyWith<_$_MusicianEntity> get copyWith =>
+  _$$MusicianEntityImplCopyWith<_$MusicianEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

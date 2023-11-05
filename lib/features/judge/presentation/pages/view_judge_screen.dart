@@ -53,8 +53,8 @@ class ViewJudgeScreen extends StatelessWidget {
                             final judge = judges[index];
                             return ListTile(
                               onTap: () => context.router.push(
-                                JudgeDetailScreenRoute(
-                                    judgeId: judge.musician.id),
+                                MusicianDetailScreenRoute(
+                                    musician: judge.musician),
                               ),
                               leading: TileImageWidget(
                                   urlImage: judges[index].musician.urlPhoto),

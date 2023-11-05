@@ -74,22 +74,22 @@ class _$ScheduleEntityCopyWithImpl<$Res, $Val extends ScheduleEntity>
 }
 
 /// @nodoc
-abstract class _$$_ScheduleEntityCopyWith<$Res>
+abstract class _$$ScheduleEntityImplCopyWith<$Res>
     implements $ScheduleEntityCopyWith<$Res> {
-  factory _$$_ScheduleEntityCopyWith(
-          _$_ScheduleEntity value, $Res Function(_$_ScheduleEntity) then) =
-      __$$_ScheduleEntityCopyWithImpl<$Res>;
+  factory _$$ScheduleEntityImplCopyWith(_$ScheduleEntityImpl value,
+          $Res Function(_$ScheduleEntityImpl) then) =
+      __$$ScheduleEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String urlPhoto, String creationDate});
 }
 
 /// @nodoc
-class __$$_ScheduleEntityCopyWithImpl<$Res>
-    extends _$ScheduleEntityCopyWithImpl<$Res, _$_ScheduleEntity>
-    implements _$$_ScheduleEntityCopyWith<$Res> {
-  __$$_ScheduleEntityCopyWithImpl(
-      _$_ScheduleEntity _value, $Res Function(_$_ScheduleEntity) _then)
+class __$$ScheduleEntityImplCopyWithImpl<$Res>
+    extends _$ScheduleEntityCopyWithImpl<$Res, _$ScheduleEntityImpl>
+    implements _$$ScheduleEntityImplCopyWith<$Res> {
+  __$$ScheduleEntityImplCopyWithImpl(
+      _$ScheduleEntityImpl _value, $Res Function(_$ScheduleEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_ScheduleEntityCopyWithImpl<$Res>
     Object? urlPhoto = null,
     Object? creationDate = null,
   }) {
-    return _then(_$_ScheduleEntity(
+    return _then(_$ScheduleEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -118,14 +118,14 @@ class __$$_ScheduleEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ScheduleEntity
+class _$ScheduleEntityImpl
     with DiagnosticableTreeMixin
     implements _ScheduleEntity {
-  _$_ScheduleEntity(
+  _$ScheduleEntityImpl(
       {required this.id, required this.urlPhoto, required this.creationDate});
 
-  factory _$_ScheduleEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_ScheduleEntityFromJson(json);
+  factory _$ScheduleEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ScheduleEntityImplFromJson(json);
 
   @override
   final String id;
@@ -153,7 +153,7 @@ class _$_ScheduleEntity
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ScheduleEntity &&
+            other is _$ScheduleEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.urlPhoto, urlPhoto) ||
                 other.urlPhoto == urlPhoto) &&
@@ -168,12 +168,13 @@ class _$_ScheduleEntity
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ScheduleEntityCopyWith<_$_ScheduleEntity> get copyWith =>
-      __$$_ScheduleEntityCopyWithImpl<_$_ScheduleEntity>(this, _$identity);
+  _$$ScheduleEntityImplCopyWith<_$ScheduleEntityImpl> get copyWith =>
+      __$$ScheduleEntityImplCopyWithImpl<_$ScheduleEntityImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ScheduleEntityToJson(
+    return _$$ScheduleEntityImplToJson(
       this,
     );
   }
@@ -183,10 +184,10 @@ abstract class _ScheduleEntity implements ScheduleEntity {
   factory _ScheduleEntity(
       {required final String id,
       required final String urlPhoto,
-      required final String creationDate}) = _$_ScheduleEntity;
+      required final String creationDate}) = _$ScheduleEntityImpl;
 
   factory _ScheduleEntity.fromJson(Map<String, dynamic> json) =
-      _$_ScheduleEntity.fromJson;
+      _$ScheduleEntityImpl.fromJson;
 
   @override
   String get id;
@@ -196,6 +197,6 @@ abstract class _ScheduleEntity implements ScheduleEntity {
   String get creationDate;
   @override
   @JsonKey(ignore: true)
-  _$$_ScheduleEntityCopyWith<_$_ScheduleEntity> get copyWith =>
+  _$$ScheduleEntityImplCopyWith<_$ScheduleEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

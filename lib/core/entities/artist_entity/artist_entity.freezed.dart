@@ -67,11 +67,11 @@ class _$ArtistEntityCopyWithImpl<$Res, $Val extends ArtistEntity>
 }
 
 /// @nodoc
-abstract class _$$_ArtistEntityCopyWith<$Res>
+abstract class _$$ArtistEntityImplCopyWith<$Res>
     implements $ArtistEntityCopyWith<$Res> {
-  factory _$$_ArtistEntityCopyWith(
-          _$_ArtistEntity value, $Res Function(_$_ArtistEntity) then) =
-      __$$_ArtistEntityCopyWithImpl<$Res>;
+  factory _$$ArtistEntityImplCopyWith(
+          _$ArtistEntityImpl value, $Res Function(_$ArtistEntityImpl) then) =
+      __$$ArtistEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({MusicianEntity musician});
@@ -81,11 +81,11 @@ abstract class _$$_ArtistEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArtistEntityCopyWithImpl<$Res>
-    extends _$ArtistEntityCopyWithImpl<$Res, _$_ArtistEntity>
-    implements _$$_ArtistEntityCopyWith<$Res> {
-  __$$_ArtistEntityCopyWithImpl(
-      _$_ArtistEntity _value, $Res Function(_$_ArtistEntity) _then)
+class __$$ArtistEntityImplCopyWithImpl<$Res>
+    extends _$ArtistEntityCopyWithImpl<$Res, _$ArtistEntityImpl>
+    implements _$$ArtistEntityImplCopyWith<$Res> {
+  __$$ArtistEntityImplCopyWithImpl(
+      _$ArtistEntityImpl _value, $Res Function(_$ArtistEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_ArtistEntityCopyWithImpl<$Res>
   $Res call({
     Object? musician = null,
   }) {
-    return _then(_$_ArtistEntity(
+    return _then(_$ArtistEntityImpl(
       musician: null == musician
           ? _value.musician
           : musician // ignore: cast_nullable_to_non_nullable
@@ -104,8 +104,8 @@ class __$$_ArtistEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ArtistEntity implements _ArtistEntity {
-  _$_ArtistEntity({required this.musician});
+class _$ArtistEntityImpl implements _ArtistEntity {
+  _$ArtistEntityImpl({required this.musician});
 
   @override
   final MusicianEntity musician;
@@ -119,7 +119,7 @@ class _$_ArtistEntity implements _ArtistEntity {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArtistEntity &&
+            other is _$ArtistEntityImpl &&
             (identical(other.musician, musician) ||
                 other.musician == musician));
   }
@@ -130,18 +130,18 @@ class _$_ArtistEntity implements _ArtistEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArtistEntityCopyWith<_$_ArtistEntity> get copyWith =>
-      __$$_ArtistEntityCopyWithImpl<_$_ArtistEntity>(this, _$identity);
+  _$$ArtistEntityImplCopyWith<_$ArtistEntityImpl> get copyWith =>
+      __$$ArtistEntityImplCopyWithImpl<_$ArtistEntityImpl>(this, _$identity);
 }
 
 abstract class _ArtistEntity implements ArtistEntity {
   factory _ArtistEntity({required final MusicianEntity musician}) =
-      _$_ArtistEntity;
+      _$ArtistEntityImpl;
 
   @override
   MusicianEntity get musician;
   @override
   @JsonKey(ignore: true)
-  _$$_ArtistEntityCopyWith<_$_ArtistEntity> get copyWith =>
+  _$$ArtistEntityImplCopyWith<_$ArtistEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

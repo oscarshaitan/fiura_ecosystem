@@ -17,3 +17,4 @@ const viewPosts = 'view-posts';
 const profile = 'profile';
 const viewAdmins = 'view-admins';
 const createAdmin = 'create-admin';
+const musicianDetail = 'musician-detail';

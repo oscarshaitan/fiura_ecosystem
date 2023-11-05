@@ -67,11 +67,11 @@ class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
 }
 
 /// @nodoc
-abstract class _$$_JudgeEntityCopyWith<$Res>
+abstract class _$$JudgeEntityImplCopyWith<$Res>
     implements $JudgeEntityCopyWith<$Res> {
-  factory _$$_JudgeEntityCopyWith(
-          _$_JudgeEntity value, $Res Function(_$_JudgeEntity) then) =
-      __$$_JudgeEntityCopyWithImpl<$Res>;
+  factory _$$JudgeEntityImplCopyWith(
+          _$JudgeEntityImpl value, $Res Function(_$JudgeEntityImpl) then) =
+      __$$JudgeEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({MusicianEntity musician});
@@ -81,11 +81,11 @@ abstract class _$$_JudgeEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_JudgeEntityCopyWithImpl<$Res>
-    extends _$JudgeEntityCopyWithImpl<$Res, _$_JudgeEntity>
-    implements _$$_JudgeEntityCopyWith<$Res> {
-  __$$_JudgeEntityCopyWithImpl(
-      _$_JudgeEntity _value, $Res Function(_$_JudgeEntity) _then)
+class __$$JudgeEntityImplCopyWithImpl<$Res>
+    extends _$JudgeEntityCopyWithImpl<$Res, _$JudgeEntityImpl>
+    implements _$$JudgeEntityImplCopyWith<$Res> {
+  __$$JudgeEntityImplCopyWithImpl(
+      _$JudgeEntityImpl _value, $Res Function(_$JudgeEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +93,7 @@ class __$$_JudgeEntityCopyWithImpl<$Res>
   $Res call({
     Object? musician = null,
   }) {
-    return _then(_$_JudgeEntity(
+    return _then(_$JudgeEntityImpl(
       musician: null == musician
           ? _value.musician
           : musician // ignore: cast_nullable_to_non_nullable
@@ -104,8 +104,8 @@ class __$$_JudgeEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
-  _$_JudgeEntity({required this.musician});
+class _$JudgeEntityImpl with DiagnosticableTreeMixin implements _JudgeEntity {
+  _$JudgeEntityImpl({required this.musician});
 
   @override
   final MusicianEntity musician;
@@ -127,7 +127,7 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_JudgeEntity &&
+            other is _$JudgeEntityImpl &&
             (identical(other.musician, musician) ||
                 other.musician == musician));
   }
@@ -138,18 +138,18 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_JudgeEntityCopyWith<_$_JudgeEntity> get copyWith =>
-      __$$_JudgeEntityCopyWithImpl<_$_JudgeEntity>(this, _$identity);
+  _$$JudgeEntityImplCopyWith<_$JudgeEntityImpl> get copyWith =>
+      __$$JudgeEntityImplCopyWithImpl<_$JudgeEntityImpl>(this, _$identity);
 }
 
 abstract class _JudgeEntity implements JudgeEntity {
   factory _JudgeEntity({required final MusicianEntity musician}) =
-      _$_JudgeEntity;
+      _$JudgeEntityImpl;
 
   @override
   MusicianEntity get musician;
   @override
   @JsonKey(ignore: true)
-  _$$_JudgeEntityCopyWith<_$_JudgeEntity> get copyWith =>
+  _$$JudgeEntityImplCopyWith<_$JudgeEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

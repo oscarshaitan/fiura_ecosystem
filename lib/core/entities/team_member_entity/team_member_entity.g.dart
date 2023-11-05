@@ -6,8 +6,9 @@ part of 'team_member_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_TeamMemberEntity _$$_TeamMemberEntityFromJson(Map<String, dynamic> json) =>
-    _$_TeamMemberEntity(
+_$TeamMemberEntityImpl _$$TeamMemberEntityImplFromJson(
+        Map<String, dynamic> json) =>
+    _$TeamMemberEntityImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       about: json['about'] as String,
@@ -16,7 +17,8 @@ _$_TeamMemberEntity _$$_TeamMemberEntityFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_TeamMemberEntityToJson(_$_TeamMemberEntity instance) =>
+Map<String, dynamic> _$$TeamMemberEntityImplToJson(
+        _$TeamMemberEntityImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

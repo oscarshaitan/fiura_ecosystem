@@ -67,18 +67,21 @@ class _$MusicCopyWithImpl<$Res, $Val extends Music>
 }
 
 /// @nodoc
-abstract class _$$_MusicCopyWith<$Res> implements $MusicCopyWith<$Res> {
-  factory _$$_MusicCopyWith(_$_Music value, $Res Function(_$_Music) then) =
-      __$$_MusicCopyWithImpl<$Res>;
+abstract class _$$MusicImplCopyWith<$Res> implements $MusicCopyWith<$Res> {
+  factory _$$MusicImplCopyWith(
+          _$MusicImpl value, $Res Function(_$MusicImpl) then) =
+      __$$MusicImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String mediaUrl, String thumbnailUrl});
 }
 
 /// @nodoc
-class __$$_MusicCopyWithImpl<$Res> extends _$MusicCopyWithImpl<$Res, _$_Music>
-    implements _$$_MusicCopyWith<$Res> {
-  __$$_MusicCopyWithImpl(_$_Music _value, $Res Function(_$_Music) _then)
+class __$$MusicImplCopyWithImpl<$Res>
+    extends _$MusicCopyWithImpl<$Res, _$MusicImpl>
+    implements _$$MusicImplCopyWith<$Res> {
+  __$$MusicImplCopyWithImpl(
+      _$MusicImpl _value, $Res Function(_$MusicImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -88,7 +91,7 @@ class __$$_MusicCopyWithImpl<$Res> extends _$MusicCopyWithImpl<$Res, _$_Music>
     Object? mediaUrl = null,
     Object? thumbnailUrl = null,
   }) {
-    return _then(_$_Music(
+    return _then(_$MusicImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -107,8 +110,8 @@ class __$$_MusicCopyWithImpl<$Res> extends _$MusicCopyWithImpl<$Res, _$_Music>
 
 /// @nodoc
 
-class _$_Music with DiagnosticableTreeMixin implements _Music {
-  _$_Music(
+class _$MusicImpl with DiagnosticableTreeMixin implements _Music {
+  _$MusicImpl(
       {required this.name, required this.mediaUrl, required this.thumbnailUrl});
 
   @override
@@ -137,7 +140,7 @@ class _$_Music with DiagnosticableTreeMixin implements _Music {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Music &&
+            other is _$MusicImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.mediaUrl, mediaUrl) ||
                 other.mediaUrl == mediaUrl) &&
@@ -151,15 +154,15 @@ class _$_Music with DiagnosticableTreeMixin implements _Music {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MusicCopyWith<_$_Music> get copyWith =>
-      __$$_MusicCopyWithImpl<_$_Music>(this, _$identity);
+  _$$MusicImplCopyWith<_$MusicImpl> get copyWith =>
+      __$$MusicImplCopyWithImpl<_$MusicImpl>(this, _$identity);
 }
 
 abstract class _Music implements Music {
   factory _Music(
       {required final String name,
       required final String mediaUrl,
-      required final String thumbnailUrl}) = _$_Music;
+      required final String thumbnailUrl}) = _$MusicImpl;
 
   @override
   String get name;
@@ -169,6 +172,6 @@ abstract class _Music implements Music {
   String get thumbnailUrl;
   @override
   @JsonKey(ignore: true)
-  _$$_MusicCopyWith<_$_Music> get copyWith =>
+  _$$MusicImplCopyWith<_$MusicImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

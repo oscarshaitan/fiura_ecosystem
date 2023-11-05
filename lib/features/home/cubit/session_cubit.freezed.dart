@@ -115,11 +115,11 @@ class _$SessionStateCopyWithImpl<$Res, $Val extends SessionState>
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res>
+abstract class _$$InitialImplCopyWith<$Res>
     implements $SessionStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UserEntity? currentUser});
@@ -129,10 +129,11 @@ abstract class _$$_InitialCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res>
-    extends _$SessionStateCopyWithImpl<$Res, _$_Initial>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$SessionStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -140,7 +141,7 @@ class __$$_InitialCopyWithImpl<$Res>
   $Res call({
     Object? currentUser = freezed,
   }) {
-    return _then(_$_Initial(
+    return _then(_$InitialImpl(
       currentUser: freezed == currentUser
           ? _value.currentUser
           : currentUser // ignore: cast_nullable_to_non_nullable
@@ -151,8 +152,8 @@ class __$$_InitialCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial({this.currentUser});
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl({this.currentUser});
 
   @override
   final UserEntity? currentUser;
@@ -166,7 +167,7 @@ class _$_Initial implements _Initial {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
+            other is _$InitialImpl &&
             (identical(other.currentUser, currentUser) ||
                 other.currentUser == currentUser));
   }
@@ -177,8 +178,8 @@ class _$_Initial implements _Initial {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -250,22 +251,22 @@ class _$_Initial implements _Initial {
 }
 
 abstract class _Initial implements SessionState {
-  const factory _Initial({final UserEntity? currentUser}) = _$_Initial;
+  const factory _Initial({final UserEntity? currentUser}) = _$InitialImpl;
 
   @override
   UserEntity? get currentUser;
   @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UserFetchedCopyWith<$Res>
+abstract class _$$UserFetchedImplCopyWith<$Res>
     implements $SessionStateCopyWith<$Res> {
-  factory _$$UserFetchedCopyWith(
-          _$UserFetched value, $Res Function(_$UserFetched) then) =
-      __$$UserFetchedCopyWithImpl<$Res>;
+  factory _$$UserFetchedImplCopyWith(
+          _$UserFetchedImpl value, $Res Function(_$UserFetchedImpl) then) =
+      __$$UserFetchedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UserEntity? currentUser});
@@ -275,11 +276,11 @@ abstract class _$$UserFetchedCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$UserFetchedCopyWithImpl<$Res>
-    extends _$SessionStateCopyWithImpl<$Res, _$UserFetched>
-    implements _$$UserFetchedCopyWith<$Res> {
-  __$$UserFetchedCopyWithImpl(
-      _$UserFetched _value, $Res Function(_$UserFetched) _then)
+class __$$UserFetchedImplCopyWithImpl<$Res>
+    extends _$SessionStateCopyWithImpl<$Res, _$UserFetchedImpl>
+    implements _$$UserFetchedImplCopyWith<$Res> {
+  __$$UserFetchedImplCopyWithImpl(
+      _$UserFetchedImpl _value, $Res Function(_$UserFetchedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -287,7 +288,7 @@ class __$$UserFetchedCopyWithImpl<$Res>
   $Res call({
     Object? currentUser = freezed,
   }) {
-    return _then(_$UserFetched(
+    return _then(_$UserFetchedImpl(
       currentUser: freezed == currentUser
           ? _value.currentUser
           : currentUser // ignore: cast_nullable_to_non_nullable
@@ -298,8 +299,8 @@ class __$$UserFetchedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UserFetched implements UserFetched {
-  const _$UserFetched({this.currentUser});
+class _$UserFetchedImpl implements UserFetched {
+  const _$UserFetchedImpl({this.currentUser});
 
   @override
   final UserEntity? currentUser;
@@ -313,7 +314,7 @@ class _$UserFetched implements UserFetched {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserFetched &&
+            other is _$UserFetchedImpl &&
             (identical(other.currentUser, currentUser) ||
                 other.currentUser == currentUser));
   }
@@ -324,8 +325,8 @@ class _$UserFetched implements UserFetched {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UserFetchedCopyWith<_$UserFetched> get copyWith =>
-      __$$UserFetchedCopyWithImpl<_$UserFetched>(this, _$identity);
+  _$$UserFetchedImplCopyWith<_$UserFetchedImpl> get copyWith =>
+      __$$UserFetchedImplCopyWithImpl<_$UserFetchedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -397,20 +398,23 @@ class _$UserFetched implements UserFetched {
 }
 
 abstract class UserFetched implements SessionState {
-  const factory UserFetched({final UserEntity? currentUser}) = _$UserFetched;
+  const factory UserFetched({final UserEntity? currentUser}) =
+      _$UserFetchedImpl;
 
   @override
   UserEntity? get currentUser;
   @override
   @JsonKey(ignore: true)
-  _$$UserFetchedCopyWith<_$UserFetched> get copyWith =>
+  _$$UserFetchedImplCopyWith<_$UserFetchedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ErrorCopyWith<$Res> implements $SessionStateCopyWith<$Res> {
-  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
-      __$$ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res>
+    implements $SessionStateCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({UserEntity? currentUser});
@@ -420,10 +424,11 @@ abstract class _$$ErrorCopyWith<$Res> implements $SessionStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res>
-    extends _$SessionStateCopyWithImpl<$Res, _$Error>
-    implements _$$ErrorCopyWith<$Res> {
-  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$SessionStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -431,7 +436,7 @@ class __$$ErrorCopyWithImpl<$Res>
   $Res call({
     Object? currentUser = freezed,
   }) {
-    return _then(_$Error(
+    return _then(_$ErrorImpl(
       currentUser: freezed == currentUser
           ? _value.currentUser
           : currentUser // ignore: cast_nullable_to_non_nullable
@@ -442,8 +447,8 @@ class __$$ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error implements Error {
-  const _$Error({this.currentUser});
+class _$ErrorImpl implements Error {
+  const _$ErrorImpl({this.currentUser});
 
   @override
   final UserEntity? currentUser;
@@ -457,7 +462,7 @@ class _$Error implements Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Error &&
+            other is _$ErrorImpl &&
             (identical(other.currentUser, currentUser) ||
                 other.currentUser == currentUser));
   }
@@ -468,8 +473,8 @@ class _$Error implements Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorCopyWith<_$Error> get copyWith =>
-      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -541,11 +546,12 @@ class _$Error implements Error {
 }
 
 abstract class Error implements SessionState {
-  const factory Error({final UserEntity? currentUser}) = _$Error;
+  const factory Error({final UserEntity? currentUser}) = _$ErrorImpl;
 
   @override
   UserEntity? get currentUser;
   @override
   @JsonKey(ignore: true)
-  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

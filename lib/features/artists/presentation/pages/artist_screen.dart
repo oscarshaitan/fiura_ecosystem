@@ -58,8 +58,8 @@ class ArtistsScreen extends StatelessWidget {
                                 leading: TileImageWidget(
                                     urlImage: artist.musician.urlPhoto),
                                 onTap: () => context.router.push(
-                                  ArtistsDetailScreenRoute(
-                                      artistId: artist.musician.id),
+                                  MusicianDetailScreenRoute(
+                                      musician: artist.musician),
                                 ),
                                 trailing: sessionState.maybeMap(
                                     userFetched: (state) {
