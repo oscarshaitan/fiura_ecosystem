@@ -15,3 +15,14 @@ class MusicianEntity with _$MusicianEntity {
   factory MusicianEntity.fromJson(Map<String, dynamic> json) =>
       _$MusicianEntityFromJson(json);
 }
+
+abstract class MusicianEntity2 {
+  String get id;
+  String get name;
+  String get about;
+  String get urlPhoto;
+  List<String?> get socialNetwork;
+  MusicianType get type;
+}
+
+enum MusicianType { artist, judge }

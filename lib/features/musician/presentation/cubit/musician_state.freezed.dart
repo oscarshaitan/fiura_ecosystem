@@ -22,10 +22,10 @@ mixin _$MusicianState {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
-    required TResult Function(List<MusicianEntity> musicians) loadData,
-    required TResult Function(MusicianEntity musician) loadJudge,
     required TResult Function(File image) pickedImage,
     required TResult Function(File image, String name) chargedImage,
+    required TResult Function(MusicianEntity2 artist) loadMusician,
+    required TResult Function(List<MusicianEntity2> musicians) loadMusicianList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,10 +34,10 @@ mixin _$MusicianState {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
-    TResult? Function(List<MusicianEntity> musicians)? loadData,
-    TResult? Function(MusicianEntity musician)? loadJudge,
     TResult? Function(File image)? pickedImage,
     TResult? Function(File image, String name)? chargedImage,
+    TResult? Function(MusicianEntity2 artist)? loadMusician,
+    TResult? Function(List<MusicianEntity2> musicians)? loadMusicianList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,10 +46,10 @@ mixin _$MusicianState {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
-    TResult Function(List<MusicianEntity> musicians)? loadData,
-    TResult Function(MusicianEntity musician)? loadJudge,
     TResult Function(File image)? pickedImage,
     TResult Function(File image, String name)? chargedImage,
+    TResult Function(MusicianEntity2 artist)? loadMusician,
+    TResult Function(List<MusicianEntity2> musicians)? loadMusicianList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,10 +59,10 @@ mixin _$MusicianState {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(LoadMusician value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
     required TResult Function(ChargedImage value) chargedImage,
+    required TResult Function(LoadMusician value) loadMusician,
+    required TResult Function(LoadMusicianList value) loadMusicianList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -71,10 +71,10 @@ mixin _$MusicianState {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(LoadMusician value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
     TResult? Function(ChargedImage value)? chargedImage,
+    TResult? Function(LoadMusician value)? loadMusician,
+    TResult? Function(LoadMusicianList value)? loadMusicianList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -83,10 +83,10 @@ mixin _$MusicianState {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(LoadMusician value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
     TResult Function(ChargedImage value)? chargedImage,
+    TResult Function(LoadMusician value)? loadMusician,
+    TResult Function(LoadMusicianList value)? loadMusicianList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -152,10 +152,10 @@ class _$InitialImpl implements Initial {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
-    required TResult Function(List<MusicianEntity> musicians) loadData,
-    required TResult Function(MusicianEntity musician) loadJudge,
     required TResult Function(File image) pickedImage,
     required TResult Function(File image, String name) chargedImage,
+    required TResult Function(MusicianEntity2 artist) loadMusician,
+    required TResult Function(List<MusicianEntity2> musicians) loadMusicianList,
   }) {
     return initial();
   }
@@ -167,10 +167,10 @@ class _$InitialImpl implements Initial {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
-    TResult? Function(List<MusicianEntity> musicians)? loadData,
-    TResult? Function(MusicianEntity musician)? loadJudge,
     TResult? Function(File image)? pickedImage,
     TResult? Function(File image, String name)? chargedImage,
+    TResult? Function(MusicianEntity2 artist)? loadMusician,
+    TResult? Function(List<MusicianEntity2> musicians)? loadMusicianList,
   }) {
     return initial?.call();
   }
@@ -182,10 +182,10 @@ class _$InitialImpl implements Initial {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
-    TResult Function(List<MusicianEntity> musicians)? loadData,
-    TResult Function(MusicianEntity musician)? loadJudge,
     TResult Function(File image)? pickedImage,
     TResult Function(File image, String name)? chargedImage,
+    TResult Function(MusicianEntity2 artist)? loadMusician,
+    TResult Function(List<MusicianEntity2> musicians)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -201,10 +201,10 @@ class _$InitialImpl implements Initial {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(LoadMusician value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
     required TResult Function(ChargedImage value) chargedImage,
+    required TResult Function(LoadMusician value) loadMusician,
+    required TResult Function(LoadMusicianList value) loadMusicianList,
   }) {
     return initial(this);
   }
@@ -216,10 +216,10 @@ class _$InitialImpl implements Initial {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(LoadMusician value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
     TResult? Function(ChargedImage value)? chargedImage,
+    TResult? Function(LoadMusician value)? loadMusician,
+    TResult? Function(LoadMusicianList value)? loadMusicianList,
   }) {
     return initial?.call(this);
   }
@@ -231,10 +231,10 @@ class _$InitialImpl implements Initial {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(LoadMusician value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
     TResult Function(ChargedImage value)? chargedImage,
+    TResult Function(LoadMusician value)? loadMusician,
+    TResult Function(LoadMusicianList value)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -290,10 +290,10 @@ class _$LoadingImpl implements Loading {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
-    required TResult Function(List<MusicianEntity> musicians) loadData,
-    required TResult Function(MusicianEntity musician) loadJudge,
     required TResult Function(File image) pickedImage,
     required TResult Function(File image, String name) chargedImage,
+    required TResult Function(MusicianEntity2 artist) loadMusician,
+    required TResult Function(List<MusicianEntity2> musicians) loadMusicianList,
   }) {
     return loading();
   }
@@ -305,10 +305,10 @@ class _$LoadingImpl implements Loading {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
-    TResult? Function(List<MusicianEntity> musicians)? loadData,
-    TResult? Function(MusicianEntity musician)? loadJudge,
     TResult? Function(File image)? pickedImage,
     TResult? Function(File image, String name)? chargedImage,
+    TResult? Function(MusicianEntity2 artist)? loadMusician,
+    TResult? Function(List<MusicianEntity2> musicians)? loadMusicianList,
   }) {
     return loading?.call();
   }
@@ -320,10 +320,10 @@ class _$LoadingImpl implements Loading {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
-    TResult Function(List<MusicianEntity> musicians)? loadData,
-    TResult Function(MusicianEntity musician)? loadJudge,
     TResult Function(File image)? pickedImage,
     TResult Function(File image, String name)? chargedImage,
+    TResult Function(MusicianEntity2 artist)? loadMusician,
+    TResult Function(List<MusicianEntity2> musicians)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -339,10 +339,10 @@ class _$LoadingImpl implements Loading {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(LoadMusician value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
     required TResult Function(ChargedImage value) chargedImage,
+    required TResult Function(LoadMusician value) loadMusician,
+    required TResult Function(LoadMusicianList value) loadMusicianList,
   }) {
     return loading(this);
   }
@@ -354,10 +354,10 @@ class _$LoadingImpl implements Loading {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(LoadMusician value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
     TResult? Function(ChargedImage value)? chargedImage,
+    TResult? Function(LoadMusician value)? loadMusician,
+    TResult? Function(LoadMusicianList value)? loadMusicianList,
   }) {
     return loading?.call(this);
   }
@@ -369,10 +369,10 @@ class _$LoadingImpl implements Loading {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(LoadMusician value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
     TResult Function(ChargedImage value)? chargedImage,
+    TResult Function(LoadMusician value)? loadMusician,
+    TResult Function(LoadMusicianList value)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -454,10 +454,10 @@ class _$ErrorImpl implements Error {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
-    required TResult Function(List<MusicianEntity> musicians) loadData,
-    required TResult Function(MusicianEntity musician) loadJudge,
     required TResult Function(File image) pickedImage,
     required TResult Function(File image, String name) chargedImage,
+    required TResult Function(MusicianEntity2 artist) loadMusician,
+    required TResult Function(List<MusicianEntity2> musicians) loadMusicianList,
   }) {
     return error(message);
   }
@@ -469,10 +469,10 @@ class _$ErrorImpl implements Error {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
-    TResult? Function(List<MusicianEntity> musicians)? loadData,
-    TResult? Function(MusicianEntity musician)? loadJudge,
     TResult? Function(File image)? pickedImage,
     TResult? Function(File image, String name)? chargedImage,
+    TResult? Function(MusicianEntity2 artist)? loadMusician,
+    TResult? Function(List<MusicianEntity2> musicians)? loadMusicianList,
   }) {
     return error?.call(message);
   }
@@ -484,10 +484,10 @@ class _$ErrorImpl implements Error {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
-    TResult Function(List<MusicianEntity> musicians)? loadData,
-    TResult Function(MusicianEntity musician)? loadJudge,
     TResult Function(File image)? pickedImage,
     TResult Function(File image, String name)? chargedImage,
+    TResult Function(MusicianEntity2 artist)? loadMusician,
+    TResult Function(List<MusicianEntity2> musicians)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -503,10 +503,10 @@ class _$ErrorImpl implements Error {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(LoadMusician value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
     required TResult Function(ChargedImage value) chargedImage,
+    required TResult Function(LoadMusician value) loadMusician,
+    required TResult Function(LoadMusicianList value) loadMusicianList,
   }) {
     return error(this);
   }
@@ -518,10 +518,10 @@ class _$ErrorImpl implements Error {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(LoadMusician value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
     TResult? Function(ChargedImage value)? chargedImage,
+    TResult? Function(LoadMusician value)? loadMusician,
+    TResult? Function(LoadMusicianList value)? loadMusicianList,
   }) {
     return error?.call(this);
   }
@@ -533,10 +533,10 @@ class _$ErrorImpl implements Error {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(LoadMusician value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
     TResult Function(ChargedImage value)? chargedImage,
+    TResult Function(LoadMusician value)? loadMusician,
+    TResult Function(LoadMusicianList value)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -597,10 +597,10 @@ class _$SuccessImpl implements Success {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
-    required TResult Function(List<MusicianEntity> musicians) loadData,
-    required TResult Function(MusicianEntity musician) loadJudge,
     required TResult Function(File image) pickedImage,
     required TResult Function(File image, String name) chargedImage,
+    required TResult Function(MusicianEntity2 artist) loadMusician,
+    required TResult Function(List<MusicianEntity2> musicians) loadMusicianList,
   }) {
     return success();
   }
@@ -612,10 +612,10 @@ class _$SuccessImpl implements Success {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
-    TResult? Function(List<MusicianEntity> musicians)? loadData,
-    TResult? Function(MusicianEntity musician)? loadJudge,
     TResult? Function(File image)? pickedImage,
     TResult? Function(File image, String name)? chargedImage,
+    TResult? Function(MusicianEntity2 artist)? loadMusician,
+    TResult? Function(List<MusicianEntity2> musicians)? loadMusicianList,
   }) {
     return success?.call();
   }
@@ -627,10 +627,10 @@ class _$SuccessImpl implements Success {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
-    TResult Function(List<MusicianEntity> musicians)? loadData,
-    TResult Function(MusicianEntity musician)? loadJudge,
     TResult Function(File image)? pickedImage,
     TResult Function(File image, String name)? chargedImage,
+    TResult Function(MusicianEntity2 artist)? loadMusician,
+    TResult Function(List<MusicianEntity2> musicians)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -646,10 +646,10 @@ class _$SuccessImpl implements Success {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(LoadMusician value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
     required TResult Function(ChargedImage value) chargedImage,
+    required TResult Function(LoadMusician value) loadMusician,
+    required TResult Function(LoadMusicianList value) loadMusicianList,
   }) {
     return success(this);
   }
@@ -661,10 +661,10 @@ class _$SuccessImpl implements Success {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(LoadMusician value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
     TResult? Function(ChargedImage value)? chargedImage,
+    TResult? Function(LoadMusician value)? loadMusician,
+    TResult? Function(LoadMusicianList value)? loadMusicianList,
   }) {
     return success?.call(this);
   }
@@ -676,10 +676,10 @@ class _$SuccessImpl implements Success {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(LoadMusician value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
     TResult Function(ChargedImage value)? chargedImage,
+    TResult Function(LoadMusician value)? loadMusician,
+    TResult Function(LoadMusicianList value)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -691,364 +691,6 @@ class _$SuccessImpl implements Success {
 
 abstract class Success implements MusicianState {
   const factory Success() = _$SuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$LoadDataImplCopyWith<$Res> {
-  factory _$$LoadDataImplCopyWith(
-          _$LoadDataImpl value, $Res Function(_$LoadDataImpl) then) =
-      __$$LoadDataImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<MusicianEntity> musicians});
-}
-
-/// @nodoc
-class __$$LoadDataImplCopyWithImpl<$Res>
-    extends _$MusicianStateCopyWithImpl<$Res, _$LoadDataImpl>
-    implements _$$LoadDataImplCopyWith<$Res> {
-  __$$LoadDataImplCopyWithImpl(
-      _$LoadDataImpl _value, $Res Function(_$LoadDataImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? musicians = null,
-  }) {
-    return _then(_$LoadDataImpl(
-      null == musicians
-          ? _value._musicians
-          : musicians // ignore: cast_nullable_to_non_nullable
-              as List<MusicianEntity>,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$LoadDataImpl implements LoadData {
-  const _$LoadDataImpl(final List<MusicianEntity> musicians)
-      : _musicians = musicians;
-
-  final List<MusicianEntity> _musicians;
-  @override
-  List<MusicianEntity> get musicians {
-    if (_musicians is EqualUnmodifiableListView) return _musicians;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_musicians);
-  }
-
-  @override
-  String toString() {
-    return 'MusicianState.loadData(musicians: $musicians)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadDataImpl &&
-            const DeepCollectionEquality()
-                .equals(other._musicians, _musicians));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_musicians));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadDataImplCopyWith<_$LoadDataImpl> get copyWith =>
-      __$$LoadDataImplCopyWithImpl<_$LoadDataImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function() success,
-    required TResult Function(List<MusicianEntity> musicians) loadData,
-    required TResult Function(MusicianEntity musician) loadJudge,
-    required TResult Function(File image) pickedImage,
-    required TResult Function(File image, String name) chargedImage,
-  }) {
-    return loadData(musicians);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function()? success,
-    TResult? Function(List<MusicianEntity> musicians)? loadData,
-    TResult? Function(MusicianEntity musician)? loadJudge,
-    TResult? Function(File image)? pickedImage,
-    TResult? Function(File image, String name)? chargedImage,
-  }) {
-    return loadData?.call(musicians);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function()? success,
-    TResult Function(List<MusicianEntity> musicians)? loadData,
-    TResult Function(MusicianEntity musician)? loadJudge,
-    TResult Function(File image)? pickedImage,
-    TResult Function(File image, String name)? chargedImage,
-    required TResult orElse(),
-  }) {
-    if (loadData != null) {
-      return loadData(musicians);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Error value) error,
-    required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(LoadMusician value) loadJudge,
-    required TResult Function(PickedImage value) pickedImage,
-    required TResult Function(ChargedImage value) chargedImage,
-  }) {
-    return loadData(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(Error value)? error,
-    TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(LoadMusician value)? loadJudge,
-    TResult? Function(PickedImage value)? pickedImage,
-    TResult? Function(ChargedImage value)? chargedImage,
-  }) {
-    return loadData?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-    TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(LoadMusician value)? loadJudge,
-    TResult Function(PickedImage value)? pickedImage,
-    TResult Function(ChargedImage value)? chargedImage,
-    required TResult orElse(),
-  }) {
-    if (loadData != null) {
-      return loadData(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoadData implements MusicianState {
-  const factory LoadData(final List<MusicianEntity> musicians) = _$LoadDataImpl;
-
-  List<MusicianEntity> get musicians;
-  @JsonKey(ignore: true)
-  _$$LoadDataImplCopyWith<_$LoadDataImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$LoadMusicianImplCopyWith<$Res> {
-  factory _$$LoadMusicianImplCopyWith(
-          _$LoadMusicianImpl value, $Res Function(_$LoadMusicianImpl) then) =
-      __$$LoadMusicianImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({MusicianEntity musician});
-
-  $MusicianEntityCopyWith<$Res> get musician;
-}
-
-/// @nodoc
-class __$$LoadMusicianImplCopyWithImpl<$Res>
-    extends _$MusicianStateCopyWithImpl<$Res, _$LoadMusicianImpl>
-    implements _$$LoadMusicianImplCopyWith<$Res> {
-  __$$LoadMusicianImplCopyWithImpl(
-      _$LoadMusicianImpl _value, $Res Function(_$LoadMusicianImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? musician = null,
-  }) {
-    return _then(_$LoadMusicianImpl(
-      null == musician
-          ? _value.musician
-          : musician // ignore: cast_nullable_to_non_nullable
-              as MusicianEntity,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MusicianEntityCopyWith<$Res> get musician {
-    return $MusicianEntityCopyWith<$Res>(_value.musician, (value) {
-      return _then(_value.copyWith(musician: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$LoadMusicianImpl implements LoadMusician {
-  const _$LoadMusicianImpl(this.musician);
-
-  @override
-  final MusicianEntity musician;
-
-  @override
-  String toString() {
-    return 'MusicianState.loadJudge(musician: $musician)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LoadMusicianImpl &&
-            (identical(other.musician, musician) ||
-                other.musician == musician));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, musician);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LoadMusicianImplCopyWith<_$LoadMusicianImpl> get copyWith =>
-      __$$LoadMusicianImplCopyWithImpl<_$LoadMusicianImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(String message) error,
-    required TResult Function() success,
-    required TResult Function(List<MusicianEntity> musicians) loadData,
-    required TResult Function(MusicianEntity musician) loadJudge,
-    required TResult Function(File image) pickedImage,
-    required TResult Function(File image, String name) chargedImage,
-  }) {
-    return loadJudge(musician);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? loading,
-    TResult? Function(String message)? error,
-    TResult? Function()? success,
-    TResult? Function(List<MusicianEntity> musicians)? loadData,
-    TResult? Function(MusicianEntity musician)? loadJudge,
-    TResult? Function(File image)? pickedImage,
-    TResult? Function(File image, String name)? chargedImage,
-  }) {
-    return loadJudge?.call(musician);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(String message)? error,
-    TResult Function()? success,
-    TResult Function(List<MusicianEntity> musicians)? loadData,
-    TResult Function(MusicianEntity musician)? loadJudge,
-    TResult Function(File image)? pickedImage,
-    TResult Function(File image, String name)? chargedImage,
-    required TResult orElse(),
-  }) {
-    if (loadJudge != null) {
-      return loadJudge(musician);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Loading value) loading,
-    required TResult Function(Error value) error,
-    required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(LoadMusician value) loadJudge,
-    required TResult Function(PickedImage value) pickedImage,
-    required TResult Function(ChargedImage value) chargedImage,
-  }) {
-    return loadJudge(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Loading value)? loading,
-    TResult? Function(Error value)? error,
-    TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(LoadMusician value)? loadJudge,
-    TResult? Function(PickedImage value)? pickedImage,
-    TResult? Function(ChargedImage value)? chargedImage,
-  }) {
-    return loadJudge?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Loading value)? loading,
-    TResult Function(Error value)? error,
-    TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(LoadMusician value)? loadJudge,
-    TResult Function(PickedImage value)? pickedImage,
-    TResult Function(ChargedImage value)? chargedImage,
-    required TResult orElse(),
-  }) {
-    if (loadJudge != null) {
-      return loadJudge(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class LoadMusician implements MusicianState {
-  const factory LoadMusician(final MusicianEntity musician) =
-      _$LoadMusicianImpl;
-
-  MusicianEntity get musician;
-  @JsonKey(ignore: true)
-  _$$LoadMusicianImplCopyWith<_$LoadMusicianImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1119,10 +761,10 @@ class _$PickedImageImpl implements PickedImage {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
-    required TResult Function(List<MusicianEntity> musicians) loadData,
-    required TResult Function(MusicianEntity musician) loadJudge,
     required TResult Function(File image) pickedImage,
     required TResult Function(File image, String name) chargedImage,
+    required TResult Function(MusicianEntity2 artist) loadMusician,
+    required TResult Function(List<MusicianEntity2> musicians) loadMusicianList,
   }) {
     return pickedImage(image);
   }
@@ -1134,10 +776,10 @@ class _$PickedImageImpl implements PickedImage {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
-    TResult? Function(List<MusicianEntity> musicians)? loadData,
-    TResult? Function(MusicianEntity musician)? loadJudge,
     TResult? Function(File image)? pickedImage,
     TResult? Function(File image, String name)? chargedImage,
+    TResult? Function(MusicianEntity2 artist)? loadMusician,
+    TResult? Function(List<MusicianEntity2> musicians)? loadMusicianList,
   }) {
     return pickedImage?.call(image);
   }
@@ -1149,10 +791,10 @@ class _$PickedImageImpl implements PickedImage {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
-    TResult Function(List<MusicianEntity> musicians)? loadData,
-    TResult Function(MusicianEntity musician)? loadJudge,
     TResult Function(File image)? pickedImage,
     TResult Function(File image, String name)? chargedImage,
+    TResult Function(MusicianEntity2 artist)? loadMusician,
+    TResult Function(List<MusicianEntity2> musicians)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (pickedImage != null) {
@@ -1168,10 +810,10 @@ class _$PickedImageImpl implements PickedImage {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(LoadMusician value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
     required TResult Function(ChargedImage value) chargedImage,
+    required TResult Function(LoadMusician value) loadMusician,
+    required TResult Function(LoadMusicianList value) loadMusicianList,
   }) {
     return pickedImage(this);
   }
@@ -1183,10 +825,10 @@ class _$PickedImageImpl implements PickedImage {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(LoadMusician value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
     TResult? Function(ChargedImage value)? chargedImage,
+    TResult? Function(LoadMusician value)? loadMusician,
+    TResult? Function(LoadMusicianList value)? loadMusicianList,
   }) {
     return pickedImage?.call(this);
   }
@@ -1198,10 +840,10 @@ class _$PickedImageImpl implements PickedImage {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(LoadMusician value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
     TResult Function(ChargedImage value)? chargedImage,
+    TResult Function(LoadMusician value)? loadMusician,
+    TResult Function(LoadMusicianList value)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (pickedImage != null) {
@@ -1296,10 +938,10 @@ class _$ChargedImageImpl implements ChargedImage {
     required TResult Function() loading,
     required TResult Function(String message) error,
     required TResult Function() success,
-    required TResult Function(List<MusicianEntity> musicians) loadData,
-    required TResult Function(MusicianEntity musician) loadJudge,
     required TResult Function(File image) pickedImage,
     required TResult Function(File image, String name) chargedImage,
+    required TResult Function(MusicianEntity2 artist) loadMusician,
+    required TResult Function(List<MusicianEntity2> musicians) loadMusicianList,
   }) {
     return chargedImage(image, name);
   }
@@ -1311,10 +953,10 @@ class _$ChargedImageImpl implements ChargedImage {
     TResult? Function()? loading,
     TResult? Function(String message)? error,
     TResult? Function()? success,
-    TResult? Function(List<MusicianEntity> musicians)? loadData,
-    TResult? Function(MusicianEntity musician)? loadJudge,
     TResult? Function(File image)? pickedImage,
     TResult? Function(File image, String name)? chargedImage,
+    TResult? Function(MusicianEntity2 artist)? loadMusician,
+    TResult? Function(List<MusicianEntity2> musicians)? loadMusicianList,
   }) {
     return chargedImage?.call(image, name);
   }
@@ -1326,10 +968,10 @@ class _$ChargedImageImpl implements ChargedImage {
     TResult Function()? loading,
     TResult Function(String message)? error,
     TResult Function()? success,
-    TResult Function(List<MusicianEntity> musicians)? loadData,
-    TResult Function(MusicianEntity musician)? loadJudge,
     TResult Function(File image)? pickedImage,
     TResult Function(File image, String name)? chargedImage,
+    TResult Function(MusicianEntity2 artist)? loadMusician,
+    TResult Function(List<MusicianEntity2> musicians)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (chargedImage != null) {
@@ -1345,10 +987,10 @@ class _$ChargedImageImpl implements ChargedImage {
     required TResult Function(Loading value) loading,
     required TResult Function(Error value) error,
     required TResult Function(Success value) success,
-    required TResult Function(LoadData value) loadData,
-    required TResult Function(LoadMusician value) loadJudge,
     required TResult Function(PickedImage value) pickedImage,
     required TResult Function(ChargedImage value) chargedImage,
+    required TResult Function(LoadMusician value) loadMusician,
+    required TResult Function(LoadMusicianList value) loadMusicianList,
   }) {
     return chargedImage(this);
   }
@@ -1360,10 +1002,10 @@ class _$ChargedImageImpl implements ChargedImage {
     TResult? Function(Loading value)? loading,
     TResult? Function(Error value)? error,
     TResult? Function(Success value)? success,
-    TResult? Function(LoadData value)? loadData,
-    TResult? Function(LoadMusician value)? loadJudge,
     TResult? Function(PickedImage value)? pickedImage,
     TResult? Function(ChargedImage value)? chargedImage,
+    TResult? Function(LoadMusician value)? loadMusician,
+    TResult? Function(LoadMusicianList value)? loadMusicianList,
   }) {
     return chargedImage?.call(this);
   }
@@ -1375,10 +1017,10 @@ class _$ChargedImageImpl implements ChargedImage {
     TResult Function(Loading value)? loading,
     TResult Function(Error value)? error,
     TResult Function(Success value)? success,
-    TResult Function(LoadData value)? loadData,
-    TResult Function(LoadMusician value)? loadJudge,
     TResult Function(PickedImage value)? pickedImage,
     TResult Function(ChargedImage value)? chargedImage,
+    TResult Function(LoadMusician value)? loadMusician,
+    TResult Function(LoadMusicianList value)? loadMusicianList,
     required TResult orElse(),
   }) {
     if (chargedImage != null) {
@@ -1396,5 +1038,353 @@ abstract class ChargedImage implements MusicianState {
   String get name;
   @JsonKey(ignore: true)
   _$$ChargedImageImplCopyWith<_$ChargedImageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadMusicianImplCopyWith<$Res> {
+  factory _$$LoadMusicianImplCopyWith(
+          _$LoadMusicianImpl value, $Res Function(_$LoadMusicianImpl) then) =
+      __$$LoadMusicianImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MusicianEntity2 artist});
+}
+
+/// @nodoc
+class __$$LoadMusicianImplCopyWithImpl<$Res>
+    extends _$MusicianStateCopyWithImpl<$Res, _$LoadMusicianImpl>
+    implements _$$LoadMusicianImplCopyWith<$Res> {
+  __$$LoadMusicianImplCopyWithImpl(
+      _$LoadMusicianImpl _value, $Res Function(_$LoadMusicianImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? artist = null,
+  }) {
+    return _then(_$LoadMusicianImpl(
+      null == artist
+          ? _value.artist
+          : artist // ignore: cast_nullable_to_non_nullable
+              as MusicianEntity2,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadMusicianImpl implements LoadMusician {
+  const _$LoadMusicianImpl(this.artist);
+
+  @override
+  final MusicianEntity2 artist;
+
+  @override
+  String toString() {
+    return 'MusicianState.loadMusician(artist: $artist)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadMusicianImpl &&
+            (identical(other.artist, artist) || other.artist == artist));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, artist);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadMusicianImplCopyWith<_$LoadMusicianImpl> get copyWith =>
+      __$$LoadMusicianImplCopyWithImpl<_$LoadMusicianImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
+    required TResult Function(MusicianEntity2 artist) loadMusician,
+    required TResult Function(List<MusicianEntity2> musicians) loadMusicianList,
+  }) {
+    return loadMusician(artist);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
+    TResult? Function(MusicianEntity2 artist)? loadMusician,
+    TResult? Function(List<MusicianEntity2> musicians)? loadMusicianList,
+  }) {
+    return loadMusician?.call(artist);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
+    TResult Function(MusicianEntity2 artist)? loadMusician,
+    TResult Function(List<MusicianEntity2> musicians)? loadMusicianList,
+    required TResult orElse(),
+  }) {
+    if (loadMusician != null) {
+      return loadMusician(artist);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
+    required TResult Function(LoadMusician value) loadMusician,
+    required TResult Function(LoadMusicianList value) loadMusicianList,
+  }) {
+    return loadMusician(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
+    TResult? Function(LoadMusician value)? loadMusician,
+    TResult? Function(LoadMusicianList value)? loadMusicianList,
+  }) {
+    return loadMusician?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
+    TResult Function(LoadMusician value)? loadMusician,
+    TResult Function(LoadMusicianList value)? loadMusicianList,
+    required TResult orElse(),
+  }) {
+    if (loadMusician != null) {
+      return loadMusician(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadMusician implements MusicianState {
+  const factory LoadMusician(final MusicianEntity2 artist) = _$LoadMusicianImpl;
+
+  MusicianEntity2 get artist;
+  @JsonKey(ignore: true)
+  _$$LoadMusicianImplCopyWith<_$LoadMusicianImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LoadMusicianListImplCopyWith<$Res> {
+  factory _$$LoadMusicianListImplCopyWith(_$LoadMusicianListImpl value,
+          $Res Function(_$LoadMusicianListImpl) then) =
+      __$$LoadMusicianListImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<MusicianEntity2> musicians});
+}
+
+/// @nodoc
+class __$$LoadMusicianListImplCopyWithImpl<$Res>
+    extends _$MusicianStateCopyWithImpl<$Res, _$LoadMusicianListImpl>
+    implements _$$LoadMusicianListImplCopyWith<$Res> {
+  __$$LoadMusicianListImplCopyWithImpl(_$LoadMusicianListImpl _value,
+      $Res Function(_$LoadMusicianListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? musicians = null,
+  }) {
+    return _then(_$LoadMusicianListImpl(
+      null == musicians
+          ? _value._musicians
+          : musicians // ignore: cast_nullable_to_non_nullable
+              as List<MusicianEntity2>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoadMusicianListImpl implements LoadMusicianList {
+  const _$LoadMusicianListImpl(final List<MusicianEntity2> musicians)
+      : _musicians = musicians;
+
+  final List<MusicianEntity2> _musicians;
+  @override
+  List<MusicianEntity2> get musicians {
+    if (_musicians is EqualUnmodifiableListView) return _musicians;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_musicians);
+  }
+
+  @override
+  String toString() {
+    return 'MusicianState.loadMusicianList(musicians: $musicians)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LoadMusicianListImpl &&
+            const DeepCollectionEquality()
+                .equals(other._musicians, _musicians));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_musicians));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LoadMusicianListImplCopyWith<_$LoadMusicianListImpl> get copyWith =>
+      __$$LoadMusicianListImplCopyWithImpl<_$LoadMusicianListImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(String message) error,
+    required TResult Function() success,
+    required TResult Function(File image) pickedImage,
+    required TResult Function(File image, String name) chargedImage,
+    required TResult Function(MusicianEntity2 artist) loadMusician,
+    required TResult Function(List<MusicianEntity2> musicians) loadMusicianList,
+  }) {
+    return loadMusicianList(musicians);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(String message)? error,
+    TResult? Function()? success,
+    TResult? Function(File image)? pickedImage,
+    TResult? Function(File image, String name)? chargedImage,
+    TResult? Function(MusicianEntity2 artist)? loadMusician,
+    TResult? Function(List<MusicianEntity2> musicians)? loadMusicianList,
+  }) {
+    return loadMusicianList?.call(musicians);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(String message)? error,
+    TResult Function()? success,
+    TResult Function(File image)? pickedImage,
+    TResult Function(File image, String name)? chargedImage,
+    TResult Function(MusicianEntity2 artist)? loadMusician,
+    TResult Function(List<MusicianEntity2> musicians)? loadMusicianList,
+    required TResult orElse(),
+  }) {
+    if (loadMusicianList != null) {
+      return loadMusicianList(musicians);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Error value) error,
+    required TResult Function(Success value) success,
+    required TResult Function(PickedImage value) pickedImage,
+    required TResult Function(ChargedImage value) chargedImage,
+    required TResult Function(LoadMusician value) loadMusician,
+    required TResult Function(LoadMusicianList value) loadMusicianList,
+  }) {
+    return loadMusicianList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Error value)? error,
+    TResult? Function(Success value)? success,
+    TResult? Function(PickedImage value)? pickedImage,
+    TResult? Function(ChargedImage value)? chargedImage,
+    TResult? Function(LoadMusician value)? loadMusician,
+    TResult? Function(LoadMusicianList value)? loadMusicianList,
+  }) {
+    return loadMusicianList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Error value)? error,
+    TResult Function(Success value)? success,
+    TResult Function(PickedImage value)? pickedImage,
+    TResult Function(ChargedImage value)? chargedImage,
+    TResult Function(LoadMusician value)? loadMusician,
+    TResult Function(LoadMusicianList value)? loadMusicianList,
+    required TResult orElse(),
+  }) {
+    if (loadMusicianList != null) {
+      return loadMusicianList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadMusicianList implements MusicianState {
+  const factory LoadMusicianList(final List<MusicianEntity2> musicians) =
+      _$LoadMusicianListImpl;
+
+  List<MusicianEntity2> get musicians;
+  @JsonKey(ignore: true)
+  _$$LoadMusicianListImplCopyWith<_$LoadMusicianListImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -18,3 +18,5 @@ const profile = 'profile';
 const viewAdmins = 'view-admins';
 const createAdmin = 'create-admin';
 const musicianDetail = 'musician-detail';
+const createMusician = 'create-musician';
+const viewMusicians = 'view-musicians';

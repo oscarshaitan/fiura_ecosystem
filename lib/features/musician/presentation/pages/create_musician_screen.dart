@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'package:auto_route/auto_route.dart';
-import 'package:fiura/core/entities/artist_entity/artist_entity.dart';
-import 'package:fiura/features/artists/presentation/cubit/artist_cubit.dart';
+import 'package:fiura/core/entities/musician_entity/musician_entity.dart';
+import 'package:fiura/features/musician/presentation/cubit/musician_cubit.dart';
+import 'package:fiura/features/musician/presentation/cubit/musician_state.dart';
 import 'package:fiura/features/widgets/alert_dialogs.dart';
 import 'package:fiura/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
@@ -10,45 +11,52 @@ import '../../../../dependencies.dart';
 import '../../../utils/validators.dart';
 import '../../../widgets/card_image_selector.dart';
 import '../../../widgets/danger_text.dart';
-import '../cubit/artist_state.dart';
 
-class CreateArtistScreen extends StatefulWidget {
-  final ArtistEntity? artist;
-  const CreateArtistScreen({super.key, this.artist});
+class CreateMusicianScreen extends StatefulWidget {
+  final MusicianEntity2? musician;
+  final MusicianType musicianType;
+  const CreateMusicianScreen(
+      {super.key, this.musician, required this.musicianType});
 
   @override
-  State<CreateArtistScreen> createState() => _CreateArtistScreenState();
+  State<CreateMusicianScreen> createState() => _CreateArtistScreenState();
 }
 
-class _CreateArtistScreenState extends State<CreateArtistScreen> {
+class _CreateArtistScreenState extends State<CreateMusicianScreen> {
   // Image Picker
   File? image;
   bool showErrorMessage = false;
   // Form key
   final _formKey = GlobalKey<FormState>();
   // TextField controllers
-  final controllerArtistName = TextEditingController();
-  final controllerArtistAbout = TextEditingController();
-  final controllerArtistFacebook = TextEditingController();
-  final controllerArtistTwitter = TextEditingController();
-  final controllerArtistInstagram = TextEditingController();
+  final controllerMusicianName = TextEditingController();
+  final controllerMusicianAbout = TextEditingController();
+  final controllerMusicianFacebook = TextEditingController();
+  final controllerMusicianTwitter = TextEditingController();
+  final controllerMusicianInstagram = TextEditingController();
 
   //Other vars
   bool getImage = true;
   String previousPhotoName = "";
+  String type = "";
 
   @override
   void initState() {
     super.initState();
-    if (widget.artist != null) {
-      controllerArtistName.text = widget.artist!.musician.name;
-      controllerArtistAbout.text = widget.artist!.musician.about;
-      controllerArtistFacebook.text =
-          widget.artist!.musician.socialNetwork[0] ?? "";
-      controllerArtistTwitter.text =
-          widget.artist!.musician.socialNetwork[1] ?? "";
-      controllerArtistInstagram.text =
-          widget.artist!.musician.socialNetwork[2] ?? "";
+
+    if (widget.musicianType == MusicianType.artist) {
+      type = "artista";
+    } else {
+      type = "jurado";
+    }
+
+    if (widget.musician != null) {
+      controllerMusicianName.text = widget.musician!.name;
+      controllerMusicianAbout.text = widget.musician!.about;
+      controllerMusicianFacebook.text = widget.musician!.socialNetwork[0] ?? "";
+      controllerMusicianTwitter.text = widget.musician!.socialNetwork[1] ?? "";
+      controllerMusicianInstagram.text =
+          widget.musician!.socialNetwork[2] ?? "";
     }
   }
 
@@ -56,11 +64,11 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Registro de nuevo Artista'),
+          title: Text('Registro de nuevo $type'),
         ),
         body: BlocProvider(
-          create: (_) => getIt<ArtistCubit>(),
-          child: BlocConsumer<ArtistCubit, ArtistState>(
+          create: (_) => getIt<MusicianCubit>(),
+          child: BlocConsumer<MusicianCubit, MusicianState>(
               listener: (context, snapshot) {
             snapshot.whenOrNull(
               loading: () => showDialog(
@@ -68,9 +76,9 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                   context: context,
                   builder: ((context) {
                     return getLoadingAlertDialog(
-                        contentText: widget.artist != null
-                            ? 'Actualizando datos del artista...'
-                            : 'Añadiendo nuevo Artista...');
+                        contentText: widget.musician != null
+                            ? 'Actualizando datos del $type...'
+                            : 'Añadiendo nuevo $type...');
                   })),
               success: () {
                 Navigator.of(context).pop();
@@ -78,12 +86,14 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                     context: context,
                     builder: ((context) {
                       return getSuccessAlertDialog(
-                          contentText: widget.artist != null
-                              ? 'Artista actualizado correctamente'
-                              : 'Artista añadido correctamente',
+                          contentText: widget.musician != null
+                              ? '${type[0].toUpperCase() + type.substring(1)} actualizado correctamente'
+                              : '${type[0].toUpperCase() + type.substring(1)} añadido correctamente',
                           continueFunction: () => context.router.push(
-                              const HomeScreenRoute(
-                                  children: [ArtistsScreenRoute()])),
+                                  HomeScreenRoute(children: [
+                                ViewMusicianScreenRoute(
+                                    musicianType: widget.musicianType)
+                              ])),
                           buttonTextStyle:
                               Theme.of(context).textTheme.bodyMedium!.copyWith(
                                     color: Colors.red,
@@ -112,10 +122,10 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
               }),
             );
           }, builder: (context, snapshot) {
-            if (widget.artist != null && getImage) {
+            if (widget.musician != null && getImage) {
               context
-                  .read<ArtistCubit>()
-                  .setUrlToFile(widget.artist!.musician.urlPhoto);
+                  .read<MusicianCubit>()
+                  .setUrlToFile(widget.musician!.urlPhoto, widget.musicianType);
               getImage = false;
             }
 
@@ -131,13 +141,13 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CardImageSelector(
-                              existingImage: widget.artist != null,
+                              existingImage: widget.musician != null,
                               label: "Selecciona una imagen*",
                               imageFile: image,
                               height: 250.0,
                               width: 350.0,
                               onTap: () {
-                                context.read<ArtistCubit>().imagePicker();
+                                context.read<MusicianCubit>().imagePicker();
                               },
                               borderColor: showErrorMessage
                                   ? Colors.red
@@ -157,11 +167,11 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                           height: 30.0,
                         ),
                         TextFormField(
-                          decoration: const InputDecoration(
-                            hintText: 'Ingresa el nombre del artista',
+                          decoration: InputDecoration(
+                            hintText: 'Ingresa el nombre del $type',
                             labelText: 'Nombre*',
                           ),
-                          controller: controllerArtistName,
+                          controller: controllerMusicianName,
                           validator: (value) {
                             return nullValidator(
                                 value, 'Este campo es obligatorio');
@@ -172,11 +182,11 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                         ),
                         TextFormField(
                             maxLines: 3,
-                            decoration: const InputDecoration(
-                              hintText: 'Ingresa el acerca de, del artista',
+                            decoration: InputDecoration(
+                              hintText: 'Ingresa el acerca de, del $type',
                               labelText: 'Acerca de*',
                             ),
-                            controller: controllerArtistAbout,
+                            controller: controllerMusicianAbout,
                             validator: (value) {
                               return nullValidator(
                                   value, 'Este campo es obligatorio');
@@ -185,34 +195,32 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                           height: 30.0,
                         ),
                         TextFormField(
-                          decoration: const InputDecoration(
-                            hintText:
-                                'Ingresa la cuenta de Facebook del artista',
+                          decoration: InputDecoration(
+                            hintText: 'Ingresa la cuenta de Facebook del $type',
                             labelText: 'Facebook',
                           ),
-                          controller: controllerArtistFacebook,
+                          controller: controllerMusicianFacebook,
                         ),
                         const SizedBox(
                           height: 30.0,
                         ),
                         TextFormField(
-                          decoration: const InputDecoration(
-                            hintText:
-                                'Ingresa la cuenta de Twitter del artista',
+                          decoration: InputDecoration(
+                            hintText: 'Ingresa la cuenta de Twitter del $type',
                             labelText: 'Twitter',
                           ),
-                          controller: controllerArtistTwitter,
+                          controller: controllerMusicianTwitter,
                         ),
                         const SizedBox(
                           height: 30.0,
                         ),
                         TextFormField(
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             hintText:
-                                'Ingresa la cuenta de Instagram del artista',
+                                'Ingresa la cuenta de Instagram del $type',
                             labelText: 'Instagram',
                           ),
-                          controller: controllerArtistInstagram,
+                          controller: controllerMusicianInstagram,
                         ),
                         const SizedBox(
                           height: 30.0,
@@ -221,9 +229,9 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
                             onPressed: () {
                               _onPressed(_formKey, context);
                             },
-                            child: Text(widget.artist != null
-                                ? "Actualizar artista"
-                                : "Crear artista"))
+                            child: Text(widget.musician != null
+                                ? "Actualizar $type"
+                                : "Crear $type"))
                       ],
                     ),
                   )),
@@ -239,24 +247,30 @@ class _CreateArtistScreenState extends State<CreateArtistScreen> {
     if (formKey.currentState!.validate() && image != null) {
       //Set the value to Artist entity
 
-      final String name = controllerArtistName.text;
-      final String about = controllerArtistAbout.text;
-      final String facebook = controllerArtistFacebook.text;
-      final String twitter = controllerArtistTwitter.text;
-      final String instagram = controllerArtistInstagram.text;
+      final String name = controllerMusicianName.text;
+      final String about = controllerMusicianAbout.text;
+      final String facebook = controllerMusicianFacebook.text;
+      final String twitter = controllerMusicianTwitter.text;
+      final String instagram = controllerMusicianInstagram.text;
       final List<String> socialNetwork = [facebook, twitter, instagram];
       final File? imageSelected = image;
       final String previousName = previousPhotoName;
 
-      if (widget.artist != null) {
-        //If it is a created artist and we are editing it, use the function to update the Artist
-        context.read<ArtistCubit>().updateArtist(widget.artist!.musician.id,
-            name, about, socialNetwork, imageSelected, previousName);
+      if (widget.musician != null) {
+        //If it is a created musician and we are editing it, use the function to update the musician
+        context.read<MusicianCubit>().updateMusician(
+            widget.musician!.id,
+            name,
+            about,
+            socialNetwork,
+            imageSelected,
+            previousName,
+            widget.musicianType);
       } else {
-        //If not, use the function to add the Artist
-        context
-            .read<ArtistCubit>()
-            .addArtist(name, about, socialNetwork, imageSelected!);
+        //If not, use the function to add the musician
+
+        context.read<MusicianCubit>().addMusician(
+            name, about, socialNetwork, imageSelected, widget.musicianType);
       }
     } else if (image == null) {
       setState(() {

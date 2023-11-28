@@ -9,10 +9,11 @@ abstract class MusicianState with _$MusicianState {
   const factory MusicianState.loading() = Loading;
   const factory MusicianState.error(String message) = Error;
   const factory MusicianState.success() = Success;
-  const factory MusicianState.loadData(List<MusicianEntity> musicians) =
-      LoadData;
-  const factory MusicianState.loadJudge(MusicianEntity musician) = LoadMusician;
   const factory MusicianState.pickedImage(File image) = PickedImage;
   const factory MusicianState.chargedImage(File image, String name) =
       ChargedImage;
+  const factory MusicianState.loadMusician(MusicianEntity2 artist) =
+      LoadMusician;
+  const factory MusicianState.loadMusicianList(
+      List<MusicianEntity2> musicians) = LoadMusicianList;
 }

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class MusicianDetailBodyWidget extends StatefulWidget {
   const MusicianDetailBodyWidget({super.key, required this.musician});
 
-  final MusicianEntity musician;
+  final MusicianEntity2 musician;
 
   @override
   State<MusicianDetailBodyWidget> createState() =>

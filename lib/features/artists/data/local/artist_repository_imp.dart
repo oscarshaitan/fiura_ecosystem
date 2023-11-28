@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:path/path.dart' as path;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fiura/core/entities/artist_entity/artist_entity.dart';
-import 'package:fiura/core/entities/musician_entity/musician_entity.dart';
 import 'package:fiura/core/entities/user/user_entity.dart';
 import '../../../home/repository/user_respository.dart';
 import '../../../images/domain/repositories/image_repository.dart';
@@ -24,22 +24,25 @@ class ArtistRepositoryImp extends ArtistRepository {
       required this.userRepository});
 
   @override
-  Future<bool> addArtist(ArtistEntity artist, File image) async {
+  Future<bool> addArtist(ArtistEntity2 artist, File image) async {
     final User? user = auth.currentUser;
     late DocumentReference docRef;
     late bool status;
 
     if (user != null) {
-      Map<String, dynamic> itemToAdd = artist.musician.toJson();
+      Map<String, dynamic> itemToAdd = artist.toJson();
       itemToAdd["creation_date"] = DateTime.now();
       itemToAdd["uid"] = user.uid;
 
       docRef = await db.collection(artists).add(itemToAdd);
       final DocumentSnapshot result = await docRef.get();
 
+      //Create a path for the image
+      final String imagePath = 'Artists/${path.basename(image.path)}';
+
       //Upload image to firebase storage
       final String? urlPhoto =
-          await imageRepository.saveImage(image, artist.musician.urlPhoto);
+          await imageRepository.saveImage(image, imagePath);
 
       if (result.data() != null && urlPhoto != null) {
         var id = result.id;
@@ -57,11 +60,11 @@ class ArtistRepositoryImp extends ArtistRepository {
   }
 
   @override
-  Future<List<ArtistEntity>> getArtists() async {
+  Future<List<ArtistEntity2>> getArtists() async {
     final User? user = auth.currentUser;
     final CollectionReference collectionRef;
     final QuerySnapshot querySnapshot;
-    final List<ArtistEntity> artistList = [];
+    final List<ArtistEntity2> artistList = [];
 
     if (user != null) {
       collectionRef = db.collection(artists);
@@ -70,9 +73,7 @@ class ArtistRepositoryImp extends ArtistRepository {
       for (QueryDocumentSnapshot element in querySnapshot.docs) {
         Map<String, dynamic> data = element.data() as Map<String, dynamic>;
 
-        MusicianEntity musician = MusicianEntity.fromJson(data);
-
-        ArtistEntity artist = ArtistEntity(musician: musician);
+        ArtistEntity2 artist = ArtistEntity2.fromJson(data);
 
         artistList.add(artist);
       }
@@ -82,9 +83,8 @@ class ArtistRepositoryImp extends ArtistRepository {
   }
 
   @override
-  Future<ArtistEntity> getArtist(String id) async {
-    late MusicianEntity musician;
-    late ArtistEntity artist;
+  Future<ArtistEntity2> getArtist(String id) async {
+    late ArtistEntity2 artist;
     final User? user = auth.currentUser;
     final CollectionReference collectionRef;
     final DocumentSnapshot documentSnapshot;
@@ -93,12 +93,9 @@ class ArtistRepositoryImp extends ArtistRepository {
       collectionRef = db.collection(artists);
       documentSnapshot = await collectionRef.doc(id).get();
 
-      musician = MusicianEntity.fromJson(
+      artist = ArtistEntity2.fromJson(
           documentSnapshot.data() as Map<String, dynamic>);
     }
-
-    artist = ArtistEntity(musician: musician);
-
     return artist;
   }
 
@@ -125,24 +122,27 @@ class ArtistRepositoryImp extends ArtistRepository {
 
   @override
   Future<void> updateArtist(
-      ArtistEntity artist, File? image, String previousPhotoName) async {
+      ArtistEntity2 artist, File? image, String previousPhotoName) async {
     final User? user = auth.currentUser;
     final UserEntity currentUser = await userRepository.getCurrentUser();
     late DocumentReference docRef;
 
     if (user != null) {
       if (currentUser.admin == true) {
-        docRef = db.collection(artists).doc(artist.musician.id);
+        docRef = db.collection(artists).doc(artist.id);
 
         try {
           //Delete previous photo
           await imageRepository.deleteImage(previousPhotoName);
 
+          //Create a path for the image
+          final String photoPath = 'Artists/${path.basename(image!.path)}';
+
           //Add new artist photo
           final String? urlPhoto =
-              await imageRepository.saveImage(image!, artist.musician.urlPhoto);
+              await imageRepository.saveImage(image, photoPath);
 
-          Map<String, dynamic> itemToUpdate = artist.musician.toJson();
+          Map<String, dynamic> itemToUpdate = artist.toJson();
 
           itemToUpdate["urlPhoto"] = urlPhoto;
 
