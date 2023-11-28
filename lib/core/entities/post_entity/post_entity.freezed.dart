@@ -91,11 +91,11 @@ class _$PostEntityCopyWithImpl<$Res, $Val extends PostEntity>
 }
 
 /// @nodoc
-abstract class _$$_PostEntityCopyWith<$Res>
+abstract class _$$PostEntityImplCopyWith<$Res>
     implements $PostEntityCopyWith<$Res> {
-  factory _$$_PostEntityCopyWith(
-          _$_PostEntity value, $Res Function(_$_PostEntity) then) =
-      __$$_PostEntityCopyWithImpl<$Res>;
+  factory _$$PostEntityImplCopyWith(
+          _$PostEntityImpl value, $Res Function(_$PostEntityImpl) then) =
+      __$$PostEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +107,11 @@ abstract class _$$_PostEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_PostEntityCopyWithImpl<$Res>
-    extends _$PostEntityCopyWithImpl<$Res, _$_PostEntity>
-    implements _$$_PostEntityCopyWith<$Res> {
-  __$$_PostEntityCopyWithImpl(
-      _$_PostEntity _value, $Res Function(_$_PostEntity) _then)
+class __$$PostEntityImplCopyWithImpl<$Res>
+    extends _$PostEntityCopyWithImpl<$Res, _$PostEntityImpl>
+    implements _$$PostEntityImplCopyWith<$Res> {
+  __$$PostEntityImplCopyWithImpl(
+      _$PostEntityImpl _value, $Res Function(_$PostEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$_PostEntityCopyWithImpl<$Res>
     Object? urlPhoto = null,
     Object? description = null,
   }) {
-    return _then(_$_PostEntity(
+    return _then(_$PostEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -150,16 +150,16 @@ class __$$_PostEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PostEntity with DiagnosticableTreeMixin implements _PostEntity {
-  _$_PostEntity(
+class _$PostEntityImpl with DiagnosticableTreeMixin implements _PostEntity {
+  _$PostEntityImpl(
       {required this.id,
       this.redirectionUrl,
       required this.creationDate,
       required this.urlPhoto,
       required this.description});
 
-  factory _$_PostEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_PostEntityFromJson(json);
+  factory _$PostEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PostEntityImplFromJson(json);
 
   @override
   final String id;
@@ -193,7 +193,7 @@ class _$_PostEntity with DiagnosticableTreeMixin implements _PostEntity {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PostEntity &&
+            other is _$PostEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.redirectionUrl, redirectionUrl) ||
                 other.redirectionUrl == redirectionUrl) &&
@@ -213,12 +213,12 @@ class _$_PostEntity with DiagnosticableTreeMixin implements _PostEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PostEntityCopyWith<_$_PostEntity> get copyWith =>
-      __$$_PostEntityCopyWithImpl<_$_PostEntity>(this, _$identity);
+  _$$PostEntityImplCopyWith<_$PostEntityImpl> get copyWith =>
+      __$$PostEntityImplCopyWithImpl<_$PostEntityImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PostEntityToJson(
+    return _$$PostEntityImplToJson(
       this,
     );
   }
@@ -230,10 +230,10 @@ abstract class _PostEntity implements PostEntity {
       final String? redirectionUrl,
       required final String creationDate,
       required final String urlPhoto,
-      required final String description}) = _$_PostEntity;
+      required final String description}) = _$PostEntityImpl;
 
   factory _PostEntity.fromJson(Map<String, dynamic> json) =
-      _$_PostEntity.fromJson;
+      _$PostEntityImpl.fromJson;
 
   @override
   String get id;
@@ -247,6 +247,6 @@ abstract class _PostEntity implements PostEntity {
   String get description;
   @override
   @JsonKey(ignore: true)
-  _$$_PostEntityCopyWith<_$_PostEntity> get copyWith =>
+  _$$PostEntityImplCopyWith<_$PostEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

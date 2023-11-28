@@ -16,10 +16,14 @@ class JudgeRepositoryImp extends JudgeRepository {
   //Collections
   final String judges = "judges";
 
-  JudgeRepositoryImp({required this.db, required this.auth, required this.imageRepository, required this.userRepository});
+  JudgeRepositoryImp(
+      {required this.db,
+      required this.auth,
+      required this.imageRepository,
+      required this.userRepository});
 
   @override
-  Future<bool> addJudge(JudgeEntity judge, File image) async {
+  Future<bool> addJudge(JudgeEntity2 judge, File image) async {
     final User? user = auth.currentUser;
     late DocumentReference docRef;
     late bool status;
@@ -35,11 +39,15 @@ class JudgeRepositoryImp extends JudgeRepository {
       final DocumentSnapshot result = await docRef.get();
 
       //Upload image to firebase storage
-      final String? urlPhoto = await imageRepository.saveImage(image, judge.urlPhoto);
+      final String? urlPhoto =
+          await imageRepository.saveImage(image, judge.urlPhoto);
 
       if (result.data() != null && urlPhoto != null) {
         var id = result.id;
-        await db.collection(judges).doc(id).update({"id": id, "urlPhoto": urlPhoto});
+        await db
+            .collection(judges)
+            .doc(id)
+            .update({"id": id, "urlPhoto": urlPhoto});
         status = true;
       } else {
         status = false;
@@ -50,11 +58,11 @@ class JudgeRepositoryImp extends JudgeRepository {
   }
 
   @override
-  Future<List<JudgeEntity>> getJudges() async {
+  Future<List<JudgeEntity2>> getJudges() async {
     final User? user = auth.currentUser;
     final CollectionReference collectionRef;
     final QuerySnapshot querySnapshot;
-    final List<JudgeEntity> judgesList = [];
+    final List<JudgeEntity2> judgesList = [];
 
     if (user != null) {
       collectionRef = db.collection(judges);
@@ -63,7 +71,7 @@ class JudgeRepositoryImp extends JudgeRepository {
       for (var element in querySnapshot.docs) {
         Map<String, dynamic> data = element.data() as Map<String, dynamic>;
 
-        JudgeEntity judge = JudgeEntity.fromJson(data);
+        JudgeEntity2 judge = JudgeEntity2.fromJson(data);
 
         judgesList.add(judge);
       }
@@ -73,8 +81,7 @@ class JudgeRepositoryImp extends JudgeRepository {
   }
 
   @override
-  Future<JudgeEntity> getJudge(String id) async {
-    late JudgeEntity judge;
+  Future<JudgeEntity2> getJudge(String id) async {
     final User? user = auth.currentUser;
     final CollectionReference collectionRef;
     final DocumentSnapshot documentSnapshot;
@@ -83,14 +90,19 @@ class JudgeRepositoryImp extends JudgeRepository {
       collectionRef = db.collection(judges);
       documentSnapshot = await collectionRef.doc(id).get();
 
-      judge = JudgeEntity.fromJson(documentSnapshot.data() as Map<String, dynamic>);
-    }
+      JudgeEntity2 judge = JudgeEntity2.fromJson(
+          documentSnapshot.data() as Map<String, dynamic>);
 
-    return judge;
+      return judge;
+    } else {
+      throw Exception(
+          'Error al realizar esta acción, inicia sesión e intentalo de nuevo');
+    }
   }
 
   @override
-  Future<void> updateJudge(JudgeEntity judge, File? image, String previousPhotoName) async {
+  Future<void> updateJudge(
+      JudgeEntity2 judge, File? image, String previousPhotoName) async {
     final User? user = auth.currentUser;
     final UserEntity currentUser = await userRepository.getCurrentUser();
     late DocumentReference docRef;
@@ -104,7 +116,8 @@ class JudgeRepositoryImp extends JudgeRepository {
           await imageRepository.deleteImage(previousPhotoName);
 
           //Add new artist photo
-          final String? urlPhoto = await imageRepository.saveImage(image!, judge.urlPhoto);
+          final String? urlPhoto =
+              await imageRepository.saveImage(image!, judge.urlPhoto);
 
           Map<String, dynamic> itemToUpdate = judge.toJson();
 
@@ -119,7 +132,8 @@ class JudgeRepositoryImp extends JudgeRepository {
         throw Exception('No tienes permisos para realizar esta acción');
       }
     } else {
-      throw Exception('Error al realizar esta acción, inicia sesión e intentalo de nuevo');
+      throw Exception(
+          'Error al realizar esta acción, inicia sesión e intentalo de nuevo');
     }
   }
 
@@ -143,5 +157,4 @@ class JudgeRepositoryImp extends JudgeRepository {
           'Error al realizar esta acción, inicia sesión e intentalo de nuevo');
     }
   }
-
 }

@@ -1,19 +1,19 @@
-
-import 'package:fiura/core/entities/artist_entity/artist_entity.dart';
-import 'package:fiura/features/artits_detail_screen/artist_social_network_widget.dart';
+import 'package:fiura/core/entities/musician_entity/musician_entity.dart';
+import 'package:fiura/features/musician/presentation/pages/musician_social_network_widget.dart';
 import 'package:fiura/features/widgets/image_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
-class ArtistDetailBodyWidget extends StatefulWidget {
-  const ArtistDetailBodyWidget({super.key, required this.artist});
+class MusicianDetailBodyWidget extends StatefulWidget {
+  const MusicianDetailBodyWidget({super.key, required this.musician});
 
-  final ArtistEntity artist;
+  final MusicianEntity2 musician;
 
   @override
-  State<ArtistDetailBodyWidget> createState() => _ArtistDetailBodyWidgetState();
+  State<MusicianDetailBodyWidget> createState() =>
+      _MusicianDetailBodyWidgetState();
 }
 
-class _ArtistDetailBodyWidgetState extends State<ArtistDetailBodyWidget> {
+class _MusicianDetailBodyWidgetState extends State<MusicianDetailBodyWidget> {
   ScrollController? _scrollController;
   bool _isExpanded = true;
 
@@ -36,14 +36,12 @@ class _ArtistDetailBodyWidgetState extends State<ArtistDetailBodyWidget> {
         setState(() {
           _isExpanded = false;
         });
-        // FlexibleSpacebar is compressed
       }
     } else {
       if (!_isExpanded) {
         setState(() {
           _isExpanded = true;
         });
-        // FlexibleSpacebar is expanded
       }
     }
   }
@@ -54,9 +52,9 @@ class _ArtistDetailBodyWidgetState extends State<ArtistDetailBodyWidget> {
       controller: _scrollController,
       slivers: [
         ImageAppBarWidget(
-          type: "Artista",
-          urlImage: widget.artist.urlPhoto,
-          artistName: widget.artist.name,
+          type: "Jurado",
+          urlImage: widget.musician.urlPhoto,
+          artistName: widget.musician.name,
           isExpanded: _isExpanded,
         ),
         SliverList(
@@ -72,13 +70,13 @@ class _ArtistDetailBodyWidgetState extends State<ArtistDetailBodyWidget> {
                         style: Theme.of(context).textTheme.titleSmall,
                       ),
                       const SizedBox(height: 15.0),
-                      Text(widget.artist.about),
+                      Text(widget.musician.about),
                       const SizedBox(height: 30.0),
-                      if (widget.artist.socialNetwork.isNotEmpty)
+                      if (widget.musician.socialNetwork.isNotEmpty)
                         Align(
                           alignment: Alignment.center,
-                          child: ArtistSocialNetworkWidget(
-                              socialMediaLinks: widget.artist.socialNetwork),
+                          child: MusicianSocialNetworkWidget(
+                              socialMediaLinks: widget.musician.socialNetwork),
                         ),
                     ]),
               ),

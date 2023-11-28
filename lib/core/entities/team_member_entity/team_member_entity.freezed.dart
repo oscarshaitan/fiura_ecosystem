@@ -81,11 +81,11 @@ class _$TeamMemberEntityCopyWithImpl<$Res, $Val extends TeamMemberEntity>
 }
 
 /// @nodoc
-abstract class _$$_TeamMemberEntityCopyWith<$Res>
+abstract class _$$TeamMemberEntityImplCopyWith<$Res>
     implements $TeamMemberEntityCopyWith<$Res> {
-  factory _$$_TeamMemberEntityCopyWith(
-          _$_TeamMemberEntity value, $Res Function(_$_TeamMemberEntity) then) =
-      __$$_TeamMemberEntityCopyWithImpl<$Res>;
+  factory _$$TeamMemberEntityImplCopyWith(_$TeamMemberEntityImpl value,
+          $Res Function(_$TeamMemberEntityImpl) then) =
+      __$$TeamMemberEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -93,11 +93,11 @@ abstract class _$$_TeamMemberEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TeamMemberEntityCopyWithImpl<$Res>
-    extends _$TeamMemberEntityCopyWithImpl<$Res, _$_TeamMemberEntity>
-    implements _$$_TeamMemberEntityCopyWith<$Res> {
-  __$$_TeamMemberEntityCopyWithImpl(
-      _$_TeamMemberEntity _value, $Res Function(_$_TeamMemberEntity) _then)
+class __$$TeamMemberEntityImplCopyWithImpl<$Res>
+    extends _$TeamMemberEntityCopyWithImpl<$Res, _$TeamMemberEntityImpl>
+    implements _$$TeamMemberEntityImplCopyWith<$Res> {
+  __$$TeamMemberEntityImplCopyWithImpl(_$TeamMemberEntityImpl _value,
+      $Res Function(_$TeamMemberEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -108,7 +108,7 @@ class __$$_TeamMemberEntityCopyWithImpl<$Res>
     Object? about = null,
     Object? socialNetwork = null,
   }) {
-    return _then(_$_TeamMemberEntity(
+    return _then(_$TeamMemberEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -131,18 +131,18 @@ class __$$_TeamMemberEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TeamMemberEntity
+class _$TeamMemberEntityImpl
     with DiagnosticableTreeMixin
     implements _TeamMemberEntity {
-  _$_TeamMemberEntity(
+  _$TeamMemberEntityImpl(
       {required this.id,
       required this.name,
       required this.about,
       required final List<String?> socialNetwork})
       : _socialNetwork = socialNetwork;
 
-  factory _$_TeamMemberEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_TeamMemberEntityFromJson(json);
+  factory _$TeamMemberEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TeamMemberEntityImplFromJson(json);
 
   @override
   final String id;
@@ -178,7 +178,7 @@ class _$_TeamMemberEntity
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TeamMemberEntity &&
+            other is _$TeamMemberEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
@@ -194,12 +194,13 @@ class _$_TeamMemberEntity
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TeamMemberEntityCopyWith<_$_TeamMemberEntity> get copyWith =>
-      __$$_TeamMemberEntityCopyWithImpl<_$_TeamMemberEntity>(this, _$identity);
+  _$$TeamMemberEntityImplCopyWith<_$TeamMemberEntityImpl> get copyWith =>
+      __$$TeamMemberEntityImplCopyWithImpl<_$TeamMemberEntityImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TeamMemberEntityToJson(
+    return _$$TeamMemberEntityImplToJson(
       this,
     );
   }
@@ -210,10 +211,10 @@ abstract class _TeamMemberEntity implements TeamMemberEntity {
       {required final String id,
       required final String name,
       required final String about,
-      required final List<String?> socialNetwork}) = _$_TeamMemberEntity;
+      required final List<String?> socialNetwork}) = _$TeamMemberEntityImpl;
 
   factory _TeamMemberEntity.fromJson(Map<String, dynamic> json) =
-      _$_TeamMemberEntity.fromJson;
+      _$TeamMemberEntityImpl.fromJson;
 
   @override
   String get id;
@@ -225,6 +226,6 @@ abstract class _TeamMemberEntity implements TeamMemberEntity {
   List<String?> get socialNetwork;
   @override
   @JsonKey(ignore: true)
-  _$$_TeamMemberEntityCopyWith<_$_TeamMemberEntity> get copyWith =>
+  _$$TeamMemberEntityImplCopyWith<_$TeamMemberEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

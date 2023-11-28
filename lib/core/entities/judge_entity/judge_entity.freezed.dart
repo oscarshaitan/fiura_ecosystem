@@ -14,19 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-JudgeEntity _$JudgeEntityFromJson(Map<String, dynamic> json) {
-  return _JudgeEntity.fromJson(json);
-}
-
 /// @nodoc
 mixin _$JudgeEntity {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get about => throw _privateConstructorUsedError;
-  String get urlPhoto => throw _privateConstructorUsedError;
-  List<String?> get socialNetwork => throw _privateConstructorUsedError;
+  MusicianEntity get musician => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $JudgeEntityCopyWith<JudgeEntity> get copyWith =>
       throw _privateConstructorUsedError;
@@ -38,6 +29,147 @@ abstract class $JudgeEntityCopyWith<$Res> {
           JudgeEntity value, $Res Function(JudgeEntity) then) =
       _$JudgeEntityCopyWithImpl<$Res, JudgeEntity>;
   @useResult
+  $Res call({MusicianEntity musician});
+
+  $MusicianEntityCopyWith<$Res> get musician;
+}
+
+/// @nodoc
+class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
+    implements $JudgeEntityCopyWith<$Res> {
+  _$JudgeEntityCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? musician = null,
+  }) {
+    return _then(_value.copyWith(
+      musician: null == musician
+          ? _value.musician
+          : musician // ignore: cast_nullable_to_non_nullable
+              as MusicianEntity,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MusicianEntityCopyWith<$Res> get musician {
+    return $MusicianEntityCopyWith<$Res>(_value.musician, (value) {
+      return _then(_value.copyWith(musician: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$JudgeEntityImplCopyWith<$Res>
+    implements $JudgeEntityCopyWith<$Res> {
+  factory _$$JudgeEntityImplCopyWith(
+          _$JudgeEntityImpl value, $Res Function(_$JudgeEntityImpl) then) =
+      __$$JudgeEntityImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({MusicianEntity musician});
+
+  @override
+  $MusicianEntityCopyWith<$Res> get musician;
+}
+
+/// @nodoc
+class __$$JudgeEntityImplCopyWithImpl<$Res>
+    extends _$JudgeEntityCopyWithImpl<$Res, _$JudgeEntityImpl>
+    implements _$$JudgeEntityImplCopyWith<$Res> {
+  __$$JudgeEntityImplCopyWithImpl(
+      _$JudgeEntityImpl _value, $Res Function(_$JudgeEntityImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? musician = null,
+  }) {
+    return _then(_$JudgeEntityImpl(
+      musician: null == musician
+          ? _value.musician
+          : musician // ignore: cast_nullable_to_non_nullable
+              as MusicianEntity,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$JudgeEntityImpl implements _JudgeEntity {
+  _$JudgeEntityImpl({required this.musician});
+
+  @override
+  final MusicianEntity musician;
+
+  @override
+  String toString() {
+    return 'JudgeEntity(musician: $musician)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$JudgeEntityImpl &&
+            (identical(other.musician, musician) ||
+                other.musician == musician));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, musician);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JudgeEntityImplCopyWith<_$JudgeEntityImpl> get copyWith =>
+      __$$JudgeEntityImplCopyWithImpl<_$JudgeEntityImpl>(this, _$identity);
+}
+
+abstract class _JudgeEntity implements JudgeEntity {
+  factory _JudgeEntity({required final MusicianEntity musician}) =
+      _$JudgeEntityImpl;
+
+  @override
+  MusicianEntity get musician;
+  @override
+  @JsonKey(ignore: true)
+  _$$JudgeEntityImplCopyWith<_$JudgeEntityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+JudgeEntity2 _$JudgeEntity2FromJson(Map<String, dynamic> json) {
+  return _JudgeEntity2.fromJson(json);
+}
+
+/// @nodoc
+mixin _$JudgeEntity2 {
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get about => throw _privateConstructorUsedError;
+  String get urlPhoto => throw _privateConstructorUsedError;
+  List<String?> get socialNetwork => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $JudgeEntity2CopyWith<JudgeEntity2> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $JudgeEntity2CopyWith<$Res> {
+  factory $JudgeEntity2CopyWith(
+          JudgeEntity2 value, $Res Function(JudgeEntity2) then) =
+      _$JudgeEntity2CopyWithImpl<$Res, JudgeEntity2>;
+  @useResult
   $Res call(
       {String id,
       String name,
@@ -47,9 +179,9 @@ abstract class $JudgeEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
-    implements $JudgeEntityCopyWith<$Res> {
-  _$JudgeEntityCopyWithImpl(this._value, this._then);
+class _$JudgeEntity2CopyWithImpl<$Res, $Val extends JudgeEntity2>
+    implements $JudgeEntity2CopyWith<$Res> {
+  _$JudgeEntity2CopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -91,11 +223,11 @@ class _$JudgeEntityCopyWithImpl<$Res, $Val extends JudgeEntity>
 }
 
 /// @nodoc
-abstract class _$$_JudgeEntityCopyWith<$Res>
-    implements $JudgeEntityCopyWith<$Res> {
-  factory _$$_JudgeEntityCopyWith(
-          _$_JudgeEntity value, $Res Function(_$_JudgeEntity) then) =
-      __$$_JudgeEntityCopyWithImpl<$Res>;
+abstract class _$$JudgeEntity2ImplCopyWith<$Res>
+    implements $JudgeEntity2CopyWith<$Res> {
+  factory _$$JudgeEntity2ImplCopyWith(
+          _$JudgeEntity2Impl value, $Res Function(_$JudgeEntity2Impl) then) =
+      __$$JudgeEntity2ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +239,11 @@ abstract class _$$_JudgeEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_JudgeEntityCopyWithImpl<$Res>
-    extends _$JudgeEntityCopyWithImpl<$Res, _$_JudgeEntity>
-    implements _$$_JudgeEntityCopyWith<$Res> {
-  __$$_JudgeEntityCopyWithImpl(
-      _$_JudgeEntity _value, $Res Function(_$_JudgeEntity) _then)
+class __$$JudgeEntity2ImplCopyWithImpl<$Res>
+    extends _$JudgeEntity2CopyWithImpl<$Res, _$JudgeEntity2Impl>
+    implements _$$JudgeEntity2ImplCopyWith<$Res> {
+  __$$JudgeEntity2ImplCopyWithImpl(
+      _$JudgeEntity2Impl _value, $Res Function(_$JudgeEntity2Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +255,7 @@ class __$$_JudgeEntityCopyWithImpl<$Res>
     Object? urlPhoto = null,
     Object? socialNetwork = null,
   }) {
-    return _then(_$_JudgeEntity(
+    return _then(_$JudgeEntity2Impl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -150,17 +282,18 @@ class __$$_JudgeEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
-  _$_JudgeEntity(
+class _$JudgeEntity2Impl extends _JudgeEntity2 with MusicianEntity2 {
+  _$JudgeEntity2Impl(
       {required this.id,
       required this.name,
       required this.about,
       required this.urlPhoto,
       required final List<String?> socialNetwork})
-      : _socialNetwork = socialNetwork;
+      : _socialNetwork = socialNetwork,
+        super._();
 
-  factory _$_JudgeEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_JudgeEntityFromJson(json);
+  factory _$JudgeEntity2Impl.fromJson(Map<String, dynamic> json) =>
+      _$$JudgeEntity2ImplFromJson(json);
 
   @override
   final String id;
@@ -179,27 +312,15 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'JudgeEntity(id: $id, name: $name, about: $about, urlPhoto: $urlPhoto, socialNetwork: $socialNetwork)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'JudgeEntity'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('about', about))
-      ..add(DiagnosticsProperty('urlPhoto', urlPhoto))
-      ..add(DiagnosticsProperty('socialNetwork', socialNetwork));
+  String toString() {
+    return 'JudgeEntity2(id: $id, name: $name, about: $about, urlPhoto: $urlPhoto, socialNetwork: $socialNetwork)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_JudgeEntity &&
+            other is _$JudgeEntity2Impl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
@@ -217,27 +338,28 @@ class _$_JudgeEntity with DiagnosticableTreeMixin implements _JudgeEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_JudgeEntityCopyWith<_$_JudgeEntity> get copyWith =>
-      __$$_JudgeEntityCopyWithImpl<_$_JudgeEntity>(this, _$identity);
+  _$$JudgeEntity2ImplCopyWith<_$JudgeEntity2Impl> get copyWith =>
+      __$$JudgeEntity2ImplCopyWithImpl<_$JudgeEntity2Impl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_JudgeEntityToJson(
+    return _$$JudgeEntity2ImplToJson(
       this,
     );
   }
 }
 
-abstract class _JudgeEntity implements JudgeEntity {
-  factory _JudgeEntity(
+abstract class _JudgeEntity2 extends JudgeEntity2 implements MusicianEntity2 {
+  factory _JudgeEntity2(
       {required final String id,
       required final String name,
       required final String about,
       required final String urlPhoto,
-      required final List<String?> socialNetwork}) = _$_JudgeEntity;
+      required final List<String?> socialNetwork}) = _$JudgeEntity2Impl;
+  _JudgeEntity2._() : super._();
 
-  factory _JudgeEntity.fromJson(Map<String, dynamic> json) =
-      _$_JudgeEntity.fromJson;
+  factory _JudgeEntity2.fromJson(Map<String, dynamic> json) =
+      _$JudgeEntity2Impl.fromJson;
 
   @override
   String get id;
@@ -251,6 +373,6 @@ abstract class _JudgeEntity implements JudgeEntity {
   List<String?> get socialNetwork;
   @override
   @JsonKey(ignore: true)
-  _$$_JudgeEntityCopyWith<_$_JudgeEntity> get copyWith =>
+  _$$JudgeEntity2ImplCopyWith<_$JudgeEntity2Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }

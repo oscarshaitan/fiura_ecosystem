@@ -6,8 +6,8 @@ part of 'sponsor_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SponsorEntity _$$_SponsorEntityFromJson(Map<String, dynamic> json) =>
-    _$_SponsorEntity(
+_$SponsorEntityImpl _$$SponsorEntityImplFromJson(Map<String, dynamic> json) =>
+    _$SponsorEntityImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       about: json['about'] as String,
@@ -17,7 +17,7 @@ _$_SponsorEntity _$$_SponsorEntityFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_SponsorEntityToJson(_$_SponsorEntity instance) =>
+Map<String, dynamic> _$$SponsorEntityImplToJson(_$SponsorEntityImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

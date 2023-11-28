@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'sponsor_entity.dart';
+part of 'musician_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-SponsorEntity _$SponsorEntityFromJson(Map<String, dynamic> json) {
-  return _SponsorEntity.fromJson(json);
+MusicianEntity _$MusicianEntityFromJson(Map<String, dynamic> json) {
+  return _MusicianEntity.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SponsorEntity {
+mixin _$MusicianEntity {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get about => throw _privateConstructorUsedError;
@@ -28,15 +28,15 @@ mixin _$SponsorEntity {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SponsorEntityCopyWith<SponsorEntity> get copyWith =>
+  $MusicianEntityCopyWith<MusicianEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SponsorEntityCopyWith<$Res> {
-  factory $SponsorEntityCopyWith(
-          SponsorEntity value, $Res Function(SponsorEntity) then) =
-      _$SponsorEntityCopyWithImpl<$Res, SponsorEntity>;
+abstract class $MusicianEntityCopyWith<$Res> {
+  factory $MusicianEntityCopyWith(
+          MusicianEntity value, $Res Function(MusicianEntity) then) =
+      _$MusicianEntityCopyWithImpl<$Res, MusicianEntity>;
   @useResult
   $Res call(
       {String id,
@@ -47,9 +47,9 @@ abstract class $SponsorEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SponsorEntityCopyWithImpl<$Res, $Val extends SponsorEntity>
-    implements $SponsorEntityCopyWith<$Res> {
-  _$SponsorEntityCopyWithImpl(this._value, this._then);
+class _$MusicianEntityCopyWithImpl<$Res, $Val extends MusicianEntity>
+    implements $MusicianEntityCopyWith<$Res> {
+  _$MusicianEntityCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -91,11 +91,11 @@ class _$SponsorEntityCopyWithImpl<$Res, $Val extends SponsorEntity>
 }
 
 /// @nodoc
-abstract class _$$SponsorEntityImplCopyWith<$Res>
-    implements $SponsorEntityCopyWith<$Res> {
-  factory _$$SponsorEntityImplCopyWith(
-          _$SponsorEntityImpl value, $Res Function(_$SponsorEntityImpl) then) =
-      __$$SponsorEntityImplCopyWithImpl<$Res>;
+abstract class _$$MusicianEntityImplCopyWith<$Res>
+    implements $MusicianEntityCopyWith<$Res> {
+  factory _$$MusicianEntityImplCopyWith(_$MusicianEntityImpl value,
+          $Res Function(_$MusicianEntityImpl) then) =
+      __$$MusicianEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +107,11 @@ abstract class _$$SponsorEntityImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$SponsorEntityImplCopyWithImpl<$Res>
-    extends _$SponsorEntityCopyWithImpl<$Res, _$SponsorEntityImpl>
-    implements _$$SponsorEntityImplCopyWith<$Res> {
-  __$$SponsorEntityImplCopyWithImpl(
-      _$SponsorEntityImpl _value, $Res Function(_$SponsorEntityImpl) _then)
+class __$$MusicianEntityImplCopyWithImpl<$Res>
+    extends _$MusicianEntityCopyWithImpl<$Res, _$MusicianEntityImpl>
+    implements _$$MusicianEntityImplCopyWith<$Res> {
+  __$$MusicianEntityImplCopyWithImpl(
+      _$MusicianEntityImpl _value, $Res Function(_$MusicianEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$SponsorEntityImplCopyWithImpl<$Res>
     Object? urlPhoto = null,
     Object? socialNetwork = null,
   }) {
-    return _then(_$SponsorEntityImpl(
+    return _then(_$MusicianEntityImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -150,10 +150,8 @@ class __$$SponsorEntityImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$SponsorEntityImpl
-    with DiagnosticableTreeMixin
-    implements _SponsorEntity {
-  _$SponsorEntityImpl(
+class _$MusicianEntityImpl implements _MusicianEntity {
+  _$MusicianEntityImpl(
       {required this.id,
       required this.name,
       required this.about,
@@ -161,8 +159,8 @@ class _$SponsorEntityImpl
       required final List<String?> socialNetwork})
       : _socialNetwork = socialNetwork;
 
-  factory _$SponsorEntityImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SponsorEntityImplFromJson(json);
+  factory _$MusicianEntityImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MusicianEntityImplFromJson(json);
 
   @override
   final String id;
@@ -181,27 +179,15 @@ class _$SponsorEntityImpl
   }
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'SponsorEntity(id: $id, name: $name, about: $about, urlPhoto: $urlPhoto, socialNetwork: $socialNetwork)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'SponsorEntity'))
-      ..add(DiagnosticsProperty('id', id))
-      ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('about', about))
-      ..add(DiagnosticsProperty('urlPhoto', urlPhoto))
-      ..add(DiagnosticsProperty('socialNetwork', socialNetwork));
+  String toString() {
+    return 'MusicianEntity(id: $id, name: $name, about: $about, urlPhoto: $urlPhoto, socialNetwork: $socialNetwork)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$SponsorEntityImpl &&
+            other is _$MusicianEntityImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
@@ -219,27 +205,28 @@ class _$SponsorEntityImpl
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SponsorEntityImplCopyWith<_$SponsorEntityImpl> get copyWith =>
-      __$$SponsorEntityImplCopyWithImpl<_$SponsorEntityImpl>(this, _$identity);
+  _$$MusicianEntityImplCopyWith<_$MusicianEntityImpl> get copyWith =>
+      __$$MusicianEntityImplCopyWithImpl<_$MusicianEntityImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SponsorEntityImplToJson(
+    return _$$MusicianEntityImplToJson(
       this,
     );
   }
 }
 
-abstract class _SponsorEntity implements SponsorEntity {
-  factory _SponsorEntity(
+abstract class _MusicianEntity implements MusicianEntity {
+  factory _MusicianEntity(
       {required final String id,
       required final String name,
       required final String about,
       required final String urlPhoto,
-      required final List<String?> socialNetwork}) = _$SponsorEntityImpl;
+      required final List<String?> socialNetwork}) = _$MusicianEntityImpl;
 
-  factory _SponsorEntity.fromJson(Map<String, dynamic> json) =
-      _$SponsorEntityImpl.fromJson;
+  factory _MusicianEntity.fromJson(Map<String, dynamic> json) =
+      _$MusicianEntityImpl.fromJson;
 
   @override
   String get id;
@@ -253,6 +240,6 @@ abstract class _SponsorEntity implements SponsorEntity {
   List<String?> get socialNetwork;
   @override
   @JsonKey(ignore: true)
-  _$$SponsorEntityImplCopyWith<_$SponsorEntityImpl> get copyWith =>
+  _$$MusicianEntityImplCopyWith<_$MusicianEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

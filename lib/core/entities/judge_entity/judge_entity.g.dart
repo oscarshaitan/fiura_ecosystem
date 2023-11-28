@@ -6,8 +6,8 @@ part of 'judge_entity.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_JudgeEntity _$$_JudgeEntityFromJson(Map<String, dynamic> json) =>
-    _$_JudgeEntity(
+_$JudgeEntity2Impl _$$JudgeEntity2ImplFromJson(Map<String, dynamic> json) =>
+    _$JudgeEntity2Impl(
       id: json['id'] as String,
       name: json['name'] as String,
       about: json['about'] as String,
@@ -17,7 +17,7 @@ _$_JudgeEntity _$$_JudgeEntityFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$_JudgeEntityToJson(_$_JudgeEntity instance) =>
+Map<String, dynamic> _$$JudgeEntity2ImplToJson(_$JudgeEntity2Impl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

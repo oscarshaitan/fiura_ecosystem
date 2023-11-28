@@ -14,19 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ArtistEntity _$ArtistEntityFromJson(Map<String, dynamic> json) {
-  return _ArtistEntity.fromJson(json);
-}
-
 /// @nodoc
 mixin _$ArtistEntity {
-  String get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get about => throw _privateConstructorUsedError;
-  String get urlPhoto => throw _privateConstructorUsedError;
-  List<String?> get socialNetwork => throw _privateConstructorUsedError;
+  MusicianEntity get musician => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ArtistEntityCopyWith<ArtistEntity> get copyWith =>
       throw _privateConstructorUsedError;
@@ -38,6 +29,147 @@ abstract class $ArtistEntityCopyWith<$Res> {
           ArtistEntity value, $Res Function(ArtistEntity) then) =
       _$ArtistEntityCopyWithImpl<$Res, ArtistEntity>;
   @useResult
+  $Res call({MusicianEntity musician});
+
+  $MusicianEntityCopyWith<$Res> get musician;
+}
+
+/// @nodoc
+class _$ArtistEntityCopyWithImpl<$Res, $Val extends ArtistEntity>
+    implements $ArtistEntityCopyWith<$Res> {
+  _$ArtistEntityCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? musician = null,
+  }) {
+    return _then(_value.copyWith(
+      musician: null == musician
+          ? _value.musician
+          : musician // ignore: cast_nullable_to_non_nullable
+              as MusicianEntity,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MusicianEntityCopyWith<$Res> get musician {
+    return $MusicianEntityCopyWith<$Res>(_value.musician, (value) {
+      return _then(_value.copyWith(musician: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$ArtistEntityImplCopyWith<$Res>
+    implements $ArtistEntityCopyWith<$Res> {
+  factory _$$ArtistEntityImplCopyWith(
+          _$ArtistEntityImpl value, $Res Function(_$ArtistEntityImpl) then) =
+      __$$ArtistEntityImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({MusicianEntity musician});
+
+  @override
+  $MusicianEntityCopyWith<$Res> get musician;
+}
+
+/// @nodoc
+class __$$ArtistEntityImplCopyWithImpl<$Res>
+    extends _$ArtistEntityCopyWithImpl<$Res, _$ArtistEntityImpl>
+    implements _$$ArtistEntityImplCopyWith<$Res> {
+  __$$ArtistEntityImplCopyWithImpl(
+      _$ArtistEntityImpl _value, $Res Function(_$ArtistEntityImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? musician = null,
+  }) {
+    return _then(_$ArtistEntityImpl(
+      musician: null == musician
+          ? _value.musician
+          : musician // ignore: cast_nullable_to_non_nullable
+              as MusicianEntity,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ArtistEntityImpl implements _ArtistEntity {
+  _$ArtistEntityImpl({required this.musician});
+
+  @override
+  final MusicianEntity musician;
+
+  @override
+  String toString() {
+    return 'ArtistEntity(musician: $musician)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ArtistEntityImpl &&
+            (identical(other.musician, musician) ||
+                other.musician == musician));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, musician);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ArtistEntityImplCopyWith<_$ArtistEntityImpl> get copyWith =>
+      __$$ArtistEntityImplCopyWithImpl<_$ArtistEntityImpl>(this, _$identity);
+}
+
+abstract class _ArtistEntity implements ArtistEntity {
+  factory _ArtistEntity({required final MusicianEntity musician}) =
+      _$ArtistEntityImpl;
+
+  @override
+  MusicianEntity get musician;
+  @override
+  @JsonKey(ignore: true)
+  _$$ArtistEntityImplCopyWith<_$ArtistEntityImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ArtistEntity2 _$ArtistEntity2FromJson(Map<String, dynamic> json) {
+  return _ArtistEntity2.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ArtistEntity2 {
+  String get id => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get about => throw _privateConstructorUsedError;
+  String get urlPhoto => throw _privateConstructorUsedError;
+  List<String?> get socialNetwork => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ArtistEntity2CopyWith<ArtistEntity2> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ArtistEntity2CopyWith<$Res> {
+  factory $ArtistEntity2CopyWith(
+          ArtistEntity2 value, $Res Function(ArtistEntity2) then) =
+      _$ArtistEntity2CopyWithImpl<$Res, ArtistEntity2>;
+  @useResult
   $Res call(
       {String id,
       String name,
@@ -47,9 +179,9 @@ abstract class $ArtistEntityCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ArtistEntityCopyWithImpl<$Res, $Val extends ArtistEntity>
-    implements $ArtistEntityCopyWith<$Res> {
-  _$ArtistEntityCopyWithImpl(this._value, this._then);
+class _$ArtistEntity2CopyWithImpl<$Res, $Val extends ArtistEntity2>
+    implements $ArtistEntity2CopyWith<$Res> {
+  _$ArtistEntity2CopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -91,11 +223,11 @@ class _$ArtistEntityCopyWithImpl<$Res, $Val extends ArtistEntity>
 }
 
 /// @nodoc
-abstract class _$$_ArtistEntityCopyWith<$Res>
-    implements $ArtistEntityCopyWith<$Res> {
-  factory _$$_ArtistEntityCopyWith(
-          _$_ArtistEntity value, $Res Function(_$_ArtistEntity) then) =
-      __$$_ArtistEntityCopyWithImpl<$Res>;
+abstract class _$$ArtistEntity2ImplCopyWith<$Res>
+    implements $ArtistEntity2CopyWith<$Res> {
+  factory _$$ArtistEntity2ImplCopyWith(
+          _$ArtistEntity2Impl value, $Res Function(_$ArtistEntity2Impl) then) =
+      __$$ArtistEntity2ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -107,11 +239,11 @@ abstract class _$$_ArtistEntityCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ArtistEntityCopyWithImpl<$Res>
-    extends _$ArtistEntityCopyWithImpl<$Res, _$_ArtistEntity>
-    implements _$$_ArtistEntityCopyWith<$Res> {
-  __$$_ArtistEntityCopyWithImpl(
-      _$_ArtistEntity _value, $Res Function(_$_ArtistEntity) _then)
+class __$$ArtistEntity2ImplCopyWithImpl<$Res>
+    extends _$ArtistEntity2CopyWithImpl<$Res, _$ArtistEntity2Impl>
+    implements _$$ArtistEntity2ImplCopyWith<$Res> {
+  __$$ArtistEntity2ImplCopyWithImpl(
+      _$ArtistEntity2Impl _value, $Res Function(_$ArtistEntity2Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +255,7 @@ class __$$_ArtistEntityCopyWithImpl<$Res>
     Object? urlPhoto = null,
     Object? socialNetwork = null,
   }) {
-    return _then(_$_ArtistEntity(
+    return _then(_$ArtistEntity2Impl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -150,17 +282,18 @@ class __$$_ArtistEntityCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ArtistEntity implements _ArtistEntity {
-  _$_ArtistEntity(
+class _$ArtistEntity2Impl extends _ArtistEntity2 with MusicianEntity2 {
+  _$ArtistEntity2Impl(
       {required this.id,
       required this.name,
       required this.about,
       required this.urlPhoto,
       required final List<String?> socialNetwork})
-      : _socialNetwork = socialNetwork;
+      : _socialNetwork = socialNetwork,
+        super._();
 
-  factory _$_ArtistEntity.fromJson(Map<String, dynamic> json) =>
-      _$$_ArtistEntityFromJson(json);
+  factory _$ArtistEntity2Impl.fromJson(Map<String, dynamic> json) =>
+      _$$ArtistEntity2ImplFromJson(json);
 
   @override
   final String id;
@@ -180,14 +313,14 @@ class _$_ArtistEntity implements _ArtistEntity {
 
   @override
   String toString() {
-    return 'ArtistEntity(id: $id, name: $name, about: $about, urlPhoto: $urlPhoto, socialNetwork: $socialNetwork)';
+    return 'ArtistEntity2(id: $id, name: $name, about: $about, urlPhoto: $urlPhoto, socialNetwork: $socialNetwork)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ArtistEntity &&
+            other is _$ArtistEntity2Impl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.about, about) || other.about == about) &&
@@ -205,27 +338,28 @@ class _$_ArtistEntity implements _ArtistEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArtistEntityCopyWith<_$_ArtistEntity> get copyWith =>
-      __$$_ArtistEntityCopyWithImpl<_$_ArtistEntity>(this, _$identity);
+  _$$ArtistEntity2ImplCopyWith<_$ArtistEntity2Impl> get copyWith =>
+      __$$ArtistEntity2ImplCopyWithImpl<_$ArtistEntity2Impl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ArtistEntityToJson(
+    return _$$ArtistEntity2ImplToJson(
       this,
     );
   }
 }
 
-abstract class _ArtistEntity implements ArtistEntity {
-  factory _ArtistEntity(
+abstract class _ArtistEntity2 extends ArtistEntity2 implements MusicianEntity2 {
+  factory _ArtistEntity2(
       {required final String id,
       required final String name,
       required final String about,
       required final String urlPhoto,
-      required final List<String?> socialNetwork}) = _$_ArtistEntity;
+      required final List<String?> socialNetwork}) = _$ArtistEntity2Impl;
+  _ArtistEntity2._() : super._();
 
-  factory _ArtistEntity.fromJson(Map<String, dynamic> json) =
-      _$_ArtistEntity.fromJson;
+  factory _ArtistEntity2.fromJson(Map<String, dynamic> json) =
+      _$ArtistEntity2Impl.fromJson;
 
   @override
   String get id;
@@ -239,6 +373,6 @@ abstract class _ArtistEntity implements ArtistEntity {
   List<String?> get socialNetwork;
   @override
   @JsonKey(ignore: true)
-  _$$_ArtistEntityCopyWith<_$_ArtistEntity> get copyWith =>
+  _$$ArtistEntity2ImplCopyWith<_$ArtistEntity2Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }

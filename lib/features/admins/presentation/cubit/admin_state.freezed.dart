@@ -105,23 +105,25 @@ class _$AdminStateCopyWithImpl<$Res, $Val extends AdminState>
 }
 
 /// @nodoc
-abstract class _$$InitialCopyWith<$Res> {
-  factory _$$InitialCopyWith(_$Initial value, $Res Function(_$Initial) then) =
-      __$$InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitialCopyWithImpl<$Res>
-    extends _$AdminStateCopyWithImpl<$Res, _$Initial>
-    implements _$$InitialCopyWith<$Res> {
-  __$$InitialCopyWithImpl(_$Initial _value, $Res Function(_$Initial) _then)
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$AdminStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Initial implements Initial {
-  const _$Initial();
+class _$InitialImpl implements Initial {
+  const _$InitialImpl();
 
   @override
   String toString() {
@@ -131,7 +133,7 @@ class _$Initial implements Initial {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Initial);
+        (other.runtimeType == runtimeType && other is _$InitialImpl);
   }
 
   @override
@@ -231,27 +233,29 @@ class _$Initial implements Initial {
 }
 
 abstract class Initial implements AdminState {
-  const factory Initial() = _$Initial;
+  const factory Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadingCopyWith<$Res> {
-  factory _$$LoadingCopyWith(_$Loading value, $Res Function(_$Loading) then) =
-      __$$LoadingCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$LoadingCopyWithImpl<$Res>
-    extends _$AdminStateCopyWithImpl<$Res, _$Loading>
-    implements _$$LoadingCopyWith<$Res> {
-  __$$LoadingCopyWithImpl(_$Loading _value, $Res Function(_$Loading) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$AdminStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Loading implements Loading {
-  const _$Loading();
+class _$LoadingImpl implements Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
@@ -261,7 +265,7 @@ class _$Loading implements Loading {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Loading);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -361,22 +365,24 @@ class _$Loading implements Loading {
 }
 
 abstract class Loading implements AdminState {
-  const factory Loading() = _$Loading;
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
-abstract class _$$ErrorCopyWith<$Res> {
-  factory _$$ErrorCopyWith(_$Error value, $Res Function(_$Error) then) =
-      __$$ErrorCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$ErrorCopyWithImpl<$Res>
-    extends _$AdminStateCopyWithImpl<$Res, _$Error>
-    implements _$$ErrorCopyWith<$Res> {
-  __$$ErrorCopyWithImpl(_$Error _value, $Res Function(_$Error) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$AdminStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -384,7 +390,7 @@ class __$$ErrorCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$Error(
+    return _then(_$ErrorImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -395,8 +401,8 @@ class __$$ErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$Error implements Error {
-  const _$Error(this.message);
+class _$ErrorImpl implements Error {
+  const _$ErrorImpl(this.message);
 
   @override
   final String message;
@@ -410,7 +416,7 @@ class _$Error implements Error {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$Error &&
+            other is _$ErrorImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -420,8 +426,8 @@ class _$Error implements Error {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ErrorCopyWith<_$Error> get copyWith =>
-      __$$ErrorCopyWithImpl<_$Error>(this, _$identity);
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      __$$ErrorImplCopyWithImpl<_$ErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -517,31 +523,34 @@ class _$Error implements Error {
 }
 
 abstract class Error implements AdminState {
-  const factory Error(final String message) = _$Error;
+  const factory Error(final String message) = _$ErrorImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$ErrorCopyWith<_$Error> get copyWith => throw _privateConstructorUsedError;
+  _$$ErrorImplCopyWith<_$ErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$SuccessCopyWith<$Res> {
-  factory _$$SuccessCopyWith(_$Success value, $Res Function(_$Success) then) =
-      __$$SuccessCopyWithImpl<$Res>;
+abstract class _$$SuccessImplCopyWith<$Res> {
+  factory _$$SuccessImplCopyWith(
+          _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
+      __$$SuccessImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SuccessCopyWithImpl<$Res>
-    extends _$AdminStateCopyWithImpl<$Res, _$Success>
-    implements _$$SuccessCopyWith<$Res> {
-  __$$SuccessCopyWithImpl(_$Success _value, $Res Function(_$Success) _then)
+class __$$SuccessImplCopyWithImpl<$Res>
+    extends _$AdminStateCopyWithImpl<$Res, _$SuccessImpl>
+    implements _$$SuccessImplCopyWith<$Res> {
+  __$$SuccessImplCopyWithImpl(
+      _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$Success implements Success {
-  const _$Success();
+class _$SuccessImpl implements Success {
+  const _$SuccessImpl();
 
   @override
   String toString() {
@@ -551,7 +560,7 @@ class _$Success implements Success {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$Success);
+        (other.runtimeType == runtimeType && other is _$SuccessImpl);
   }
 
   @override
@@ -651,23 +660,24 @@ class _$Success implements Success {
 }
 
 abstract class Success implements AdminState {
-  const factory Success() = _$Success;
+  const factory Success() = _$SuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$LoadDataCopyWith<$Res> {
-  factory _$$LoadDataCopyWith(
-          _$LoadData value, $Res Function(_$LoadData) then) =
-      __$$LoadDataCopyWithImpl<$Res>;
+abstract class _$$LoadDataImplCopyWith<$Res> {
+  factory _$$LoadDataImplCopyWith(
+          _$LoadDataImpl value, $Res Function(_$LoadDataImpl) then) =
+      __$$LoadDataImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<UserEntity> artists});
 }
 
 /// @nodoc
-class __$$LoadDataCopyWithImpl<$Res>
-    extends _$AdminStateCopyWithImpl<$Res, _$LoadData>
-    implements _$$LoadDataCopyWith<$Res> {
-  __$$LoadDataCopyWithImpl(_$LoadData _value, $Res Function(_$LoadData) _then)
+class __$$LoadDataImplCopyWithImpl<$Res>
+    extends _$AdminStateCopyWithImpl<$Res, _$LoadDataImpl>
+    implements _$$LoadDataImplCopyWith<$Res> {
+  __$$LoadDataImplCopyWithImpl(
+      _$LoadDataImpl _value, $Res Function(_$LoadDataImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -675,7 +685,7 @@ class __$$LoadDataCopyWithImpl<$Res>
   $Res call({
     Object? artists = null,
   }) {
-    return _then(_$LoadData(
+    return _then(_$LoadDataImpl(
       null == artists
           ? _value._artists
           : artists // ignore: cast_nullable_to_non_nullable
@@ -686,8 +696,8 @@ class __$$LoadDataCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadData implements LoadData {
-  const _$LoadData(final List<UserEntity> artists) : _artists = artists;
+class _$LoadDataImpl implements LoadData {
+  const _$LoadDataImpl(final List<UserEntity> artists) : _artists = artists;
 
   final List<UserEntity> _artists;
   @override
@@ -706,7 +716,7 @@ class _$LoadData implements LoadData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadData &&
+            other is _$LoadDataImpl &&
             const DeepCollectionEquality().equals(other._artists, _artists));
   }
 
@@ -717,8 +727,8 @@ class _$LoadData implements LoadData {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadDataCopyWith<_$LoadData> get copyWith =>
-      __$$LoadDataCopyWithImpl<_$LoadData>(this, _$identity);
+  _$$LoadDataImplCopyWith<_$LoadDataImpl> get copyWith =>
+      __$$LoadDataImplCopyWithImpl<_$LoadDataImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -814,34 +824,34 @@ class _$LoadData implements LoadData {
 }
 
 abstract class LoadData implements AdminState {
-  const factory LoadData(final List<UserEntity> artists) = _$LoadData;
+  const factory LoadData(final List<UserEntity> artists) = _$LoadDataImpl;
 
   List<UserEntity> get artists;
   @JsonKey(ignore: true)
-  _$$LoadDataCopyWith<_$LoadData> get copyWith =>
+  _$$LoadDataImplCopyWith<_$LoadDataImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$UpdateAdminsCopyWith<$Res> {
-  factory _$$UpdateAdminsCopyWith(
-          _$UpdateAdmins value, $Res Function(_$UpdateAdmins) then) =
-      __$$UpdateAdminsCopyWithImpl<$Res>;
+abstract class _$$UpdateAdminsImplCopyWith<$Res> {
+  factory _$$UpdateAdminsImplCopyWith(
+          _$UpdateAdminsImpl value, $Res Function(_$UpdateAdminsImpl) then) =
+      __$$UpdateAdminsImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$UpdateAdminsCopyWithImpl<$Res>
-    extends _$AdminStateCopyWithImpl<$Res, _$UpdateAdmins>
-    implements _$$UpdateAdminsCopyWith<$Res> {
-  __$$UpdateAdminsCopyWithImpl(
-      _$UpdateAdmins _value, $Res Function(_$UpdateAdmins) _then)
+class __$$UpdateAdminsImplCopyWithImpl<$Res>
+    extends _$AdminStateCopyWithImpl<$Res, _$UpdateAdminsImpl>
+    implements _$$UpdateAdminsImplCopyWith<$Res> {
+  __$$UpdateAdminsImplCopyWithImpl(
+      _$UpdateAdminsImpl _value, $Res Function(_$UpdateAdminsImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$UpdateAdmins implements UpdateAdmins {
-  const _$UpdateAdmins();
+class _$UpdateAdminsImpl implements UpdateAdmins {
+  const _$UpdateAdminsImpl();
 
   @override
   String toString() {
@@ -851,7 +861,7 @@ class _$UpdateAdmins implements UpdateAdmins {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UpdateAdmins);
+        (other.runtimeType == runtimeType && other is _$UpdateAdminsImpl);
   }
 
   @override
@@ -951,24 +961,24 @@ class _$UpdateAdmins implements UpdateAdmins {
 }
 
 abstract class UpdateAdmins implements AdminState {
-  const factory UpdateAdmins() = _$UpdateAdmins;
+  const factory UpdateAdmins() = _$UpdateAdminsImpl;
 }
 
 /// @nodoc
-abstract class _$$UsersFoundCopyWith<$Res> {
-  factory _$$UsersFoundCopyWith(
-          _$UsersFound value, $Res Function(_$UsersFound) then) =
-      __$$UsersFoundCopyWithImpl<$Res>;
+abstract class _$$UsersFoundImplCopyWith<$Res> {
+  factory _$$UsersFoundImplCopyWith(
+          _$UsersFoundImpl value, $Res Function(_$UsersFoundImpl) then) =
+      __$$UsersFoundImplCopyWithImpl<$Res>;
   @useResult
   $Res call({List<UserEntity> user});
 }
 
 /// @nodoc
-class __$$UsersFoundCopyWithImpl<$Res>
-    extends _$AdminStateCopyWithImpl<$Res, _$UsersFound>
-    implements _$$UsersFoundCopyWith<$Res> {
-  __$$UsersFoundCopyWithImpl(
-      _$UsersFound _value, $Res Function(_$UsersFound) _then)
+class __$$UsersFoundImplCopyWithImpl<$Res>
+    extends _$AdminStateCopyWithImpl<$Res, _$UsersFoundImpl>
+    implements _$$UsersFoundImplCopyWith<$Res> {
+  __$$UsersFoundImplCopyWithImpl(
+      _$UsersFoundImpl _value, $Res Function(_$UsersFoundImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -976,7 +986,7 @@ class __$$UsersFoundCopyWithImpl<$Res>
   $Res call({
     Object? user = null,
   }) {
-    return _then(_$UsersFound(
+    return _then(_$UsersFoundImpl(
       null == user
           ? _value._user
           : user // ignore: cast_nullable_to_non_nullable
@@ -987,8 +997,8 @@ class __$$UsersFoundCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$UsersFound implements UsersFound {
-  const _$UsersFound(final List<UserEntity> user) : _user = user;
+class _$UsersFoundImpl implements UsersFound {
+  const _$UsersFoundImpl(final List<UserEntity> user) : _user = user;
 
   final List<UserEntity> _user;
   @override
@@ -1007,7 +1017,7 @@ class _$UsersFound implements UsersFound {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UsersFound &&
+            other is _$UsersFoundImpl &&
             const DeepCollectionEquality().equals(other._user, _user));
   }
 
@@ -1018,8 +1028,8 @@ class _$UsersFound implements UsersFound {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$UsersFoundCopyWith<_$UsersFound> get copyWith =>
-      __$$UsersFoundCopyWithImpl<_$UsersFound>(this, _$identity);
+  _$$UsersFoundImplCopyWith<_$UsersFoundImpl> get copyWith =>
+      __$$UsersFoundImplCopyWithImpl<_$UsersFoundImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1115,10 +1125,10 @@ class _$UsersFound implements UsersFound {
 }
 
 abstract class UsersFound implements AdminState {
-  const factory UsersFound(final List<UserEntity> user) = _$UsersFound;
+  const factory UsersFound(final List<UserEntity> user) = _$UsersFoundImpl;
 
   List<UserEntity> get user;
   @JsonKey(ignore: true)
-  _$$UsersFoundCopyWith<_$UsersFound> get copyWith =>
+  _$$UsersFoundImplCopyWith<_$UsersFoundImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

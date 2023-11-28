@@ -5,12 +5,13 @@ import 'package:fiura/features/admins/data/local/admin_repository_imp.dart';
 import 'package:fiura/features/admins/domain/repositories/admin_repository.dart';
 import 'package:fiura/features/admins/presentation/cubit/admin_cubit.dart';
 import 'package:fiura/features/artists/domain/repositories/artist_repository.dart';
-import 'package:fiura/features/artists/presentation/cubit/artist_cubit.dart';
+import 'package:fiura/features/musician/domain/repositories/musician_repository.dart';
+import 'package:fiura/features/musician/domain/repositories/musician_repository_imp.dart';
+import 'package:fiura/features/musician/presentation/cubit/musician_cubit.dart';
 import 'package:fiura/features/images/data/local/image_repository_imp.dart';
 import 'package:fiura/features/home/cubit/session_cubit.dart';
 import 'package:fiura/features/home/repository/user_respository.dart';
 import 'package:fiura/features/judge/domain/repositories/judge_repository.dart';
-import 'package:fiura/features/judge/presentation/cubit/judge_cubit.dart';
 import 'package:fiura/features/login/domain/repositories/login_repository.dart';
 import 'package:fiura/features/login/presentation/cubit/login_cubit.dart';
 import 'package:fiura/features/posts/domain/repositories/post_repository.dart';
@@ -37,45 +38,73 @@ final getIt = GetIt.instance;
 
 void setup() {
   //Splash
-  getIt.registerFactory<SplashRepository>(() => SplashRepositoryImp(auth: getIt()));
+  getIt.registerFactory<SplashRepository>(
+      () => SplashRepositoryImp(auth: getIt()));
   getIt.registerFactory<Splashcubit>(() => Splashcubit(getIt()));
 
   //Login
-  getIt.registerFactory<LoginRepository>(() => LoginRepository(googleSignIn: getIt(), auth: getIt(), db: getIt()));
+  getIt.registerFactory<LoginRepository>(
+      () => LoginRepository(googleSignIn: getIt(), auth: getIt(), db: getIt()));
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt(), getIt()));
 
   //Judge
-  getIt.registerFactory<JudgeRepository>(() => JudgeRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt(), userRepository: getIt()));
-  getIt.registerFactory<JudgeCubit>(() => JudgeCubit(getIt(), getIt()));
+  getIt.registerFactory<JudgeRepository>(() => JudgeRepositoryImp(
+      db: getIt(),
+      auth: getIt(),
+      imageRepository: getIt(),
+      userRepository: getIt()));
 
   //Sponsor
-  getIt.registerFactory<SponsorRepository>(() => SponsorRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt(), userRepository: getIt()));
+  getIt.registerFactory<SponsorRepository>(() => SponsorRepositoryImp(
+      db: getIt(),
+      auth: getIt(),
+      imageRepository: getIt(),
+      userRepository: getIt()));
   getIt.registerFactory<SponsorCubit>(() => SponsorCubit(getIt(), getIt()));
 
   //Schedule
-  getIt.registerFactory<ScheduleRepository>(() => ScheduleRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt(), userRepository: getIt()));
+  getIt.registerFactory<ScheduleRepository>(() => ScheduleRepositoryImp(
+      db: getIt(),
+      auth: getIt(),
+      imageRepository: getIt(),
+      userRepository: getIt()));
   getIt.registerFactory<ScheduleCubit>(() => ScheduleCubit(getIt(), getIt()));
 
   //Artist
-  getIt.registerFactory<ArtistRepository>(() => ArtistRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt(), userRepository: getIt()));
-  getIt.registerFactory<ArtistCubit>(() => ArtistCubit(getIt(), getIt()));
+  getIt.registerFactory<ArtistRepository>(() => ArtistRepositoryImp(
+      db: getIt(),
+      auth: getIt(),
+      imageRepository: getIt(),
+      userRepository: getIt()));
 
   //Post
-  getIt.registerFactory<PostRepository>(() => PostRepositoryImp(db: getIt(), auth: getIt(), imageRepository: getIt(), userRepository: getIt()));
+  getIt.registerFactory<PostRepository>(() => PostRepositoryImp(
+      db: getIt(),
+      auth: getIt(),
+      imageRepository: getIt(),
+      userRepository: getIt()));
   getIt.registerFactory<PostCubit>(() => PostCubit(getIt(), getIt()));
 
   //ImageRepository
-  getIt.registerFactory<ImageRepository>(() => ImageRepositoryImp(storageRef: getIt(), picker: getIt()));
+  getIt.registerFactory<ImageRepository>(
+      () => ImageRepositoryImp(storageRef: getIt(), picker: getIt()));
   getIt.registerFactory<ImageCubit>(() => ImageCubit(getIt()));
 
   //User
 
-  getIt.registerFactory<UserRepository>(() => UserRepository(getIt(), getIt(), getIt()));
+  getIt.registerFactory<UserRepository>(
+      () => UserRepository(getIt(), getIt(), getIt()));
   getIt.registerFactory<SessionCubit>(() => SessionCubit(getIt()));
 
   //Admin
-  getIt.registerFactory<AdminRepository>(() => AdminRepositoryImp(db: getIt(), auth: getIt(), userRepository: getIt()));
+  getIt.registerFactory<AdminRepository>(() =>
+      AdminRepositoryImp(db: getIt(), auth: getIt(), userRepository: getIt()));
   getIt.registerFactory<AdminCubit>(() => AdminCubit(getIt()));
+
+  //Musician
+  getIt.registerFactory<MusicianRepository>(() => MusicianRepositoryImp(
+      artistRepository: getIt(), judgeRepository: getIt()));
+  getIt.registerFactory<MusicianCubit>(() => MusicianCubit(getIt(), getIt()));
 
   //ThirdParty
 
